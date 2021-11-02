@@ -65,9 +65,27 @@ namespace BL
         {
             return Client_Dal.Delete(id);
         }
+
     }
     public class ClientArr : ArrayList
     {
+        public ClientArr Filter(string lastName, string cellNumber)
+        {
+            ClientArr clientArr = new ClientArr();
+            Client client;
+            for (int i = 0; i < this.Count; i++)
+            {
+
+
+                client = (this[i] as Client);
+                if
+                ( client.lastName.ToLower().StartsWith(lastName.ToLower()) &&
+                client.btcAddress.Contains(cellNumber) )
+               
+                    clientArr.Add(client);
+            }
+            return clientArr;
+        }
         public void Fill()
         {
 

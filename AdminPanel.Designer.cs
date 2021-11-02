@@ -29,7 +29,7 @@ namespace ClientApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.userListBox = new System.Windows.Forms.ListBox();
+            this.clientListBox = new System.Windows.Forms.ListBox();
             this.label_Id = new System.Windows.Forms.Label();
             this.text_Id = new System.Windows.Forms.Label();
             this.groupBox_GeneralInfo = new System.Windows.Forms.GroupBox();
@@ -53,26 +53,26 @@ namespace ClientApp
             this.clearButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.groupBox_Filter = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_Filter_BtcAddress = new System.Windows.Forms.TextBox();
+            this.textBox_Filter_LastName = new System.Windows.Forms.TextBox();
             this.groupBox_GeneralInfo.SuspendLayout();
             this.groupBox_BtcInfo.SuspendLayout();
             this.groupBox_UselessInfo.SuspendLayout();
             this.groupBox_Filter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // userListBox
+            // clientListBox
             // 
-            this.userListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userListBox.FormattingEnabled = true;
-            this.userListBox.ItemHeight = 25;
-            this.userListBox.Location = new System.Drawing.Point(12, 112);
-            this.userListBox.Name = "userListBox";
-            this.userListBox.Size = new System.Drawing.Size(324, 304);
-            this.userListBox.TabIndex = 1;
-            this.userListBox.DoubleClick += new System.EventHandler(this.userListBox_Client_DoubleClick);
+            this.clientListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientListBox.FormattingEnabled = true;
+            this.clientListBox.ItemHeight = 25;
+            this.clientListBox.Location = new System.Drawing.Point(12, 112);
+            this.clientListBox.Name = "clientListBox";
+            this.clientListBox.Size = new System.Drawing.Size(324, 304);
+            this.clientListBox.TabIndex = 1;
+            this.clientListBox.DoubleClick += new System.EventHandler(this.clientListBox_Client_DoubleClick);
             // 
             // label_Id
             // 
@@ -287,8 +287,8 @@ namespace ClientApp
             // 
             this.groupBox_Filter.Controls.Add(this.label2);
             this.groupBox_Filter.Controls.Add(this.label1);
-            this.groupBox_Filter.Controls.Add(this.textBox2);
-            this.groupBox_Filter.Controls.Add(this.textBox1);
+            this.groupBox_Filter.Controls.Add(this.textBox_Filter_BtcAddress);
+            this.groupBox_Filter.Controls.Add(this.textBox_Filter_LastName);
             this.groupBox_Filter.Location = new System.Drawing.Point(12, 13);
             this.groupBox_Filter.Name = "groupBox_Filter";
             this.groupBox_Filter.Size = new System.Drawing.Size(324, 93);
@@ -296,20 +296,14 @@ namespace ClientApp
             this.groupBox_Filter.TabStop = false;
             this.groupBox_Filter.Text = "Filter";
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 22);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(128, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 22);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Bitcoin address";
             // 
             // label1
             // 
@@ -320,14 +314,19 @@ namespace ClientApp
             this.label1.TabIndex = 1;
             this.label1.Text = "Last name";
             // 
-            // label2
+            // textBox_Filter_BtcAddress
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Bitcoin address";
+            this.textBox_Filter_BtcAddress.Location = new System.Drawing.Point(128, 65);
+            this.textBox_Filter_BtcAddress.Name = "textBox_Filter_BtcAddress";
+            this.textBox_Filter_BtcAddress.Size = new System.Drawing.Size(180, 22);
+            this.textBox_Filter_BtcAddress.TabIndex = 0;
+            // 
+            // textBox_Filter_LastName
+            // 
+            this.textBox_Filter_LastName.Location = new System.Drawing.Point(128, 23);
+            this.textBox_Filter_LastName.Name = "textBox_Filter_LastName";
+            this.textBox_Filter_LastName.Size = new System.Drawing.Size(180, 22);
+            this.textBox_Filter_LastName.TabIndex = 0;
             // 
             // AdminPanel
             // 
@@ -342,7 +341,7 @@ namespace ClientApp
             this.Controls.Add(this.groupBox_BtcInfo);
             this.Controls.Add(this.text_Id);
             this.Controls.Add(this.label_Id);
-            this.Controls.Add(this.userListBox);
+            this.Controls.Add(this.clientListBox);
             this.Controls.Add(this.groupBox_GeneralInfo);
             this.Name = "AdminPanel";
             this.Text = "AdminPanel";
@@ -361,7 +360,7 @@ namespace ClientApp
 
         #endregion
 
-        private System.Windows.Forms.ListBox userListBox;
+        private System.Windows.Forms.ListBox clientListBox;
         private System.Windows.Forms.Label label_Id;
         private System.Windows.Forms.Label text_Id;
         private System.Windows.Forms.GroupBox groupBox_GeneralInfo;
@@ -387,7 +386,7 @@ namespace ClientApp
         private System.Windows.Forms.GroupBox groupBox_Filter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_Filter_BtcAddress;
+        private System.Windows.Forms.TextBox textBox_Filter_LastName;
     }
 }

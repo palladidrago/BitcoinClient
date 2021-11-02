@@ -18,7 +18,7 @@ namespace ClientApp
         {
             ClientArr cArr = new ClientArr();
             cArr.Fill();
-            userListBox.DataSource = cArr;
+            clientListBox.DataSource = cArr;
         }
         private void ClientToForm(Client client)
         {
@@ -65,10 +65,10 @@ namespace ClientApp
             ClientArrToForm();
             ClientToForm(null);
         }
-        private void userListBox_Client_DoubleClick(object sender, EventArgs e)
+        private void clientListBox_Client_DoubleClick(object sender, EventArgs e)
         {
-            ClientToForm(userListBox.SelectedItem as Client);
-            client = userListBox.SelectedItem as Client;
+            ClientToForm(clientListBox.SelectedItem as Client);
+            client = clientListBox.SelectedItem as Client;
         }
         private bool CheckForm()
         {
@@ -224,10 +224,22 @@ namespace ClientApp
                 }
             }
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void textBox_Filter_KeyUp(object sender, KeyEventArgs e)
         {
 
+            //מייצרים אוסף של כלל הלקוחות
+
+            ClientArr clientArr = new ClientArr();
+            clientArr.Fill();
+
+            //מסננים את אוסף הלקוחות לפי הערכים בשדות הסינון שרשם המשתמש
+
+            clientArr = clientArr.Filter(textBox_Filter_LastName.Text,
+            textBox_Filter_BtcAddress.Text);
+
+            //מציבים בתיבת הרשימה את אוסף הלקוחות
+
+            clientListBox.DataSource = clientArr;
         }
     }
 }
