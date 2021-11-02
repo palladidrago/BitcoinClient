@@ -194,7 +194,7 @@ namespace ClientApp
             this.doneButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.doneButton.Location = new System.Drawing.Point(544, 40);
             this.doneButton.Name = "doneButton";
-            this.doneButton.Size = new System.Drawing.Size(367, 515);
+            this.doneButton.Size = new System.Drawing.Size(394, 515);
             this.doneButton.TabIndex = 7;
             this.doneButton.Text = "Done";
             this.doneButton.UseVisualStyleBackColor = true;
@@ -215,7 +215,8 @@ namespace ClientApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 585);
+            this.BackgroundImage = global::ClientApp.Properties.Resources.btcPattern;
+            this.ClientSize = new System.Drawing.Size(977, 585);
             this.Controls.Add(this.label_Title);
             this.Controls.Add(this.doneButton);
             this.Controls.Add(this.textBox_ShoeSize);
