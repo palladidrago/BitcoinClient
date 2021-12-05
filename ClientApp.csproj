@@ -61,37 +61,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminPanel.cs">
+    <Compile Include="UI\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminPanel.Designer.cs">
-      <DependentUpon>AdminPanel.cs</DependentUpon>
+    <Compile Include="UI\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BL\BL.cs" />
+    <Compile Include="BL\Client.cs" />
+    <Compile Include="BL\City.cs" />
+    <Compile Include="BL\CityArr.cs" />
+    <Compile Include="BL\ClientArr.cs" />
+    <Compile Include="Dal\City_Dal.cs" />
     <Compile Include="Dal\Client_Dal.cs" />
     <Compile Include="Dal\Dal.cs" />
-    <Compile Include="CreateForm.cs">
+    <Compile Include="UI\ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateForm.Designer.cs">
-      <DependentUpon>CreateForm.cs</DependentUpon>
+    <Compile Include="UI\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BeginForm.cs">
+    <Compile Include="UI\BeginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BeginForm.Designer.cs">
+    <Compile Include="UI\BeginForm.Designer.cs">
       <DependentUpon>BeginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AdminPanel.resx">
-      <DependentUpon>AdminPanel.cs</DependentUpon>
+    <Compile Include="UI\CityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CityForm.Designer.cs">
+      <DependentUpon>CityForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BeginForm.resx">
+    <EmbeddedResource Include="UI\BeginForm.resx">
       <DependentUpon>BeginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateForm.resx">
-      <DependentUpon>CreateForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\CityForm.resx">
+      <DependentUpon>CityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

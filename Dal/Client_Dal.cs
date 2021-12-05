@@ -69,6 +69,12 @@ namespace Dal
         {
 
             Dal.FillDataSet(dataSet, "Table_Client", "[LastName],[FirstName]");
+            //Add data relation
+            DataRelation dataRelation = new DataRelation(
+                "ClientCity",
+                dataSet.Tables["Table_City"].Columns["Id"],
+                dataSet.Tables["Table_Client"].Columns["City"]);
+            dataSet.Relations.Add(dataRelation);
 
         }
     }
