@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL;
+using ClientApp.UI;
 
 namespace ClientApp
 {
@@ -17,28 +18,64 @@ namespace ClientApp
         public AdminForm()
         {
             InitializeComponent();
-            ClientArrToForm();
-            CityArrToForm();
-            ClientToForm(null);
+            ClientArrToForm(); //For the list box fill in
+            CityArrToForm(); // For the combo box fill in
+            ClientToForm(); //For the actual form fill in
             
         }
-        public void CityArrToForm()
+        private void textBox_Number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Check if is number
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.KeyChar = char.MinValue;
+        }
+        private void textBox_Text_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //When key pressed, check that it is text and english
+            if (!IsEngLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+                e.KeyChar = char.MinValue;
+        }
+        private bool IsEngLetter(char c)
+        {
+            //Is it an english letter?
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c >= 'Z');
+        }
+
+        private void Form_Client_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)
+        {
+            //If input language changed, issue warning
+            if (InputLanguage.CurrentInputLanguage.Culture.Name.ToLower() != "en_us")
+            {
+                MessageBox.Show("U changed your language bro, look out, no hebrew pls");
+            }
+        }
+
+        public void CityArrToForm(City curCity = null)
         {
             //From city array to form 
             CityArr cityArr = new CityArr();
+            City cityDefault = new City();
+            cityDefault.id = -1;
+            cityDefault.name = "Choose a city";
+
+
+            cityArr.Add(cityDefault);
             cityArr.Fill();
 
             comboBox_City.DataSource = cityArr;
             comboBox_City.ValueMember = "Id";
             comboBox_City.DisplayMember = "Name";
+            if (curCity != null)
+                comboBox_City.SelectedValue = curCity.id;
+
         }
-        private void ClientArrToForm(Client client= null)
+        private void ClientArrToForm()
         {
-            ClientArr cArr = new ClientArr();
-            cArr.Fill();
-            clientListBox.DataSource = cArr;
+            ClientArr clientArr = new ClientArr();
+            clientArr.Fill();
+            clientListBox.DataSource = clientArr;
         }
-        private void ClientToForm(Client client)
+        private void ClientToForm(Client client = null)
         {
             if (client != null)
             {
@@ -187,6 +224,16 @@ namespace ClientApp
             }
 
             #endregion
+
+            #region City
+            if ((int)comboBox_City.SelectedValue <= 0)
+            {
+                flag = false;
+                comboBox_City.ForeColor = Color.Red;
+            }
+            else comboBox_City.ForeColor = Color.Black;
+
+            #endregion
             return flag;
         }
         private void doneButton_Click(object sender, EventArgs e)
@@ -214,7 +261,9 @@ namespace ClientApp
                 }
                 ClientArrToForm();
             }
-            else MessageBox.Show("Ayo u done some wron in the form bro check that stuff for accuracy man this stuff is crucial life or death, you catch my breeze?","You freeked up man");
+            else MessageBox.Show(
+"Ayo u done some wron in the form bro check that stuff for accuracy man this stuff is crucial life or death, you catch my breeze?"
+            ,"You freeked up man");
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -257,6 +306,16 @@ namespace ClientApp
             //מציבים בתיבת הרשימה את אוסף הלקוחות
 
             clientListBox.DataSource = clientArr;
+        }
+
+        private void button_AddCity_Click(object sender, EventArgs e)
+        {
+            CityForm cityForm = new CityForm(comboBox_City.SelectedItem as City);
+
+            cityForm.ShowDialog();
+
+            CityArrToForm(cityForm.SelectedCity);
+
         }
     }
 }

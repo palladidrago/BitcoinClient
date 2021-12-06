@@ -33,6 +33,8 @@ namespace ClientApp
             this.label_Id = new System.Windows.Forms.Label();
             this.text_Id = new System.Windows.Forms.Label();
             this.groupBox_GeneralInfo = new System.Windows.Forms.GroupBox();
+            this.comboBox_City = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label_PhoneNumber = new System.Windows.Forms.Label();
             this.label_BirthYear = new System.Windows.Forms.Label();
             this.label_LastName = new System.Windows.Forms.Label();
@@ -57,8 +59,7 @@ namespace ClientApp
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Filter_BtcAddress = new System.Windows.Forms.TextBox();
             this.textBox_Filter_LastName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox_City = new System.Windows.Forms.ComboBox();
+            this.button_AddCity = new System.Windows.Forms.Label();
             this.groupBox_GeneralInfo.SuspendLayout();
             this.groupBox_BtcInfo.SuspendLayout();
             this.groupBox_UselessInfo.SuspendLayout();
@@ -75,6 +76,7 @@ namespace ClientApp
             this.clientListBox.Size = new System.Drawing.Size(324, 304);
             this.clientListBox.TabIndex = 1;
             this.clientListBox.DoubleClick += new System.EventHandler(this.clientListBox_Client_DoubleClick);
+            this.clientListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Text_KeyPress);
             // 
             // label_Id
             // 
@@ -98,6 +100,7 @@ namespace ClientApp
             // 
             // groupBox_GeneralInfo
             // 
+            this.groupBox_GeneralInfo.Controls.Add(this.button_AddCity);
             this.groupBox_GeneralInfo.Controls.Add(this.comboBox_City);
             this.groupBox_GeneralInfo.Controls.Add(this.label3);
             this.groupBox_GeneralInfo.Controls.Add(this.label_PhoneNumber);
@@ -114,6 +117,26 @@ namespace ClientApp
             this.groupBox_GeneralInfo.TabIndex = 4;
             this.groupBox_GeneralInfo.TabStop = false;
             this.groupBox_GeneralInfo.Text = "General info";
+            // 
+            // comboBox_City
+            // 
+            this.comboBox_City.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox_City.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_City.FormattingEnabled = true;
+            this.comboBox_City.Location = new System.Drawing.Point(27, 286);
+            this.comboBox_City.Name = "comboBox_City";
+            this.comboBox_City.Size = new System.Drawing.Size(121, 24);
+            this.comboBox_City.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 260);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "City:";
             // 
             // label_PhoneNumber
             // 
@@ -157,6 +180,7 @@ namespace ClientApp
             this.textBox_PhoneNumber.Name = "textBox_PhoneNumber";
             this.textBox_PhoneNumber.Size = new System.Drawing.Size(116, 22);
             this.textBox_PhoneNumber.TabIndex = 0;
+            this.textBox_PhoneNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // textBox_BirthYear
             // 
@@ -164,6 +188,7 @@ namespace ClientApp
             this.textBox_BirthYear.Name = "textBox_BirthYear";
             this.textBox_BirthYear.Size = new System.Drawing.Size(77, 22);
             this.textBox_BirthYear.TabIndex = 0;
+            this.textBox_BirthYear.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // textBox_LastName
             // 
@@ -171,6 +196,7 @@ namespace ClientApp
             this.textBox_LastName.Name = "textBox_LastName";
             this.textBox_LastName.Size = new System.Drawing.Size(116, 22);
             this.textBox_LastName.TabIndex = 0;
+            this.textBox_LastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Text_KeyPress);
             // 
             // textBox_FirstName
             // 
@@ -178,6 +204,7 @@ namespace ClientApp
             this.textBox_FirstName.Name = "textBox_FirstName";
             this.textBox_FirstName.Size = new System.Drawing.Size(116, 22);
             this.textBox_FirstName.TabIndex = 0;
+            this.textBox_FirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Text_KeyPress);
             // 
             // groupBox_BtcInfo
             // 
@@ -198,6 +225,7 @@ namespace ClientApp
             this.textBox_BtcAmount.Name = "textBox_BtcAmount";
             this.textBox_BtcAmount.Size = new System.Drawing.Size(116, 22);
             this.textBox_BtcAmount.TabIndex = 0;
+            this.textBox_BtcAmount.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // label_BtcAmount
             // 
@@ -241,6 +269,7 @@ namespace ClientApp
             this.textBox_ShoeSize.Name = "textBox_ShoeSize";
             this.textBox_ShoeSize.Size = new System.Drawing.Size(116, 22);
             this.textBox_ShoeSize.TabIndex = 0;
+            this.textBox_ShoeSize.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // label_ShoeSize
             // 
@@ -332,22 +361,18 @@ namespace ClientApp
             this.textBox_Filter_LastName.Size = new System.Drawing.Size(180, 22);
             this.textBox_Filter_LastName.TabIndex = 0;
             // 
-            // label3
+            // button_AddCity
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 260);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "City:";
-            // 
-            // comboBox_City
-            // 
-            this.comboBox_City.FormattingEnabled = true;
-            this.comboBox_City.Location = new System.Drawing.Point(27, 286);
-            this.comboBox_City.Name = "comboBox_City";
-            this.comboBox_City.Size = new System.Drawing.Size(121, 24);
-            this.comboBox_City.TabIndex = 2;
+            this.button_AddCity.AutoSize = true;
+            this.button_AddCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_AddCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_AddCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_AddCity.Location = new System.Drawing.Point(154, 276);
+            this.button_AddCity.Name = "button_AddCity";
+            this.button_AddCity.Size = new System.Drawing.Size(30, 32);
+            this.button_AddCity.TabIndex = 3;
+            this.button_AddCity.Text = "+";
+            this.button_AddCity.Click += new System.EventHandler(this.button_AddCity_Click);
             // 
             // AdminForm
             // 
@@ -366,6 +391,7 @@ namespace ClientApp
             this.Controls.Add(this.groupBox_GeneralInfo);
             this.Name = "AdminForm";
             this.Text = "AdminPanel";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             this.groupBox_GeneralInfo.ResumeLayout(false);
             this.groupBox_GeneralInfo.PerformLayout();
             this.groupBox_BtcInfo.ResumeLayout(false);
@@ -411,5 +437,6 @@ namespace ClientApp
         private System.Windows.Forms.TextBox textBox_Filter_LastName;
         private System.Windows.Forms.ComboBox comboBox_City;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label button_AddCity;
     }
 }

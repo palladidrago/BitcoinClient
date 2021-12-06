@@ -55,12 +55,12 @@ namespace BL
         public bool Insert()
         {
             //Insert this client into database
-            return Client_Dal.Insert(firstName, lastName, birthYear, phoneNumber, btcAmount, btcAddress, shoeSize);
+            return Client_Dal.Insert(firstName, lastName, birthYear, phoneNumber, btcAmount, btcAddress, shoeSize,city.id);
         }
         public bool Update()
         {
             //Update client at given id in database
-            return Client_Dal.Update(id, firstName, lastName, birthYear, phoneNumber, btcAmount, btcAddress, shoeSize);
+            return Client_Dal.Update(id, firstName, lastName, birthYear, phoneNumber, btcAmount, btcAddress, shoeSize,city.id);
         }
         public bool Delete()
         {

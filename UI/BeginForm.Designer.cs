@@ -45,7 +45,7 @@ namespace ClientApp
             this.adminButton.TabIndex = 0;
             this.adminButton.Text = "Admin Panel";
             this.adminButton.UseVisualStyleBackColor = false;
-            this.adminButton.Click += new System.EventHandler(this.loginButton_Click);
+            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
             // signUpButton
             // 
@@ -67,7 +67,7 @@ namespace ClientApp
             this.cityButton.TabIndex = 0;
             this.cityButton.Text = "City Panel";
             this.cityButton.UseVisualStyleBackColor = true;
-            this.cityButton.Click += new System.EventHandler(this.signUpButton_Click);
+            this.cityButton.Click += new System.EventHandler(this.cityButton_Click);
             // 
             // beginForm
             // 

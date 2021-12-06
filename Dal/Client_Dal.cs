@@ -9,7 +9,7 @@ namespace Dal
 {
     class Client_Dal
     {
-        public static bool Insert(string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize)
+        public static bool Insert(string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize,int city)
         {
 
             //מוסיפה את הלקוח למסד הנתונים
@@ -17,16 +17,16 @@ namespace Dal
 
             string str = "INSERT INTO Table_Client"
             + "("
-            + "[FirstName],[LastName],[BirthYear],[PhoneNumber],[BtcAmount],[BtcAddress],[ShoeSize]"
+            + "[FirstName],[LastName],[BirthYear],[PhoneNumber],[BtcAmount],[BtcAddress],[ShoeSize],[City]"
             + ")"
             + " VALUES "
             + "("
-            + $"N'{firstName}',N'{lastName}',{birthYear},N'{phoneNumber}',{btcAmount},N'{btcAddress}',{shoeSize}"
+            + $"N'{firstName}',N'{lastName}',{birthYear},N'{phoneNumber}',{btcAmount},N'{btcAddress}',{shoeSize}, {city}"
             + ")";
             //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
             return Dal.ExecuteSql(str);
         }
-        public static bool Update(int id,string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize)
+        public static bool Update(int id, string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize, int city)
         {
 
             //מעדכנת את הלקוח במסד הנתונים
@@ -40,7 +40,7 @@ namespace Dal
             + $",[BtcAmount] = {btcAmount}"
             + $",[BtcAddress] = N'{btcAddress}'"
             + $",[ShoeSize] = {shoeSize}"
-
+            + $",[City] = {city}"
             + $" WHERE [Id] = {id}";
 
             //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
@@ -69,8 +69,11 @@ namespace Dal
         {
 
             Dal.FillDataSet(dataSet, "Table_Client", "[LastName],[FirstName]");
+            //Creating a connection
+            DataRelation dataRelation = null;
+            City_Dal.FillDataSet(dataSet);
             //Add data relation
-            DataRelation dataRelation = new DataRelation(
+            dataRelation = new DataRelation(
                 "ClientCity",
                 dataSet.Tables["Table_City"].Columns["Id"],
                 dataSet.Tables["Table_Client"].Columns["City"]);

@@ -19,6 +19,16 @@ namespace BL
                     return true;
             return false;
         }
+        public City GetCityWithMaxId()
+        {
+            //Return the city with the highest id
+            City maxCity = new City();
+            for (int i = 0; i < this.Count; i++)
+                if ((this[i] as City).id > maxCity.id)
+                    maxCity = this[i] as City;
+
+            return maxCity;
+        }
         public void Fill()
         {
 

@@ -26,6 +26,22 @@ namespace Dal
             }
 
         }
+        public static bool Insert(string name)
+        {
+            string sql = $"INSERT INTO Table_City ([Name]) VALUES ('{name}')";
+            return Dal.ExecuteSql(sql);
+        }
+        public static bool Delete(int id)
+        {
+
+            //Delete the city from database
+
+            string str = "DELETE FROM Table_City WHERE ID = " + id;
+
+            //Run the command and return result
+
+            return Dal.ExecuteSql(str);
+        }
 
     }
 }

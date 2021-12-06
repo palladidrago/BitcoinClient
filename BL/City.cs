@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Dal;
 
 namespace BL
 {
@@ -15,14 +16,24 @@ namespace BL
         {
             this.name = name;
         }
+        public City() { }
         public City (DataRow dataRow)
         {
             this.name = dataRow["Name"].ToString();
             this.id = (int)dataRow["Id"];
         }
+        public bool Insert()
+        {
+            return City_Dal.Insert(name);
+        }
+        public bool Delete()
+        {
+            return City_Dal.Delete(id);
+        }
+    
         public override string ToString()
         {
-            return name;
+            return name.Trim();
         }
     }
 }
