@@ -46,15 +46,12 @@ namespace Dal
 
         public static void FillDataSet(DataSet dataSet, string tableName, string orderBy = "")
         {
-            //מקשר
-
-            //using System.Data.SqlClient;
 
             SqlConnection connection = new SqlConnection();
             //הצבת מחרוזת הקישור במקשר
             connection.ConnectionString = GetConnectionString();
 
-            //מבצע פעולה
+            //Execute the command
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
             if (orderBy != "")
