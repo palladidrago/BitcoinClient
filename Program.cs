@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClientApp.UI;
 
 namespace ClientApp
 {
@@ -16,7 +17,7 @@ namespace ClientApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new beginForm());
+            Application.Run(new Trade());
         }
     }
 }

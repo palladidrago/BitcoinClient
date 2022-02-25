@@ -61,8 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\TradeArr.cs" />
+    <Compile Include="BL\Coin.cs" />
+    <Compile Include="BL\CoinArr.cs" />
+    <Compile Include="BL\Trade.cs" />
     <Compile Include="BL\Scam.cs" />
     <Compile Include="BL\Valid.cs" />
+    <Compile Include="Dal\Coin_Dal.cs" />
+    <Compile Include="Dal\Trade_Dal.cs" />
     <Compile Include="Dal\Scam_Dal.cs" />
     <Compile Include="Dal\Valid_Dal.cs" />
     <Compile Include="UI\AdminForm.cs">
@@ -98,11 +104,23 @@
     <Compile Include="UI\CityForm.Designer.cs">
       <DependentUpon>CityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Coin.cs">
+    <Compile Include="UI\CoinForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Coin.Designer.cs">
-      <DependentUpon>Coin.cs</DependentUpon>
+    <Compile Include="UI\CoinForm.Designer.cs">
+      <DependentUpon>CoinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Trade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Trade.Designer.cs">
+      <DependentUpon>Trade.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
@@ -126,8 +144,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Coin.resx">
-      <DependentUpon>Coin.cs</DependentUpon>
+    <EmbeddedResource Include="UI\CoinForm.resx">
+      <DependentUpon>CoinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Trade.resx">
+      <DependentUpon>Trade.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Dal;
 
 
 namespace ClientApp.BL
     {
-        class Valid
+        public class Valid
         {
             public string validationMethod { get; set; } // Validation method
             public int id { get; set; } //Id
@@ -16,24 +17,21 @@ namespace ClientApp.BL
             public Valid() { }
             public Valid(DataRow dataRow)
             {
-                this.validationMethod = dataRow["ScamLevel"].ToString();
+                this.validationMethod = dataRow["Valid"].ToString();
                 this.id = (int)dataRow["Id"];
             }
             public bool Insert()
             {
-                return Scam_Dal.Insert(scamLevel);
+                return Valid_Dal.Insert(validationMethod);
             }
             public bool Delete()
             {
-                return Scam_Dal.Delete(id);
+                return Valid_Dal.Delete(id);
             }
 
             public override string ToString()
             {
-                return scamLevel.Trim();
+                return validationMethod.Trim();
             }
         }
-    }
-
-}
 }

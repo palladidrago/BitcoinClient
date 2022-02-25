@@ -21,7 +21,6 @@ namespace BL
         public string btcAddress { get; set; } //His bitcoin address
 
         public int shoeSize { get; set; } //Shoe Size
-        
         public Client() { }
         public Client(string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize)
         {

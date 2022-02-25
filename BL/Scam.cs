@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Dal;
 
 namespace ClientApp.BL
 {
-    class Scam
+    public class Scam
     {
         public string scamLevel { get; set; }
         public int id { get; set; }
