@@ -7,7 +7,7 @@ using System.Collections;
 using System.Data;
 using Dal;
 
-namespace ClientApp.BL
+namespace BL
 {
     internal class CoinArr : ArrayList
     {

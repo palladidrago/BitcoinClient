@@ -124,5 +124,11 @@ namespace ClientApp.UI
                 }
             }
         }
+
+        private void listBox_City_Click(object sender, EventArgs e)
+        {
+            City selCity = listBox_City.SelectedItem as City;
+            CityToForm(selCity);
+        }
     }
 }

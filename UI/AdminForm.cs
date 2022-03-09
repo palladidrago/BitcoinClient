@@ -73,7 +73,7 @@ namespace ClientApp
         {
             ClientArr clientArr = new ClientArr();
             clientArr.Fill();
-            clientListBox.DataSource = clientArr;
+            listBox_Client.DataSource = clientArr;
         }
         private void ClientToForm(Client client = null)
         {
@@ -89,7 +89,7 @@ namespace ClientApp
                 textBox_ShoeSize.Text = client.shoeSize.ToString();
                 //City
                 comboBox_City.SelectedValue = client.city.id;
-                comboBox_City.SelectedItem = null;  
+                comboBox_City.SelectedItem = client;  
             }
             else
             {
@@ -121,8 +121,8 @@ namespace ClientApp
 
         private void clientListBox_Client_DoubleClick(object sender, EventArgs e)
         {
-            ClientToForm(clientListBox.SelectedItem as Client);
-            client = clientListBox.SelectedItem as Client;
+            ClientToForm(listBox_Client.SelectedItem as Client);
+            client = listBox_Client.SelectedItem as Client;
         }
         private bool CheckForm()
         {
@@ -305,7 +305,7 @@ namespace ClientApp
 
             //מציבים בתיבת הרשימה את אוסף הלקוחות
 
-            clientListBox.DataSource = clientArr;
+            listBox_Client.DataSource = clientArr;
         }
 
         private void button_AddCity_Click(object sender, EventArgs e)

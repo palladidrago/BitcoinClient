@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Data;
 using Dal;
 
-namespace ClientApp.BL
+namespace BL
 {
     public class Coin
     {
         public string name { get; set; }
         public int id { get; set; }
+        public string symbol { get; set; }
         public Valid valid { get; set; }
         public Scam scam { get; set; }
         public Coin() { }
@@ -36,6 +37,7 @@ namespace ClientApp.BL
         {
             return Coin_Dal.Delete(id);
         }
+
 
         public override string ToString()
         {

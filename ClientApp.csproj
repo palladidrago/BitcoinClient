@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\OrderProduct.cs" />
+    <Compile Include="BL\ValidArr.cs" />
+    <Compile Include="BL\ScamArr.cs" />
     <Compile Include="BL\TradeArr.cs" />
     <Compile Include="BL\Coin.cs" />
     <Compile Include="BL\CoinArr.cs" />
@@ -110,17 +113,23 @@
     <Compile Include="UI\CoinForm.Designer.cs">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ReportForm.cs">
+    <Compile Include="UI\ScamForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <Compile Include="UI\ScamForm.Designer.cs">
+      <DependentUpon>ScamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Trade.cs">
+    <Compile Include="UI\ValidForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Trade.Designer.cs">
-      <DependentUpon>Trade.cs</DependentUpon>
+    <Compile Include="UI\ValidForm.Designer.cs">
+      <DependentUpon>ValidForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TradeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TradeForm.Designer.cs">
+      <DependentUpon>TradeForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
@@ -147,8 +156,14 @@
     <EmbeddedResource Include="UI\CoinForm.resx">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Trade.resx">
-      <DependentUpon>Trade.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ScamForm.resx">
+      <DependentUpon>ScamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ValidForm.resx">
+      <DependentUpon>ValidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TradeForm.resx">
+      <DependentUpon>TradeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

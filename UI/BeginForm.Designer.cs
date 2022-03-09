@@ -29,54 +29,69 @@ namespace ClientApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.adminButton = new System.Windows.Forms.Button();
-            this.signUpButton = new System.Windows.Forms.Button();
-            this.cityButton = new System.Windows.Forms.Button();
+            this.button_Trade = new System.Windows.Forms.Button();
+            this.button_City = new System.Windows.Forms.Button();
+            this.button_Client = new System.Windows.Forms.Button();
+            this.button_Coin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // adminButton
+            // button_Trade
             // 
-            this.adminButton.BackColor = System.Drawing.Color.Transparent;
-            this.adminButton.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.adminButton.Location = new System.Drawing.Point(418, 234);
-            this.adminButton.Name = "adminButton";
-            this.adminButton.Size = new System.Drawing.Size(396, 233);
-            this.adminButton.TabIndex = 0;
-            this.adminButton.Text = "Admin Panel";
-            this.adminButton.UseVisualStyleBackColor = false;
-            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
+            this.button_Trade.BackColor = System.Drawing.Color.Transparent;
+            this.button_Trade.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Trade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_Trade.Location = new System.Drawing.Point(414, 234);
+            this.button_Trade.Name = "button_Trade";
+            this.button_Trade.Size = new System.Drawing.Size(396, 233);
+            this.button_Trade.TabIndex = 0;
+            this.button_Trade.Text = "Trade Form";
+            this.button_Trade.UseVisualStyleBackColor = false;
+            this.button_Trade.Click += new System.EventHandler(this.button_Trade_Click);
             // 
-            // signUpButton
+            // button_City
             // 
-            this.signUpButton.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signUpButton.Location = new System.Drawing.Point(418, 12);
-            this.signUpButton.Name = "signUpButton";
-            this.signUpButton.Size = new System.Drawing.Size(400, 216);
-            this.signUpButton.TabIndex = 0;
-            this.signUpButton.Text = "Sign Up";
-            this.signUpButton.UseVisualStyleBackColor = true;
-            this.signUpButton.Click += new System.EventHandler(this.signUpButton_Click);
+            this.button_City.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_City.Location = new System.Drawing.Point(414, 8);
+            this.button_City.Name = "button_City";
+            this.button_City.Size = new System.Drawing.Size(400, 220);
+            this.button_City.TabIndex = 0;
+            this.button_City.Text = "City Form";
+            this.button_City.UseVisualStyleBackColor = true;
+            this.button_City.Click += new System.EventHandler(this.button_City_Click);
             // 
-            // cityButton
+            // button_Client
             // 
-            this.cityButton.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityButton.Location = new System.Drawing.Point(12, 12);
-            this.cityButton.Name = "cityButton";
-            this.cityButton.Size = new System.Drawing.Size(400, 455);
-            this.cityButton.TabIndex = 0;
-            this.cityButton.Text = "City Panel";
-            this.cityButton.UseVisualStyleBackColor = true;
-            this.cityButton.Click += new System.EventHandler(this.cityButton_Click);
+            this.button_Client.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Client.Location = new System.Drawing.Point(8, 8);
+            this.button_Client.Name = "button_Client";
+            this.button_Client.Size = new System.Drawing.Size(400, 220);
+            this.button_Client.TabIndex = 0;
+            this.button_Client.Text = "Client Form";
+            this.button_Client.UseVisualStyleBackColor = true;
+            this.button_Client.Click += new System.EventHandler(this.button_Client_Click);
+            // 
+            // button_Coin
+            // 
+            this.button_Coin.BackColor = System.Drawing.Color.Transparent;
+            this.button_Coin.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Coin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_Coin.Location = new System.Drawing.Point(12, 234);
+            this.button_Coin.Name = "button_Coin";
+            this.button_Coin.Size = new System.Drawing.Size(396, 233);
+            this.button_Coin.TabIndex = 0;
+            this.button_Coin.Text = "Coin Form";
+            this.button_Coin.UseVisualStyleBackColor = false;
+            this.button_Coin.Click += new System.EventHandler(this.button_Coin_Click);
             // 
             // beginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 492);
-            this.Controls.Add(this.cityButton);
-            this.Controls.Add(this.signUpButton);
-            this.Controls.Add(this.adminButton);
+            this.Controls.Add(this.button_Client);
+            this.Controls.Add(this.button_City);
+            this.Controls.Add(this.button_Coin);
+            this.Controls.Add(this.button_Trade);
             this.Name = "beginForm";
             this.Text = "Start here!";
             this.ResumeLayout(false);
@@ -85,8 +100,9 @@ namespace ClientApp
 
         #endregion
 
-        private System.Windows.Forms.Button adminButton;
-        private System.Windows.Forms.Button signUpButton;
-        private System.Windows.Forms.Button cityButton;
+        private System.Windows.Forms.Button button_Trade;
+        private System.Windows.Forms.Button button_City;
+        private System.Windows.Forms.Button button_Client;
+        private System.Windows.Forms.Button button_Coin;
     }
 }

@@ -32,12 +32,13 @@ namespace Dal
             dataSet.Relations.Add(dataRelation);
 
         }
-        public static bool Insert(int client) // INCOMPLETE
+        public static bool Insert(int client,DateTime date) // Date might not work
         {
-            string sql = $"INSERT INTO Table_Trade ([Client]) VALUES ('{client}')";
+
+            string sql = $"INSERT INTO Table_Trade ([Client],[Date]) VALUES ('{client}','{date:yyyy-MM-dd}')";
             return Dal.ExecuteSql(sql);
         }
-        public static bool Update(int id, int client,DateTime date )
+        public static bool Update(int id, int client,int coins,DateTime date )
         {
 
             //Updates the client in the database
@@ -45,7 +46,7 @@ namespace Dal
             string str = "UPDATE Table_Order SET"
 
             + $" [Client] = N'{client}'"
-            + $",[Date] = N'{date}'"
+            + $",[Date] = N'{date:yyyy-MM-dd}'"
             + $" WHERE [Id] = {id}";
 
             //Return success

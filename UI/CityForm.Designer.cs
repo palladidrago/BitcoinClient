@@ -48,6 +48,7 @@ namespace ClientApp.UI
             this.listBox_City.Name = "listBox_City";
             this.listBox_City.Size = new System.Drawing.Size(287, 196);
             this.listBox_City.TabIndex = 0;
+            this.listBox_City.Click += new System.EventHandler(this.listBox_City_Click);
             // 
             // label_Id
             // 

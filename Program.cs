@@ -17,7 +17,7 @@ namespace ClientApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Trade());
+            Application.Run(new beginForm());
         }
     }
 }

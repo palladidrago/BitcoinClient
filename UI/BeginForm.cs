@@ -18,15 +18,18 @@ namespace ClientApp
             InitializeComponent();
         }
 
-        private void signUpButton_Click(object sender, EventArgs e)
+
+
+
+        private void button_Client_Click(object sender, EventArgs e)
         {
-            ClientForm createForm = new ClientForm();
+            AdminForm adminPanel = new AdminForm();
             this.Hide();
-            createForm.ShowDialog();
+            adminPanel.ShowDialog();
             this.Close();
         }
 
-        private void cityButton_Click(object sender, EventArgs e)
+        private void button_City_Click(object sender, EventArgs e)
         {
             CityForm cityForm = new CityForm();
             this.Hide();
@@ -34,11 +37,19 @@ namespace ClientApp
             this.Close();
         }
 
-        private void adminButton_Click(object sender, EventArgs e)
+        private void button_Coin_Click(object sender, EventArgs e)
         {
-            AdminForm adminPanel = new AdminForm();
+            CoinForm coinForm = new CoinForm();
             this.Hide();
-            adminPanel.ShowDialog();
+            coinForm.ShowDialog();
+            this.Close();
+        }
+
+        private void button_Trade_Click(object sender, EventArgs e)
+        {
+            TradeForm tradeForm = new TradeForm();
+            this.Hide();
+            tradeForm.ShowDialog();
             this.Close();
         }
     }

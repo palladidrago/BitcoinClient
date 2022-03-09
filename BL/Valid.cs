@@ -7,7 +7,7 @@ using System.Data;
 using Dal;
 
 
-namespace ClientApp.BL
+namespace BL
     {
         public class Valid
         {

@@ -8,21 +8,22 @@ using Dal;
 
 namespace BL
 {
-    internal class Trade //INCOMPLETE: Missing order items
+    internal class Trade 
     {
-        public int id { get; set; }
-        public Client client { get; set; }
-        public DateTime Date { get; set; }
+        public int id { get; set; } // Id of the trade
+        public Client client { get; set; } //Client that owns the trade
+        public DateTime Date { get; set; } //Time the trade was created
 
         public Trade(DataRow dr) 
         {
             this.id = (int)dr["ID"];
             this.client = new Client(dr.GetParentRow("TradeClient"));
+            
             this.Date = DateTime.Parse(dr["Date"].ToString()); //IDK IF THIS WORKS
         }
         public bool Insert()
         {
-            return Trade_Dal.Insert(client.id);
+            return Trade_Dal.Insert(client.id,Date);
         }
         public bool Delete()
         {

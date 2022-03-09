@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 using System.Data;
 using Dal;
 
-namespace ClientApp.BL
+namespace BL
 {
     public class Scam
     {
-        public string scamLevel { get; set; }
+        public string name { get; set; }
         public int id { get; set; }
-        public Scam(string scamLevel, int id) { this.scamLevel = scamLevel; this.id = id; }
+        public Scam(string scamLevel, int id) { this.name = scamLevel; this.id = id; }
         public Scam() { }
         public Scam(DataRow dataRow)
         {
-            this.scamLevel = dataRow["ScamLevel"].ToString();
+            this.name = dataRow["ScamLevel"].ToString();
             this.id = (int)dataRow["Id"];
         }
         public bool Insert()
         {
-            return Scam_Dal.Insert(scamLevel);
+            return Scam_Dal.Insert(name);
         }
         public bool Delete()
         {
@@ -30,7 +30,7 @@ namespace ClientApp.BL
 
         public override string ToString()
         {
-            return scamLevel.Trim();
+            return name.Trim();
         }
     }
 }

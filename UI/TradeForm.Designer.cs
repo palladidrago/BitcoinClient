@@ -1,6 +1,6 @@
 ﻿namespace ClientApp.UI
 {
-    partial class Trade
+    partial class TradeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,45 +30,50 @@
         {
             this.O = new System.Windows.Forms.TabControl();
             this.tradeDetails = new System.Windows.Forms.TabPage();
-            this.tradeClient = new System.Windows.Forms.TabPage();
-            this.tradeCoins_TabControl = new System.Windows.Forms.TabPage();
-            this.groupBox_Filter = new System.Windows.Forms.GroupBox();
-            this.label_Filter_Id = new System.Windows.Forms.Label();
-            this.label_Filter_From = new System.Windows.Forms.Label();
-            this.label_Filter_Client = new System.Windows.Forms.Label();
-            this.label_Filter_To = new System.Windows.Forms.Label();
-            this.textBox_Filter_Id = new System.Windows.Forms.TextBox();
-            this.textBox_Filter_Client = new System.Windows.Forms.TextBox();
-            this.dateTimePicker_Filter_From = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_Filter_To = new System.Windows.Forms.DateTimePicker();
-            this.listBox_Trades = new System.Windows.Forms.ListBox();
-            this.label_Id = new System.Windows.Forms.Label();
-            this.label_Date = new System.Windows.Forms.Label();
-            this.label_Memo = new System.Windows.Forms.Label();
-            this.textBox_Memo = new System.Windows.Forms.TextBox();
-            this.label_Client = new System.Windows.Forms.Label();
-            this.text_Client = new System.Windows.Forms.Label();
-            this.text_Id = new System.Windows.Forms.Label();
             this.dateTimePicker_Date = new System.Windows.Forms.DateTimePicker();
+            this.text_Id = new System.Windows.Forms.Label();
+            this.text_Client = new System.Windows.Forms.Label();
+            this.textBox_Memo = new System.Windows.Forms.TextBox();
+            this.label_Memo = new System.Windows.Forms.Label();
+            this.label_Client = new System.Windows.Forms.Label();
+            this.label_Date = new System.Windows.Forms.Label();
+            this.label_Id = new System.Windows.Forms.Label();
+            this.listBox_Trades = new System.Windows.Forms.ListBox();
+            this.groupBox_Filter = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker_Filter_To = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_Filter_From = new System.Windows.Forms.DateTimePicker();
+            this.textBox_Filter_Client = new System.Windows.Forms.TextBox();
+            this.textBox_Filter_Id = new System.Windows.Forms.TextBox();
+            this.label_Filter_To = new System.Windows.Forms.Label();
+            this.label_Filter_Client = new System.Windows.Forms.Label();
+            this.label_Filter_From = new System.Windows.Forms.Label();
+            this.label_Filter_Id = new System.Windows.Forms.Label();
+            this.tradeClient = new System.Windows.Forms.TabPage();
+            this.groupBox_Client = new System.Windows.Forms.GroupBox();
+            this.text_ClientInfo_BtcAddress = new System.Windows.Forms.Label();
+            this.label_ClientInfo_BtcAddress = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.text_ClientInfo_LastName = new System.Windows.Forms.Label();
+            this.text_ClientInfo_FirstName = new System.Windows.Forms.Label();
+            this.label_ClientInfo_FirstName = new System.Windows.Forms.Label();
+            this.listBox_Client = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Filter_BtcAddress = new System.Windows.Forms.TextBox();
             this.textBox_Filter_LastName = new System.Windows.Forms.TextBox();
-            this.listBox_Client = new System.Windows.Forms.ListBox();
-            this.groupBox_Client = new System.Windows.Forms.GroupBox();
-            this.label_ClientInfo_FirstName = new System.Windows.Forms.Label();
-            this.label_ClientInfo_BtcAddress = new System.Windows.Forms.Label();
-            this.text_ClientInfo_LastName = new System.Windows.Forms.Label();
-            this.text_ClientInfo_FirstName = new System.Windows.Forms.Label();
-            this.text_ClientInfo_BtcAddress = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tradeCoins_TabControl = new System.Windows.Forms.TabPage();
+            this.listBox_Chosen_Coins = new System.Windows.Forms.ListBox();
+            this.listBox_Potential_Coins = new System.Windows.Forms.ListBox();
+            this.button_Clear = new System.Windows.Forms.Button();
+            this.button_Save = new System.Windows.Forms.Button();
             this.O.SuspendLayout();
             this.tradeDetails.SuspendLayout();
-            this.tradeClient.SuspendLayout();
             this.groupBox_Filter.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tradeClient.SuspendLayout();
             this.groupBox_Client.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tradeCoins_TabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // O
@@ -79,7 +84,7 @@
             this.O.Location = new System.Drawing.Point(12, 12);
             this.O.Name = "O";
             this.O.SelectedIndex = 0;
-            this.O.Size = new System.Drawing.Size(776, 426);
+            this.O.Size = new System.Drawing.Size(793, 426);
             this.O.TabIndex = 0;
             // 
             // tradeDetails
@@ -97,33 +102,96 @@
             this.tradeDetails.Location = new System.Drawing.Point(4, 25);
             this.tradeDetails.Name = "tradeDetails";
             this.tradeDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tradeDetails.Size = new System.Drawing.Size(768, 397);
+            this.tradeDetails.Size = new System.Drawing.Size(785, 397);
             this.tradeDetails.TabIndex = 0;
             this.tradeDetails.Text = "Trade Details";
             this.tradeDetails.UseVisualStyleBackColor = true;
             // 
-            // tradeClient
+            // dateTimePicker_Date
             // 
-            this.tradeClient.Controls.Add(this.groupBox_Client);
-            this.tradeClient.Controls.Add(this.listBox_Client);
-            this.tradeClient.Controls.Add(this.groupBox1);
-            this.tradeClient.Location = new System.Drawing.Point(4, 25);
-            this.tradeClient.Name = "tradeClient";
-            this.tradeClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tradeClient.Size = new System.Drawing.Size(768, 397);
-            this.tradeClient.TabIndex = 1;
-            this.tradeClient.Text = "Trade Client";
-            this.tradeClient.UseVisualStyleBackColor = true;
+            this.dateTimePicker_Date.Checked = false;
+            this.dateTimePicker_Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Date.Location = new System.Drawing.Point(392, 82);
+            this.dateTimePicker_Date.Name = "dateTimePicker_Date";
+            this.dateTimePicker_Date.Size = new System.Drawing.Size(118, 22);
+            this.dateTimePicker_Date.TabIndex = 8;
             // 
-            // tradeCoins_TabControl
+            // text_Id
             // 
-            this.tradeCoins_TabControl.Location = new System.Drawing.Point(4, 25);
-            this.tradeCoins_TabControl.Name = "tradeCoins_TabControl";
-            this.tradeCoins_TabControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tradeCoins_TabControl.Size = new System.Drawing.Size(732, 374);
-            this.tradeCoins_TabControl.TabIndex = 2;
-            this.tradeCoins_TabControl.Text = "Trade Coins";
-            this.tradeCoins_TabControl.UseVisualStyleBackColor = true;
+            this.text_Id.AutoSize = true;
+            this.text_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_Id.Location = new System.Drawing.Point(390, 46);
+            this.text_Id.Name = "text_Id";
+            this.text_Id.Size = new System.Drawing.Size(23, 25);
+            this.text_Id.TabIndex = 7;
+            this.text_Id.Text = "0";
+            // 
+            // text_Client
+            // 
+            this.text_Client.AutoSize = true;
+            this.text_Client.Location = new System.Drawing.Point(404, 334);
+            this.text_Client.Name = "text_Client";
+            this.text_Client.Size = new System.Drawing.Size(106, 16);
+            this.text_Client.TabIndex = 6;
+            this.text_Client.Text = "No client chosen";
+            // 
+            // textBox_Memo
+            // 
+            this.textBox_Memo.Location = new System.Drawing.Point(392, 154);
+            this.textBox_Memo.Multiline = true;
+            this.textBox_Memo.Name = "textBox_Memo";
+            this.textBox_Memo.Size = new System.Drawing.Size(286, 105);
+            this.textBox_Memo.TabIndex = 5;
+            // 
+            // label_Memo
+            // 
+            this.label_Memo.AutoSize = true;
+            this.label_Memo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Memo.Location = new System.Drawing.Point(318, 152);
+            this.label_Memo.Name = "label_Memo";
+            this.label_Memo.Size = new System.Drawing.Size(67, 25);
+            this.label_Memo.TabIndex = 4;
+            this.label_Memo.Text = "Memo";
+            // 
+            // label_Client
+            // 
+            this.label_Client.AutoSize = true;
+            this.label_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Client.Location = new System.Drawing.Point(318, 327);
+            this.label_Client.Name = "label_Client";
+            this.label_Client.Size = new System.Drawing.Size(62, 25);
+            this.label_Client.TabIndex = 4;
+            this.label_Client.Text = "Client";
+            // 
+            // label_Date
+            // 
+            this.label_Date.AutoSize = true;
+            this.label_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Date.Location = new System.Drawing.Point(318, 79);
+            this.label_Date.Name = "label_Date";
+            this.label_Date.Size = new System.Drawing.Size(53, 25);
+            this.label_Date.TabIndex = 4;
+            this.label_Date.Text = "Date";
+            // 
+            // label_Id
+            // 
+            this.label_Id.AutoSize = true;
+            this.label_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Id.Location = new System.Drawing.Point(318, 44);
+            this.label_Id.Name = "label_Id";
+            this.label_Id.Size = new System.Drawing.Size(28, 25);
+            this.label_Id.TabIndex = 4;
+            this.label_Id.Text = "Id";
+            // 
+            // listBox_Trades
+            // 
+            this.listBox_Trades.FormattingEnabled = true;
+            this.listBox_Trades.ItemHeight = 16;
+            this.listBox_Trades.Location = new System.Drawing.Point(18, 220);
+            this.listBox_Trades.Name = "listBox_Trades";
+            this.listBox_Trades.Size = new System.Drawing.Size(268, 164);
+            this.listBox_Trades.TabIndex = 3;
+            this.listBox_Trades.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_Trades_MouseDoubleClick);
             // 
             // groupBox_Filter
             // 
@@ -142,59 +210,15 @@
             this.groupBox_Filter.TabStop = false;
             this.groupBox_Filter.Text = "Filter";
             // 
-            // label_Filter_Id
+            // dateTimePicker_Filter_To
             // 
-            this.label_Filter_Id.AutoSize = true;
-            this.label_Filter_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_Id.Location = new System.Drawing.Point(34, 27);
-            this.label_Filter_Id.Name = "label_Filter_Id";
-            this.label_Filter_Id.Size = new System.Drawing.Size(28, 25);
-            this.label_Filter_Id.TabIndex = 0;
-            this.label_Filter_Id.Text = "Id";
-            // 
-            // label_Filter_From
-            // 
-            this.label_Filter_From.AutoSize = true;
-            this.label_Filter_From.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_From.Location = new System.Drawing.Point(35, 62);
-            this.label_Filter_From.Name = "label_Filter_From";
-            this.label_Filter_From.Size = new System.Drawing.Size(57, 25);
-            this.label_Filter_From.TabIndex = 0;
-            this.label_Filter_From.Text = "From";
-            // 
-            // label_Filter_Client
-            // 
-            this.label_Filter_Client.AutoSize = true;
-            this.label_Filter_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_Client.Location = new System.Drawing.Point(34, 131);
-            this.label_Filter_Client.Name = "label_Filter_Client";
-            this.label_Filter_Client.Size = new System.Drawing.Size(62, 25);
-            this.label_Filter_Client.TabIndex = 0;
-            this.label_Filter_Client.Text = "Client";
-            // 
-            // label_Filter_To
-            // 
-            this.label_Filter_To.AutoSize = true;
-            this.label_Filter_To.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_To.Location = new System.Drawing.Point(34, 96);
-            this.label_Filter_To.Name = "label_Filter_To";
-            this.label_Filter_To.Size = new System.Drawing.Size(36, 25);
-            this.label_Filter_To.TabIndex = 0;
-            this.label_Filter_To.Text = "To";
-            // 
-            // textBox_Filter_Id
-            // 
-            this.textBox_Filter_Id.Location = new System.Drawing.Point(117, 31);
-            this.textBox_Filter_Id.Name = "textBox_Filter_Id";
-            this.textBox_Filter_Id.Size = new System.Drawing.Size(100, 22);
-            this.textBox_Filter_Id.TabIndex = 1;
-            // 
-            // textBox_Filter_Client
-            // 
-            this.textBox_Filter_Client.Location = new System.Drawing.Point(117, 135);
-            this.textBox_Filter_Client.Name = "textBox_Filter_Client";
-            this.textBox_Filter_Client.Size = new System.Drawing.Size(100, 22);
-            this.textBox_Filter_Client.TabIndex = 1;
+            this.dateTimePicker_Filter_To.Checked = false;
+            this.dateTimePicker_Filter_To.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Filter_To.Location = new System.Drawing.Point(117, 98);
+            this.dateTimePicker_Filter_To.Name = "dateTimePicker_Filter_To";
+            this.dateTimePicker_Filter_To.ShowCheckBox = true;
+            this.dateTimePicker_Filter_To.Size = new System.Drawing.Size(133, 22);
+            this.dateTimePicker_Filter_To.TabIndex = 3;
             // 
             // dateTimePicker_Filter_From
             // 
@@ -207,100 +231,151 @@
             this.dateTimePicker_Filter_From.Size = new System.Drawing.Size(133, 22);
             this.dateTimePicker_Filter_From.TabIndex = 2;
             // 
-            // dateTimePicker_Filter_To
+            // textBox_Filter_Client
             // 
-            this.dateTimePicker_Filter_To.Checked = false;
-            this.dateTimePicker_Filter_To.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Filter_To.Location = new System.Drawing.Point(117, 98);
-            this.dateTimePicker_Filter_To.Name = "dateTimePicker_Filter_To";
-            this.dateTimePicker_Filter_To.ShowCheckBox = true;
-            this.dateTimePicker_Filter_To.Size = new System.Drawing.Size(133, 22);
-            this.dateTimePicker_Filter_To.TabIndex = 3;
+            this.textBox_Filter_Client.Location = new System.Drawing.Point(117, 135);
+            this.textBox_Filter_Client.Name = "textBox_Filter_Client";
+            this.textBox_Filter_Client.Size = new System.Drawing.Size(100, 22);
+            this.textBox_Filter_Client.TabIndex = 1;
             // 
-            // listBox_Trades
+            // textBox_Filter_Id
             // 
-            this.listBox_Trades.FormattingEnabled = true;
-            this.listBox_Trades.ItemHeight = 16;
-            this.listBox_Trades.Location = new System.Drawing.Point(18, 220);
-            this.listBox_Trades.Name = "listBox_Trades";
-            this.listBox_Trades.Size = new System.Drawing.Size(268, 164);
-            this.listBox_Trades.TabIndex = 3;
+            this.textBox_Filter_Id.Location = new System.Drawing.Point(117, 31);
+            this.textBox_Filter_Id.Name = "textBox_Filter_Id";
+            this.textBox_Filter_Id.Size = new System.Drawing.Size(100, 22);
+            this.textBox_Filter_Id.TabIndex = 1;
             // 
-            // label_Id
+            // label_Filter_To
             // 
-            this.label_Id.AutoSize = true;
-            this.label_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Id.Location = new System.Drawing.Point(318, 44);
-            this.label_Id.Name = "label_Id";
-            this.label_Id.Size = new System.Drawing.Size(28, 25);
-            this.label_Id.TabIndex = 4;
-            this.label_Id.Text = "Id";
+            this.label_Filter_To.AutoSize = true;
+            this.label_Filter_To.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Filter_To.Location = new System.Drawing.Point(34, 96);
+            this.label_Filter_To.Name = "label_Filter_To";
+            this.label_Filter_To.Size = new System.Drawing.Size(36, 25);
+            this.label_Filter_To.TabIndex = 0;
+            this.label_Filter_To.Text = "To";
             // 
-            // label_Date
+            // label_Filter_Client
             // 
-            this.label_Date.AutoSize = true;
-            this.label_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Date.Location = new System.Drawing.Point(318, 79);
-            this.label_Date.Name = "label_Date";
-            this.label_Date.Size = new System.Drawing.Size(53, 25);
-            this.label_Date.TabIndex = 4;
-            this.label_Date.Text = "Date";
+            this.label_Filter_Client.AutoSize = true;
+            this.label_Filter_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Filter_Client.Location = new System.Drawing.Point(34, 131);
+            this.label_Filter_Client.Name = "label_Filter_Client";
+            this.label_Filter_Client.Size = new System.Drawing.Size(62, 25);
+            this.label_Filter_Client.TabIndex = 0;
+            this.label_Filter_Client.Text = "Client";
             // 
-            // label_Memo
+            // label_Filter_From
             // 
-            this.label_Memo.AutoSize = true;
-            this.label_Memo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Memo.Location = new System.Drawing.Point(318, 152);
-            this.label_Memo.Name = "label_Memo";
-            this.label_Memo.Size = new System.Drawing.Size(67, 25);
-            this.label_Memo.TabIndex = 4;
-            this.label_Memo.Text = "Memo";
+            this.label_Filter_From.AutoSize = true;
+            this.label_Filter_From.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Filter_From.Location = new System.Drawing.Point(35, 62);
+            this.label_Filter_From.Name = "label_Filter_From";
+            this.label_Filter_From.Size = new System.Drawing.Size(57, 25);
+            this.label_Filter_From.TabIndex = 0;
+            this.label_Filter_From.Text = "From";
             // 
-            // textBox_Memo
+            // label_Filter_Id
             // 
-            this.textBox_Memo.Location = new System.Drawing.Point(392, 154);
-            this.textBox_Memo.Multiline = true;
-            this.textBox_Memo.Name = "textBox_Memo";
-            this.textBox_Memo.Size = new System.Drawing.Size(286, 105);
-            this.textBox_Memo.TabIndex = 5;
+            this.label_Filter_Id.AutoSize = true;
+            this.label_Filter_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Filter_Id.Location = new System.Drawing.Point(34, 27);
+            this.label_Filter_Id.Name = "label_Filter_Id";
+            this.label_Filter_Id.Size = new System.Drawing.Size(28, 25);
+            this.label_Filter_Id.TabIndex = 0;
+            this.label_Filter_Id.Text = "Id";
             // 
-            // label_Client
+            // tradeClient
             // 
-            this.label_Client.AutoSize = true;
-            this.label_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Client.Location = new System.Drawing.Point(318, 327);
-            this.label_Client.Name = "label_Client";
-            this.label_Client.Size = new System.Drawing.Size(62, 25);
-            this.label_Client.TabIndex = 4;
-            this.label_Client.Text = "Client";
+            this.tradeClient.Controls.Add(this.groupBox_Client);
+            this.tradeClient.Controls.Add(this.listBox_Client);
+            this.tradeClient.Controls.Add(this.groupBox1);
+            this.tradeClient.Location = new System.Drawing.Point(4, 25);
+            this.tradeClient.Name = "tradeClient";
+            this.tradeClient.Padding = new System.Windows.Forms.Padding(3);
+            this.tradeClient.Size = new System.Drawing.Size(785, 397);
+            this.tradeClient.TabIndex = 1;
+            this.tradeClient.Text = "Trade Client";
+            this.tradeClient.UseVisualStyleBackColor = true;
             // 
-            // text_Client
+            // groupBox_Client
             // 
-            this.text_Client.AutoSize = true;
-            this.text_Client.Location = new System.Drawing.Point(392, 335);
-            this.text_Client.Name = "text_Client";
-            this.text_Client.Size = new System.Drawing.Size(106, 16);
-            this.text_Client.TabIndex = 6;
-            this.text_Client.Text = "No client chosen";
+            this.groupBox_Client.Controls.Add(this.text_ClientInfo_BtcAddress);
+            this.groupBox_Client.Controls.Add(this.label_ClientInfo_BtcAddress);
+            this.groupBox_Client.Controls.Add(this.label5);
+            this.groupBox_Client.Controls.Add(this.text_ClientInfo_LastName);
+            this.groupBox_Client.Controls.Add(this.text_ClientInfo_FirstName);
+            this.groupBox_Client.Controls.Add(this.label_ClientInfo_FirstName);
+            this.groupBox_Client.Location = new System.Drawing.Point(360, 273);
+            this.groupBox_Client.Name = "groupBox_Client";
+            this.groupBox_Client.Size = new System.Drawing.Size(402, 100);
+            this.groupBox_Client.TabIndex = 11;
+            this.groupBox_Client.TabStop = false;
+            this.groupBox_Client.Text = "Client Info";
             // 
-            // text_Id
+            // text_ClientInfo_BtcAddress
             // 
-            this.text_Id.AutoSize = true;
-            this.text_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_Id.Location = new System.Drawing.Point(392, 53);
-            this.text_Id.Name = "text_Id";
-            this.text_Id.Size = new System.Drawing.Size(23, 25);
-            this.text_Id.TabIndex = 7;
-            this.text_Id.Text = "0";
+            this.text_ClientInfo_BtcAddress.AutoSize = true;
+            this.text_ClientInfo_BtcAddress.Location = new System.Drawing.Point(139, 62);
+            this.text_ClientInfo_BtcAddress.Name = "text_ClientInfo_BtcAddress";
+            this.text_ClientInfo_BtcAddress.Size = new System.Drawing.Size(14, 16);
+            this.text_ClientInfo_BtcAddress.TabIndex = 0;
+            this.text_ClientInfo_BtcAddress.Text = "0";
             // 
-            // dateTimePicker_Date
+            // label_ClientInfo_BtcAddress
             // 
-            this.dateTimePicker_Date.Checked = false;
-            this.dateTimePicker_Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Date.Location = new System.Drawing.Point(392, 82);
-            this.dateTimePicker_Date.Name = "dateTimePicker_Date";
-            this.dateTimePicker_Date.Size = new System.Drawing.Size(118, 22);
-            this.dateTimePicker_Date.TabIndex = 8;
+            this.label_ClientInfo_BtcAddress.AutoSize = true;
+            this.label_ClientInfo_BtcAddress.Location = new System.Drawing.Point(22, 62);
+            this.label_ClientInfo_BtcAddress.Name = "label_ClientInfo_BtcAddress";
+            this.label_ClientInfo_BtcAddress.Size = new System.Drawing.Size(101, 16);
+            this.label_ClientInfo_BtcAddress.TabIndex = 0;
+            this.label_ClientInfo_BtcAddress.Text = "Bitcoin Address";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(211, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 16);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Last Name";
+            // 
+            // text_ClientInfo_LastName
+            // 
+            this.text_ClientInfo_LastName.AutoSize = true;
+            this.text_ClientInfo_LastName.Location = new System.Drawing.Point(289, 31);
+            this.text_ClientInfo_LastName.Name = "text_ClientInfo_LastName";
+            this.text_ClientInfo_LastName.Size = new System.Drawing.Size(72, 16);
+            this.text_ClientInfo_LastName.TabIndex = 0;
+            this.text_ClientInfo_LastName.Text = "Last Name";
+            // 
+            // text_ClientInfo_FirstName
+            // 
+            this.text_ClientInfo_FirstName.AutoSize = true;
+            this.text_ClientInfo_FirstName.Location = new System.Drawing.Point(109, 31);
+            this.text_ClientInfo_FirstName.Name = "text_ClientInfo_FirstName";
+            this.text_ClientInfo_FirstName.Size = new System.Drawing.Size(72, 16);
+            this.text_ClientInfo_FirstName.TabIndex = 0;
+            this.text_ClientInfo_FirstName.Text = "First Name";
+            // 
+            // label_ClientInfo_FirstName
+            // 
+            this.label_ClientInfo_FirstName.AutoSize = true;
+            this.label_ClientInfo_FirstName.Location = new System.Drawing.Point(22, 31);
+            this.label_ClientInfo_FirstName.Name = "label_ClientInfo_FirstName";
+            this.label_ClientInfo_FirstName.Size = new System.Drawing.Size(72, 16);
+            this.label_ClientInfo_FirstName.TabIndex = 0;
+            this.label_ClientInfo_FirstName.Text = "First Name";
+            // 
+            // listBox_Client
+            // 
+            this.listBox_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox_Client.FormattingEnabled = true;
+            this.listBox_Client.ItemHeight = 25;
+            this.listBox_Client.Location = new System.Drawing.Point(9, 119);
+            this.listBox_Client.Name = "listBox_Client";
+            this.listBox_Client.Size = new System.Drawing.Size(305, 254);
+            this.listBox_Client.TabIndex = 10;
             // 
             // groupBox1
             // 
@@ -347,105 +422,76 @@
             this.textBox_Filter_LastName.Size = new System.Drawing.Size(180, 22);
             this.textBox_Filter_LastName.TabIndex = 0;
             // 
-            // listBox_Client
+            // tradeCoins_TabControl
             // 
-            this.listBox_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox_Client.FormattingEnabled = true;
-            this.listBox_Client.ItemHeight = 25;
-            this.listBox_Client.Location = new System.Drawing.Point(9, 119);
-            this.listBox_Client.Name = "listBox_Client";
-            this.listBox_Client.Size = new System.Drawing.Size(305, 254);
-            this.listBox_Client.TabIndex = 10;
+            this.tradeCoins_TabControl.Controls.Add(this.listBox_Chosen_Coins);
+            this.tradeCoins_TabControl.Controls.Add(this.listBox_Potential_Coins);
+            this.tradeCoins_TabControl.Location = new System.Drawing.Point(4, 25);
+            this.tradeCoins_TabControl.Name = "tradeCoins_TabControl";
+            this.tradeCoins_TabControl.Padding = new System.Windows.Forms.Padding(3);
+            this.tradeCoins_TabControl.Size = new System.Drawing.Size(785, 397);
+            this.tradeCoins_TabControl.TabIndex = 2;
+            this.tradeCoins_TabControl.Text = "Trade Coins";
+            this.tradeCoins_TabControl.UseVisualStyleBackColor = true;
             // 
-            // groupBox_Client
+            // listBox_Chosen_Coins
             // 
-            this.groupBox_Client.Controls.Add(this.text_ClientInfo_BtcAddress);
-            this.groupBox_Client.Controls.Add(this.label_ClientInfo_BtcAddress);
-            this.groupBox_Client.Controls.Add(this.label5);
-            this.groupBox_Client.Controls.Add(this.text_ClientInfo_LastName);
-            this.groupBox_Client.Controls.Add(this.text_ClientInfo_FirstName);
-            this.groupBox_Client.Controls.Add(this.label_ClientInfo_FirstName);
-            this.groupBox_Client.Location = new System.Drawing.Point(360, 273);
-            this.groupBox_Client.Name = "groupBox_Client";
-            this.groupBox_Client.Size = new System.Drawing.Size(402, 100);
-            this.groupBox_Client.TabIndex = 11;
-            this.groupBox_Client.TabStop = false;
-            this.groupBox_Client.Text = "Client Info";
+            this.listBox_Chosen_Coins.FormattingEnabled = true;
+            this.listBox_Chosen_Coins.ItemHeight = 16;
+            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(504, 13);
+            this.listBox_Chosen_Coins.Name = "listBox_Chosen_Coins";
+            this.listBox_Chosen_Coins.Size = new System.Drawing.Size(195, 356);
+            this.listBox_Chosen_Coins.TabIndex = 0;
             // 
-            // label_ClientInfo_FirstName
+            // listBox_Potential_Coins
             // 
-            this.label_ClientInfo_FirstName.AutoSize = true;
-            this.label_ClientInfo_FirstName.Location = new System.Drawing.Point(22, 31);
-            this.label_ClientInfo_FirstName.Name = "label_ClientInfo_FirstName";
-            this.label_ClientInfo_FirstName.Size = new System.Drawing.Size(72, 16);
-            this.label_ClientInfo_FirstName.TabIndex = 0;
-            this.label_ClientInfo_FirstName.Text = "First Name";
+            this.listBox_Potential_Coins.FormattingEnabled = true;
+            this.listBox_Potential_Coins.ItemHeight = 16;
+            this.listBox_Potential_Coins.Location = new System.Drawing.Point(287, 13);
+            this.listBox_Potential_Coins.Name = "listBox_Potential_Coins";
+            this.listBox_Potential_Coins.Size = new System.Drawing.Size(211, 356);
+            this.listBox_Potential_Coins.TabIndex = 0;
             // 
-            // label_ClientInfo_BtcAddress
+            // button_Clear
             // 
-            this.label_ClientInfo_BtcAddress.AutoSize = true;
-            this.label_ClientInfo_BtcAddress.Location = new System.Drawing.Point(22, 62);
-            this.label_ClientInfo_BtcAddress.Name = "label_ClientInfo_BtcAddress";
-            this.label_ClientInfo_BtcAddress.Size = new System.Drawing.Size(101, 16);
-            this.label_ClientInfo_BtcAddress.TabIndex = 0;
-            this.label_ClientInfo_BtcAddress.Text = "Bitcoin Address";
+            this.button_Clear.Location = new System.Drawing.Point(657, 463);
+            this.button_Clear.Name = "button_Clear";
+            this.button_Clear.Size = new System.Drawing.Size(75, 23);
+            this.button_Clear.TabIndex = 1;
+            this.button_Clear.Text = "Clear";
+            this.button_Clear.UseVisualStyleBackColor = true;
             // 
-            // text_ClientInfo_LastName
+            // button_Save
             // 
-            this.text_ClientInfo_LastName.AutoSize = true;
-            this.text_ClientInfo_LastName.Location = new System.Drawing.Point(289, 31);
-            this.text_ClientInfo_LastName.Name = "text_ClientInfo_LastName";
-            this.text_ClientInfo_LastName.Size = new System.Drawing.Size(72, 16);
-            this.text_ClientInfo_LastName.TabIndex = 0;
-            this.text_ClientInfo_LastName.Text = "Last Name";
-            this.text_ClientInfo_LastName.Click += new System.EventHandler(this.label3_Click);
+            this.button_Save.Location = new System.Drawing.Point(753, 463);
+            this.button_Save.Name = "button_Save";
+            this.button_Save.Size = new System.Drawing.Size(75, 23);
+            this.button_Save.TabIndex = 1;
+            this.button_Save.Text = "Save";
+            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
-            // text_ClientInfo_FirstName
-            // 
-            this.text_ClientInfo_FirstName.AutoSize = true;
-            this.text_ClientInfo_FirstName.Location = new System.Drawing.Point(109, 31);
-            this.text_ClientInfo_FirstName.Name = "text_ClientInfo_FirstName";
-            this.text_ClientInfo_FirstName.Size = new System.Drawing.Size(72, 16);
-            this.text_ClientInfo_FirstName.TabIndex = 0;
-            this.text_ClientInfo_FirstName.Text = "First Name";
-            // 
-            // text_ClientInfo_BtcAddress
-            // 
-            this.text_ClientInfo_BtcAddress.AutoSize = true;
-            this.text_ClientInfo_BtcAddress.Location = new System.Drawing.Point(139, 62);
-            this.text_ClientInfo_BtcAddress.Name = "text_ClientInfo_BtcAddress";
-            this.text_ClientInfo_BtcAddress.Size = new System.Drawing.Size(14, 16);
-            this.text_ClientInfo_BtcAddress.TabIndex = 0;
-            this.text_ClientInfo_BtcAddress.Text = "0";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(211, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Last Name";
-            this.label5.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // Trade
+            // TradeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(840, 498);
+            this.Controls.Add(this.button_Save);
+            this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.O);
-            this.Name = "Trade";
+            this.Name = "TradeForm";
             this.Text = "Order";
             this.O.ResumeLayout(false);
             this.tradeDetails.ResumeLayout(false);
             this.tradeDetails.PerformLayout();
-            this.tradeClient.ResumeLayout(false);
             this.groupBox_Filter.ResumeLayout(false);
             this.groupBox_Filter.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tradeClient.ResumeLayout(false);
             this.groupBox_Client.ResumeLayout(false);
             this.groupBox_Client.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tradeCoins_TabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -487,5 +533,9 @@
         private System.Windows.Forms.ListBox listBox_Client;
         private System.Windows.Forms.Label text_ClientInfo_BtcAddress;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBox_Potential_Coins;
+        private System.Windows.Forms.ListBox listBox_Chosen_Coins;
+        private System.Windows.Forms.Button button_Clear;
+        private System.Windows.Forms.Button button_Save;
     }
 }

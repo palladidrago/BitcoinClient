@@ -29,10 +29,11 @@ namespace ClientApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.clientListBox = new System.Windows.Forms.ListBox();
+            this.listBox_Client = new System.Windows.Forms.ListBox();
             this.label_Id = new System.Windows.Forms.Label();
             this.text_Id = new System.Windows.Forms.Label();
             this.groupBox_GeneralInfo = new System.Windows.Forms.GroupBox();
+            this.button_AddCity = new System.Windows.Forms.Label();
             this.comboBox_City = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label_PhoneNumber = new System.Windows.Forms.Label();
@@ -59,24 +60,22 @@ namespace ClientApp
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Filter_BtcAddress = new System.Windows.Forms.TextBox();
             this.textBox_Filter_LastName = new System.Windows.Forms.TextBox();
-            this.button_AddCity = new System.Windows.Forms.Label();
             this.groupBox_GeneralInfo.SuspendLayout();
             this.groupBox_BtcInfo.SuspendLayout();
             this.groupBox_UselessInfo.SuspendLayout();
             this.groupBox_Filter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // clientListBox
+            // listBox_Client
             // 
-            this.clientListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientListBox.FormattingEnabled = true;
-            this.clientListBox.ItemHeight = 25;
-            this.clientListBox.Location = new System.Drawing.Point(12, 112);
-            this.clientListBox.Name = "clientListBox";
-            this.clientListBox.Size = new System.Drawing.Size(324, 304);
-            this.clientListBox.TabIndex = 1;
-            this.clientListBox.DoubleClick += new System.EventHandler(this.clientListBox_Client_DoubleClick);
-            this.clientListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Text_KeyPress);
+            this.listBox_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox_Client.FormattingEnabled = true;
+            this.listBox_Client.ItemHeight = 25;
+            this.listBox_Client.Location = new System.Drawing.Point(12, 112);
+            this.listBox_Client.Name = "listBox_Client";
+            this.listBox_Client.Size = new System.Drawing.Size(324, 304);
+            this.listBox_Client.TabIndex = 1;
+            this.listBox_Client.DoubleClick += new System.EventHandler(this.clientListBox_Client_DoubleClick);
             // 
             // label_Id
             // 
@@ -117,6 +116,19 @@ namespace ClientApp
             this.groupBox_GeneralInfo.TabIndex = 4;
             this.groupBox_GeneralInfo.TabStop = false;
             this.groupBox_GeneralInfo.Text = "General info";
+            // 
+            // button_AddCity
+            // 
+            this.button_AddCity.AutoSize = true;
+            this.button_AddCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_AddCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_AddCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_AddCity.Location = new System.Drawing.Point(154, 276);
+            this.button_AddCity.Name = "button_AddCity";
+            this.button_AddCity.Size = new System.Drawing.Size(30, 32);
+            this.button_AddCity.TabIndex = 3;
+            this.button_AddCity.Text = "+";
+            this.button_AddCity.Click += new System.EventHandler(this.button_AddCity_Click);
             // 
             // comboBox_City
             // 
@@ -361,19 +373,6 @@ namespace ClientApp
             this.textBox_Filter_LastName.Size = new System.Drawing.Size(180, 22);
             this.textBox_Filter_LastName.TabIndex = 0;
             // 
-            // button_AddCity
-            // 
-            this.button_AddCity.AutoSize = true;
-            this.button_AddCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_AddCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_AddCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_AddCity.Location = new System.Drawing.Point(154, 276);
-            this.button_AddCity.Name = "button_AddCity";
-            this.button_AddCity.Size = new System.Drawing.Size(30, 32);
-            this.button_AddCity.TabIndex = 3;
-            this.button_AddCity.Text = "+";
-            this.button_AddCity.Click += new System.EventHandler(this.button_AddCity_Click);
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -387,7 +386,7 @@ namespace ClientApp
             this.Controls.Add(this.groupBox_BtcInfo);
             this.Controls.Add(this.text_Id);
             this.Controls.Add(this.label_Id);
-            this.Controls.Add(this.clientListBox);
+            this.Controls.Add(this.listBox_Client);
             this.Controls.Add(this.groupBox_GeneralInfo);
             this.Name = "AdminForm";
             this.Text = "AdminPanel";
@@ -407,7 +406,7 @@ namespace ClientApp
 
         #endregion
 
-        private System.Windows.Forms.ListBox clientListBox;
+        private System.Windows.Forms.ListBox listBox_Client;
         private System.Windows.Forms.Label label_Id;
         private System.Windows.Forms.Label text_Id;
         private System.Windows.Forms.GroupBox groupBox_GeneralInfo;
