@@ -20,22 +20,36 @@ namespace Dal
         }
         public static void FillDataSet(DataSet dataSet)
         {
-            if (!dataSet.Tables.Contains("Table_Coin"))
-            {
-                Dal.FillDataSet(dataSet, "Table_Coin", "[Name]");
 
-            }
+            Dal.FillDataSet(dataSet, "Table_Coin");
+            //Creating a connection
+            DataRelation dataRelation = null;
+            Valid_Dal.FillDataSet(dataSet);
+            Scam_Dal.FillDataSet(dataSet);
+            //Add data relation (Valid is parent, Coin is child)
+            dataRelation = new DataRelation(
+                "CoinValid",
+                dataSet.Tables["Table_Valid"].Columns["Id"],
+                dataSet.Tables["Table_Coin"].Columns["Valid"]);
+            dataSet.Relations.Add(dataRelation);
+            //Add data relation (Scam is parent, Coin is child)
+
+            dataRelation = new DataRelation(
+                 "CoinScam",
+                 dataSet.Tables["Table_Scam"].Columns["Id"],
+                 dataSet.Tables["Table_Coin"].Columns["Scam"]);
+            dataSet.Relations.Add(dataRelation);
 
         }
-        public static bool Insert(string name,int valid, int scam)
+        public static bool Insert(string name,string symbol,int valid, int scam)
         {
             string sql = "INSERT INTO Table_Coin"
             + "("
-            + "[Name],[Valid],[Scam]"
+            + "[Name],[Symbol],[Valid],[Scam]"
             + ")"
             + " VALUES "
             + "("
-            + $"N'{name}',N'{valid}',{scam}"
+            + $"'{name}','{symbol}','{valid}','{scam}'"
             + ")";
             return Dal.ExecuteSql(sql);
         }

@@ -17,6 +17,9 @@ namespace ClientApp.UI
         public CoinForm()
         {
             InitializeComponent();
+            ValidArrToForm();
+            ScamArrToForm();
+            CoinArrToForm();
         }
         private Coin FormToCoin()
         {
@@ -35,18 +38,19 @@ namespace ClientApp.UI
                 text_Id.Text = coin.id.ToString();
                 textBox_Symbol.Text = coin.symbol.Trim();
                 textBox_Name.Text = coin.name.Trim();
-                //City
+                //Valid
                 comboBox_Valid.SelectedValue = coin.valid.id;
                 comboBox_Scam.SelectedValue = coin.scam.id;
 
-                comboBox_Valid.SelectedItem = null;
-                comboBox_Scam.SelectedItem = null;
             }
             else
             {
                 text_Id.Text = "0";
                 textBox_Symbol.Text = "";
                 textBox_Name.Text = "";
+
+                comboBox_Valid.SelectedItem = null;
+                comboBox_Scam.SelectedItem = null;
             }
         }
         private void CoinArrToForm()
@@ -54,6 +58,10 @@ namespace ClientApp.UI
             CoinArr coinArr = new CoinArr();
             coinArr.Fill();
             listBox_Coins.DataSource = coinArr;
+            listBox_Coins.ValueMember = "Id";
+            listBox_Coins.DisplayMember = "Name";
+            if (coin != null)
+                listBox_Coins.SelectedValue = coin.id;
         }
         private bool CheckForm()
         {
@@ -114,6 +122,81 @@ namespace ClientApp.UI
                     CoinArrToForm();
                 }
             }
+        }
+
+        private void button_AddValid_Click(object sender, EventArgs e)
+        {
+            ValidForm validForm = new ValidForm(comboBox_Valid.SelectedItem as Valid);
+
+            validForm.ShowDialog();
+
+            ValidArrToForm(validForm.selectedValid);
+        }
+        public void ValidArrToForm(Valid curValid = null)
+        {
+            //From Valid array to form 
+            ValidArr validArr = new ValidArr();
+            Valid validDefault = new Valid();
+            validDefault.id = -1;
+            validDefault.name = "Choose a validation method";
+
+
+            validArr.Add(validDefault);
+            validArr.Fill();
+
+            comboBox_Valid.DataSource = validArr;
+            comboBox_Valid.ValueMember = "Id";
+            comboBox_Valid.DisplayMember = "Name";
+            comboBox_Filter_Valid.DataSource = validArr;
+            comboBox_Filter_Valid.ValueMember = "Id";
+            comboBox_Filter_Valid.DisplayMember = "Name";
+
+        }
+        public void ScamArrToForm(Scam curScam = null)
+        {
+            //From Scam array to form 
+            ScamArr scamArr = new ScamArr();
+            Scam scamDefault = new Scam();
+            scamDefault.id = -1;
+            scamDefault.name = "Choose a scam level";
+
+
+            scamArr.Add(scamDefault);
+            scamArr.Fill();
+
+            comboBox_Scam.DataSource = scamArr;
+            comboBox_Scam.ValueMember = "Id";
+            comboBox_Scam.DisplayMember = "Name";
+            comboBox_Filter_Scam.DataSource = scamArr;
+            comboBox_Filter_Scam.ValueMember = "Id";
+            comboBox_Filter_Scam.DisplayMember = "Name";
+
+        }
+
+        private void listBox_Coins_DoubleClick(object sender, EventArgs e)
+        {
+            CoinToForm(listBox_Coins.SelectedItem as Coin);
+        }
+
+        private void textBox_Filter_KeyUp(object sender, KeyEventArgs e)
+        {
+            /*TODO:
+             * Figure out how filtering functionality works in coinarr
+             * Can i filter by scam/valid?
+             * + Can i use the same function for id and comboBoxes?
+            */
+            //Create an array of Coins
+
+            CoinArr coinArr = new CoinArr();
+            coinArr.Fill();
+
+            //מסננים את אוסף הלקוחות לפי הערכים בשדות הסינון שרשם המשתמש
+
+            coinArr = coinArr.Filter((sender as TextBox).Text );
+
+            //מציבים בתיבת הרשימה את אוסף הלקוחות
+
+            listBox_Coins.DataSource = coinArr;
         }
     }
 }

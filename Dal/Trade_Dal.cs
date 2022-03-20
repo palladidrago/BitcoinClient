@@ -28,7 +28,7 @@ namespace Dal
             dataRelation = new DataRelation(
                 "TradeClient",
                 dataSet.Tables["Table_Client"].Columns["Id"],
-                dataSet.Tables["Table_Trade"].Columns["Trade"]);
+                dataSet.Tables["Table_Trade"].Columns["Client"]);
             dataSet.Relations.Add(dataRelation);
 
         }

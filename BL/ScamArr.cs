@@ -36,18 +36,18 @@ namespace BL
             //Table full of cities from dal
 
 
-            DataTable dataTable = City_Dal.GetDataTable();
+            DataTable dataTable = Scam_Dal.GetDataTable();
 
             //להעביר את הערכים מהטבלה לתוך אוסף הלקוחות
             //להעביר כל שורה בטבלה ללקוח
 
             DataRow dataRow;
-            City curCity;
+            Scam curScam;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataRow = dataTable.Rows[i];
-                curCity = new City(dataRow);
-                this.Add(curCity);
+                curScam = new Scam(dataRow);
+                this.Add(curScam);
             }
         }
     }

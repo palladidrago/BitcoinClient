@@ -38,7 +38,7 @@ namespace ClientApp
         private bool IsEngLetter(char c)
         {
             //Is it an english letter?
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c >= 'Z');
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
         }
 
         private void Form_Client_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)

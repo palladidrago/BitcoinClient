@@ -31,12 +31,12 @@ namespace ClientApp.UI
         {
             this.listBox_Coins = new System.Windows.Forms.ListBox();
             this.groupBox_Filter = new System.Windows.Forms.GroupBox();
-            this.id_Text = new System.Windows.Forms.Label();
+            this.textBox_Filter_Name = new System.Windows.Forms.TextBox();
             this.comboBox_Filter_Valid = new System.Windows.Forms.ComboBox();
             this.comboBox_Filter_Scam = new System.Windows.Forms.ComboBox();
             this.label_Filter_Valid = new System.Windows.Forms.Label();
             this.label_Filter_Scam = new System.Windows.Forms.Label();
-            this.label_Filter_Id = new System.Windows.Forms.Label();
+            this.label_Filter_Name = new System.Windows.Forms.Label();
             this.label_Id = new System.Windows.Forms.Label();
             this.label_Scam = new System.Windows.Forms.Label();
             this.label_Name = new System.Windows.Forms.Label();
@@ -49,7 +49,8 @@ namespace ClientApp.UI
             this.text_Id = new System.Windows.Forms.Label();
             this.button_Save = new System.Windows.Forms.Button();
             this.button_Delete = new System.Windows.Forms.Button();
-            this.button_ = new System.Windows.Forms.Button();
+            this.button_AddValid = new System.Windows.Forms.Label();
+            this.button_AddScam = new System.Windows.Forms.Label();
             this.groupBox_Filter.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,15 +63,16 @@ namespace ClientApp.UI
             this.listBox_Coins.Name = "listBox_Coins";
             this.listBox_Coins.Size = new System.Drawing.Size(304, 196);
             this.listBox_Coins.TabIndex = 0;
+            this.listBox_Coins.DoubleClick += new System.EventHandler(this.listBox_Coins_DoubleClick);
             // 
             // groupBox_Filter
             // 
-            this.groupBox_Filter.Controls.Add(this.id_Text);
+            this.groupBox_Filter.Controls.Add(this.textBox_Filter_Name);
             this.groupBox_Filter.Controls.Add(this.comboBox_Filter_Valid);
             this.groupBox_Filter.Controls.Add(this.comboBox_Filter_Scam);
             this.groupBox_Filter.Controls.Add(this.label_Filter_Valid);
             this.groupBox_Filter.Controls.Add(this.label_Filter_Scam);
-            this.groupBox_Filter.Controls.Add(this.label_Filter_Id);
+            this.groupBox_Filter.Controls.Add(this.label_Filter_Name);
             this.groupBox_Filter.Location = new System.Drawing.Point(16, 20);
             this.groupBox_Filter.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_Filter.Name = "groupBox_Filter";
@@ -80,14 +82,13 @@ namespace ClientApp.UI
             this.groupBox_Filter.TabStop = false;
             this.groupBox_Filter.Text = "Filter";
             // 
-            // id_Text
+            // textBox_Filter_Name
             // 
-            this.id_Text.AutoSize = true;
-            this.id_Text.Location = new System.Drawing.Point(188, 46);
-            this.id_Text.Name = "id_Text";
-            this.id_Text.Size = new System.Drawing.Size(14, 16);
-            this.id_Text.TabIndex = 1;
-            this.id_Text.Text = "0";
+            this.textBox_Filter_Name.Location = new System.Drawing.Point(188, 38);
+            this.textBox_Filter_Name.Name = "textBox_Filter_Name";
+            this.textBox_Filter_Name.Size = new System.Drawing.Size(100, 22);
+            this.textBox_Filter_Name.TabIndex = 2;
+            this.textBox_Filter_Name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // comboBox_Filter_Valid
             // 
@@ -129,16 +130,16 @@ namespace ClientApp.UI
             this.label_Filter_Scam.TabIndex = 0;
             this.label_Filter_Scam.Text = "Scam Level";
             // 
-            // label_Filter_Id
+            // label_Filter_Name
             // 
-            this.label_Filter_Id.AutoSize = true;
-            this.label_Filter_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_Id.Location = new System.Drawing.Point(8, 38);
-            this.label_Filter_Id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_Filter_Id.Name = "label_Filter_Id";
-            this.label_Filter_Id.Size = new System.Drawing.Size(28, 25);
-            this.label_Filter_Id.TabIndex = 0;
-            this.label_Filter_Id.Text = "Id";
+            this.label_Filter_Name.AutoSize = true;
+            this.label_Filter_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Filter_Name.Location = new System.Drawing.Point(8, 38);
+            this.label_Filter_Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_Filter_Name.Name = "label_Filter_Name";
+            this.label_Filter_Name.Size = new System.Drawing.Size(64, 25);
+            this.label_Filter_Name.TabIndex = 0;
+            this.label_Filter_Name.Text = "Name";
             // 
             // label_Id
             // 
@@ -218,7 +219,7 @@ namespace ClientApp.UI
             this.comboBox_Valid.Location = new System.Drawing.Point(596, 132);
             this.comboBox_Valid.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Valid.Name = "comboBox_Valid";
-            this.comboBox_Valid.Size = new System.Drawing.Size(160, 24);
+            this.comboBox_Valid.Size = new System.Drawing.Size(210, 24);
             this.comboBox_Valid.TabIndex = 4;
             // 
             // comboBox_Scam
@@ -268,21 +269,38 @@ namespace ClientApp.UI
             this.button_Delete.UseVisualStyleBackColor = false;
             this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
-            // button_
+            // button_AddValid
             // 
-            this.button_.Location = new System.Drawing.Point(773, 132);
-            this.button_.Name = "button_";
-            this.button_.Size = new System.Drawing.Size(33, 23);
-            this.button_.TabIndex = 7;
-            this.button_.Text = "button1";
-            this.button_.UseVisualStyleBackColor = true;
+            this.button_AddValid.AutoSize = true;
+            this.button_AddValid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_AddValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_AddValid.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_AddValid.Location = new System.Drawing.Point(814, 129);
+            this.button_AddValid.Name = "button_AddValid";
+            this.button_AddValid.Size = new System.Drawing.Size(30, 32);
+            this.button_AddValid.TabIndex = 8;
+            this.button_AddValid.Text = "+";
+            this.button_AddValid.Click += new System.EventHandler(this.button_AddValid_Click);
+            // 
+            // button_AddScam
+            // 
+            this.button_AddScam.AutoSize = true;
+            this.button_AddScam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_AddScam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_AddScam.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_AddScam.Location = new System.Drawing.Point(707, 174);
+            this.button_AddScam.Name = "button_AddScam";
+            this.button_AddScam.Size = new System.Drawing.Size(30, 32);
+            this.button_AddScam.TabIndex = 9;
+            this.button_AddScam.Text = "+";
             // 
             // CoinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 399);
-            this.Controls.Add(this.button_);
+            this.Controls.Add(this.button_AddScam);
+            this.Controls.Add(this.button_AddValid);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.text_Id);
@@ -322,13 +340,14 @@ namespace ClientApp.UI
         private System.Windows.Forms.ComboBox comboBox_Filter_Scam;
         private System.Windows.Forms.Label label_Filter_Valid;
         private System.Windows.Forms.Label label_Filter_Scam;
-        private System.Windows.Forms.Label label_Filter_Id;
+        private System.Windows.Forms.Label label_Filter_Name;
         private System.Windows.Forms.ComboBox comboBox_Valid;
         private System.Windows.Forms.ComboBox comboBox_Scam;
-        private System.Windows.Forms.Label id_Text;
         private System.Windows.Forms.Label text_Id;
         private System.Windows.Forms.Button button_Save;
         private System.Windows.Forms.Button button_Delete;
-        private System.Windows.Forms.Button button_;
+        private System.Windows.Forms.Label button_AddValid;
+        private System.Windows.Forms.Label button_AddScam;
+        private System.Windows.Forms.TextBox textBox_Filter_Name;
     }
 }

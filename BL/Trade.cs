@@ -8,12 +8,12 @@ using Dal;
 
 namespace BL
 {
-    internal class Trade 
+    public class Trade 
     {
         public int id { get; set; } // Id of the trade
         public Client client { get; set; } //Client that owns the trade
         public DateTime Date { get; set; } //Time the trade was created
-
+        public Trade() { }
         public Trade(DataRow dr) 
         {
             this.id = (int)dr["ID"];

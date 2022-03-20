@@ -62,7 +62,7 @@ namespace Dal
         {
             if (!dataSet.Tables.Contains("Table_Valid"))
             {
-                Dal.FillDataSet(dataSet, "Table_Valid", "[ValidLevel]");
+                Dal.FillDataSet(dataSet, "Table_Valid");
             }
         }
     }

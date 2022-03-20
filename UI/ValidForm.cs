@@ -13,16 +13,20 @@ namespace ClientApp.UI
 {
     public partial class ValidForm : Form
     {
-        Valid valid;
-        public ValidForm()
+        public Valid selectedValid;
+
+        public ValidForm(Valid valid = null)
         {
             InitializeComponent();
+            if (valid != null && valid.id <= 0) valid = null;
+            ValidToForm();
+            ValidToForm(valid); //Fill the listbox
         }
         private Valid FormToValid()
         {
             Valid valid = new Valid();
             valid.id = int.Parse(text_Id.Text);
-            valid.validationMethod = textBox_Valid.Text;
+            valid.name = textBox_Valid.Text;
             return valid;
         }
         private void ValidToForm(Valid valid = null)
@@ -30,7 +34,7 @@ namespace ClientApp.UI
             if (valid != null)
             {
                 text_Id.Text = valid.id.ToString();
-                textBox_Valid.Text = valid.validationMethod.Trim();
+                textBox_Valid.Text = valid.name.Trim();
 
             }
             else
@@ -49,10 +53,10 @@ namespace ClientApp.UI
         private void button_Save_Click(object sender, EventArgs e)
         {
             //TODO: Add checkForm
-            valid = FormToValid();
-            if (valid.id == 0)
+            selectedValid = FormToValid();
+            if (selectedValid.id == 0)
             {
-                if (valid.Insert())
+                if (selectedValid.Insert())
                 {
                     MessageBox.Show("Added successfully", "Success");
                 }
@@ -60,7 +64,7 @@ namespace ClientApp.UI
             }
             else
             {
-                if (valid.Insert())
+                if (selectedValid.Insert())
                 {
                     MessageBox.Show("Updated successfully", "Success");
                     ValidArrToForm();
@@ -72,8 +76,8 @@ namespace ClientApp.UI
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
-            valid = FormToValid();
-            if (valid.id == 0)
+            selectedValid = FormToValid();
+            if (selectedValid.id == 0)
                 MessageBox.Show("You need to choose a valid");
             else
             {
@@ -82,7 +86,7 @@ namespace ClientApp.UI
                 MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading) ==
                 System.Windows.Forms.DialogResult.Yes)
                 {
-                    if (valid.Delete()) MessageBox.Show("Deleted Successfully", "Success");
+                    if (selectedValid.Delete()) MessageBox.Show("Deleted Successfully", "Success");
                     else MessageBox.Show("Somtin gon wrong in deletion bro sorry", "Fail");
                     ValidToForm(null);
                     ValidArrToForm();

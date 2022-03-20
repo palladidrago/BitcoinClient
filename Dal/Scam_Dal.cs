@@ -62,7 +62,7 @@ namespace Dal
         {
             if (!dataSet.Tables.Contains("Table_Scam"))
             {
-                Dal.FillDataSet(dataSet, "Table_Scam", "[ScamLevel]");
+                Dal.FillDataSet(dataSet, "Table_Scam");
             }
         }
     }

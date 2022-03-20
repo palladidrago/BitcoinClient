@@ -11,11 +11,11 @@ namespace BL
 {
     class ValidArr : ArrayList
     {
-        public bool IsContains(string cityName)
+        public bool IsContains(string validationMethod)
         {
-            //Check wether city exitst wit the sam ename
+            //Check wether validation method exitst wit the sam ename
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Valid).validationMethod == cityName)
+                if ((this[i] as Valid).name == validationMethod)
                     return true;
             return false;
         }

@@ -27,13 +27,13 @@ namespace BL
             }
             return tradeArr;
         }
-        public bool HasOrder(City curCity)
+        public bool HasOrder(Trade curTrade)
         {
 
             //Returns whether at least one of the orders is by the client
 
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Trade).client.id == curCity.id)
+                if ((this[i] as Trade).client.id == curTrade.id)
                     return true;
 
             return false;
@@ -57,6 +57,16 @@ namespace BL
                 curTrade = new Trade(dataRow);
                 this.Add(curTrade);
             }
+        }
+        public Trade GetTradeWithMaxId()
+        {
+            //Return the city with the highest id
+            Trade maxTrade = new Trade();
+            for (int i = 0; i < this.Count; i++)
+                if ((this[i] as Trade).id > maxTrade.id)
+                    maxTrade = this[i] as Trade;
+
+            return maxTrade;
         }
     }
 }

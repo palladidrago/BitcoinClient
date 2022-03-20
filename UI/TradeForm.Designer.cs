@@ -438,7 +438,7 @@
             // 
             this.listBox_Chosen_Coins.FormattingEnabled = true;
             this.listBox_Chosen_Coins.ItemHeight = 16;
-            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(504, 13);
+            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(574, 13);
             this.listBox_Chosen_Coins.Name = "listBox_Chosen_Coins";
             this.listBox_Chosen_Coins.Size = new System.Drawing.Size(195, 356);
             this.listBox_Chosen_Coins.TabIndex = 0;
@@ -447,7 +447,7 @@
             // 
             this.listBox_Potential_Coins.FormattingEnabled = true;
             this.listBox_Potential_Coins.ItemHeight = 16;
-            this.listBox_Potential_Coins.Location = new System.Drawing.Point(287, 13);
+            this.listBox_Potential_Coins.Location = new System.Drawing.Point(347, 13);
             this.listBox_Potential_Coins.Name = "listBox_Potential_Coins";
             this.listBox_Potential_Coins.Size = new System.Drawing.Size(211, 356);
             this.listBox_Potential_Coins.TabIndex = 0;

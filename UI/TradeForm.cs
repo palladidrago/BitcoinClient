@@ -17,6 +17,14 @@ namespace ClientApp.UI
         public TradeForm()
         {
             InitializeComponent();
+            CoinArrToForm(listBox_Potential_Coins);
+            ClientArrToForm(listBox_Client);
+        }
+        private void ClientArrToForm(ListBox lb)
+        {
+            ClientArr clientArr = new ClientArr();
+            clientArr.Fill();
+            lb.DataSource = clientArr;
         }
         private void MoveSelectedItemBetweenListBox(ListBox listBox_From, ListBox listBox_To)
         {
@@ -38,17 +46,6 @@ namespace ClientApp.UI
             coinArr.Add(selectedCoin);
             CoinArrToForm(listBox_To, coinArr);
         }
-        //private void FillForm()
-        //{
-        //    TradeArr tarr = new TradeArr();
-        //    tarr.Fill();
-        //}
-        private void CoinArrToForm(ListBox listBox, CoinArr coinArr)
-        {
-            listBox.DataSource = coinArr;
-            listBox.ValueMember = "Id";
-            listBox.DisplayMember = "Name";
-        }
         
 
         private void button_Save_Click(object sender, EventArgs e)
@@ -68,6 +65,56 @@ namespace ClientApp.UI
             listBox_Trades.SelectedValue = trade.id;
             listBox_Trades.SelectedItem = trade;
         }
+        //private bool CheckForm()
+        //{
+        //    //Check that each of the textboxes on the form are good
+
+        //    bool flag = true;
+        //    #region FirstName
+        //    if (textBox_FirstName.Text.Length < 2)
+        //    {
+        //        flag = false;
+        //        textBox_FirstName.BackColor = Color.Red;
+        //    }
+        //    else
+        //        textBox_FirstName.BackColor = Color.White;
+        //    #endregion 
+
+
+        //    #region ShoeSize
+        //    if (textBox_ShoeSize.Text != "")
+        //    {
+
+        //        try
+        //        {
+        //            int.Parse(textBox_ShoeSize.Text);
+        //            textBox_ShoeSize.BackColor = Color.White;
+        //        }
+        //        catch
+        //        {
+        //            textBox_ShoeSize.BackColor = Color.Red;
+        //            flag = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        textBox_ShoeSize.BackColor = Color.Red;
+        //        flag = false;
+        //    }
+
+        //    #endregion
+
+        //    #region City
+        //    if ((int)comboBox_City.SelectedValue <= 0)
+        //    {
+        //        flag = false;
+        //        comboBox_City.ForeColor = Color.Red;
+        //    }
+        //    else comboBox_City.ForeColor = Color.Black;
+
+        //    #endregion
+        //    return flag;
+        //}
         //private void save()
         //{
         //    TradeCoin td = null;
@@ -75,6 +122,49 @@ namespace ClientApp.UI
         //        td = new Trade( trade,  coin);
         //        td.Insert();
         //}
+        private void CoinArrToForm(ListBox listBox, CoinArr coinArr = null)
+        {
+
+            //מקבלת אוסף פריטים ותיבת רשימה לפריטים ומציבה את האוסף בתוך התיבה
+            //אם האוסף ריק - מייצרת אוסף חדש מלא בכל הערכים מהטבלה
+
+            listBox.DataSource = null;
+            if (coinArr == null)
+            {
+                coinArr = new CoinArr();
+                coinArr.Fill();
+            }
+            listBox.DataSource = coinArr;
+            listBox.ValueMember = "Id";
+            listBox.DisplayMember = "Name";
+        }
+        private TradeCoinArr FormToTradeCoinArr(Trade curTrade)
+        {
+
+            // Creation of TradeCoinArr from form
+            // Create pairs of Trade and Coin (the trade is always the same, the coin is fetched from the list)
+            TradeCoinArr tradeCoinArr = new TradeCoinArr();
+            TradeCoin tradeCoin;
+
+            //סורקים את כל הערכים בתיבת הרשימה של המוצרים שנבחרו להזמנה
+            for (int i = 0; i < listBox_Chosen_Coins.Items.Count; i++)
+            {
+                tradeCoin = new TradeCoin();
+
+                //ההזמנה הנוכחית היא ההזמנה לכל הזוגות באוסף
+
+                tradeCoin.trade = curTrade;
+
+                //מוצר נוכחי לזוג הזמנה-מוצר
+
+                tradeCoin.coin = listBox_Chosen_Coins.Items[i] as Coin;
+
+                //הוספת הזוג הזמנה -מוצר לאוסף
+
+                tradeCoinArr.Add(tradeCoin);
+            }
+            return tradeCoinArr;
+        }
         private void listBox_Trades_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListBox lb = sender as ListBox;

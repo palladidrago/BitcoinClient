@@ -61,7 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\OrderProduct.cs" />
+    <Compile Include="BL\TradeCoinArr.cs" />
+    <Compile Include="BL\TradeCoin.cs" />
     <Compile Include="BL\ValidArr.cs" />
     <Compile Include="BL\ScamArr.cs" />
     <Compile Include="BL\TradeArr.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="BL\Scam.cs" />
     <Compile Include="BL\Valid.cs" />
     <Compile Include="Dal\Coin_Dal.cs" />
+    <Compile Include="Dal\TradeCoin_Dal.cs" />
     <Compile Include="Dal\Trade_Dal.cs" />
     <Compile Include="Dal\Scam_Dal.cs" />
     <Compile Include="Dal\Valid_Dal.cs" />

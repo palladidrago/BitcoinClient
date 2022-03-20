@@ -24,14 +24,18 @@ namespace BL
             this.scam = new Scam();
         }
         public Coin(DataRow dataRow)
-        {   
-            name = dataRow["Name"].ToString();
+        {
             id = (int)dataRow["id"];
-            
+            name = dataRow["Name"].ToString().Trim();
+            symbol = dataRow["Symbol"].ToString().Trim();
+
+            valid = new Valid(dataRow.GetParentRow("CoinValid"));
+            scam = new Scam(dataRow.GetParentRow("CoinScam"));
+
         }
         public bool Insert()
         {
-            return Coin_Dal.Insert(name,valid.id,scam.id);
+            return Coin_Dal.Insert(name,symbol,valid.id,scam.id);
         }
         public bool Delete()
         {

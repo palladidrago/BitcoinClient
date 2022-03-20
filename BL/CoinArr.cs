@@ -37,19 +37,20 @@ namespace BL
 
             DataTable dataTable = Coin_Dal.GetDataTable();
 
-            //להעביר את הערכים מהטבלה לתוך אוסף הלקוחות
-            //להעביר כל שורה בטבלה ללקוח
+            //Move the values from the table to the TradeCoinArr
+            //Line by line
+
 
             DataRow dataRow;
-            Coin curCity;
+            Coin curCoin;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataRow = dataTable.Rows[i];
-                curCity = new Coin(dataRow);
-                this.Add(curCity);
+                curCoin = new Coin(dataRow);
+                this.Add(curCoin);
             }
         }
-        public CoinArr Filter(string name, Scam scam, Valid valid)
+        public CoinArr Filter(string name="", Scam scam=null, Valid valid=null) //Does this work with default null Values?
         {
             CoinArr coinArr = new CoinArr();
 
@@ -63,7 +64,7 @@ namespace BL
 
                 //Filter by coin
 
-                coin.name.StartsWith(name)
+                coin.name.ToLower().StartsWith(name.ToLower())
 
                 //Filter by valid
                 && (valid == null || valid.id == -1 || coin.valid.id == valid.id)
