@@ -192,7 +192,6 @@ namespace ClientApp
             this.textBox_PhoneNumber.Name = "textBox_PhoneNumber";
             this.textBox_PhoneNumber.Size = new System.Drawing.Size(116, 22);
             this.textBox_PhoneNumber.TabIndex = 0;
-            this.textBox_PhoneNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // textBox_BirthYear
             // 
@@ -200,7 +199,6 @@ namespace ClientApp
             this.textBox_BirthYear.Name = "textBox_BirthYear";
             this.textBox_BirthYear.Size = new System.Drawing.Size(77, 22);
             this.textBox_BirthYear.TabIndex = 0;
-            this.textBox_BirthYear.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // textBox_LastName
             // 
@@ -237,7 +235,6 @@ namespace ClientApp
             this.textBox_BtcAmount.Name = "textBox_BtcAmount";
             this.textBox_BtcAmount.Size = new System.Drawing.Size(116, 22);
             this.textBox_BtcAmount.TabIndex = 0;
-            this.textBox_BtcAmount.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // label_BtcAmount
             // 
@@ -281,7 +278,6 @@ namespace ClientApp
             this.textBox_ShoeSize.Name = "textBox_ShoeSize";
             this.textBox_ShoeSize.Size = new System.Drawing.Size(116, 22);
             this.textBox_ShoeSize.TabIndex = 0;
-            this.textBox_ShoeSize.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // label_ShoeSize
             // 
@@ -365,6 +361,7 @@ namespace ClientApp
             this.textBox_Filter_BtcAddress.Name = "textBox_Filter_BtcAddress";
             this.textBox_Filter_BtcAddress.Size = new System.Drawing.Size(180, 22);
             this.textBox_Filter_BtcAddress.TabIndex = 0;
+            this.textBox_Filter_BtcAddress.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // textBox_Filter_LastName
             // 
@@ -372,6 +369,7 @@ namespace ClientApp
             this.textBox_Filter_LastName.Name = "textBox_Filter_LastName";
             this.textBox_Filter_LastName.Size = new System.Drawing.Size(180, 22);
             this.textBox_Filter_LastName.TabIndex = 0;
+            this.textBox_Filter_LastName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
             // AdminForm
             // 
@@ -390,7 +388,6 @@ namespace ClientApp
             this.Controls.Add(this.groupBox_GeneralInfo);
             this.Name = "AdminForm";
             this.Text = "AdminPanel";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             this.groupBox_GeneralInfo.ResumeLayout(false);
             this.groupBox_GeneralInfo.PerformLayout();
             this.groupBox_BtcInfo.ResumeLayout(false);

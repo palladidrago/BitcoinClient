@@ -15,7 +15,7 @@ namespace BL
         {
             //Check wether city exitst wit the sam ename
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Coin).name == cityName)
+                if ((this[i] as Coin).Name == cityName)
                     return true;
             return false;
         }
@@ -24,7 +24,7 @@ namespace BL
             //Return the city with the highest id
             Coin maxCity = new Coin();
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Coin).id > maxCity.id)
+                if ((this[i] as Coin).Id > maxCity.Id)
                     maxCity = this[i] as Coin;
 
             return maxCity;
@@ -50,33 +50,54 @@ namespace BL
                 this.Add(curCoin);
             }
         }
-        public CoinArr Filter(string name="", Scam scam=null, Valid valid=null) //Does this work with default null Values?
+        public CoinArr Filter(string name="", Scam scam=null, Valid valid=null)
         {
+            //Does this work with default null Values? 
             CoinArr coinArr = new CoinArr();
 
             for (int i = 0; i < this.Count; i++)
             {
 
-                //הצבת המוצר הנוכחי במשתנה עזר - מוצר
+                //Add the current coin to helper var
 
                 Coin coin = (this[i] as Coin);
                 if (
 
                 //Filter by coin
 
-                coin.name.ToLower().StartsWith(name.ToLower())
+                coin.Name.ToLower().StartsWith(name.ToLower())
 
                 //Filter by valid
-                && (valid == null || valid.id == -1 || coin.valid.id == valid.id)
-                //סינון לפי קטגוריה
-                && ( scam == null || scam.id == -1 || coin.scam.id == scam.id)
+                && (valid == null || valid.Id == -1 || coin.Valid.Id == valid.Id)
+                //Filter by scam
+                && ( scam == null || scam.Id == -1 || coin.Scam.Id == scam.Id)
                 )
 
-                    //ה מוצר ענה לדרישות החיפוש - הוספה שלו לאוסף המוחזר
+                    //If coin is valid, add
 
                     coinArr.Add(coin);
             }
             return coinArr;
+        }
+        public void Remove(CoinArr coinArr)
+        {
+
+            //Remove from current coin array the given array (WOW)
+
+            for (int i = 0; i < coinArr.Count; i++)
+                this.Remove(coinArr[i] as Coin); //ArrayList.Remove(): remove specific item from arraylist :O
+        }
+        public void Remove(Coin coin)
+        {
+
+            //Remove from current array given coin
+
+            for (int i = 0; i < this.Count; i++)
+                if ((this[i] as Coin).Id == coin.Id)
+                {
+                    this.RemoveAt(i); return;
+                }
+            //Wouldn't it be faster to use Remove(coin)??
         }
     }
 }

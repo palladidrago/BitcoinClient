@@ -98,6 +98,7 @@ namespace ClientApp.UI
             this.comboBox_Filter_Valid.Name = "comboBox_Filter_Valid";
             this.comboBox_Filter_Valid.Size = new System.Drawing.Size(160, 24);
             this.comboBox_Filter_Valid.TabIndex = 0;
+            this.comboBox_Filter_Valid.SelectedIndexChanged += new System.EventHandler(this.comboBox_Filter_Valid_SelectedIndexChanged);
             // 
             // comboBox_Filter_Scam
             // 
@@ -107,6 +108,7 @@ namespace ClientApp.UI
             this.comboBox_Filter_Scam.Name = "comboBox_Filter_Scam";
             this.comboBox_Filter_Scam.Size = new System.Drawing.Size(160, 24);
             this.comboBox_Filter_Scam.TabIndex = 0;
+            this.comboBox_Filter_Scam.SelectedIndexChanged += new System.EventHandler(this.comboBox_Filter_Scam_SelectedIndexChanged);
             // 
             // label_Filter_Valid
             // 

@@ -17,7 +17,7 @@ namespace ClientApp.UI
         public CityForm(City city = null)
         {
             InitializeComponent();
-            if (city != null && city.id <= 0) city = null;
+            if (city != null && city.Id <= 0) city = null;
             CityToForm();
             CityArrToForm(city); //Fill the listbox
         }
@@ -30,15 +30,15 @@ namespace ClientApp.UI
             }
             else
             {
-                text_Id.Text = city.id.ToString();
-                textBox_Name.Text = city.name;
+                text_Id.Text = city.Id.ToString();
+                textBox_Name.Text = city.Name;
             }
         }
         private City FormToCity()
         {
             City city = new City();
-            city.id = int.Parse(text_Id.Text);
-            city.name = textBox_Name.Text;
+            city.Id = int.Parse(text_Id.Text);
+            city.Name = textBox_Name.Text;
             return city;
         }
         private void CityArrToForm(City curCity = null)
@@ -49,7 +49,7 @@ namespace ClientApp.UI
             listBox_City.ValueMember = "Id";
             listBox_City.DisplayMember = "Name";
             if (curCity != null)
-                listBox_City.SelectedValue = curCity.id;
+                listBox_City.SelectedValue = curCity.Id;
         }
         private bool CheckForm()
         {
@@ -70,7 +70,7 @@ namespace ClientApp.UI
             oldCityArr.Fill();
             if (CheckForm())
             {
-                if (!oldCityArr.IsContains(city.name))
+                if (!oldCityArr.IsContains(city.Name))
                 {
                     //Check if city already exists
                     if (city.Insert())

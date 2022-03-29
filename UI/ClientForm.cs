@@ -48,13 +48,13 @@ namespace ClientApp
         {
             //Turn the form into a client
             Client client = new Client();
-            client.firstName = textBox_FirstName.Text;
-            client.lastName = textBox_LastName.Text;
-            client.phoneNumber = textBox_PhoneNumber.Text;
-            client.birthYear = int.Parse(textBox_BirthYear.Text);
-            client.btcAmount = double.Parse(textBox_BtcAmount.Text);
-            client.btcAddress = textBox_BtcAddress.Text;
-            client.shoeSize = int.Parse(textBox_ShoeSize.Text);
+            client.FirstName = textBox_FirstName.Text;
+            client.LastName = textBox_LastName.Text;
+            client.PhoneNumber = textBox_PhoneNumber.Text;
+            client.BirthYear = int.Parse(textBox_BirthYear.Text);
+            client.BtcAmount = double.Parse(textBox_BtcAmount.Text);
+            client.BtcAddress = textBox_BtcAddress.Text;
+            client.ShoeSize = int.Parse(textBox_ShoeSize.Text);
 
 
             return client;

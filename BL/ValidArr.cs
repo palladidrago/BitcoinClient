@@ -15,7 +15,7 @@ namespace BL
         {
             //Check wether validation method exitst wit the sam ename
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Valid).name == validationMethod)
+                if ((this[i] as Valid).Name == validationMethod)
                     return true;
             return false;
         }
@@ -24,7 +24,7 @@ namespace BL
             //Return the city with the highest id
             Valid maxValid = new Valid();
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Valid).id > maxValid.id)
+                if ((this[i] as Valid).Id > maxValid.Id)
                     maxValid = this[i] as Valid;
 
             return maxValid;

@@ -10,42 +10,42 @@ namespace BL
 {
     public class Coin
     {
-        public string name { get; set; }
-        public int id { get; set; }
-        public string symbol { get; set; }
-        public Valid valid { get; set; }
-        public Scam scam { get; set; }
+        public string Name { get; set; }
+        public int Id { get; set; }
+        public string Symbol { get; set; }
+        public Valid Valid { get; set; }
+        public Scam Scam { get; set; }
         public Coin() { }
-        public Coin(string name, int id)
+        public Coin(string Name, int Id)
         {
-            this.id = id;
-            this.name = name;
-            this.valid = new Valid();
-            this.scam = new Scam();
+            this.Id = Id;
+            this.Name = Name;
+            this.Valid = new Valid();
+            this.Scam = new Scam();
         }
         public Coin(DataRow dataRow)
         {
-            id = (int)dataRow["id"];
-            name = dataRow["Name"].ToString().Trim();
-            symbol = dataRow["Symbol"].ToString().Trim();
+            Id = (int)dataRow["id"];
+            Name = dataRow["Name"].ToString().Trim();
+            Symbol = dataRow["Symbol"].ToString().Trim();
 
-            valid = new Valid(dataRow.GetParentRow("CoinValid"));
-            scam = new Scam(dataRow.GetParentRow("CoinScam"));
+            Valid = new Valid(dataRow.GetParentRow("CoinValid"));
+            Scam = new Scam(dataRow.GetParentRow("CoinScam"));
 
         }
         public bool Insert()
         {
-            return Coin_Dal.Insert(name,symbol,valid.id,scam.id);
+            return Coin_Dal.Insert(Name,Symbol,Valid.Id,Scam.Id);
         }
         public bool Delete()
         {
-            return Coin_Dal.Delete(id);
+            return Coin_Dal.Delete(Id);
         }
 
 
         public override string ToString()
         {
-            return name.Trim();
+            return Name.Trim();
         }
     }
 }

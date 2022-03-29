@@ -16,7 +16,7 @@ namespace BL
         {
             //Check wether city exitst wit the sam ename
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Scam).name == scamLevel)
+                if ((this[i] as Scam).Name == scamLevel)
                     return true;
             return false;
         }
@@ -25,7 +25,7 @@ namespace BL
             //Return the city with the highest id
             City maxCity = new City();
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as City).id > maxCity.id)
+                if ((this[i] as City).Id > maxCity.Id)
                     maxCity = this[i] as City;
 
             return maxCity;

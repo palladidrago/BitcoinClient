@@ -18,23 +18,23 @@ namespace ClientApp.UI
         public ValidForm(Valid valid = null)
         {
             InitializeComponent();
-            if (valid != null && valid.id <= 0) valid = null;
+            if (valid != null && valid.Id <= 0) valid = null;
             ValidToForm();
             ValidToForm(valid); //Fill the listbox
         }
         private Valid FormToValid()
         {
             Valid valid = new Valid();
-            valid.id = int.Parse(text_Id.Text);
-            valid.name = textBox_Valid.Text;
+            valid.Id = int.Parse(text_Id.Text);
+            valid.Name = textBox_Valid.Text;
             return valid;
         }
         private void ValidToForm(Valid valid = null)
         {
             if (valid != null)
             {
-                text_Id.Text = valid.id.ToString();
-                textBox_Valid.Text = valid.name.Trim();
+                text_Id.Text = valid.Id.ToString();
+                textBox_Valid.Text = valid.Name.Trim();
 
             }
             else
@@ -54,7 +54,7 @@ namespace ClientApp.UI
         {
             //TODO: Add checkForm
             selectedValid = FormToValid();
-            if (selectedValid.id == 0)
+            if (selectedValid.Id == 0)
             {
                 if (selectedValid.Insert())
                 {
@@ -77,7 +77,7 @@ namespace ClientApp.UI
         private void button_Delete_Click(object sender, EventArgs e)
         {
             selectedValid = FormToValid();
-            if (selectedValid.id == 0)
+            if (selectedValid.Id == 0)
                 MessageBox.Show("You need to choose a valid");
             else
             {

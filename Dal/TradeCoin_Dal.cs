@@ -24,7 +24,7 @@ namespace Dal
             Dal.FillDataSet(dataSet, "Table_TradeCoin");
             //Creating a connection
             DataRelation dataRelation = null;
-            Client_Dal.FillDataSet(dataSet);
+            Trade_Dal.FillDataSet(dataSet); //Add trades to dataset
             //Add data relation
             dataRelation = new DataRelation(
                 "TradeCoinTrade", //ChildParent
@@ -32,7 +32,7 @@ namespace Dal
                 dataSet.Tables["Table_TradeCoin"].Columns["Trade"]);
 
             dataSet.Relations.Add(dataRelation);
-
+            Coin_Dal.FillDataSet(dataSet); //Add coins to dataset
             dataRelation = new DataRelation(
                 "TradeCoinCoin", //ChildParent
                 dataSet.Tables["Table_Coin"].Columns["Id"],
@@ -43,6 +43,7 @@ namespace Dal
         }
         public static bool Insert(int trade, int coin)
         {
+            //Insert TradeCoin into db
             string sql = "INSERT INTO Table_TradeCoin"
             + "("
             + "[Trade],[Coin]"
@@ -52,6 +53,12 @@ namespace Dal
             + $"N'{trade}',N'{coin}'"
             + ")";
             return Dal.ExecuteSql(sql);
+        }
+        public static bool Delete(int id)
+        {
+
+            //Delete TradeCoin from db
+            return Dal.ExecuteSql($"DELETE FROM Table_TradeCoin WHERE ID = {id}");
         }
     }
 }

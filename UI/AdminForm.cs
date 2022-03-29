@@ -55,8 +55,8 @@ namespace ClientApp
             //From city array to form 
             CityArr cityArr = new CityArr();
             City cityDefault = new City();
-            cityDefault.id = -1;
-            cityDefault.name = "Choose a city";
+            cityDefault.Id = -1;
+            cityDefault.Name = "Choose a city";
 
 
             cityArr.Add(cityDefault);
@@ -66,7 +66,7 @@ namespace ClientApp
             comboBox_City.ValueMember = "Id";
             comboBox_City.DisplayMember = "Name";
             if (curCity != null)
-                comboBox_City.SelectedValue = curCity.id;
+                comboBox_City.SelectedValue = curCity.Id;
 
         }
         private void ClientArrToForm()
@@ -79,16 +79,16 @@ namespace ClientApp
         {
             if (client != null)
             {
-                text_Id.Text = client.id.ToString();
-                textBox_FirstName.Text = client.firstName.Trim();
-                textBox_LastName.Text = client.lastName.Trim();
-                textBox_BirthYear.Text = client.birthYear.ToString();
-                textBox_PhoneNumber.Text = client.phoneNumber;
-                textBox_BtcAddress.Text = client.btcAddress.ToString();
-                textBox_BtcAmount.Text = client.btcAmount.ToString();
-                textBox_ShoeSize.Text = client.shoeSize.ToString();
+                text_Id.Text = client.Id.ToString();
+                textBox_FirstName.Text = client.FirstName.Trim();
+                textBox_LastName.Text = client.LastName.Trim();
+                textBox_BirthYear.Text = client.BirthYear.ToString();
+                textBox_PhoneNumber.Text = client.PhoneNumber;
+                textBox_BtcAddress.Text = client.BtcAddress.ToString();
+                textBox_BtcAmount.Text = client.BtcAmount.ToString();
+                textBox_ShoeSize.Text = client.ShoeSize.ToString();
                 //City
-                comboBox_City.SelectedValue = client.city.id;
+                comboBox_City.SelectedValue = client.city.Id;
                 comboBox_City.SelectedItem = client;  
             }
             else
@@ -107,14 +107,14 @@ namespace ClientApp
         {
             //Turn the form into a client
             Client client = new Client();
-            client.id = int.Parse(text_Id.Text);
-            client.firstName = textBox_FirstName.Text;
-            client.lastName = textBox_LastName.Text;
-            client.phoneNumber = textBox_PhoneNumber.Text;
-            client.birthYear = int.Parse(textBox_BirthYear.Text);
-            client.btcAmount = double.Parse(textBox_BtcAmount.Text);
-            client.btcAddress = textBox_BtcAddress.Text;
-            client.shoeSize = int.Parse(textBox_ShoeSize.Text);
+            client.Id = int.Parse(text_Id.Text);
+            client.FirstName = textBox_FirstName.Text;
+            client.LastName = textBox_LastName.Text;
+            client.PhoneNumber = textBox_PhoneNumber.Text;
+            client.BirthYear = int.Parse(textBox_BirthYear.Text);
+            client.BtcAmount = double.Parse(textBox_BtcAmount.Text);
+            client.BtcAddress = textBox_BtcAddress.Text;
+            client.ShoeSize = int.Parse(textBox_ShoeSize.Text);
             client.city = comboBox_City.SelectedItem as City;
             return client;
         }
@@ -242,7 +242,7 @@ namespace ClientApp
             if (CheckForm())
             {
                 client = FormToClient();
-                if (client.id == 0)
+                if (client.Id == 0)
                 {
                     if (client.Insert())
                     {
@@ -274,7 +274,7 @@ namespace ClientApp
         private void deleteButton_Click(object sender, EventArgs e)
         {
             client = FormToClient();
-            if (client.id == 0)
+            if (client.Id == 0)
                 MessageBox.Show("You need to choose a client");
             else
             {
@@ -293,17 +293,17 @@ namespace ClientApp
         private void textBox_Filter_KeyUp(object sender, KeyEventArgs e)
         {
 
-            //מייצרים אוסף של כלל הלקוחות
+            //Create an array of all clients
 
             ClientArr clientArr = new ClientArr();
             clientArr.Fill();
 
-            //מסננים את אוסף הלקוחות לפי הערכים בשדות הסינון שרשם המשתמש
+            //Filter the list of clients according to requests
 
-            clientArr = clientArr.Filter(textBox_Filter_LastName.Text,
-            textBox_Filter_BtcAddress.Text);
+            clientArr = clientArr.Filter(lastName: textBox_Filter_LastName.Text,
+            btcAddress: textBox_Filter_BtcAddress.Text);
 
-            //מציבים בתיבת הרשימה את אוסף הלקוחות
+            //Put requests in listbox
 
             listBox_Client.DataSource = clientArr;
         }
@@ -317,5 +317,6 @@ namespace ClientApp
             CityArrToForm(cityForm.SelectedCity);
 
         }
+
     }
 }

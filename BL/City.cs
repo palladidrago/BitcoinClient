@@ -10,30 +10,30 @@ namespace BL
 {
     public class City
     {
-        public string name { get; set; } //Name of the city
-        public int id { get; set; } //Id of the city
-        public City (string name,int id)
+        public string Name { get; set; } //Name of the city
+        public int Id { get; set; } //Id of the city
+        public City (string Name)
         {
-            this.name = name;
+            this.Name = Name;
         }
         public City() { }
         public City (DataRow dataRow)
         {
-            this.name = dataRow["Name"].ToString();
-            this.id = (int)dataRow["Id"];
+            this.Name = dataRow["Name"].ToString();
+            this.Id = (int)dataRow["Id"];
         }
         public bool Insert()
         {
-            return City_Dal.Insert(name);
+            return City_Dal.Insert(Name);
         }
         public bool Delete()
         {
-            return City_Dal.Delete(id);
+            return City_Dal.Delete(Id);
         }
     
         public override string ToString()
         {
-            return name.Trim();
+            return Name.Trim();
         }
     }
 }

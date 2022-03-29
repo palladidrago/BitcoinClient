@@ -21,16 +21,16 @@ namespace ClientApp.UI
         private Scam FormToScam()
         {
             Scam scam = new Scam();
-            scam.id = int.Parse(text_Id.Text);
-            scam.name = textBox_Scam.Text;
+            scam.Id = int.Parse(text_Id.Text);
+            scam.Name = textBox_Scam.Text;
             return scam;
         }
         private void ScamToForm(Scam scam = null)
         {
             if (scam != null)
             {
-                text_Id.Text = scam.id.ToString();
-                textBox_Scam.Text = scam.name.Trim();
+                text_Id.Text = scam.Id.ToString();
+                textBox_Scam.Text = scam.Name.Trim();
 
             }
             else
@@ -50,7 +50,7 @@ namespace ClientApp.UI
         {
             //TODO: Add checkForm
             scam = FormToScam();
-            if (scam.id == 0)
+            if (scam.Id == 0)
             {
                 if (scam.Insert())
                 {
@@ -73,7 +73,7 @@ namespace ClientApp.UI
         private void button_Delete_Click(object sender, EventArgs e)
         {
             scam = FormToScam();
-            if (scam.id == 0)
+            if (scam.Id == 0)
                 MessageBox.Show("You need to choose a scam");
             else
             {

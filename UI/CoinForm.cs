@@ -24,23 +24,23 @@ namespace ClientApp.UI
         private Coin FormToCoin()
         {
             Coin coin = new Coin();
-            coin.id = int.Parse(text_Id.Text);
-            coin.name = textBox_Name.Text;
-            coin.symbol = textBox_Symbol.Text;
-            coin.scam = comboBox_Scam.SelectedItem as Scam;
-            coin.valid = comboBox_Valid.SelectedItem as Valid;
+            coin.Id = int.Parse(text_Id.Text);
+            coin.Name = textBox_Name.Text;
+            coin.Symbol = textBox_Symbol.Text;
+            coin.Scam = comboBox_Scam.SelectedItem as Scam;
+            coin.Valid = comboBox_Valid.SelectedItem as Valid;
             return coin;
         }
         private void CoinToForm(Coin coin = null)
         {
             if (coin != null)
             {
-                text_Id.Text = coin.id.ToString();
-                textBox_Symbol.Text = coin.symbol.Trim();
-                textBox_Name.Text = coin.name.Trim();
+                text_Id.Text = coin.Id.ToString();
+                textBox_Symbol.Text = coin.Symbol.Trim();
+                textBox_Name.Text = coin.Name.Trim();
                 //Valid
-                comboBox_Valid.SelectedValue = coin.valid.id;
-                comboBox_Scam.SelectedValue = coin.scam.id;
+                comboBox_Valid.SelectedValue = coin.Valid.Id;
+                comboBox_Scam.SelectedValue = coin.Scam.Id;
 
             }
             else
@@ -61,7 +61,7 @@ namespace ClientApp.UI
             listBox_Coins.ValueMember = "Id";
             listBox_Coins.DisplayMember = "Name";
             if (coin != null)
-                listBox_Coins.SelectedValue = coin.id;
+                listBox_Coins.SelectedValue = coin.Id;
         }
         private bool CheckForm()
         {
@@ -81,7 +81,7 @@ namespace ClientApp.UI
             //TODO: Add checkForm
             coin = FormToCoin();
             if (CheckForm()) {
-                if (coin.id == 0)
+                if (coin.Id == 0)
                 {
                     if (coin.Insert())
                     {
@@ -107,7 +107,7 @@ namespace ClientApp.UI
         private void button_Delete_Click(object sender, EventArgs e)
         {
             coin = FormToCoin();
-            if (coin.id == 0)
+            if (coin.Id == 0)
                 MessageBox.Show("You need to choose a coin");
             else
             {
@@ -137,8 +137,8 @@ namespace ClientApp.UI
             //From Valid array to form 
             ValidArr validArr = new ValidArr();
             Valid validDefault = new Valid();
-            validDefault.id = -1;
-            validDefault.name = "Choose a validation method";
+            validDefault.Id = -1;
+            validDefault.Name = "Choose a validation method";
 
 
             validArr.Add(validDefault);
@@ -146,10 +146,10 @@ namespace ClientApp.UI
 
             comboBox_Valid.DataSource = validArr;
             comboBox_Valid.ValueMember = "Id";
-            comboBox_Valid.DisplayMember = "Name";
+            comboBox_Valid.DisplayMember = "";
             comboBox_Filter_Valid.DataSource = validArr;
             comboBox_Filter_Valid.ValueMember = "Id";
-            comboBox_Filter_Valid.DisplayMember = "Name";
+            comboBox_Filter_Valid.DisplayMember = "";
 
         }
         public void ScamArrToForm(Scam curScam = null)
@@ -157,8 +157,8 @@ namespace ClientApp.UI
             //From Scam array to form 
             ScamArr scamArr = new ScamArr();
             Scam scamDefault = new Scam();
-            scamDefault.id = -1;
-            scamDefault.name = "Choose a scam level";
+            scamDefault.Id = -1;
+            scamDefault.Name = "Choose a scam level";
 
 
             scamArr.Add(scamDefault);
@@ -180,23 +180,35 @@ namespace ClientApp.UI
 
         private void textBox_Filter_KeyUp(object sender, KeyEventArgs e)
         {
-            /*TODO:
-             * Figure out how filtering functionality works in coinarr
-             * Can i filter by scam/valid?
-             * + Can i use the same function for id and comboBoxes?
-            */
             //Create an array of Coins
 
             CoinArr coinArr = new CoinArr();
             coinArr.Fill();
 
-            //מסננים את אוסף הלקוחות לפי הערכים בשדות הסינון שרשם המשתמש
+            //Filter the coins according to name
 
             coinArr = coinArr.Filter((sender as TextBox).Text );
 
-            //מציבים בתיבת הרשימה את אוסף הלקוחות
+            //Change datasource
 
             listBox_Coins.DataSource = coinArr;
         }
+
+        private void comboBox_Filter_Valid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CoinArr coinArr = new CoinArr();
+            coinArr.Fill();
+            coinArr = coinArr.Filter(valid: (sender as ComboBox).SelectedItem as Valid);
+            listBox_Coins.DataSource = coinArr;
+        }
+
+        private void comboBox_Filter_Scam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CoinArr coinArr = new CoinArr();
+            coinArr.Fill();
+            coinArr = coinArr.Filter(scam: (sender as ComboBox).SelectedItem as Scam);
+            listBox_Coins.DataSource = coinArr;
+        }
+        
     }
 }

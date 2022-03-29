@@ -11,7 +11,7 @@ namespace BL
 {
     public class ClientArr : ArrayList
     {
-        public ClientArr Filter(string lastName, string cellNumber)
+        public ClientArr Filter(string lastName="",string btcAddress = "")
         {
             ClientArr clientArr = new ClientArr();
             Client client;
@@ -21,8 +21,8 @@ namespace BL
 
                 client = (this[i] as Client);
                 if
-                (client.lastName.ToLower().StartsWith(lastName.ToLower()) &&
-                client.btcAddress.Contains(cellNumber))
+                (client.LastName.ToLower().StartsWith(lastName.ToLower()) &&
+                client.BtcAddress.Contains(btcAddress))
 
                     clientArr.Add(client);
             }
@@ -34,7 +34,7 @@ namespace BL
             //מחזירה האם לפחות לאחד מהלקוחות יש את היישוב
 
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Client).city.id == curCity.id)
+                if ((this[i] as Client).city.Id == curCity.Id)
                     return true;
 
             return false;

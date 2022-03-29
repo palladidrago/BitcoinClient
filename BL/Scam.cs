@@ -10,27 +10,27 @@ namespace BL
 {
     public class Scam
     {
-        public string name { get; set; }
-        public int id { get; set; }
-        public Scam(string scamLevel, int id) { this.name = scamLevel; this.id = id; }
+        public string Name { get; set; }
+        public int Id { get; set; }
+        public Scam(string scamLevel, int Id) { this.Name = scamLevel; this.Id = Id; }
         public Scam() { }
         public Scam(DataRow dataRow)
         {
-            this.name = dataRow["ScamLevel"].ToString();
-            this.id = (int)dataRow["Id"];
+            this.Name = dataRow["ScamLevel"].ToString();
+            this.Id = (int)dataRow["Id"];
         }
         public bool Insert()
         {
-            return Scam_Dal.Insert(name);
+            return Scam_Dal.Insert(Name);
         }
         public bool Delete()
         {
-            return Scam_Dal.Delete(id);
+            return Scam_Dal.Delete(Id);
         }
 
         public override string ToString()
         {
-            return name.Trim();
+            return Name.Trim();
         }
     }
 }

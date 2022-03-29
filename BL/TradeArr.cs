@@ -20,20 +20,20 @@ namespace BL
 
 
                 trade = (this[i] as Trade);
-                if (trade.id.ToString().Contains(id.ToString()) &&
-                trade.client.ToString().StartsWith(clientName))
+                if (trade.Id.ToString().Contains(id.ToString()) &&
+                trade.Client.ToString().StartsWith(clientName))
 
                     tradeArr.Add(trade);
             }
             return tradeArr;
         }
-        public bool HasOrder(Trade curTrade)
+        public bool HasTrade(Trade curTrade)
         {
 
             //Returns whether at least one of the orders is by the client
 
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Trade).client.id == curTrade.id)
+                if ((this[i] as Trade).Client.Id == curTrade.Id)
                     return true;
 
             return false;
@@ -63,7 +63,7 @@ namespace BL
             //Return the city with the highest id
             Trade maxTrade = new Trade();
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Trade).id > maxTrade.id)
+                if ((this[i] as Trade).Id > maxTrade.Id)
                     maxTrade = this[i] as Trade;
 
             return maxTrade;

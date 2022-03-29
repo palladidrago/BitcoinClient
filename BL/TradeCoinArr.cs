@@ -31,11 +31,42 @@ namespace BL
                 this.Add(curTradeCoin);
             }
         }
+        public TradeCoinArr Filter(Trade t)
+        {
+            //Filter TradeCoinArr by trade and return a TradeCoinArr
+            TradeCoinArr tArrNew = new TradeCoinArr();
+            if (t == null) return tArrNew; //If t is null return empty TradeCoinArr
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (t.Id == (this[i] as TradeCoin).Trade.Id) tArrNew.Add(this[i]);
+            }
+            return tArrNew;
+        }
+        public TradeCoinArr Filter(Coin c) //Polymorphism :)
+        {
+            TradeCoinArr tArrNew = new TradeCoinArr();
+            if (c == null) return tArrNew;
+
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (c.Id == (this[i] as TradeCoin).Coin.Id) tArrNew.Add(this[i]);
+            }
+            return tArrNew;
+        }
+        public CoinArr GetCoinArr()
+        {
+
+            //Return all the coins from the current TradeCoinArr
+
+            CoinArr coinArr = new CoinArr();
+            for (int i = 0; i < this.Count; i++)
+                coinArr.Add((this[i] as TradeCoin).Coin);
+            return coinArr;
+        }
         public bool Insert()
         {
 
-            // מוסיפה את אוסף המוצרים להזמנה למסד הנתונים
-
+            // Add coins from trade to database
             TradeCoin tradeCoin = null;
             for (int i = 0; i < this.Count; i++)
             {
@@ -43,6 +74,15 @@ namespace BL
                 if (!tradeCoin.Insert())
                     return false;
             }
+            return true;
+        }
+        public bool Delete()
+        {
+
+            //Delete this TradeCoinArr from database
+
+            for (int i = 0; i < this.Count; i++)
+                (this[i] as TradeCoin).Delete();
             return true;
         }
     }
