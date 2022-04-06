@@ -1,7 +1,7 @@
 ﻿
 namespace ClientApp
 {
-    partial class AdminForm
+    partial class ClientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace ClientApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.listBox_Client = new System.Windows.Forms.ListBox();
             this.label_Id = new System.Windows.Forms.Label();
             this.text_Id = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@ namespace ClientApp
             // 
             // groupBox_GeneralInfo
             // 
+            this.groupBox_GeneralInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox_GeneralInfo.Controls.Add(this.button_AddCity);
             this.groupBox_GeneralInfo.Controls.Add(this.comboBox_City);
             this.groupBox_GeneralInfo.Controls.Add(this.label3);
@@ -218,6 +220,7 @@ namespace ClientApp
             // 
             // groupBox_BtcInfo
             // 
+            this.groupBox_BtcInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox_BtcInfo.Controls.Add(this.textBox_BtcAmount);
             this.groupBox_BtcInfo.Controls.Add(this.label_BtcAmount);
             this.groupBox_BtcInfo.Controls.Add(this.textBox_BtcAddress);
@@ -263,6 +266,7 @@ namespace ClientApp
             // 
             // groupBox_UselessInfo
             // 
+            this.groupBox_UselessInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox_UselessInfo.Controls.Add(this.textBox_ShoeSize);
             this.groupBox_UselessInfo.Controls.Add(this.label_ShoeSize);
             this.groupBox_UselessInfo.Location = new System.Drawing.Point(577, 268);
@@ -326,6 +330,7 @@ namespace ClientApp
             // 
             // groupBox_Filter
             // 
+            this.groupBox_Filter.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox_Filter.Controls.Add(this.label2);
             this.groupBox_Filter.Controls.Add(this.label1);
             this.groupBox_Filter.Controls.Add(this.textBox_Filter_BtcAddress);
@@ -371,10 +376,11 @@ namespace ClientApp
             this.textBox_Filter_LastName.TabIndex = 0;
             this.textBox_Filter_LastName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
-            // AdminForm
+            // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox_Filter);
             this.Controls.Add(this.deleteButton);
@@ -386,8 +392,9 @@ namespace ClientApp
             this.Controls.Add(this.label_Id);
             this.Controls.Add(this.listBox_Client);
             this.Controls.Add(this.groupBox_GeneralInfo);
-            this.Name = "AdminForm";
-            this.Text = "AdminPanel";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "ClientForm";
+            this.Text = "Client Form";
             this.groupBox_GeneralInfo.ResumeLayout(false);
             this.groupBox_GeneralInfo.PerformLayout();
             this.groupBox_BtcInfo.ResumeLayout(false);

@@ -61,6 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\Helpers.cs" />
+    <Compile Include="BL\Login.cs" />
+    <Compile Include="BL\LoginArr.cs" />
+    <Compile Include="Dal\Login_Dal.cs" />
+    <Compile Include="UI\ListViewSorter.cs" />
     <Compile Include="BL\TradeCoinArr.cs" />
     <Compile Include="BL\TradeCoin.cs" />
     <Compile Include="BL\ValidArr.cs" />
@@ -115,11 +120,29 @@
     <Compile Include="UI\CoinForm.Designer.cs">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Report.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ScamForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ScamForm.Designer.cs">
       <DependentUpon>ScamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SignUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SignUpForm.Designer.cs">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ValidForm.cs">
       <SubType>Form</SubType>
@@ -158,8 +181,17 @@
     <EmbeddedResource Include="UI\CoinForm.resx">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ScamForm.resx">
       <DependentUpon>ScamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SignUpForm.resx">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ValidForm.resx">
       <DependentUpon>ValidForm.cs</DependentUpon>
@@ -193,6 +225,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Cryptowave+Vaporwave.jpg" />
+    <Content Include="Resources\ezgif-3-53a814fc9c.gif" />
+    <Content Include="Resources\nb8j7zje.bmp" />
+    <Content Include="Resources\power-power-off-power-on-turn-off-turn-on-icon-189248.png" />
+    <Content Include="Resources\xheyn7kdjvp41.mp4" />
+    <None Include="Resources\15022c18a022e53b517ad921c9f9e87d.png" />
     <None Include="README.md" />
     <None Include="btcPattern.png" />
     <Content Include="Project_Database.mdf">

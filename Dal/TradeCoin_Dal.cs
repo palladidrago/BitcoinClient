@@ -41,16 +41,16 @@ namespace Dal
             dataSet.Relations.Add(dataRelation);
 
         }
-        public static bool Insert(int trade, int coin)
+        public static bool Insert(int trade, int coin,long count)
         {
             //Insert TradeCoin into db
             string sql = "INSERT INTO Table_TradeCoin"
             + "("
-            + "[Trade],[Coin]"
+            + "[Trade],[Coin],[Count]"
             + ")"
             + " VALUES "
             + "("
-            + $"N'{trade}',N'{coin}'"
+            + $"'{trade}','{coin}','{count}'"
             + ")";
             return Dal.ExecuteSql(sql);
         }

@@ -79,6 +79,14 @@ namespace Dal
                 dataSet.Tables["Table_Client"].Columns["City"]);
             dataSet.Relations.Add(dataRelation);
 
+            //Fill login dataset
+            Login_Dal.FillDataSet(dataSet);
+            //Create relation
+            dataRelation = new DataRelation(
+                "LoginCity",
+                dataSet.Tables["Table_Login"].Columns["Id"],
+                dataSet.Tables["Table_Client"].Columns["Login"]);
+            dataSet.Relations.Add(dataRelation);
         }
     }
 }

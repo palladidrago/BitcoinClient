@@ -41,17 +41,32 @@ namespace Dal
             dataSet.Relations.Add(dataRelation);
 
         }
-        public static bool Insert(string name,string symbol,int valid, int scam)
+        public static bool Insert(string name,string symbol,long count,int valid, int scam)
         {
             string sql = "INSERT INTO Table_Coin"
             + "("
-            + "[Name],[Symbol],[Valid],[Scam]"
+            + "[Name],[Symbol],[Count],[Valid],[Scam]"
             + ")"
             + " VALUES "
             + "("
-            + $"'{name}','{symbol}','{valid}','{scam}'"
+            + $"'{name}','{symbol}','{count}','{valid}','{scam}'"
             + ")";
             return Dal.ExecuteSql(sql);
+        }
+        public static bool Update(int id, string name, string symbol, long count, int valid, int scam)
+        {
+            //Update the Coin in database
+
+            string str = "UPDATE Table_Coin SET"
+
+            + $" [Name] = '{name}'"
+            + $",[Symbol] = '{symbol}'"
+            + $",[Count] = {count}"
+            + $",[Valid] = {valid}"
+            + $",[Scam] = {scam}"
+            + $" WHERE [Id] = {id}";
+            //Return if success
+            return Dal.ExecuteSql(str);
         }
         public static bool Delete(int id)
         {
@@ -64,7 +79,14 @@ namespace Dal
 
             return Dal.ExecuteSql(str);
         }
+        public static bool UpdateCount(int id, long count)
+        {
 
+            // Update the coin supply in table
+            string str = $"UPDATE Table_Product SET [Count] = {count} WHERE ID = {id}";
+            //Return success
+            return Dal.ExecuteSql(str);
+        }
     }
 }
 

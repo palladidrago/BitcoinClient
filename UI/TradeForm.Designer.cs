@@ -63,10 +63,9 @@
             this.textBox_Filter_BtcAddress = new System.Windows.Forms.TextBox();
             this.textBox_Filter_LastName = new System.Windows.Forms.TextBox();
             this.tabPage_TradeCoins = new System.Windows.Forms.TabPage();
-            this.listBox_Chosen_Coins = new System.Windows.Forms.ListBox();
-            this.listBox_Potential_Coins = new System.Windows.Forms.ListBox();
-            this.button_Clear = new System.Windows.Forms.Button();
-            this.button_Save = new System.Windows.Forms.Button();
+            this.listBox_Chosen_Coins_Count = new System.Windows.Forms.ListBox();
+            this.button_Minus_Coin = new System.Windows.Forms.Button();
+            this.button_Plus_Coin = new System.Windows.Forms.Button();
             this.groupBox_Coin_Filter = new System.Windows.Forms.GroupBox();
             this.textBox_Coin_Filter_Name = new System.Windows.Forms.TextBox();
             this.comboBox_Coin_Filter_Valid = new System.Windows.Forms.ComboBox();
@@ -74,6 +73,10 @@
             this.label_Coin_Filter_Valid = new System.Windows.Forms.Label();
             this.label_Coin_Filter_Scam = new System.Windows.Forms.Label();
             this.label_Coin_Filter_Name = new System.Windows.Forms.Label();
+            this.listBox_Chosen_Coins = new System.Windows.Forms.ListBox();
+            this.listBox_Potential_Coins = new System.Windows.Forms.ListBox();
+            this.button_Clear = new System.Windows.Forms.Button();
+            this.button_Save = new System.Windows.Forms.Button();
             this.tabControl_TradeForm.SuspendLayout();
             this.tradeDetails.SuspendLayout();
             this.groupBox_Filter_Details.SuspendLayout();
@@ -89,10 +92,10 @@
             this.tabControl_TradeForm.Controls.Add(this.tradeDetails);
             this.tabControl_TradeForm.Controls.Add(this.tabPage_TradeClient);
             this.tabControl_TradeForm.Controls.Add(this.tabPage_TradeCoins);
-            this.tabControl_TradeForm.Location = new System.Drawing.Point(12, 12);
+            this.tabControl_TradeForm.Location = new System.Drawing.Point(3, 12);
             this.tabControl_TradeForm.Name = "tabControl_TradeForm";
             this.tabControl_TradeForm.SelectedIndex = 0;
-            this.tabControl_TradeForm.Size = new System.Drawing.Size(816, 426);
+            this.tabControl_TradeForm.Size = new System.Drawing.Size(1003, 426);
             this.tabControl_TradeForm.TabIndex = 0;
             // 
             // tradeDetails
@@ -110,7 +113,7 @@
             this.tradeDetails.Location = new System.Drawing.Point(4, 25);
             this.tradeDetails.Name = "tradeDetails";
             this.tradeDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tradeDetails.Size = new System.Drawing.Size(808, 397);
+            this.tradeDetails.Size = new System.Drawing.Size(995, 397);
             this.tradeDetails.TabIndex = 0;
             this.tradeDetails.Text = "Trade Details";
             this.tradeDetails.UseVisualStyleBackColor = true;
@@ -301,7 +304,7 @@
             this.tabPage_TradeClient.Location = new System.Drawing.Point(4, 25);
             this.tabPage_TradeClient.Name = "tabPage_TradeClient";
             this.tabPage_TradeClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_TradeClient.Size = new System.Drawing.Size(785, 397);
+            this.tabPage_TradeClient.Size = new System.Drawing.Size(995, 397);
             this.tabPage_TradeClient.TabIndex = 1;
             this.tabPage_TradeClient.Text = "Trade Client";
             this.tabPage_TradeClient.UseVisualStyleBackColor = true;
@@ -314,6 +317,7 @@
             this.groupBox_ClientInfo.Controls.Add(this.text_ClientInfo_LastName);
             this.groupBox_ClientInfo.Controls.Add(this.text_ClientInfo_FirstName);
             this.groupBox_ClientInfo.Controls.Add(this.label_ClientInfo_FirstName);
+            this.groupBox_ClientInfo.Font = new System.Drawing.Font("Rockwell Nova Cond", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_ClientInfo.Location = new System.Drawing.Point(360, 273);
             this.groupBox_ClientInfo.Name = "groupBox_ClientInfo";
             this.groupBox_ClientInfo.Size = new System.Drawing.Size(402, 100);
@@ -324,51 +328,56 @@
             // text_ClientInfo_BtcAddress
             // 
             this.text_ClientInfo_BtcAddress.AutoSize = true;
+            this.text_ClientInfo_BtcAddress.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_ClientInfo_BtcAddress.Location = new System.Drawing.Point(139, 62);
             this.text_ClientInfo_BtcAddress.Name = "text_ClientInfo_BtcAddress";
-            this.text_ClientInfo_BtcAddress.Size = new System.Drawing.Size(0, 16);
+            this.text_ClientInfo_BtcAddress.Size = new System.Drawing.Size(0, 27);
             this.text_ClientInfo_BtcAddress.TabIndex = 0;
             // 
             // label_ClientInfo_BtcAddress
             // 
             this.label_ClientInfo_BtcAddress.AutoSize = true;
+            this.label_ClientInfo_BtcAddress.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ClientInfo_BtcAddress.Location = new System.Drawing.Point(22, 62);
             this.label_ClientInfo_BtcAddress.Name = "label_ClientInfo_BtcAddress";
-            this.label_ClientInfo_BtcAddress.Size = new System.Drawing.Size(101, 16);
+            this.label_ClientInfo_BtcAddress.Size = new System.Drawing.Size(110, 27);
             this.label_ClientInfo_BtcAddress.TabIndex = 0;
             this.label_ClientInfo_BtcAddress.Text = "Bitcoin Address";
             // 
             // label_ClientInfo_LastName
             // 
             this.label_ClientInfo_LastName.AutoSize = true;
-            this.label_ClientInfo_LastName.Location = new System.Drawing.Point(211, 31);
+            this.label_ClientInfo_LastName.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ClientInfo_LastName.Location = new System.Drawing.Point(210, 31);
             this.label_ClientInfo_LastName.Name = "label_ClientInfo_LastName";
-            this.label_ClientInfo_LastName.Size = new System.Drawing.Size(72, 16);
+            this.label_ClientInfo_LastName.Size = new System.Drawing.Size(79, 27);
             this.label_ClientInfo_LastName.TabIndex = 0;
             this.label_ClientInfo_LastName.Text = "Last Name";
             // 
             // text_ClientInfo_LastName
             // 
             this.text_ClientInfo_LastName.AutoSize = true;
-            this.text_ClientInfo_LastName.Location = new System.Drawing.Point(289, 31);
+            this.text_ClientInfo_LastName.Location = new System.Drawing.Point(304, 31);
             this.text_ClientInfo_LastName.Name = "text_ClientInfo_LastName";
-            this.text_ClientInfo_LastName.Size = new System.Drawing.Size(0, 16);
+            this.text_ClientInfo_LastName.Size = new System.Drawing.Size(0, 18);
             this.text_ClientInfo_LastName.TabIndex = 0;
             // 
             // text_ClientInfo_FirstName
             // 
             this.text_ClientInfo_FirstName.AutoSize = true;
+            this.text_ClientInfo_FirstName.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_ClientInfo_FirstName.Location = new System.Drawing.Point(109, 31);
             this.text_ClientInfo_FirstName.Name = "text_ClientInfo_FirstName";
-            this.text_ClientInfo_FirstName.Size = new System.Drawing.Size(0, 16);
+            this.text_ClientInfo_FirstName.Size = new System.Drawing.Size(0, 27);
             this.text_ClientInfo_FirstName.TabIndex = 0;
             // 
             // label_ClientInfo_FirstName
             // 
             this.label_ClientInfo_FirstName.AutoSize = true;
+            this.label_ClientInfo_FirstName.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ClientInfo_FirstName.Location = new System.Drawing.Point(22, 31);
             this.label_ClientInfo_FirstName.Name = "label_ClientInfo_FirstName";
-            this.label_ClientInfo_FirstName.Size = new System.Drawing.Size(72, 16);
+            this.label_ClientInfo_FirstName.Size = new System.Drawing.Size(81, 27);
             this.label_ClientInfo_FirstName.TabIndex = 0;
             this.label_ClientInfo_FirstName.Text = "First Name";
             // 
@@ -432,64 +441,65 @@
             // 
             // tabPage_TradeCoins
             // 
+            this.tabPage_TradeCoins.BackgroundImage = global::ClientApp.Properties.Resources.btcPattern;
+            this.tabPage_TradeCoins.Controls.Add(this.listBox_Chosen_Coins_Count);
+            this.tabPage_TradeCoins.Controls.Add(this.button_Minus_Coin);
+            this.tabPage_TradeCoins.Controls.Add(this.button_Plus_Coin);
             this.tabPage_TradeCoins.Controls.Add(this.groupBox_Coin_Filter);
             this.tabPage_TradeCoins.Controls.Add(this.listBox_Chosen_Coins);
             this.tabPage_TradeCoins.Controls.Add(this.listBox_Potential_Coins);
             this.tabPage_TradeCoins.Location = new System.Drawing.Point(4, 25);
             this.tabPage_TradeCoins.Name = "tabPage_TradeCoins";
             this.tabPage_TradeCoins.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_TradeCoins.Size = new System.Drawing.Size(808, 397);
+            this.tabPage_TradeCoins.Size = new System.Drawing.Size(995, 397);
             this.tabPage_TradeCoins.TabIndex = 2;
             this.tabPage_TradeCoins.Text = "Trade Coins";
             this.tabPage_TradeCoins.UseVisualStyleBackColor = true;
             // 
-            // listBox_Chosen_Coins
+            // listBox_Chosen_Coins_Count
             // 
-            this.listBox_Chosen_Coins.FormattingEnabled = true;
-            this.listBox_Chosen_Coins.ItemHeight = 16;
-            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(607, 13);
-            this.listBox_Chosen_Coins.Name = "listBox_Chosen_Coins";
-            this.listBox_Chosen_Coins.Size = new System.Drawing.Size(195, 356);
-            this.listBox_Chosen_Coins.TabIndex = 0;
+            this.listBox_Chosen_Coins_Count.FormattingEnabled = true;
+            this.listBox_Chosen_Coins_Count.ItemHeight = 16;
+            this.listBox_Chosen_Coins_Count.Location = new System.Drawing.Point(797, 15);
+            this.listBox_Chosen_Coins_Count.Name = "listBox_Chosen_Coins_Count";
+            this.listBox_Chosen_Coins_Count.Size = new System.Drawing.Size(114, 356);
+            this.listBox_Chosen_Coins_Count.TabIndex = 4;
+            this.listBox_Chosen_Coins_Count.SelectedIndexChanged += new System.EventHandler(this.listBox_Chosen_Coins_Count_SelectedIndexChanged);
             // 
-            // listBox_Potential_Coins
+            // button_Minus_Coin
             // 
-            this.listBox_Potential_Coins.FormattingEnabled = true;
-            this.listBox_Potential_Coins.ItemHeight = 16;
-            this.listBox_Potential_Coins.Location = new System.Drawing.Point(390, 13);
-            this.listBox_Potential_Coins.Name = "listBox_Potential_Coins";
-            this.listBox_Potential_Coins.Size = new System.Drawing.Size(211, 356);
-            this.listBox_Potential_Coins.TabIndex = 0;
-            this.listBox_Potential_Coins.DoubleClick += new System.EventHandler(this.listBox_Potential_Coins_DoubleClick);
+            this.button_Minus_Coin.BackColor = System.Drawing.Color.Red;
+            this.button_Minus_Coin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Minus_Coin.Location = new System.Drawing.Point(917, 198);
+            this.button_Minus_Coin.Name = "button_Minus_Coin";
+            this.button_Minus_Coin.Size = new System.Drawing.Size(72, 173);
+            this.button_Minus_Coin.TabIndex = 3;
+            this.button_Minus_Coin.Text = "-";
+            this.button_Minus_Coin.UseVisualStyleBackColor = false;
+            this.button_Minus_Coin.Click += new System.EventHandler(this.button_Minus_Coin_Click);
             // 
-            // button_Clear
+            // button_Plus_Coin
             // 
-            this.button_Clear.Location = new System.Drawing.Point(657, 463);
-            this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(75, 23);
-            this.button_Clear.TabIndex = 1;
-            this.button_Clear.Text = "Clear";
-            this.button_Clear.UseVisualStyleBackColor = true;
-            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
-            // 
-            // button_Save
-            // 
-            this.button_Save.Location = new System.Drawing.Point(753, 463);
-            this.button_Save.Name = "button_Save";
-            this.button_Save.Size = new System.Drawing.Size(75, 23);
-            this.button_Save.TabIndex = 1;
-            this.button_Save.Text = "Save";
-            this.button_Save.UseVisualStyleBackColor = true;
-            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
+            this.button_Plus_Coin.BackColor = System.Drawing.Color.LawnGreen;
+            this.button_Plus_Coin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Plus_Coin.Location = new System.Drawing.Point(917, 15);
+            this.button_Plus_Coin.Name = "button_Plus_Coin";
+            this.button_Plus_Coin.Size = new System.Drawing.Size(72, 160);
+            this.button_Plus_Coin.TabIndex = 3;
+            this.button_Plus_Coin.Text = "+";
+            this.button_Plus_Coin.UseVisualStyleBackColor = false;
+            this.button_Plus_Coin.Click += new System.EventHandler(this.button_Plus_Coin_Click);
             // 
             // groupBox_Coin_Filter
             // 
+            this.groupBox_Coin_Filter.BackColor = System.Drawing.Color.Silver;
             this.groupBox_Coin_Filter.Controls.Add(this.textBox_Coin_Filter_Name);
             this.groupBox_Coin_Filter.Controls.Add(this.comboBox_Coin_Filter_Valid);
             this.groupBox_Coin_Filter.Controls.Add(this.comboBox_Coin_Filter_Scam);
             this.groupBox_Coin_Filter.Controls.Add(this.label_Coin_Filter_Valid);
             this.groupBox_Coin_Filter.Controls.Add(this.label_Coin_Filter_Scam);
             this.groupBox_Coin_Filter.Controls.Add(this.label_Coin_Filter_Name);
+            this.groupBox_Coin_Filter.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Coin_Filter.Location = new System.Drawing.Point(7, 13);
             this.groupBox_Coin_Filter.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_Coin_Filter.Name = "groupBox_Coin_Filter";
@@ -503,7 +513,7 @@
             // 
             this.textBox_Coin_Filter_Name.Location = new System.Drawing.Point(188, 38);
             this.textBox_Coin_Filter_Name.Name = "textBox_Coin_Filter_Name";
-            this.textBox_Coin_Filter_Name.Size = new System.Drawing.Size(100, 22);
+            this.textBox_Coin_Filter_Name.Size = new System.Drawing.Size(100, 23);
             this.textBox_Coin_Filter_Name.TabIndex = 2;
             this.textBox_Coin_Filter_Name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Coin_Filter_Name_KeyUp);
             // 
@@ -530,41 +540,82 @@
             // label_Coin_Filter_Valid
             // 
             this.label_Coin_Filter_Valid.AutoSize = true;
-            this.label_Coin_Filter_Valid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Coin_Filter_Valid.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Coin_Filter_Valid.Location = new System.Drawing.Point(8, 73);
             this.label_Coin_Filter_Valid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Coin_Filter_Valid.Name = "label_Coin_Filter_Valid";
-            this.label_Coin_Filter_Valid.Size = new System.Drawing.Size(165, 25);
+            this.label_Coin_Filter_Valid.Size = new System.Drawing.Size(158, 27);
             this.label_Coin_Filter_Valid.TabIndex = 0;
             this.label_Coin_Filter_Valid.Text = "Validation system";
             // 
             // label_Coin_Filter_Scam
             // 
             this.label_Coin_Filter_Scam.AutoSize = true;
-            this.label_Coin_Filter_Scam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Coin_Filter_Scam.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Coin_Filter_Scam.Location = new System.Drawing.Point(8, 117);
             this.label_Coin_Filter_Scam.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Coin_Filter_Scam.Name = "label_Coin_Filter_Scam";
-            this.label_Coin_Filter_Scam.Size = new System.Drawing.Size(115, 25);
+            this.label_Coin_Filter_Scam.Size = new System.Drawing.Size(103, 27);
             this.label_Coin_Filter_Scam.TabIndex = 0;
             this.label_Coin_Filter_Scam.Text = "Scam Level";
             // 
             // label_Coin_Filter_Name
             // 
             this.label_Coin_Filter_Name.AutoSize = true;
-            this.label_Coin_Filter_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Coin_Filter_Name.Font = new System.Drawing.Font("Rockwell Nova Cond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Coin_Filter_Name.Location = new System.Drawing.Point(8, 38);
             this.label_Coin_Filter_Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Coin_Filter_Name.Name = "label_Coin_Filter_Name";
-            this.label_Coin_Filter_Name.Size = new System.Drawing.Size(64, 25);
+            this.label_Coin_Filter_Name.Size = new System.Drawing.Size(59, 27);
             this.label_Coin_Filter_Name.TabIndex = 0;
             this.label_Coin_Filter_Name.Text = "Name";
+            // 
+            // listBox_Chosen_Coins
+            // 
+            this.listBox_Chosen_Coins.FormattingEnabled = true;
+            this.listBox_Chosen_Coins.ItemHeight = 16;
+            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(595, 13);
+            this.listBox_Chosen_Coins.Name = "listBox_Chosen_Coins";
+            this.listBox_Chosen_Coins.Size = new System.Drawing.Size(195, 356);
+            this.listBox_Chosen_Coins.TabIndex = 0;
+            this.listBox_Chosen_Coins.SelectedIndexChanged += new System.EventHandler(this.listBox_Chosen_Coins_SelectedIndexChanged);
+            // 
+            // listBox_Potential_Coins
+            // 
+            this.listBox_Potential_Coins.FormattingEnabled = true;
+            this.listBox_Potential_Coins.ItemHeight = 16;
+            this.listBox_Potential_Coins.Location = new System.Drawing.Point(378, 13);
+            this.listBox_Potential_Coins.Name = "listBox_Potential_Coins";
+            this.listBox_Potential_Coins.Size = new System.Drawing.Size(211, 356);
+            this.listBox_Potential_Coins.TabIndex = 0;
+            this.listBox_Potential_Coins.DoubleClick += new System.EventHandler(this.listBox_Potential_Coins_DoubleClick);
+            // 
+            // button_Clear
+            // 
+            this.button_Clear.Location = new System.Drawing.Point(788, 444);
+            this.button_Clear.Name = "button_Clear";
+            this.button_Clear.Size = new System.Drawing.Size(75, 23);
+            this.button_Clear.TabIndex = 1;
+            this.button_Clear.Text = "Clear";
+            this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
+            // 
+            // button_Save
+            // 
+            this.button_Save.Location = new System.Drawing.Point(884, 444);
+            this.button_Save.Name = "button_Save";
+            this.button_Save.Size = new System.Drawing.Size(75, 23);
+            this.button_Save.TabIndex = 1;
+            this.button_Save.Text = "Save";
+            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // TradeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 498);
+            this.BackColor = System.Drawing.Color.Turquoise;
+            this.ClientSize = new System.Drawing.Size(1018, 498);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.tabControl_TradeForm);
@@ -635,5 +686,8 @@
         private System.Windows.Forms.Label label_Coin_Filter_Valid;
         private System.Windows.Forms.Label label_Coin_Filter_Scam;
         private System.Windows.Forms.Label label_Coin_Filter_Name;
+        private System.Windows.Forms.ListBox listBox_Chosen_Coins_Count;
+        private System.Windows.Forms.Button button_Minus_Coin;
+        private System.Windows.Forms.Button button_Plus_Coin;
     }
 }

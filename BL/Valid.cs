@@ -17,7 +17,7 @@ namespace BL
             public Valid() { }
             public Valid(DataRow dataRow)
             {
-                this.Name = dataRow["Name"].ToString();
+                this.Name = dataRow["Name"].ToString().Trim();
                 this.Id = (int)dataRow["Id"];
             }
             public bool Insert()

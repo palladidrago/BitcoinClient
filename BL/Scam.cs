@@ -16,7 +16,7 @@ namespace BL
         public Scam() { }
         public Scam(DataRow dataRow)
         {
-            this.Name = dataRow["ScamLevel"].ToString();
+            this.Name = dataRow["ScamLevel"].ToString().Trim();
             this.Id = (int)dataRow["Id"];
         }
         public bool Insert()

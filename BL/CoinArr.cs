@@ -37,7 +37,7 @@ namespace BL
 
             DataTable dataTable = Coin_Dal.GetDataTable();
 
-            //Move the values from the table to the TradeCoinArr
+            //Move the values from the table to the CoinArr
             //Line by line
 
 
@@ -50,7 +50,7 @@ namespace BL
                 this.Add(curCoin);
             }
         }
-        public CoinArr Filter(string name="", Scam scam=null, Valid valid=null)
+        public CoinArr Filter(string name="", Scam scam=null, Valid valid=null,long count=0)
         {
             //Does this work with default null Values? 
             CoinArr coinArr = new CoinArr();
@@ -70,8 +70,10 @@ namespace BL
                 //Filter by valid
                 && (valid == null || valid.Id == -1 || coin.Valid.Id == valid.Id)
                 //Filter by scam
-                && ( scam == null || scam.Id == -1 || coin.Scam.Id == scam.Id)
-                )
+                && (scam == null || scam.Id == -1 || coin.Scam.Id == scam.Id)
+
+                && (count == 0 || count <= coin.Count) //If you have at least that many
+                ) 
 
                     //If coin is valid, add
 
@@ -85,7 +87,7 @@ namespace BL
             //Remove from current coin array the given array (WOW)
 
             for (int i = 0; i < coinArr.Count; i++)
-                this.Remove(coinArr[i] as Coin); //ArrayList.Remove(): remove specific item from arraylist :O
+                this.Remove(coinArr[i] as Coin); //Remove(): Remove from current array given coin
         }
         public void Remove(Coin coin)
         {
@@ -97,7 +99,26 @@ namespace BL
                 {
                     this.RemoveAt(i); return;
                 }
-            //Wouldn't it be faster to use Remove(coin)??
+            
+        }
+        public void UpdateCount()
+        {
+            //Update(refresh) the count for every coin
+
+            for (int i = 0; i < this.Count; i++)
+                (this[i] as Coin).UpdateCount();
+        }
+        public void UpdateCoin(Coin coin)
+        {
+
+            //Update specific coin in array
+
+            for (int i = 0; i < this.Count; i++)
+                if ((this[i] as Coin).Id == coin.Id)
+                {
+                    this[i] = coin;
+                    return;
+                }
         }
     }
 }

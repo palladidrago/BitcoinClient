@@ -29,6 +29,7 @@ namespace ClientApp.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CityForm));
             this.listBox_City = new System.Windows.Forms.ListBox();
             this.label_Id = new System.Windows.Forms.Label();
             this.text_Id = new System.Windows.Forms.Label();
@@ -131,6 +132,7 @@ namespace ClientApp.UI
             this.Controls.Add(this.text_Id);
             this.Controls.Add(this.label_Id);
             this.Controls.Add(this.listBox_City);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CityForm";
             this.Text = "City Form";
             this.ResumeLayout(false);

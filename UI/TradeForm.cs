@@ -42,7 +42,12 @@ namespace ClientApp.UI
             textBox_Coin_Filter_Name.Text = String.Empty;
             comboBox_Coin_Filter_Valid.SelectedValue = -1;
             comboBox_Coin_Filter_Scam.SelectedValue = -1;
+            listBox_Chosen_Coins.Items.Clear(); //Clear coins listbox
+            listBox_Chosen_Coins_Count.Items.Clear(); //Clear count listbox
+
             SetCoinsByFilter();
+
+
         }
         private void ClearAll() { ClearClient(); ClearDetails(); ClearItems(); }
         #endregion
@@ -58,11 +63,21 @@ namespace ClientApp.UI
                 coinArr.Remove(listBox_Chosen_Coins.DataSource as CoinArr); //Remove all the chosen coins from the potential listbox
             CoinArrToForm(listBox_Potential_Coins, coinArr);
         }
-        private void MoveSelectedItemBetweenListBox(ListBox listBox_From, ListBox listBox_To)
+        private void MoveSelectedItemBetweenListBox(ListBox listBox_From, ListBox listBox_To,bool isToTrade)
         {
             // Moves coins between potential and wanted listbox
             CoinArr coinArr = null;
-
+            Coin selectedItem = listBox_From.SelectedItem as Coin;
+            if (isToTrade)
+            {
+                selectedItem.Count--;
+                listBox_Chosen_Coins_Count.Items.Add(1);
+            }
+            else
+            {
+                (selectedItem as Coin).Count += (int)listBox_Chosen_Coins_Count.SelectedItem;
+                listBox_Chosen_Coins_Count.Items.RemoveAt(listBox_Chosen_Coins_Count.SelectedIndex);
+            }
             //Find selected coin
 
             Coin selectedCoin = listBox_From.SelectedItem as Coin;
@@ -82,6 +97,13 @@ namespace ClientApp.UI
             coinArr = listBox_From.DataSource as CoinArr;
             coinArr.Remove(selectedCoin);
             CoinArrToForm(listBox_From, coinArr);
+            // If is to trade, change selected indexes
+            if ( isToTrade)
+            {
+                int k = listBox_To.Items.Count - 1;
+                listBox_To.SelectedIndex = k;
+                listBox_Chosen_Coins_Count.SelectedIndex = k;
+            }
         }
         #endregion
         public TradeForm()
@@ -128,6 +150,7 @@ namespace ClientApp.UI
                 listBox_Trades.SelectedValue = trade.Id;
                 text_Id.Text = trade.Id.ToString();
                 textBox_Memo.Text = trade.Memo;
+                
             }
             else
             {
@@ -203,11 +226,24 @@ namespace ClientApp.UI
             if (coinArr == null)
             {
                 coinArr = new CoinArr();
-                coinArr.Fill();
+                coinArr.Fill(); //Add all coins
             }
             listBox.DataSource = coinArr;
             listBox.ValueMember = "Id";
-            listBox.DisplayMember = "Name";
+            listBox.DisplayMember = "";
+        }
+        private void CoinArrCountToForm(TradeCoinArr curTradeCoinArr)
+        {
+            listBox_Chosen_Coins_Count.Items.Clear(); //Clear listbox
+            for (int i = 0; i < curTradeCoinArr.Count; i++)
+            {
+                listBox_Chosen_Coins_Count.Items.Add((curTradeCoinArr[i] as TradeCoin).Count); //Add count manually (not datasource)
+            }
+
+            //Select the first line right away
+
+            if (listBox_Chosen_Coins_Count.Items.Count > 0)
+                listBox_Chosen_Coins_Count.SelectedIndex = 0;
         }
         #endregion
         #region FormToX
@@ -231,6 +267,9 @@ namespace ClientApp.UI
                 //Current product for trade coin pair
 
                 tradeCoin.Coin = listBox_Chosen_Coins.Items[i] as Coin;
+
+                //Count of Coins for current TradeCoin
+                tradeCoin.Count = (long) listBox_Chosen_Coins_Count.Items[i];
 
                 //Add current tradecoin pair to array
 
@@ -278,7 +317,12 @@ namespace ClientApp.UI
                     //Add new coins to the trade
 
                     if (tradeCoinArr_New.Insert())
+                    {
                         MessageBox.Show("Successfully saved");
+                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateCount();
+
+                    }
+
                     else
                         MessageBox.Show("Error in insert");
 
@@ -297,20 +341,30 @@ namespace ClientApp.UI
                     //Delete all TradeCoin (all items of trade itself) for this trade
                     tradeCoinArr_Old.Delete();
                     tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
-                    tradeCoinArr_New.Insert(); //Finally, insert the TradeCoinArr to db
+                    if (tradeCoinArr_New.Insert()) {
+                        MessageBox.Show("Updated successfully");
+                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateCount();
+
+                        (listBox_Potential_Coins.DataSource as CoinArr).UpdateCount();
+                    }
+                    else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
+          
+                    ClearAll();
                 }
-                else MessageBox.Show("Error in insert");
+                else MessageBox.Show("Error in insert/update");
             }
         }
         #endregion
         #region Event Functions
         private void listBox_Trades_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            //When Trade selected:
             ListBox lb = sender as ListBox;
             Trade curTrade = lb.SelectedItem as Trade;
 
             if (curTrade != null)
             {
+                //Trade to form (First Page)
                 TradeToForm(curTrade);
             }
             ClientToForm(curTrade.Client); //Client to form with current trade
@@ -324,11 +378,13 @@ namespace ClientApp.UI
             tradeCoinArr = tradeCoinArr.Filter(curTrade);
 
             //Only the coins in the trade coin arr
-
+            //Update Chosen listbox, all the chosen coins
             CoinArr coinArrInTrade = tradeCoinArr.GetCoinArr();
             CoinArrToForm(listBox_Chosen_Coins, coinArrInTrade);
+            //Update the count (in addition to the list) of coins
+            CoinArrCountToForm(tradeCoinArr);
 
-            //Update Potential listbox: all coins, except already chose ones
+            //Update Potential listbox: all coins, except already chosen     ones
 
             CoinArr coinArrNotInTrade = new CoinArr();
             coinArrNotInTrade.Fill();
@@ -340,11 +396,10 @@ namespace ClientApp.UI
 
         private void listBox_Potential_Coins_DoubleClick(object sender, EventArgs e)
         {
-            //Move selected coin from pontential list of coins to list of chosen coins
+            //Move selected coin from potential list of coins to list of chosen coins
 
             ListBox potentialListBox = sender as ListBox;
-            MoveSelectedItemBetweenListBox(potentialListBox, listBox_Chosen_Coins);
-            listBox_Chosen_Coins.SelectedValue = potentialListBox.SelectedValue;
+            MoveSelectedItemBetweenListBox(potentialListBox, listBox_Chosen_Coins,true);
         }
         private void listBox_Client_DoubleClick(object sender, EventArgs e)
         {
@@ -397,5 +452,58 @@ namespace ClientApp.UI
         {
             SetCoinsByFilter();
         }
+
+        private void listBox_Chosen_Coins_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox_Chosen_Coins_Count.SelectedIndex = listBox_Chosen_Coins.SelectedIndex;
+        }
+
+        private void listBox_Chosen_Coins_Count_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox_Chosen_Coins.SelectedIndex = listBox_Chosen_Coins_Count.SelectedIndex;
+
+        }
+
+
+        private void button_Plus_Coin_Click(object sender, EventArgs e)
+        {
+            if (listBox_Chosen_Coins_Count.SelectedIndex >= 0)
+            {
+                if ((listBox_Chosen_Coins.SelectedItem as Coin).Count > 0) //Check if at least one in stock (or trade?)
+                { //If yes, add to TradeCoin and remove from stock
+                    int k = listBox_Chosen_Coins_Count.SelectedIndex;
+                    //Update the product inside the chosen coins listbox
+                    listBox_Chosen_Coins_Count.Items[k] = (int)listBox_Chosen_Coins_Count.Items[k] + 1;
+                    //Remove from stock, update coin amount in list of coins in trade
+                    CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
+                    Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
+                    coin.Count--;
+                    coinArr.UpdateCoin(coin);
+                    CoinArrToForm(listBox_Chosen_Coins, coinArr);
+                }
+                else MessageBox.Show("There aren't enough in stock for that","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        private void button_Minus_Coin_Click(object sender, EventArgs e)
+        {
+            if (listBox_Chosen_Coins_Count.SelectedIndex >= 0)
+            {
+                if (Convert.ToInt64(listBox_Chosen_Coins_Count.SelectedItem) > 1) //Check if at least one in stock (or trade?)
+                { //If yes, add to TradeCoin and remove from stock
+                    int k = listBox_Chosen_Coins_Count.SelectedIndex;
+                    //Update the product inside the chosen coins listbox
+                    listBox_Chosen_Coins_Count.Items[k] = (int)listBox_Chosen_Coins_Count.Items[k] - 1;
+                    //Remove from stock, update coin amount in list of coins in trade
+                    CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
+                    Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
+                    coin.Count++; //Update stock
+                    coinArr.UpdateCoin(coin);
+                    CoinArrToForm(listBox_Chosen_Coins, coinArr);
+                }
+                else MessageBox.Show("There aren't enough selected for that", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

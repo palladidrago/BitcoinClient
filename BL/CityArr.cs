@@ -37,8 +37,8 @@ namespace BL
 
             DataTable dataTable = City_Dal.GetDataTable();
 
-            //להעביר את הערכים מהטבלה לתוך אוסף הלקוחות
-            //להעביר כל שורה בטבלה ללקוח
+            //Move the clients from datatable to arr
+            //Move every line
 
             DataRow dataRow;
             City curCity;

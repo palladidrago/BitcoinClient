@@ -51,22 +51,22 @@ namespace ClientApp.UI
             // label_Id
             // 
             this.label_Id.AutoSize = true;
-            this.label_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Id.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Id.Location = new System.Drawing.Point(13, 12);
             this.label_Id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Id.Name = "label_Id";
-            this.label_Id.Size = new System.Drawing.Size(28, 25);
+            this.label_Id.Size = new System.Drawing.Size(31, 27);
             this.label_Id.TabIndex = 0;
             this.label_Id.Text = "Id";
             // 
             // label_Scam
             // 
             this.label_Scam.AutoSize = true;
-            this.label_Scam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Scam.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Scam.Location = new System.Drawing.Point(8, 56);
             this.label_Scam.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Scam.Name = "label_Scam";
-            this.label_Scam.Size = new System.Drawing.Size(115, 25);
+            this.label_Scam.Size = new System.Drawing.Size(120, 27);
             this.label_Scam.TabIndex = 0;
             this.label_Scam.Text = "Scam Level";
             // 
@@ -129,9 +129,10 @@ namespace ClientApp.UI
             this.Controls.Add(this.label_Scam);
             this.Controls.Add(this.label_Id);
             this.Controls.Add(this.listBox_Scam);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScamForm";
-            this.Text = "Coin";
+            this.Text = "Scam level";
             this.ResumeLayout(false);
             this.PerformLayout();
 

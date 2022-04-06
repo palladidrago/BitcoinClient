@@ -12,10 +12,10 @@ using ClientApp.UI;
 
 namespace ClientApp
 {
-    public partial class AdminForm : Form
+    public partial class ClientForm : Form
     {
         Client client;
-        public AdminForm()
+        public ClientForm()
         {
             InitializeComponent();
             ClientArrToForm(); //For the list box fill in

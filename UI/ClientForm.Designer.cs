@@ -1,7 +1,7 @@
 ﻿
 namespace ClientApp
 {
-    partial class ClientForm
+    partial class Client_Create_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -211,7 +211,7 @@ namespace ClientApp
             this.label_Title.TabIndex = 8;
             this.label_Title.Text = "Enter your info for free money and happiness";
             // 
-            // ClientForm
+            // Client_Create_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -234,7 +234,7 @@ namespace ClientApp
             this.Controls.Add(this.label_LastName);
             this.Controls.Add(this.label_FirstName);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ClientForm";
+            this.Name = "Client_Create_Form";
             this.Text = "Create Client";
             this.InputLanguageChanged += new System.Windows.Forms.InputLanguageChangedEventHandler(this.Form_Client_InputLanguageChanged);
             this.ResumeLayout(false);

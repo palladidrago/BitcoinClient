@@ -11,21 +11,17 @@ using ClientApp.UI;
 
 namespace ClientApp
 {
-    public partial class beginForm : Form
+    public partial class BeginForm : Form
     {
-        public beginForm()
+        public BeginForm()
         {
             InitializeComponent();
         }
-
-
-
-
         private void button_Client_Click(object sender, EventArgs e)
         {
-            AdminForm adminPanel = new AdminForm();
+            ClientForm clientForm = new ClientForm();
             this.Hide();
-            adminPanel.ShowDialog();
+            clientForm.ShowDialog();
             this.Close();
         }
 
@@ -50,6 +46,13 @@ namespace ClientApp
             TradeForm tradeForm = new TradeForm();
             this.Hide();
             tradeForm.ShowDialog();
+            this.Close();
+        }
+        private void button_Report_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            this.Hide();
+            reportForm.ShowDialog();
             this.Close();
         }
     }

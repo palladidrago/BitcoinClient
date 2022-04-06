@@ -11,9 +11,9 @@ using BL;
 
 namespace ClientApp
 {
-    public partial class ClientForm : Form
+    public partial class Client_Create_Form : Form
     {
-        public ClientForm()
+        public Client_Create_Form()
         {
             InitializeComponent();
         }
@@ -172,7 +172,7 @@ namespace ClientApp
                 Client client = FormToClient();
                 client.Insert();
                 MessageBox.Show("Added successfully");
-                beginForm loginForm = new beginForm();
+                BeginForm loginForm = new BeginForm();
                 loginForm.Show();
                 this.Close();
             }

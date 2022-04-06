@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Data;
+using System.Globalization;
 using Dal;
 
 namespace BL
@@ -17,15 +18,36 @@ namespace BL
             Trade trade;
             for (int i = 0; i < this.Count; i++)
             {
-
-
                 trade = (this[i] as Trade);
                 if (trade.Id.ToString().Contains(id.ToString()) &&
                 trade.Client.ToString().StartsWith(clientName))
-
                     tradeArr.Add(trade);
             }
             return tradeArr;
+        }
+        public TradeArr Filter(int year, int month)
+        {
+            //Filter by year and by month
+            TradeArr returnArr = new TradeArr();
+            foreach (Trade item in this)
+                if (item.Date.Year == year && item.Date.Month == month)
+                    returnArr.Add(item);
+            return returnArr;
+        }
+        public Dictionary<string, int> GetDictionary(int year)
+        {
+
+            //מחזירה משתנה מסוג מילון הכולל עבור כל חודש בשנה מסוימת, כמות ההזמנות לאותו חודש
+
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            for (int i = 1; i <= 12; i++)
+            {
+
+                //אם רוצים את שם החודש בהתאם לשפת מערכת ההפעלה
+                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
+                dictionary.Add(monthName, this.Filter(year, i).Count); //Amount of trades per month 
+            }
+            return dictionary;
         }
         public bool HasTrade(Trade curTrade)
         {
@@ -68,5 +90,6 @@ namespace BL
 
             return maxTrade;
         }
+
     }
 }

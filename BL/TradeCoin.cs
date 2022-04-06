@@ -9,19 +9,23 @@ namespace BL
 {
     internal class TradeCoin
     {
-        public int Id;
+        public int Id { get; set;}
         public Trade Trade { get; set; }
         public Coin Coin { get; set; }
+        public long Count { get; set; }
+
         public TradeCoin() { }
         public TradeCoin(DataRow dr)
         {
             Id = (int)dr["ID"];
             Trade = new Trade(dr.GetParentRow("TradeCoinTrade"));
             Coin = new Coin(dr.GetParentRow("TradeCoinCoin"));
+            Count = (long)dr["Count"];
+
         }
         public bool Insert()
         {
-            return TradeCoin_Dal.Insert(Trade.Id, Coin.Id);
+            return TradeCoin_Dal.Insert(Trade.Id, Coin.Id,Count);
         }
         public bool Delete()
         {

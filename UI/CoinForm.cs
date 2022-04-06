@@ -27,6 +27,7 @@ namespace ClientApp.UI
             coin.Id = int.Parse(text_Id.Text);
             coin.Name = textBox_Name.Text;
             coin.Symbol = textBox_Symbol.Text;
+            coin.Count = (long)numericUpDown_Count.Value;
             coin.Scam = comboBox_Scam.SelectedItem as Scam;
             coin.Valid = comboBox_Valid.SelectedItem as Valid;
             return coin;
@@ -38,7 +39,8 @@ namespace ClientApp.UI
                 text_Id.Text = coin.Id.ToString();
                 textBox_Symbol.Text = coin.Symbol.Trim();
                 textBox_Name.Text = coin.Name.Trim();
-                //Valid
+                numericUpDown_Count.Value = coin.Count;
+
                 comboBox_Valid.SelectedValue = coin.Valid.Id;
                 comboBox_Scam.SelectedValue = coin.Scam.Id;
 
@@ -48,6 +50,7 @@ namespace ClientApp.UI
                 text_Id.Text = "0";
                 textBox_Symbol.Text = "";
                 textBox_Name.Text = "";
+                numericUpDown_Count.Value = 0;
 
                 comboBox_Valid.SelectedItem = null;
                 comboBox_Scam.SelectedItem = null;
@@ -91,7 +94,7 @@ namespace ClientApp.UI
                 }
                 else
                 {
-                    if (coin.Insert())
+                    if (coin.Update())
                     {
                         MessageBox.Show("Updated successfully", "Success");
                         CoinArrToForm();
@@ -166,10 +169,10 @@ namespace ClientApp.UI
 
             comboBox_Scam.DataSource = scamArr;
             comboBox_Scam.ValueMember = "Id";
-            comboBox_Scam.DisplayMember = "Name";
+            comboBox_Scam.DisplayMember = "";
             comboBox_Filter_Scam.DataSource = scamArr;
             comboBox_Filter_Scam.ValueMember = "Id";
-            comboBox_Filter_Scam.DisplayMember = "Name";
+            comboBox_Filter_Scam.DisplayMember = "";
 
         }
 

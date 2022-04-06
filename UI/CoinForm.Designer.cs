@@ -39,7 +39,7 @@ namespace ClientApp.UI
             this.label_Filter_Name = new System.Windows.Forms.Label();
             this.label_Id = new System.Windows.Forms.Label();
             this.label_Scam = new System.Windows.Forms.Label();
-            this.label_Name = new System.Windows.Forms.Label();
+            this.label_Count = new System.Windows.Forms.Label();
             this.label_Valid = new System.Windows.Forms.Label();
             this.label_Symbol = new System.Windows.Forms.Label();
             this.textBox_Name = new System.Windows.Forms.TextBox();
@@ -51,7 +51,10 @@ namespace ClientApp.UI
             this.button_Delete = new System.Windows.Forms.Button();
             this.button_AddValid = new System.Windows.Forms.Label();
             this.button_AddScam = new System.Windows.Forms.Label();
+            this.numericUpDown_Count = new System.Windows.Forms.NumericUpDown();
+            this.label_Name = new System.Windows.Forms.Label();
             this.groupBox_Filter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Count)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox_Coins
@@ -165,16 +168,16 @@ namespace ClientApp.UI
             this.label_Scam.TabIndex = 0;
             this.label_Scam.Text = "Scam Level";
             // 
-            // label_Name
+            // label_Count
             // 
-            this.label_Name.AutoSize = true;
-            this.label_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Name.Location = new System.Drawing.Point(411, 47);
-            this.label_Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_Name.Name = "label_Name";
-            this.label_Name.Size = new System.Drawing.Size(64, 25);
-            this.label_Name.TabIndex = 0;
-            this.label_Name.Text = "Name";
+            this.label_Count.AutoSize = true;
+            this.label_Count.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Count.Location = new System.Drawing.Point(636, 15);
+            this.label_Count.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_Count.Name = "label_Count";
+            this.label_Count.Size = new System.Drawing.Size(65, 25);
+            this.label_Count.TabIndex = 0;
+            this.label_Count.Text = "Count";
             // 
             // label_Valid
             // 
@@ -296,11 +299,37 @@ namespace ClientApp.UI
             this.button_AddScam.TabIndex = 9;
             this.button_AddScam.Text = "+";
             // 
+            // numericUpDown_Count
+            // 
+            this.numericUpDown_Count.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown_Count.Location = new System.Drawing.Point(713, 15);
+            this.numericUpDown_Count.Maximum = new decimal(new int[] {
+            2100000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_Count.Name = "numericUpDown_Count";
+            this.numericUpDown_Count.Size = new System.Drawing.Size(120, 30);
+            this.numericUpDown_Count.TabIndex = 10;
+            // 
+            // label_Name
+            // 
+            this.label_Name.AutoSize = true;
+            this.label_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Name.Location = new System.Drawing.Point(411, 44);
+            this.label_Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_Name.Name = "label_Name";
+            this.label_Name.Size = new System.Drawing.Size(64, 25);
+            this.label_Name.TabIndex = 11;
+            this.label_Name.Text = "Name";
+            // 
             // CoinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 399);
+            this.ClientSize = new System.Drawing.Size(855, 399);
+            this.Controls.Add(this.label_Name);
+            this.Controls.Add(this.numericUpDown_Count);
             this.Controls.Add(this.button_AddScam);
             this.Controls.Add(this.button_AddValid);
             this.Controls.Add(this.button_Delete);
@@ -311,7 +340,7 @@ namespace ClientApp.UI
             this.Controls.Add(this.textBox_Symbol);
             this.Controls.Add(this.textBox_Name);
             this.Controls.Add(this.label_Symbol);
-            this.Controls.Add(this.label_Name);
+            this.Controls.Add(this.label_Count);
             this.Controls.Add(this.label_Valid);
             this.Controls.Add(this.label_Scam);
             this.Controls.Add(this.label_Id);
@@ -322,6 +351,7 @@ namespace ClientApp.UI
             this.Text = "Coin";
             this.groupBox_Filter.ResumeLayout(false);
             this.groupBox_Filter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Count)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,7 +363,7 @@ namespace ClientApp.UI
         private System.Windows.Forms.GroupBox groupBox_Filter;
         private System.Windows.Forms.Label label_Id;
         private System.Windows.Forms.Label label_Scam;
-        private System.Windows.Forms.Label label_Name;
+        private System.Windows.Forms.Label label_Count;
         private System.Windows.Forms.Label label_Valid;
         private System.Windows.Forms.Label label_Symbol;
         private System.Windows.Forms.TextBox textBox_Name;
@@ -351,5 +381,7 @@ namespace ClientApp.UI
         private System.Windows.Forms.Label button_AddValid;
         private System.Windows.Forms.Label button_AddScam;
         private System.Windows.Forms.TextBox textBox_Filter_Name;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Count;
+        private System.Windows.Forms.Label label_Name;
     }
 }
