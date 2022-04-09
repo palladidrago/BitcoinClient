@@ -75,11 +75,13 @@ namespace ClientApp.UI
                     //Check if city already exists
                     if (city.Insert())
                     {
-                        MessageBox.Show("Added successfully :)");
+                        //MessageBox.Show("Added successfully :)");
 
                         //Update listbox
 
                         CityArrToForm();
+                        CityToForm(null);
+
                     }
                     else
                         MessageBox.Show("You did something wrong");
@@ -97,7 +99,7 @@ namespace ClientApp.UI
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
-            if (label_Id.Text == "0")
+            if (text_Id.Text == "0")
                 MessageBox.Show("You must select a city");
             else
             {
@@ -112,8 +114,8 @@ namespace ClientApp.UI
                     clientArr.Fill();
                     if (clientArr.DoesExist(city))
                         MessageBox.Show("You can’t delete a city that is related to a client");
-                    else
-                    if (city.Delete())
+
+                    else if (city.Delete())
                     {
                         MessageBox.Show("Deleted");
                         CityToForm(null);
@@ -129,6 +131,20 @@ namespace ClientApp.UI
         {
             City selCity = listBox_City.SelectedItem as City;
             CityToForm(selCity);
+        }
+
+
+        
+        private void textBox_Name_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) {
+                button_Update_Click(null, null);
+            }
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            CityToForm(null);
         }
     }
 }

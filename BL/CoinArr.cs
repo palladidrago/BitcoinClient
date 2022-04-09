@@ -9,30 +9,30 @@ using Dal;
 
 namespace BL
 {
-    internal class CoinArr : ArrayList
+    public class CoinArr : ArrayList
     {
-        public bool IsContains(string cityName)
+        public bool IsContains(string coinName)
         {
-            //Check wether city exitst wit the sam ename
+            //Check wether coin exitst wit the sam ename
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Coin).Name == cityName)
+                if ((this[i] as Coin).Name == coinName)
                     return true;
             return false;
         }
-        public Coin GetCityWithMaxId()
+        public Coin GetCoinWithMaxId()
         {
-            //Return the city with the highest id
-            Coin maxCity = new Coin();
+            //Return the coin with the highest id
+            Coin maxCoin = new Coin();
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Coin).Id > maxCity.Id)
-                    maxCity = this[i] as Coin;
+                if ((this[i] as Coin).Id > maxCoin.Id)
+                    maxCoin = this[i] as Coin;
 
-            return maxCity;
+            return maxCoin;
         }
         public void Fill()
         {
 
-            //Table full of cities from dal
+            //Table full of coin from dal
 
 
             DataTable dataTable = Coin_Dal.GetDataTable();
@@ -46,6 +46,7 @@ namespace BL
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataRow = dataTable.Rows[i];
+                
                 curCoin = new Coin(dataRow);
                 this.Add(curCoin);
             }
@@ -72,7 +73,7 @@ namespace BL
                 //Filter by scam
                 && (scam == null || scam.Id == -1 || coin.Scam.Id == scam.Id)
 
-                && (count == 0 || count <= coin.Count) //If you have at least that many
+                && (count == 0 || count <= coin.Supply) //If you have at least that many
                 ) 
 
                     //If coin is valid, add
@@ -101,14 +102,14 @@ namespace BL
                 }
             
         }
-        public void UpdateCount()
+        public void UpdateSupply()
         {
-            //Update(refresh) the count for every coin
+            //Update(refresh) the supply for every coin
 
             for (int i = 0; i < this.Count; i++)
-                (this[i] as Coin).UpdateCount();
+                (this[i] as Coin).UpdateSupply();
         }
-        public void UpdateCoin(Coin coin)
+        public void UpdateSupply(Coin coin)
         {
 
             //Update specific coin in array

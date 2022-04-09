@@ -42,8 +42,8 @@ namespace ClientApp.UI
             textBox_Coin_Filter_Name.Text = String.Empty;
             comboBox_Coin_Filter_Valid.SelectedValue = -1;
             comboBox_Coin_Filter_Scam.SelectedValue = -1;
-            listBox_Chosen_Coins.Items.Clear(); //Clear coins listbox
-            listBox_Chosen_Coins_Count.Items.Clear(); //Clear count listbox
+            listBox_Chosen_Coins.DataSource = null; listBox_Chosen_Coins.Items.Clear(); //Clear coins listbox
+            listBox_Chosen_Coins_Supply.Items.Clear(); //Clear count listbox
 
             SetCoinsByFilter();
 
@@ -70,13 +70,13 @@ namespace ClientApp.UI
             Coin selectedItem = listBox_From.SelectedItem as Coin;
             if (isToTrade)
             {
-                selectedItem.Count--;
-                listBox_Chosen_Coins_Count.Items.Add(1);
+                selectedItem.Supply--;
+                listBox_Chosen_Coins_Supply.Items.Add(1);
             }
             else
             {
-                (selectedItem as Coin).Count += (int)listBox_Chosen_Coins_Count.SelectedItem;
-                listBox_Chosen_Coins_Count.Items.RemoveAt(listBox_Chosen_Coins_Count.SelectedIndex);
+                (selectedItem as Coin).Supply += (int)listBox_Chosen_Coins_Supply.SelectedItem;
+                listBox_Chosen_Coins_Supply.Items.RemoveAt(listBox_Chosen_Coins_Supply.SelectedIndex);
             }
             //Find selected coin
 
@@ -102,7 +102,7 @@ namespace ClientApp.UI
             {
                 int k = listBox_To.Items.Count - 1;
                 listBox_To.SelectedIndex = k;
-                listBox_Chosen_Coins_Count.SelectedIndex = k;
+                listBox_Chosen_Coins_Supply.SelectedIndex = k;
             }
         }
         #endregion
@@ -131,12 +131,16 @@ namespace ClientApp.UI
                 text_ClientInfo_BtcAddress.Text = "";
                 text_ClientInfo_FirstName.Text = "";
                 text_ClientInfo_LastName.Text = "";
+                text_ClientInfo_Username.Text = "";
+
                 text_Client.Text = "No client chosen";
             }
             else{
                 text_ClientInfo_BtcAddress.Text = c.BtcAddress;
                 text_ClientInfo_FirstName.Text = c.LastName;
                 text_ClientInfo_LastName.Text = c.FirstName;
+
+                text_ClientInfo_Username.Text = c.Login.Username;
                 text_Client.Text = c.ToString();
 
             }
@@ -232,18 +236,18 @@ namespace ClientApp.UI
             listBox.ValueMember = "Id";
             listBox.DisplayMember = "";
         }
-        private void CoinArrCountToForm(TradeCoinArr curTradeCoinArr)
+        private void CoinArrSupplyToForm(TradeCoinArr curTradeCoinArr)
         {
-            listBox_Chosen_Coins_Count.Items.Clear(); //Clear listbox
+            listBox_Chosen_Coins_Supply.Items.Clear(); //Clear listbox
             for (int i = 0; i < curTradeCoinArr.Count; i++)
             {
-                listBox_Chosen_Coins_Count.Items.Add((curTradeCoinArr[i] as TradeCoin).Count); //Add count manually (not datasource)
+                listBox_Chosen_Coins_Supply.Items.Add((curTradeCoinArr[i] as TradeCoin).Count); //Add count manually (not datasource)
             }
 
             //Select the first line right away
 
-            if (listBox_Chosen_Coins_Count.Items.Count > 0)
-                listBox_Chosen_Coins_Count.SelectedIndex = 0;
+            if (listBox_Chosen_Coins_Supply.Items.Count > 0)
+                listBox_Chosen_Coins_Supply.SelectedIndex = 0;
         }
         #endregion
         #region FormToX
@@ -268,8 +272,8 @@ namespace ClientApp.UI
 
                 tradeCoin.Coin = listBox_Chosen_Coins.Items[i] as Coin;
 
-                //Count of Coins for current TradeCoin
-                tradeCoin.Count = (long) listBox_Chosen_Coins_Count.Items[i];
+                //Supply of Coins for current TradeCoin
+                tradeCoin.Count = (long) listBox_Chosen_Coins_Supply.Items[i];
 
                 //Add current tradecoin pair to array
 
@@ -319,7 +323,7 @@ namespace ClientApp.UI
                     if (tradeCoinArr_New.Insert())
                     {
                         MessageBox.Show("Successfully saved");
-                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateCount();
+                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
 
                     }
 
@@ -343,9 +347,9 @@ namespace ClientApp.UI
                     tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
                     if (tradeCoinArr_New.Insert()) {
                         MessageBox.Show("Updated successfully");
-                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateCount();
+                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
 
-                        (listBox_Potential_Coins.DataSource as CoinArr).UpdateCount();
+                        (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
                     }
                     else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
           
@@ -382,7 +386,7 @@ namespace ClientApp.UI
             CoinArr coinArrInTrade = tradeCoinArr.GetCoinArr();
             CoinArrToForm(listBox_Chosen_Coins, coinArrInTrade);
             //Update the count (in addition to the list) of coins
-            CoinArrCountToForm(tradeCoinArr);
+            CoinArrSupplyToForm(tradeCoinArr);
 
             //Update Potential listbox: all coins, except already chosen     ones
 
@@ -455,30 +459,30 @@ namespace ClientApp.UI
 
         private void listBox_Chosen_Coins_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox_Chosen_Coins_Count.SelectedIndex = listBox_Chosen_Coins.SelectedIndex;
+            listBox_Chosen_Coins_Supply.SelectedIndex = listBox_Chosen_Coins.SelectedIndex;
         }
 
-        private void listBox_Chosen_Coins_Count_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_Chosen_Coins_Supply_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox_Chosen_Coins.SelectedIndex = listBox_Chosen_Coins_Count.SelectedIndex;
+            listBox_Chosen_Coins.SelectedIndex = listBox_Chosen_Coins_Supply.SelectedIndex;
 
         }
 
 
         private void button_Plus_Coin_Click(object sender, EventArgs e)
         {
-            if (listBox_Chosen_Coins_Count.SelectedIndex >= 0)
+            if (listBox_Chosen_Coins_Supply.SelectedIndex >= 0)
             {
-                if ((listBox_Chosen_Coins.SelectedItem as Coin).Count > 0) //Check if at least one in stock (or trade?)
+                if ((listBox_Chosen_Coins.SelectedItem as Coin).Supply > 0) //Check if at least one in stock (or trade?)
                 { //If yes, add to TradeCoin and remove from stock
-                    int k = listBox_Chosen_Coins_Count.SelectedIndex;
+                    int k = listBox_Chosen_Coins_Supply.SelectedIndex;
                     //Update the product inside the chosen coins listbox
-                    listBox_Chosen_Coins_Count.Items[k] = (int)listBox_Chosen_Coins_Count.Items[k] + 1;
+                    listBox_Chosen_Coins_Supply.Items[k] = (int)listBox_Chosen_Coins_Supply.Items[k] + 1;
                     //Remove from stock, update coin amount in list of coins in trade
                     CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
                     Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
-                    coin.Count--;
-                    coinArr.UpdateCoin(coin);
+                    coin.Supply--;
+                    coinArr.UpdateSupply(coin);
                     CoinArrToForm(listBox_Chosen_Coins, coinArr);
                 }
                 else MessageBox.Show("There aren't enough in stock for that","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -486,24 +490,46 @@ namespace ClientApp.UI
         }
         private void button_Minus_Coin_Click(object sender, EventArgs e)
         {
-            if (listBox_Chosen_Coins_Count.SelectedIndex >= 0)
+            if (listBox_Chosen_Coins_Supply.SelectedIndex >= 0)
             {
-                if (Convert.ToInt64(listBox_Chosen_Coins_Count.SelectedItem) > 1) //Check if at least one in stock (or trade?)
+                if (Convert.ToInt64(listBox_Chosen_Coins_Supply.SelectedItem) > 1) //Check if at least one in stock (or trade?)
                 { //If yes, add to TradeCoin and remove from stock
-                    int k = listBox_Chosen_Coins_Count.SelectedIndex;
+                    int k = listBox_Chosen_Coins_Supply.SelectedIndex;
                     //Update the product inside the chosen coins listbox
-                    listBox_Chosen_Coins_Count.Items[k] = (int)listBox_Chosen_Coins_Count.Items[k] - 1;
+                    listBox_Chosen_Coins_Supply.Items[k] = (int)listBox_Chosen_Coins_Supply.Items[k] - 1;
                     //Remove from stock, update coin amount in list of coins in trade
                     CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
                     Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
-                    coin.Count++; //Update stock
-                    coinArr.UpdateCoin(coin);
+                    coin.Supply++; //Update stock
+                    coinArr.UpdateSupply(coin);
                     CoinArrToForm(listBox_Chosen_Coins, coinArr);
                 }
                 else MessageBox.Show("There aren't enough selected for that", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+
+            //Create an trade from the form
+
+            Trade trade = FormToTrade();
 
 
+            if (trade.Id == 0)
+            {
+                if (trade.Delete()) //Update the trade in db
+                {
+                    //If successful, need to update trade in TradeCoin db as well!
+                    TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
+                    tradeCoinArr_Old.Fill();
+                    tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
+                    //Delete all TradeCoin (all items of trade itself) for this trade
+                    if (tradeCoinArr_Old.Delete())
+                        MessageBox.Show("Delete Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }//Finally, insert the TradeCoinArr to db
+                ClearAll();
+            }
+            else MessageBox.Show("Error in Delee", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

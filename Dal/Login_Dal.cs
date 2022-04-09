@@ -46,7 +46,7 @@ namespace Dal
         {
             //Update the Coin in database
 
-            string str = "UPDATE Table_Coin SET"
+            string str = "UPDATE Table_Login SET"
 
             + $" [Username] = '{username}'"
             + $",[PasswordHash] = '{passwordHash}'"

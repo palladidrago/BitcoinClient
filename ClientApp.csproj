@@ -48,8 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,10 +68,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\CoinQuote.cs" />
+    <Compile Include="BL\QuoteArr.cs" />
     <Compile Include="BL\Helpers.cs" />
     <Compile Include="BL\Login.cs" />
     <Compile Include="BL\LoginArr.cs" />
+    <Compile Include="BL\CoinQuoteArr.cs" />
+    <Compile Include="BL\Quote.cs" />
+    <Compile Include="Dal\Quote_Dal.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Dal\Login_Dal.cs" />
+    <Compile Include="Dal\ClientCoin_Dal.cs" />
+    <Compile Include="UI\ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PortfolioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PortfolioForm.Designer.cs">
+      <DependentUpon>PortfolioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ListViewSorter.cs" />
     <Compile Include="BL\TradeCoinArr.cs" />
     <Compile Include="BL\TradeCoin.cs" />
@@ -81,11 +107,11 @@
     <Compile Include="Dal\Trade_Dal.cs" />
     <Compile Include="Dal\Scam_Dal.cs" />
     <Compile Include="Dal\Valid_Dal.cs" />
-    <Compile Include="UI\AdminForm.cs">
+    <Compile Include="UI\ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="UI\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BL\Client.cs" />
     <Compile Include="BL\City.cs" />
@@ -94,17 +120,17 @@
     <Compile Include="Dal\City_Dal.cs" />
     <Compile Include="Dal\Client_Dal.cs" />
     <Compile Include="Dal\Dal.cs" />
-    <Compile Include="UI\ClientForm.cs">
+    <Compile Include="UI\ClientCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ClientForm.Designer.cs">
-      <DependentUpon>ClientForm.cs</DependentUpon>
+    <Compile Include="UI\ClientCreateForm.Designer.cs">
+      <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\BeginForm.cs">
+    <Compile Include="UI\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\BeginForm.Designer.cs">
-      <DependentUpon>BeginForm.cs</DependentUpon>
+    <Compile Include="UI\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,11 +152,53 @@
     <Compile Include="UI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ReportForm.cs">
+    <Compile Include="UI\Reports\ClientCityReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Report.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <Compile Include="UI\Reports\ClientCityReport.Designer.cs">
+      <DependentUpon>ClientCityReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\ClientCoinReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\ClientCoinReport.Designer.cs">
+      <DependentUpon>ClientCoinReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\CoinQuoteReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\CoinQuoteReport.Designer.cs">
+      <DependentUpon>CoinQuoteReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\CoinReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\CoinReportForm.Designer.cs">
+      <DependentUpon>CoinReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\ScamReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\ScamReport.Designer.cs">
+      <DependentUpon>ScamReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\TradeClientReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\TradeClientReport.Designer.cs">
+      <DependentUpon>TradeClientReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\ValidReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\ValidReport.Designer.cs">
+      <DependentUpon>ValidReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RoundLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\RoundLabel.Designer.cs">
+      <DependentUpon>RoundLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ScamForm.cs">
       <SubType>Form</SubType>
@@ -144,6 +212,12 @@
     <Compile Include="UI\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ValidForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,17 +230,17 @@
     <Compile Include="UI\TradeForm.Designer.cs">
       <DependentUpon>TradeForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\BeginForm.resx">
-      <DependentUpon>BeginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CityForm.resx">
       <DependentUpon>CityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ClientForm.resx">
-      <DependentUpon>ClientForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ClientCreateForm.resx">
+      <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -181,11 +255,20 @@
     <EmbeddedResource Include="UI\CoinForm.resx">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\PortfolioForm.resx">
+      <DependentUpon>PortfolioForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\ClientCoinReport.resx">
+      <DependentUpon>ClientCoinReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\CoinReportForm.resx">
+      <DependentUpon>CoinReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ScamForm.resx">
       <DependentUpon>ScamForm.cs</DependentUpon>
@@ -193,12 +276,16 @@
     <EmbeddedResource Include="UI\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ValidForm.resx">
       <DependentUpon>ValidForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TradeForm.resx">
       <DependentUpon>TradeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -225,10 +312,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Bitcoin-Logo.png" />
+    <Content Include="Resources\bitcoin.gif" />
     <Content Include="Resources\Cryptowave+Vaporwave.jpg" />
     <Content Include="Resources\ezgif-3-53a814fc9c.gif" />
+    <Content Include="Resources\JellyfishFields.png" />
     <Content Include="Resources\nb8j7zje.bmp" />
     <Content Include="Resources\power-power-off-power-on-turn-off-turn-on-icon-189248.png" />
+    <Content Include="Resources\windows-media-player-back-button.png" />
+    <Content Include="Resources\lemonspattern.jpg" />
     <Content Include="Resources\xheyn7kdjvp41.mp4" />
     <None Include="Resources\15022c18a022e53b517ad921c9f9e87d.png" />
     <None Include="README.md" />

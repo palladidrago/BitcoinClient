@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL;
 
-namespace ClientApp.UI
+namespace ClientApp.UI.Reports
 {
     public partial class ReportForm : Form
     {
@@ -79,7 +79,7 @@ namespace ClientApp.UI
                 //יצירת פריט-תיבת-תצוגה
                 listViewItem = new ListViewItem(new[] { c.Name,
 
-                    c.Valid.Name, c.Scam.Name, c.Count.ToString() });
+                    c.Valid.Name, c.Scam.Name, c.Supply.ToString() });
                 //הוספת פריט-תיבת-תצוגה לתיבת תצוגה
                 listView_Coins.Items.Add(listViewItem);
             }
@@ -137,36 +137,27 @@ namespace ClientApp.UI
             FillListView(coinArr);
         }
 
-        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            //Declare the printed page, including distance from left and top of the listview
-            e.Graphics.DrawImage(bmp,400, 0);
-        }
+
+
+        
         private void CaptureScreen()
         {
-
-            //"Catch" the page for printing including titles etc
-
-            int addAboveListView = 30;
-            int moveLeft =100;
-            Graphics graphics = listView_Coins.CreateGraphics();
-            Size curSize = listView_Coins.Size;
-            curSize.Height += addAboveListView;
-            curSize.Width += moveLeft;
-            bmp = new Bitmap(curSize.Width, curSize.Height, graphics);
-            graphics = Graphics.FromImage(bmp);
-            Point panelLocation = PointToScreen(listView_Coins.Location);
-            graphics.CopyFromScreen(panelLocation.X, panelLocation.Y - addAboveListView,
-            moveLeft, 0, curSize);
+            ListView c = listView_Coins as ListView;
+            bmp = new Bitmap(listView_Coins.Width, listView_Coins.Height);
+            c.DrawToBitmap(bmp, new Rectangle(Point.Empty, bmp.Size));
+            
         }
         private void button_Print_Click(object sender, EventArgs e)
         {
             CaptureScreen();
             printPreviewDialog.Document = printDocument;
-            printPreviewDialog.Width = 600; printPreviewDialog.Height = 800;
+            printPreviewDialog.Width = 800; printPreviewDialog.Height = 800;
             printPreviewDialog.ShowDialog();
         }
-
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp,Point.Empty);
+        }
 
 
         private void pictureBox_Print_MouseLeave(object sender, EventArgs e)
@@ -206,5 +197,16 @@ namespace ClientApp.UI
             lastSortOrder = sorter.SortOrder;
         }
 
+        private void button_CoinReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_ClientCoinReport_Click(object sender, EventArgs e)
+        {
+            ClientCoinReport ccr = new ClientCoinReport();
+            ccr.ShowDialog();
+            this.Close();
+        }
     }
 }

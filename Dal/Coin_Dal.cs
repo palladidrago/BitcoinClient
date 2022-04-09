@@ -41,19 +41,19 @@ namespace Dal
             dataSet.Relations.Add(dataRelation);
 
         }
-        public static bool Insert(string name,string symbol,long count,int valid, int scam)
+        public static bool Insert(string name,string symbol,long supply,int valid, int scam,int CMC_Id, string logoURL)
         {
             string sql = "INSERT INTO Table_Coin"
             + "("
-            + "[Name],[Symbol],[Count],[Valid],[Scam]"
+            + "[Name],[Symbol],[Supply],[Valid],[Scam],[CMC_Id],[LogoUrl]"
             + ")"
             + " VALUES "
             + "("
-            + $"'{name}','{symbol}','{count}','{valid}','{scam}'"
+            + $"'{name}','{symbol}','{supply}','{valid}','{scam}',{CMC_Id},'{logoURL}'"
             + ")";
             return Dal.ExecuteSql(sql);
         }
-        public static bool Update(int id, string name, string symbol, long count, int valid, int scam)
+        public static bool Update(int id, string name, string symbol, long supply, int valid, int scam,int CMC_Id,string logoURL)
         {
             //Update the Coin in database
 
@@ -61,9 +61,13 @@ namespace Dal
 
             + $" [Name] = '{name}'"
             + $",[Symbol] = '{symbol}'"
-            + $",[Count] = {count}"
+            + $",[Supply] = {supply}"
             + $",[Valid] = {valid}"
             + $",[Scam] = {scam}"
+
+            + $",[CMC_Id] = {CMC_Id}"
+            + $",[LogoUrl] = '{logoURL}'"
+
             + $" WHERE [Id] = {id}";
             //Return if success
             return Dal.ExecuteSql(str);
@@ -79,11 +83,11 @@ namespace Dal
 
             return Dal.ExecuteSql(str);
         }
-        public static bool UpdateCount(int id, long count)
+        public static bool UpdateSupply(int id, long supply)
         {
 
             // Update the coin supply in table
-            string str = $"UPDATE Table_Product SET [Count] = {count} WHERE ID = {id}";
+            string str = $"UPDATE Table_Coin SET [Supply] = {supply} WHERE ID = {id}";
             //Return success
             return Dal.ExecuteSql(str);
         }

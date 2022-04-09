@@ -9,27 +9,25 @@ namespace Dal
 {
     class Client_Dal
     {
-        public static bool Insert(string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize,int city)
+        public static bool Insert(string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize,int city,int login)
         {
-
-            //מוסיפה את הלקוח למסד הנתונים
-            //בניית הוראת ה-SQL
+            //Add client to database
 
             string str = "INSERT INTO Table_Client"
             + "("
-            + "[FirstName],[LastName],[BirthYear],[PhoneNumber],[BtcAmount],[BtcAddress],[ShoeSize],[City]"
+            + "[FirstName],[LastName],[BirthYear],[PhoneNumber],[BtcAmount],[BtcAddress],[ShoeSize],[City],[Login]"
             + ")"
             + " VALUES "
             + "("
-            + $"N'{firstName}',N'{lastName}',{birthYear},N'{phoneNumber}',{btcAmount},N'{btcAddress}',{shoeSize}, {city}"
+            + $"N'{firstName}',N'{lastName}',{birthYear},N'{phoneNumber}',{btcAmount},N'{btcAddress}',{shoeSize}, {city},{login}"
             + ")";
-            //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
+            //Return success
             return Dal.ExecuteSql(str);
         }
-        public static bool Update(int id, string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize, int city)
+        public static bool Update(int id, string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize, int city,int login)
         {
 
-            //מעדכנת את הלקוח במסד הנתונים
+            //Update client in database
 
             string str = "UPDATE Table_Client SET"
 
@@ -41,19 +39,17 @@ namespace Dal
             + $",[BtcAddress] = N'{btcAddress}'"
             + $",[ShoeSize] = {shoeSize}"
             + $",[City] = {city}"
+            + $",[Login] = {login}"
             + $" WHERE [Id] = {id}";
-
-            //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
+            //Return success
             return Dal.ExecuteSql(str);
         }
         public static bool Delete(int id)
         {
-
-            //מוחקת את הלקוח ממסד הנתונים
-
+            //Delete the client from database
             string str = $"DELETE FROM Table_Client WHERE ID = {id}";
 
-            //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
+            //Return success
 
             return Dal.ExecuteSql(str);
         }
@@ -83,7 +79,7 @@ namespace Dal
             Login_Dal.FillDataSet(dataSet);
             //Create relation
             dataRelation = new DataRelation(
-                "LoginCity",
+                "ClientLogin",
                 dataSet.Tables["Table_Login"].Columns["Id"],
                 dataSet.Tables["Table_Client"].Columns["Login"]);
             dataSet.Relations.Add(dataRelation);

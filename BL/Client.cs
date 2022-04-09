@@ -11,7 +11,8 @@ namespace BL
 {
     public class Client
     {
-        public City city { get; set; }
+        public City City { get; set; }
+        public Login Login { get; set; } //The client's login
         public int Id { get; set; } //Id of the client
         public string FirstName { get; set; } // First name of the client
         public string LastName { get; set; } // Last name of the client
@@ -21,17 +22,8 @@ namespace BL
         public string BtcAddress { get; set; } //His bitcoin address
 
         public int ShoeSize { get; set; } //Shoe Size
+        
         public Client() { }
-        public Client(string FirstName, string LastName, int BirthYear, string PhoneNumber, double BtcAmount, string BtcAddress, int ShoeSize)
-        {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.BtcAmount = BtcAmount;
-            this.BirthYear = BirthYear;
-            this.PhoneNumber = PhoneNumber;
-            this.BtcAddress = BtcAddress;
-            this.ShoeSize = ShoeSize;
-        }
         public Client(DataRow dataRow)
         {
 
@@ -45,7 +37,8 @@ namespace BL
             BtcAmount = (double)dataRow["BtcAmount"];
             BtcAddress = dataRow["BtcAddress"].ToString();
             ShoeSize = (int)dataRow["ShoeSize"];
-            city = new City(dataRow.GetParentRow("ClientCity"));
+            City = new City(dataRow.GetParentRow("ClientCity"));
+            Login = new Login(dataRow.GetParentRow("ClientLogin"));
 
         }
 
@@ -55,12 +48,12 @@ namespace BL
         public bool Insert()
         {
             //Insert this client into database
-            return Client_Dal.Insert(FirstName, LastName, BirthYear, PhoneNumber, BtcAmount, BtcAddress, ShoeSize,city.Id);
+            return Client_Dal.Insert(FirstName, LastName, BirthYear, PhoneNumber, BtcAmount, BtcAddress, ShoeSize,City.Id,Login.Id);
         }
         public bool Update()
         {
             //Update client at given id in database
-            return Client_Dal.Update(Id, FirstName, LastName, BirthYear, PhoneNumber, BtcAmount, BtcAddress, ShoeSize,city.Id);
+            return Client_Dal.Update(Id, FirstName, LastName, BirthYear, PhoneNumber, BtcAmount, BtcAddress, ShoeSize,City.Id,Login.Id);
         }
         public bool Delete()
         {

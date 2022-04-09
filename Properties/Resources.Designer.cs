@@ -73,6 +73,36 @@ namespace ClientApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap bitcoin {
+            get {
+                object obj = ResourceManager.GetObject("bitcoin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Bitcoin_Logo {
+            get {
+                object obj = ResourceManager.GetObject("Bitcoin-Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Bitcoin_Logo1 {
+            get {
+                object obj = ResourceManager.GetObject("Bitcoin-Logo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap btcPattern {
             get {
                 object obj = ResourceManager.GetObject("btcPattern", resourceCulture);
@@ -83,9 +113,39 @@ namespace ClientApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Cryptowave_Vaporwave {
+            get {
+                object obj = ResourceManager.GetObject("Cryptowave+Vaporwave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ezgif_3_53a814fc9c {
             get {
                 object obj = ResourceManager.GetObject("ezgif-3-53a814fc9c", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap JellyfishFields {
+            get {
+                object obj = ResourceManager.GetObject("JellyfishFields", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap lemonspattern {
+            get {
+                object obj = ResourceManager.GetObject("lemonspattern", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +166,16 @@ namespace ClientApp.Properties {
         public static System.Drawing.Bitmap power_power_off_power_on_turn_off_turn_on_icon_189248 {
             get {
                 object obj = ResourceManager.GetObject("power-power-off-power-on-turn-off-turn-on-icon-189248", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap windows_media_player_back_button {
+            get {
+                object obj = ResourceManager.GetObject("windows-media-player-back-button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

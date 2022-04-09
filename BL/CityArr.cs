@@ -9,7 +9,7 @@ using Dal;
 
 namespace BL
 {
-    class CityArr : ArrayList
+    public class CityArr : ArrayList
     {
         public bool IsContains(string cityName)
         {
@@ -29,6 +29,7 @@ namespace BL
 
             return maxCity;
         }
+        
         public void Fill()
         {
 

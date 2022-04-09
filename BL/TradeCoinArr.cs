@@ -42,6 +42,17 @@ namespace BL
             }
             return tArrNew;
         }
+        public TradeCoinArr Filter(Client cl)
+        {
+            //Filter TradeCoinArr by trade and return a TradeCoinArr
+            TradeCoinArr tArrNew = new TradeCoinArr();
+            if (cl == null) return tArrNew; //If t is null return empty TradeCoinArr
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (cl.Id == (this[i] as TradeCoin).Trade.Client.Id) tArrNew.Add(this[i]);
+            }
+            return tArrNew;
+        }
         public TradeCoinArr Filter(Coin c) //Polymorphism :)
         {
             TradeCoinArr tArrNew = new TradeCoinArr();
@@ -53,6 +64,43 @@ namespace BL
             }
             return tArrNew;
         }
+        public CoinArr GetTop3CoinsForClient(Client cl)
+        {
+            TradeCoinArr tArr = this.Filter(cl);
+            TradeCoin maxTradeCoin = new TradeCoin();
+            maxTradeCoin.Count = 0;
+            int iMax = 0;
+            for (int i = 0; i < tArr.Count; i++)
+            {
+                TradeCoin tCoin = tArr[i] as TradeCoin;
+                if (tCoin.Count > maxTradeCoin.Count) { maxTradeCoin = tCoin; iMax = i; }
+                
+            }
+            tArr.RemoveAt(iMax);
+
+            TradeCoin secondMaxTradeCoin = new TradeCoin();
+            secondMaxTradeCoin.Count = 0;
+            for (int i = 0; i < tArr.Count; i++)
+            {
+                TradeCoin tCoin = tArr[i] as TradeCoin;
+                if (tCoin.Count > secondMaxTradeCoin.Count) { secondMaxTradeCoin = tCoin; iMax = i; }
+
+            }
+            tArr.RemoveAt(iMax);
+            TradeCoin thirdMaxTradeCoin = new TradeCoin();
+            thirdMaxTradeCoin.Count = 0;
+            for (int i = 0; i < tArr.Count; i++)
+            {
+                TradeCoin tCoin = tArr[i] as TradeCoin;
+                if (tCoin.Count > thirdMaxTradeCoin.Count) { thirdMaxTradeCoin = tCoin; iMax = i; }
+            }
+            CoinArr cArrNew = new CoinArr();
+            cArrNew.Add(maxTradeCoin.Coin);
+            cArrNew.Add(secondMaxTradeCoin.Coin);
+            cArrNew.Add(thirdMaxTradeCoin.Coin);
+            return cArrNew;
+        }
+
         public CoinArr GetCoinArr()
         {
 

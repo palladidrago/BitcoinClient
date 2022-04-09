@@ -42,17 +42,17 @@ namespace ClientApp.UI
             // 
             this.listBox_Valid.FormattingEnabled = true;
             this.listBox_Valid.ItemHeight = 16;
-            this.listBox_Valid.Location = new System.Drawing.Point(13, 171);
+            this.listBox_Valid.Location = new System.Drawing.Point(13, 139);
             this.listBox_Valid.Margin = new System.Windows.Forms.Padding(4);
             this.listBox_Valid.Name = "listBox_Valid";
-            this.listBox_Valid.Size = new System.Drawing.Size(267, 196);
+            this.listBox_Valid.Size = new System.Drawing.Size(226, 228);
             this.listBox_Valid.TabIndex = 0;
             // 
             // label_Id
             // 
             this.label_Id.AutoSize = true;
             this.label_Id.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Id.Location = new System.Drawing.Point(13, 12);
+            this.label_Id.Location = new System.Drawing.Point(13, 11);
             this.label_Id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Id.Name = "label_Id";
             this.label_Id.Size = new System.Drawing.Size(31, 27);
@@ -94,9 +94,9 @@ namespace ClientApp.UI
             this.button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_Save.Font = new System.Drawing.Font("Ubuntu", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Save.ForeColor = System.Drawing.Color.Chocolate;
-            this.button_Save.Location = new System.Drawing.Point(320, 12);
+            this.button_Save.Location = new System.Drawing.Point(246, 2);
             this.button_Save.Name = "button_Save";
-            this.button_Save.Size = new System.Drawing.Size(194, 163);
+            this.button_Save.Size = new System.Drawing.Size(134, 75);
             this.button_Save.TabIndex = 6;
             this.button_Save.Text = "Save";
             this.button_Save.UseVisualStyleBackColor = false;
@@ -106,11 +106,11 @@ namespace ClientApp.UI
             // 
             this.button_Delete.BackColor = System.Drawing.Color.Tomato;
             this.button_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_Delete.Font = new System.Drawing.Font("Ubuntu", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Delete.Font = new System.Drawing.Font("Ubuntu", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Delete.ForeColor = System.Drawing.Color.SpringGreen;
-            this.button_Delete.Location = new System.Drawing.Point(320, 204);
+            this.button_Delete.Location = new System.Drawing.Point(246, 89);
             this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Size = new System.Drawing.Size(194, 163);
+            this.button_Delete.Size = new System.Drawing.Size(134, 75);
             this.button_Delete.TabIndex = 6;
             this.button_Delete.Text = "Delete";
             this.button_Delete.UseVisualStyleBackColor = false;
@@ -121,7 +121,7 @@ namespace ClientApp.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SandyBrown;
-            this.ClientSize = new System.Drawing.Size(526, 399);
+            this.ClientSize = new System.Drawing.Size(395, 399);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.text_Id);
@@ -129,7 +129,7 @@ namespace ClientApp.UI
             this.Controls.Add(this.label_Valid);
             this.Controls.Add(this.label_Id);
             this.Controls.Add(this.listBox_Valid);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ValidForm";
             this.Text = "Validation method";

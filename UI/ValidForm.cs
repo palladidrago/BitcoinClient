@@ -52,7 +52,6 @@ namespace ClientApp.UI
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            //TODO: Add checkForm
             selectedValid = FormToValid();
             if (selectedValid.Id == 0)
             {

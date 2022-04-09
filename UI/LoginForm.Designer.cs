@@ -49,20 +49,20 @@ namespace ClientApp.UI
             // 
             this.label_Username.AutoSize = true;
             this.label_Username.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Username.Location = new System.Drawing.Point(21, 120);
+            this.label_Username.Location = new System.Drawing.Point(21, 130);
             this.label_Username.Name = "label_Username";
-            this.label_Username.Size = new System.Drawing.Size(176, 40);
+            this.label_Username.Size = new System.Drawing.Size(146, 33);
             this.label_Username.TabIndex = 1;
             this.label_Username.Text = "Username";
             // 
             // textBox_Username
             // 
+            this.textBox_Username.AcceptsTab = true;
             this.textBox_Username.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Username.Location = new System.Drawing.Point(18, 173);
             this.textBox_Username.Name = "textBox_Username";
-            this.textBox_Username.Size = new System.Drawing.Size(454, 48);
-            this.textBox_Username.TabIndex = 2;
-            this.textBox_Username.Text = " ";
+            this.textBox_Username.Size = new System.Drawing.Size(454, 40);
+            this.textBox_Username.TabIndex = 1;
             this.textBox_Username.Click += new System.EventHandler(this.textBox_Click);
             // 
             // button_Login
@@ -85,7 +85,7 @@ namespace ClientApp.UI
             this.label_Title_Login.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Title_Login.Location = new System.Drawing.Point(192, 9);
             this.label_Title_Login.Name = "label_Title_Login";
-            this.label_Title_Login.Size = new System.Drawing.Size(246, 93);
+            this.label_Title_Login.Size = new System.Drawing.Size(197, 77);
             this.label_Title_Login.TabIndex = 1;
             this.label_Title_Login.Text = "Login";
             // 
@@ -93,29 +93,31 @@ namespace ClientApp.UI
             // 
             this.label_Password.AutoSize = true;
             this.label_Password.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Password.Location = new System.Drawing.Point(21, 235);
+            this.label_Password.Location = new System.Drawing.Point(21, 244);
             this.label_Password.Name = "label_Password";
-            this.label_Password.Size = new System.Drawing.Size(169, 40);
+            this.label_Password.Size = new System.Drawing.Size(138, 33);
             this.label_Password.TabIndex = 1;
             this.label_Password.Text = "Password";
             // 
             // textBox_Password
             // 
+            this.textBox_Password.AcceptsTab = true;
             this.textBox_Password.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Password.Location = new System.Drawing.Point(18, 287);
             this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(454, 48);
+            this.textBox_Password.Size = new System.Drawing.Size(454, 40);
             this.textBox_Password.TabIndex = 2;
             this.textBox_Password.UseSystemPasswordChar = true;
             this.textBox_Password.Click += new System.EventHandler(this.textBox_Click);
+            this.textBox_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckEnterKeyPress);
             // 
             // label_DontHaveAccount
             // 
             this.label_DontHaveAccount.AutoSize = true;
             this.label_DontHaveAccount.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DontHaveAccount.Location = new System.Drawing.Point(12, 454);
+            this.label_DontHaveAccount.Location = new System.Drawing.Point(22, 418);
             this.label_DontHaveAccount.Name = "label_DontHaveAccount";
-            this.label_DontHaveAccount.Size = new System.Drawing.Size(356, 34);
+            this.label_DontHaveAccount.Size = new System.Drawing.Size(276, 25);
             this.label_DontHaveAccount.TabIndex = 1;
             this.label_DontHaveAccount.Text = "Don\'t Have an Account?";
             // 
@@ -125,9 +127,9 @@ namespace ClientApp.UI
             this.label_Signup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_Signup.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Signup.ForeColor = System.Drawing.Color.Crimson;
-            this.label_Signup.Location = new System.Drawing.Point(292, 456);
+            this.label_Signup.Location = new System.Drawing.Point(301, 418);
             this.label_Signup.Name = "label_Signup";
-            this.label_Signup.Size = new System.Drawing.Size(115, 34);
+            this.label_Signup.Size = new System.Drawing.Size(90, 26);
             this.label_Signup.TabIndex = 1;
             this.label_Signup.Text = "Sign up";
             this.label_Signup.Click += new System.EventHandler(this.labelSignup_Click);
@@ -149,19 +151,19 @@ namespace ClientApp.UI
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::ClientApp.Properties.Resources.ezgif_3_53a814fc9c;
-            this.pictureBox1.Location = new System.Drawing.Point(516, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(513, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(380, 497);
+            this.pictureBox1.Size = new System.Drawing.Size(370, 475);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(102)))));
-            this.ClientSize = new System.Drawing.Size(896, 497);
+            this.ClientSize = new System.Drawing.Size(883, 475);
             this.Controls.Add(this.pictureBox_Shutoff);
             this.Controls.Add(this.button_Login);
             this.Controls.Add(this.textBox_Password);

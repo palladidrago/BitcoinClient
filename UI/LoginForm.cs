@@ -18,10 +18,6 @@ namespace ClientApp.UI
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void pictureBox_Shutoff_Click(object sender, EventArgs e)
@@ -36,7 +32,7 @@ namespace ClientApp.UI
 
         private void pictureBox_Shutoff_MouseLeave(object sender, EventArgs e)
         {
-            (sender as PictureBox).BackColor = this.BackColor;
+            (sender as PictureBox).BackColor = Color.Transparent;
         }
 
         private void labelSignup_Click(object sender, EventArgs e)
@@ -45,14 +41,14 @@ namespace ClientApp.UI
             loginArr.Fill();
             if (loginArr.Count > 0) 
             {
-                SignUpForm signUpForm = new SignUpForm(false); //If first to sign up, he's the admin
+                SignUpForm signUpForm = new SignUpForm(false); //If there are already signups, he's not the admin
                 this.Hide();
                 signUpForm.ShowDialog();
-                this.Show();
+                this.Close();
             }
             else
             {
-                SignUpForm signUpForm = new SignUpForm(false); //If first to sign up, he's the admin
+                SignUpForm signUpForm = new SignUpForm(true); //If first to sign up, he's the admin
                 this.Hide();
                 signUpForm.ShowDialog();
                 this.Show();
@@ -61,6 +57,19 @@ namespace ClientApp.UI
 
         private void button_Login_Click(object sender, EventArgs e)
         {
+            LoginClick();
+        }
+
+        private void textBox_Click(object sender, EventArgs e)
+        {
+            (sender as TextBox).BackColor = Color.White;
+        }
+        private void CheckEnterKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return) { LoginClick(); }
+        }
+        private void LoginClick()
+        {
             //No need to check the form
             string user = textBox_Username.Text;
             string pass = textBox_Password.Text;
@@ -68,15 +77,39 @@ namespace ClientApp.UI
             loginArr.Fill();
             Login login = loginArr.Auth(user, Helpers.sha256(pass)); // Hash the password 
 
-            if (login == null) {
-                textBox_Username.BackColor = Color.Red; 
-                textBox_Password.BackColor = Color.Red; 
+            if (login == null)
+            {
+                textBox_Username.BackColor = Color.Red;
+                textBox_Password.BackColor = Color.Red;
             }
-        }
-
-        private void textBox_Click(object sender, EventArgs e)
-        {
-            (sender as TextBox).BackColor = Color.White;
+            else if (login.IsAdmin)
+            {
+                AdminForm adminForm = new AdminForm();
+                this.Hide();
+                adminForm.ShowDialog();
+                this.Close();
+            }
+            else {
+                //Get the client with given login
+                ClientArr cArr = new ClientArr();
+                cArr.Fill();
+                Client client = cArr.GetClientWithLogin(login);
+                if (client != null)
+                {
+                    UserForm userForm = new UserForm();
+                    Globals.client = client;
+                    this.Hide();
+                    userForm.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    textBox_Username.BackColor = Color.Red;
+                    textBox_Password.BackColor = Color.Red;
+                    MessageBox.Show("The login you entered doesn't have a corresponding client to it",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows.Forms;
 using Dal;
 
 namespace BL {
@@ -16,10 +17,10 @@ namespace BL {
         public Login() { }
         public Login(DataRow dr)
         {
-            int id = (int)dr["ID"];
+            Id = (int)dr["Id"];
             Username = dr["Username"].ToString();
             PasswordHash = dr["passwordHash"].ToString();
-            IsAdmin = dr["isAdmin"].ToString() == "1";
+            IsAdmin = dr["isAdmin"].ToString() == "True";
         }
         public bool Insert()
         {

@@ -1,7 +1,7 @@
 ﻿
-namespace ClientApp
+namespace ClientApp.UI
 {
-    partial class ClientForm
+    partial class AdminForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,380 +29,182 @@ namespace ClientApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
-            this.listBox_Client = new System.Windows.Forms.ListBox();
-            this.label_Id = new System.Windows.Forms.Label();
-            this.text_Id = new System.Windows.Forms.Label();
-            this.groupBox_GeneralInfo = new System.Windows.Forms.GroupBox();
-            this.button_AddCity = new System.Windows.Forms.Label();
-            this.comboBox_City = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label_PhoneNumber = new System.Windows.Forms.Label();
-            this.label_BirthYear = new System.Windows.Forms.Label();
-            this.label_LastName = new System.Windows.Forms.Label();
-            this.label_FirstName = new System.Windows.Forms.Label();
-            this.textBox_PhoneNumber = new System.Windows.Forms.TextBox();
-            this.textBox_BirthYear = new System.Windows.Forms.TextBox();
-            this.textBox_LastName = new System.Windows.Forms.TextBox();
-            this.textBox_FirstName = new System.Windows.Forms.TextBox();
-            this.groupBox_BtcInfo = new System.Windows.Forms.GroupBox();
-            this.textBox_BtcAmount = new System.Windows.Forms.TextBox();
-            this.label_BtcAmount = new System.Windows.Forms.Label();
-            this.textBox_BtcAddress = new System.Windows.Forms.TextBox();
-            this.label_BtcAddress = new System.Windows.Forms.Label();
-            this.groupBox_UselessInfo = new System.Windows.Forms.GroupBox();
-            this.textBox_ShoeSize = new System.Windows.Forms.TextBox();
-            this.label_ShoeSize = new System.Windows.Forms.Label();
-            this.doneButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.groupBox_Filter = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox_Filter_BtcAddress = new System.Windows.Forms.TextBox();
-            this.textBox_Filter_LastName = new System.Windows.Forms.TextBox();
-            this.groupBox_GeneralInfo.SuspendLayout();
-            this.groupBox_BtcInfo.SuspendLayout();
-            this.groupBox_UselessInfo.SuspendLayout();
-            this.groupBox_Filter.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
+            this.button_Trade = new System.Windows.Forms.Button();
+            this.button_Client = new System.Windows.Forms.Button();
+            this.button_Coin = new System.Windows.Forms.Button();
+            this.button_Report = new System.Windows.Forms.Button();
+            this.button_Chart = new System.Windows.Forms.Button();
+            this.label_Title = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
-            // listBox_Client
+            // button_Trade
             // 
-            this.listBox_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox_Client.FormattingEnabled = true;
-            this.listBox_Client.ItemHeight = 25;
-            this.listBox_Client.Location = new System.Drawing.Point(12, 112);
-            this.listBox_Client.Name = "listBox_Client";
-            this.listBox_Client.Size = new System.Drawing.Size(324, 304);
-            this.listBox_Client.TabIndex = 1;
-            this.listBox_Client.DoubleClick += new System.EventHandler(this.clientListBox_Client_DoubleClick);
+            this.button_Trade.BackColor = System.Drawing.Color.Crimson;
+            this.button_Trade.FlatAppearance.BorderSize = 0;
+            this.button_Trade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Trade.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Trade.ForeColor = System.Drawing.Color.White;
+            this.button_Trade.Location = new System.Drawing.Point(248, 77);
+            this.button_Trade.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Trade.Name = "button_Trade";
+            this.button_Trade.Size = new System.Drawing.Size(235, 111);
+            this.button_Trade.TabIndex = 0;
+            this.button_Trade.Text = "Trade";
+            this.button_Trade.UseVisualStyleBackColor = false;
+            this.button_Trade.Click += new System.EventHandler(this.button_Trade_Click);
             // 
-            // label_Id
+            // button_Client
             // 
-            this.label_Id.AutoSize = true;
-            this.label_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Id.Location = new System.Drawing.Point(381, 40);
-            this.label_Id.Name = "label_Id";
-            this.label_Id.Size = new System.Drawing.Size(41, 32);
-            this.label_Id.TabIndex = 2;
-            this.label_Id.Text = "ID";
+            this.button_Client.BackColor = System.Drawing.Color.Crimson;
+            this.button_Client.FlatAppearance.BorderSize = 0;
+            this.button_Client.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Client.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Client.ForeColor = System.Drawing.Color.White;
+            this.button_Client.Location = new System.Drawing.Point(9, 77);
+            this.button_Client.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Client.Name = "button_Client";
+            this.button_Client.Size = new System.Drawing.Size(235, 111);
+            this.button_Client.TabIndex = 0;
+            this.button_Client.Text = "Client";
+            this.button_Client.UseVisualStyleBackColor = false;
+            this.button_Client.Click += new System.EventHandler(this.button_Client_Click);
             // 
-            // text_Id
+            // button_Coin
             // 
-            this.text_Id.AutoSize = true;
-            this.text_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_Id.Location = new System.Drawing.Point(459, 40);
-            this.text_Id.Name = "text_Id";
-            this.text_Id.Size = new System.Drawing.Size(30, 32);
-            this.text_Id.TabIndex = 3;
-            this.text_Id.Text = "0";
+            this.button_Coin.BackColor = System.Drawing.Color.Crimson;
+            this.button_Coin.FlatAppearance.BorderSize = 0;
+            this.button_Coin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Coin.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Coin.ForeColor = System.Drawing.Color.White;
+            this.button_Coin.Location = new System.Drawing.Point(9, 193);
+            this.button_Coin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Coin.Name = "button_Coin";
+            this.button_Coin.Size = new System.Drawing.Size(235, 111);
+            this.button_Coin.TabIndex = 0;
+            this.button_Coin.Text = "Coin";
+            this.button_Coin.UseVisualStyleBackColor = false;
+            this.button_Coin.Click += new System.EventHandler(this.button_Coin_Click);
             // 
-            // groupBox_GeneralInfo
+            // button_Report
             // 
-            this.groupBox_GeneralInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox_GeneralInfo.Controls.Add(this.button_AddCity);
-            this.groupBox_GeneralInfo.Controls.Add(this.comboBox_City);
-            this.groupBox_GeneralInfo.Controls.Add(this.label3);
-            this.groupBox_GeneralInfo.Controls.Add(this.label_PhoneNumber);
-            this.groupBox_GeneralInfo.Controls.Add(this.label_BirthYear);
-            this.groupBox_GeneralInfo.Controls.Add(this.label_LastName);
-            this.groupBox_GeneralInfo.Controls.Add(this.label_FirstName);
-            this.groupBox_GeneralInfo.Controls.Add(this.textBox_PhoneNumber);
-            this.groupBox_GeneralInfo.Controls.Add(this.textBox_BirthYear);
-            this.groupBox_GeneralInfo.Controls.Add(this.textBox_LastName);
-            this.groupBox_GeneralInfo.Controls.Add(this.textBox_FirstName);
-            this.groupBox_GeneralInfo.Location = new System.Drawing.Point(360, 105);
-            this.groupBox_GeneralInfo.Name = "groupBox_GeneralInfo";
-            this.groupBox_GeneralInfo.Size = new System.Drawing.Size(211, 311);
-            this.groupBox_GeneralInfo.TabIndex = 4;
-            this.groupBox_GeneralInfo.TabStop = false;
-            this.groupBox_GeneralInfo.Text = "General info";
+            this.button_Report.BackColor = System.Drawing.Color.Crimson;
+            this.button_Report.FlatAppearance.BorderSize = 0;
+            this.button_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Report.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Report.ForeColor = System.Drawing.Color.White;
+            this.button_Report.Location = new System.Drawing.Point(488, 77);
+            this.button_Report.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Report.Name = "button_Report";
+            this.button_Report.Size = new System.Drawing.Size(175, 228);
+            this.button_Report.TabIndex = 0;
+            this.button_Report.Text = "Report";
+            this.button_Report.UseVisualStyleBackColor = false;
+            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
             // 
-            // button_AddCity
+            // button_Chart
             // 
-            this.button_AddCity.AutoSize = true;
-            this.button_AddCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_AddCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_AddCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_AddCity.Location = new System.Drawing.Point(154, 276);
-            this.button_AddCity.Name = "button_AddCity";
-            this.button_AddCity.Size = new System.Drawing.Size(30, 32);
-            this.button_AddCity.TabIndex = 3;
-            this.button_AddCity.Text = "+";
-            this.button_AddCity.Click += new System.EventHandler(this.button_AddCity_Click);
+            this.button_Chart.BackColor = System.Drawing.Color.Crimson;
+            this.button_Chart.FlatAppearance.BorderSize = 0;
+            this.button_Chart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Chart.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Chart.ForeColor = System.Drawing.Color.White;
+            this.button_Chart.Location = new System.Drawing.Point(248, 193);
+            this.button_Chart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Chart.Name = "button_Chart";
+            this.button_Chart.Size = new System.Drawing.Size(235, 111);
+            this.button_Chart.TabIndex = 0;
+            this.button_Chart.Text = "Chart";
+            this.button_Chart.UseVisualStyleBackColor = false;
+            this.button_Chart.Click += new System.EventHandler(this.button_Chart_Click);
             // 
-            // comboBox_City
+            // label_Title
             // 
-            this.comboBox_City.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox_City.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_City.FormattingEnabled = true;
-            this.comboBox_City.Location = new System.Drawing.Point(27, 286);
-            this.comboBox_City.Name = "comboBox_City";
-            this.comboBox_City.Size = new System.Drawing.Size(121, 24);
-            this.comboBox_City.TabIndex = 2;
+            this.label_Title.AutoSize = true;
+            this.label_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label_Title.Font = new System.Drawing.Font("Spongeboy", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.ForeColor = System.Drawing.Color.LightYellow;
+            this.label_Title.Location = new System.Drawing.Point(9, 7);
+            this.label_Title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(387, 59);
+            this.label_Title.TabIndex = 1;
+            this.label_Title.Text = "Welcome, Admin!";
             // 
-            // label3
+            // pictureBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 260);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "City:";
+            this.pictureBox1.Image = global::ClientApp.Properties.Resources.Bitcoin_Logo1;
+            this.pictureBox1.Location = new System.Drawing.Point(401, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 59);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
-            // label_PhoneNumber
+            // pictureBox2
             // 
-            this.label_PhoneNumber.AutoSize = true;
-            this.label_PhoneNumber.Location = new System.Drawing.Point(24, 204);
-            this.label_PhoneNumber.Name = "label_PhoneNumber";
-            this.label_PhoneNumber.Size = new System.Drawing.Size(100, 16);
-            this.label_PhoneNumber.TabIndex = 1;
-            this.label_PhoneNumber.Text = "Phone Number:";
+            this.pictureBox2.Image = global::ClientApp.Properties.Resources.Bitcoin_Logo1;
+            this.pictureBox2.Location = new System.Drawing.Point(470, 7);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(63, 59);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
-            // label_BirthYear
+            // pictureBox3
             // 
-            this.label_BirthYear.AutoSize = true;
-            this.label_BirthYear.Location = new System.Drawing.Point(24, 143);
-            this.label_BirthYear.Name = "label_BirthYear";
-            this.label_BirthYear.Size = new System.Drawing.Size(68, 16);
-            this.label_BirthYear.TabIndex = 1;
-            this.label_BirthYear.Text = "Birth Year:";
+            this.pictureBox3.Image = global::ClientApp.Properties.Resources.Bitcoin_Logo1;
+            this.pictureBox3.Location = new System.Drawing.Point(539, 7);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(63, 59);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
             // 
-            // label_LastName
+            // pictureBox4
             // 
-            this.label_LastName.AutoSize = true;
-            this.label_LastName.Location = new System.Drawing.Point(24, 88);
-            this.label_LastName.Name = "label_LastName";
-            this.label_LastName.Size = new System.Drawing.Size(75, 16);
-            this.label_LastName.TabIndex = 1;
-            this.label_LastName.Text = "Last Name:";
+            this.pictureBox4.Image = global::ClientApp.Properties.Resources.Bitcoin_Logo1;
+            this.pictureBox4.Location = new System.Drawing.Point(608, 7);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(63, 59);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 2;
+            this.pictureBox4.TabStop = false;
             // 
-            // label_FirstName
+            // AdminForm
             // 
-            this.label_FirstName.AutoSize = true;
-            this.label_FirstName.Location = new System.Drawing.Point(24, 33);
-            this.label_FirstName.Name = "label_FirstName";
-            this.label_FirstName.Size = new System.Drawing.Size(75, 16);
-            this.label_FirstName.TabIndex = 1;
-            this.label_FirstName.Text = "First Name:";
-            // 
-            // textBox_PhoneNumber
-            // 
-            this.textBox_PhoneNumber.Location = new System.Drawing.Point(27, 224);
-            this.textBox_PhoneNumber.Name = "textBox_PhoneNumber";
-            this.textBox_PhoneNumber.Size = new System.Drawing.Size(116, 22);
-            this.textBox_PhoneNumber.TabIndex = 0;
-            // 
-            // textBox_BirthYear
-            // 
-            this.textBox_BirthYear.Location = new System.Drawing.Point(27, 163);
-            this.textBox_BirthYear.Name = "textBox_BirthYear";
-            this.textBox_BirthYear.Size = new System.Drawing.Size(77, 22);
-            this.textBox_BirthYear.TabIndex = 0;
-            // 
-            // textBox_LastName
-            // 
-            this.textBox_LastName.Location = new System.Drawing.Point(27, 108);
-            this.textBox_LastName.Name = "textBox_LastName";
-            this.textBox_LastName.Size = new System.Drawing.Size(116, 22);
-            this.textBox_LastName.TabIndex = 0;
-            this.textBox_LastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Text_KeyPress);
-            // 
-            // textBox_FirstName
-            // 
-            this.textBox_FirstName.Location = new System.Drawing.Point(27, 53);
-            this.textBox_FirstName.Name = "textBox_FirstName";
-            this.textBox_FirstName.Size = new System.Drawing.Size(116, 22);
-            this.textBox_FirstName.TabIndex = 0;
-            this.textBox_FirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Text_KeyPress);
-            // 
-            // groupBox_BtcInfo
-            // 
-            this.groupBox_BtcInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox_BtcInfo.Controls.Add(this.textBox_BtcAmount);
-            this.groupBox_BtcInfo.Controls.Add(this.label_BtcAmount);
-            this.groupBox_BtcInfo.Controls.Add(this.textBox_BtcAddress);
-            this.groupBox_BtcInfo.Controls.Add(this.label_BtcAddress);
-            this.groupBox_BtcInfo.Location = new System.Drawing.Point(577, 105);
-            this.groupBox_BtcInfo.Name = "groupBox_BtcInfo";
-            this.groupBox_BtcInfo.Size = new System.Drawing.Size(198, 153);
-            this.groupBox_BtcInfo.TabIndex = 5;
-            this.groupBox_BtcInfo.TabStop = false;
-            this.groupBox_BtcInfo.Text = "Bitcoin info";
-            // 
-            // textBox_BtcAmount
-            // 
-            this.textBox_BtcAmount.Location = new System.Drawing.Point(6, 108);
-            this.textBox_BtcAmount.Name = "textBox_BtcAmount";
-            this.textBox_BtcAmount.Size = new System.Drawing.Size(116, 22);
-            this.textBox_BtcAmount.TabIndex = 0;
-            // 
-            // label_BtcAmount
-            // 
-            this.label_BtcAmount.AutoSize = true;
-            this.label_BtcAmount.Location = new System.Drawing.Point(3, 88);
-            this.label_BtcAmount.Name = "label_BtcAmount";
-            this.label_BtcAmount.Size = new System.Drawing.Size(97, 16);
-            this.label_BtcAmount.TabIndex = 1;
-            this.label_BtcAmount.Text = "Bitcoin amount:";
-            // 
-            // textBox_BtcAddress
-            // 
-            this.textBox_BtcAddress.Location = new System.Drawing.Point(6, 53);
-            this.textBox_BtcAddress.Name = "textBox_BtcAddress";
-            this.textBox_BtcAddress.Size = new System.Drawing.Size(116, 22);
-            this.textBox_BtcAddress.TabIndex = 0;
-            // 
-            // label_BtcAddress
-            // 
-            this.label_BtcAddress.AutoSize = true;
-            this.label_BtcAddress.Location = new System.Drawing.Point(3, 33);
-            this.label_BtcAddress.Name = "label_BtcAddress";
-            this.label_BtcAddress.Size = new System.Drawing.Size(104, 16);
-            this.label_BtcAddress.TabIndex = 1;
-            this.label_BtcAddress.Text = "Bitcoin Address:";
-            // 
-            // groupBox_UselessInfo
-            // 
-            this.groupBox_UselessInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox_UselessInfo.Controls.Add(this.textBox_ShoeSize);
-            this.groupBox_UselessInfo.Controls.Add(this.label_ShoeSize);
-            this.groupBox_UselessInfo.Location = new System.Drawing.Point(577, 268);
-            this.groupBox_UselessInfo.Name = "groupBox_UselessInfo";
-            this.groupBox_UselessInfo.Size = new System.Drawing.Size(200, 100);
-            this.groupBox_UselessInfo.TabIndex = 6;
-            this.groupBox_UselessInfo.TabStop = false;
-            this.groupBox_UselessInfo.Text = "Useless info";
-            // 
-            // textBox_ShoeSize
-            // 
-            this.textBox_ShoeSize.Location = new System.Drawing.Point(9, 53);
-            this.textBox_ShoeSize.Name = "textBox_ShoeSize";
-            this.textBox_ShoeSize.Size = new System.Drawing.Size(116, 22);
-            this.textBox_ShoeSize.TabIndex = 0;
-            // 
-            // label_ShoeSize
-            // 
-            this.label_ShoeSize.AutoSize = true;
-            this.label_ShoeSize.Location = new System.Drawing.Point(6, 33);
-            this.label_ShoeSize.Name = "label_ShoeSize";
-            this.label_ShoeSize.Size = new System.Drawing.Size(69, 16);
-            this.label_ShoeSize.TabIndex = 1;
-            this.label_ShoeSize.Text = "Shoe size:";
-            // 
-            // doneButton
-            // 
-            this.doneButton.BackColor = System.Drawing.Color.Lime;
-            this.doneButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doneButton.Location = new System.Drawing.Point(586, 12);
-            this.doneButton.Name = "doneButton";
-            this.doneButton.Size = new System.Drawing.Size(99, 76);
-            this.doneButton.TabIndex = 7;
-            this.doneButton.Text = "Update";
-            this.doneButton.UseVisualStyleBackColor = false;
-            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
-            // 
-            // clearButton
-            // 
-            this.clearButton.BackColor = System.Drawing.SystemColors.Control;
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(691, 12);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(97, 36);
-            this.clearButton.TabIndex = 7;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = false;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.Color.Red;
-            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(691, 54);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(97, 34);
-            this.deleteButton.TabIndex = 7;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // groupBox_Filter
-            // 
-            this.groupBox_Filter.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox_Filter.Controls.Add(this.label2);
-            this.groupBox_Filter.Controls.Add(this.label1);
-            this.groupBox_Filter.Controls.Add(this.textBox_Filter_BtcAddress);
-            this.groupBox_Filter.Controls.Add(this.textBox_Filter_LastName);
-            this.groupBox_Filter.Location = new System.Drawing.Point(12, 13);
-            this.groupBox_Filter.Name = "groupBox_Filter";
-            this.groupBox_Filter.Size = new System.Drawing.Size(324, 93);
-            this.groupBox_Filter.TabIndex = 8;
-            this.groupBox_Filter.TabStop = false;
-            this.groupBox_Filter.Text = "Filter";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Bitcoin address";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Last name";
-            // 
-            // textBox_Filter_BtcAddress
-            // 
-            this.textBox_Filter_BtcAddress.Location = new System.Drawing.Point(128, 65);
-            this.textBox_Filter_BtcAddress.Name = "textBox_Filter_BtcAddress";
-            this.textBox_Filter_BtcAddress.Size = new System.Drawing.Size(180, 22);
-            this.textBox_Filter_BtcAddress.TabIndex = 0;
-            this.textBox_Filter_BtcAddress.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
-            // 
-            // textBox_Filter_LastName
-            // 
-            this.textBox_Filter_LastName.Location = new System.Drawing.Point(128, 23);
-            this.textBox_Filter_LastName.Name = "textBox_Filter_LastName";
-            this.textBox_Filter_LastName.Size = new System.Drawing.Size(180, 22);
-            this.textBox_Filter_LastName.TabIndex = 0;
-            this.textBox_Filter_LastName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
-            // 
-            // ClientForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox_Filter);
-            this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.doneButton);
-            this.Controls.Add(this.groupBox_UselessInfo);
-            this.Controls.Add(this.groupBox_BtcInfo);
-            this.Controls.Add(this.text_Id);
-            this.Controls.Add(this.label_Id);
-            this.Controls.Add(this.listBox_Client);
-            this.Controls.Add(this.groupBox_GeneralInfo);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(102)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(674, 315);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label_Title);
+            this.Controls.Add(this.button_Client);
+            this.Controls.Add(this.button_Chart);
+            this.Controls.Add(this.button_Report);
+            this.Controls.Add(this.button_Coin);
+            this.Controls.Add(this.button_Trade);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ClientForm";
-            this.Text = "Client Form";
-            this.groupBox_GeneralInfo.ResumeLayout(false);
-            this.groupBox_GeneralInfo.PerformLayout();
-            this.groupBox_BtcInfo.ResumeLayout(false);
-            this.groupBox_BtcInfo.PerformLayout();
-            this.groupBox_UselessInfo.ResumeLayout(false);
-            this.groupBox_UselessInfo.PerformLayout();
-            this.groupBox_Filter.ResumeLayout(false);
-            this.groupBox_Filter.PerformLayout();
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "AdminForm";
+            this.Text = "Start here!";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,36 +212,15 @@ namespace ClientApp
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox_Client;
-        private System.Windows.Forms.Label label_Id;
-        private System.Windows.Forms.Label text_Id;
-        private System.Windows.Forms.GroupBox groupBox_GeneralInfo;
-        private System.Windows.Forms.Label label_PhoneNumber;
-        private System.Windows.Forms.Label label_BirthYear;
-        private System.Windows.Forms.Label label_LastName;
-        private System.Windows.Forms.Label label_FirstName;
-        private System.Windows.Forms.TextBox textBox_PhoneNumber;
-        private System.Windows.Forms.TextBox textBox_BirthYear;
-        private System.Windows.Forms.TextBox textBox_LastName;
-        private System.Windows.Forms.TextBox textBox_FirstName;
-        private System.Windows.Forms.GroupBox groupBox_BtcInfo;
-        private System.Windows.Forms.TextBox textBox_BtcAmount;
-        private System.Windows.Forms.Label label_BtcAmount;
-        private System.Windows.Forms.TextBox textBox_BtcAddress;
-        private System.Windows.Forms.Label label_BtcAddress;
-        private System.Windows.Forms.GroupBox groupBox_UselessInfo;
-        private System.Windows.Forms.TextBox textBox_ShoeSize;
-        private System.Windows.Forms.Label label_ShoeSize;
-        private System.Windows.Forms.Button doneButton;
-        private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.GroupBox groupBox_Filter;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_Filter_BtcAddress;
-        private System.Windows.Forms.TextBox textBox_Filter_LastName;
-        private System.Windows.Forms.ComboBox comboBox_City;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label button_AddCity;
+        private System.Windows.Forms.Button button_Trade;
+        private System.Windows.Forms.Button button_Client;
+        private System.Windows.Forms.Button button_Coin;
+        private System.Windows.Forms.Button button_Report;
+        private System.Windows.Forms.Button button_Chart;
+        private System.Windows.Forms.Label label_Title;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

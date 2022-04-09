@@ -33,6 +33,10 @@ namespace BL
                 this.Add(curLogin);
             }
         }
+        public bool IsUsernameExists(string username)
+        {
+            foreach (Login l in this) if (l.Username == username) return true;  return false; //One liner :)
+        }
         public Login Auth(string username, string passwordHash)
         {
             Login login;
@@ -69,6 +73,16 @@ namespace BL
                     this.RemoveAt(i); return;
                 }
 
+        }
+        public Login GetLoginWithMaxId()
+        {
+            //Return the coin with the highest id
+            Login maxLogin = new Login();
+            for (int i = 0; i < this.Count; i++)
+                if ((this[i] as Login).Id > maxLogin.Id)
+                    maxLogin = this[i] as Login;
+
+            return maxLogin;
         }
     }
 }
