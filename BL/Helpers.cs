@@ -70,7 +70,7 @@ namespace BL
             string jsonString = client.DownloadString(URL.ToString());
 
             JObject obj = JObject.Parse(jsonString);
-            return (JObject)obj["data"][symbol][0];
+            return (JObject)obj["data"][symbol.ToUpper()][0];
         }
         public static string GetLogoURLFromCMCId(int cmc_id)
         {
@@ -110,7 +110,7 @@ namespace BL
             string symbols = "";
             foreach (Coin c in cArr)
             {
-                symbols += c.Symbol+",";
+                symbols += c.Symbol.ToUpper()+",";
             }
 
             queryString["symbol"]= symbols.Remove(symbols.Length - 1); //Remove last character
@@ -126,7 +126,7 @@ namespace BL
             foreach (Coin c in cArr)
             {
                 Quote newQuote = new Quote();
-                JObject curObj = (JObject)obj["data"][c.Symbol][0]["quote"]["USD"];
+                JObject curObj = (JObject)obj["data"][c.Symbol.ToUpper()][0]["quote"]["USD"];
                 newQuote.Price = (double)curObj["price"];
                 newQuote.Volume = (long)curObj["volume_24h"];
                 newQuote.PercentChange = (double)curObj["percent_change_24h"];

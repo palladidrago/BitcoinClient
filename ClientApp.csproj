@@ -79,16 +79,22 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Dal\Login_Dal.cs" />
     <Compile Include="Dal\ClientCoin_Dal.cs" />
+    <Compile Include="UI\AdminForms\TradeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AdminForms\TradeForm.Designer.cs">
+      <DependentUpon>TradeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ChartForm.Designer.cs">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\PortfolioForm.cs">
+    <Compile Include="UI\UserForms\PortfolioForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\PortfolioForm.Designer.cs">
+    <Compile Include="UI\UserForms\PortfolioForm.Designer.cs">
       <DependentUpon>PortfolioForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ListViewSorter.cs" />
@@ -107,10 +113,10 @@
     <Compile Include="Dal\Trade_Dal.cs" />
     <Compile Include="Dal\Scam_Dal.cs" />
     <Compile Include="Dal\Valid_Dal.cs" />
-    <Compile Include="UI\ClientForm.cs">
+    <Compile Include="UI\AdminForms\ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ClientForm.Designer.cs">
+    <Compile Include="UI\AdminForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BL\Client.cs" />
@@ -120,30 +126,30 @@
     <Compile Include="Dal\City_Dal.cs" />
     <Compile Include="Dal\Client_Dal.cs" />
     <Compile Include="Dal\Dal.cs" />
-    <Compile Include="UI\ClientCreateForm.cs">
+    <Compile Include="UI\UserForms\ClientCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ClientCreateForm.Designer.cs">
+    <Compile Include="UI\UserForms\ClientCreateForm.Designer.cs">
       <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\AdminForm.cs">
+    <Compile Include="UI\AdminForms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AdminForm.Designer.cs">
+    <Compile Include="UI\AdminForms\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\CityForm.cs">
+    <Compile Include="UI\AdminForms\CityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CityForm.Designer.cs">
+    <Compile Include="UI\AdminForms\CityForm.Designer.cs">
       <DependentUpon>CityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CoinForm.cs">
+    <Compile Include="UI\AdminForms\CoinForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CoinForm.Designer.cs">
+    <Compile Include="UI\AdminForms\CoinForm.Designer.cs">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LoginForm.cs">
@@ -152,47 +158,11 @@
     <Compile Include="UI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Reports\ClientCityReport.cs">
+    <Compile Include="UI\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Reports\ClientCityReport.Designer.cs">
-      <DependentUpon>ClientCityReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\ClientCoinReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\ClientCoinReport.Designer.cs">
-      <DependentUpon>ClientCoinReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\CoinQuoteReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\CoinQuoteReport.Designer.cs">
-      <DependentUpon>CoinQuoteReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\CoinReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\CoinReportForm.Designer.cs">
-      <DependentUpon>CoinReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\ScamReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\ScamReport.Designer.cs">
-      <DependentUpon>ScamReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\TradeClientReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\TradeClientReport.Designer.cs">
-      <DependentUpon>TradeClientReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\ValidReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\ValidReport.Designer.cs">
-      <DependentUpon>ValidReport.cs</DependentUpon>
+    <Compile Include="UI\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RoundLabel.cs">
       <SubType>Component</SubType>
@@ -200,10 +170,10 @@
     <Compile Include="UI\RoundLabel.Designer.cs">
       <DependentUpon>RoundLabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ScamForm.cs">
+    <Compile Include="UI\AdminForms\ScamForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ScamForm.Designer.cs">
+    <Compile Include="UI\AdminForms\ScamForm.Designer.cs">
       <DependentUpon>ScamForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SignUpForm.cs">
@@ -212,34 +182,43 @@
     <Compile Include="UI\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserForm.cs">
+    <Compile Include="UI\UserForms\UserCoinForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\UserForm.Designer.cs">
+    <Compile Include="UI\UserForms\UserCoinForm.Designer.cs">
+      <DependentUpon>UserCoinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserForms\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ValidForm.cs">
+    <Compile Include="UI\AdminForms\ValidForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ValidForm.Designer.cs">
+    <Compile Include="UI\AdminForms\ValidForm.Designer.cs">
       <DependentUpon>ValidForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TradeForm.cs">
+    <Compile Include="UI\UserForms\UserTradeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TradeForm.Designer.cs">
-      <DependentUpon>TradeForm.cs</DependentUpon>
+    <Compile Include="UI\UserForms\UserTradeForm.Designer.cs">
+      <DependentUpon>UserTradeForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\ClientForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AdminForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CityForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\CityForm.resx">
       <DependentUpon>CityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ClientCreateForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\TradeForm.resx">
+      <DependentUpon>TradeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\ClientCreateForm.resx">
       <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -252,7 +231,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\CoinForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\CoinForm.resx">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChartForm.resx">
@@ -261,29 +240,29 @@
     <EmbeddedResource Include="UI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PortfolioForm.resx">
+    <EmbeddedResource Include="UI\UserForms\PortfolioForm.resx">
       <DependentUpon>PortfolioForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Reports\ClientCoinReport.resx">
-      <DependentUpon>ClientCoinReport.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Reports\CoinReportForm.resx">
-      <DependentUpon>CoinReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ScamForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\ScamForm.resx">
       <DependentUpon>ScamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserForm.resx">
+    <EmbeddedResource Include="UI\UserForms\UserCoinForm.resx">
+      <DependentUpon>UserCoinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ValidForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\ValidForm.resx">
       <DependentUpon>ValidForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TradeForm.resx">
-      <DependentUpon>TradeForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserForms\UserTradeForm.resx">
+      <DependentUpon>UserTradeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -314,11 +293,18 @@
   <ItemGroup>
     <Content Include="Resources\Bitcoin-Logo.png" />
     <Content Include="Resources\bitcoin.gif" />
+    <Content Include="Resources\bluesea.gif" />
     <Content Include="Resources\Cryptowave+Vaporwave.jpg" />
+    <Content Include="Resources\linegoup.gif" />
+    <Content Include="Resources\linegoup2.gif" />
+    <Content Include="Resources\patternmoney.jpg" />
+    <Content Include="Resources\phonePortfolio.gif" />
+    <Content Include="Resources\Rome.png" />
     <Content Include="Resources\ezgif-3-53a814fc9c.gif" />
     <Content Include="Resources\JellyfishFields.png" />
     <Content Include="Resources\nb8j7zje.bmp" />
     <Content Include="Resources\power-power-off-power-on-turn-off-turn-on-icon-189248.png" />
+    <Content Include="Resources\trade.gif" />
     <Content Include="Resources\windows-media-player-back-button.png" />
     <Content Include="Resources\lemonspattern.jpg" />
     <Content Include="Resources\xheyn7kdjvp41.mp4" />

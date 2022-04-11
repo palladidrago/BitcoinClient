@@ -103,6 +103,16 @@ namespace ClientApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap bluesea {
+            get {
+                object obj = ResourceManager.GetObject("bluesea", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap btcPattern {
             get {
                 object obj = ResourceManager.GetObject("btcPattern", resourceCulture);
@@ -153,6 +163,26 @@ namespace ClientApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap linegoup {
+            get {
+                object obj = ResourceManager.GetObject("linegoup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap linegoup2 {
+            get {
+                object obj = ResourceManager.GetObject("linegoup2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap nb8j7zje {
             get {
                 object obj = ResourceManager.GetObject("nb8j7zje", resourceCulture);
@@ -163,9 +193,59 @@ namespace ClientApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap patternmoney {
+            get {
+                object obj = ResourceManager.GetObject("patternmoney", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap phonePortfolio {
+            get {
+                object obj = ResourceManager.GetObject("phonePortfolio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap power_power_off_power_on_turn_off_turn_on_icon_189248 {
             get {
                 object obj = ResourceManager.GetObject("power-power-off-power-on-turn-off-turn-on-icon-189248", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap power_power_off_power_on_turn_off_turn_on_icon_1892481 {
+            get {
+                object obj = ResourceManager.GetObject("power-power-off-power-on-turn-off-turn-on-icon-1892481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Rome {
+            get {
+                object obj = ResourceManager.GetObject("Rome", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap trade {
+            get {
+                object obj = ResourceManager.GetObject("trade", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

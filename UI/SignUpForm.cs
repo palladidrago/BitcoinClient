@@ -70,22 +70,28 @@ namespace ClientApp.UI
                 textBox_Username.BackColor = Color.Red;
                 MessageBox.Show("Username already in use", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-            login = lArr.GetLoginWithMaxId(); //Get the login we just made 
-            if (curLogin != null ) login.Update(); //If changing an existing login, update
-            else if (isAdmin) { //If admin go back to login 
-                login.Insert();
-                AdminForm aForm = new AdminForm();
-                aForm.Show();
-                this.Close();
-            }
-            else //If it's new user
+            else
             {
-                
-                ClientCreateForm cForm = new ClientCreateForm(login); //Login will be inserted by client form
-                cForm.ShowDialog();
-                this.Close();
+                login.Insert();
+                lArr = new LoginArr();
+                lArr.Fill();
+                login = lArr.GetLoginWithMaxId(); //Get the login we just made 
+                if (curLogin != null) login.Update(); //If changing an existing login, update
+                else if (isAdmin)
+                { //If admin go back to login 
+                    login.Insert();
+                    AdminForm aForm = new AdminForm();
+                    aForm.Show();
+                    this.Close();
+                }
+                else //If it's new user
+                {
+
+                    ClientCreateForm cForm = new ClientCreateForm(login); //Login will be inserted by client form
+                    this.Hide();
+                    cForm.ShowDialog();
+                    this.Close();
+                }
             }
         }
     }

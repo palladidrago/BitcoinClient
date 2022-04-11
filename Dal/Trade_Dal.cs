@@ -57,7 +57,7 @@ namespace Dal
 
             //Delete the city from database
 
-            string str = "DELETE FROM Table_Order WHERE ID = " + id;
+            string str = "DELETE FROM Table_Trade WHERE ID = " + id;
 
             //Run the command and return result
 

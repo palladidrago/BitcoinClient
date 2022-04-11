@@ -12,27 +12,20 @@ namespace BL
 {
     public class TradeArr : ArrayList
     {
-        public TradeArr Filter(string clientName, int id)
+        public TradeArr Filter(Client client = null, int year = 0, int month = 0, int id = 0)
         {
+            
             TradeArr tradeArr = new TradeArr();
             Trade trade;
             for (int i = 0; i < this.Count; i++)
             {
                 trade = (this[i] as Trade);
-                if (trade.Id.ToString().Contains(id.ToString()) &&
-                trade.Client.ToString().StartsWith(clientName))
-                    tradeArr.Add(trade);
+                if
+                ((client == null || client.Id == trade.Client.Id) &&
+                ((trade.Date.Year == year || year == 0) && (trade.Date.Month == month || month == 0)))
+                tradeArr.Add(trade);    
             }
             return tradeArr;
-        }
-        public TradeArr Filter(int year, int month)
-        {
-            //Filter by year and by month
-            TradeArr returnArr = new TradeArr();
-            foreach (Trade item in this)
-                if (item.Date.Year == year && item.Date.Month == month)
-                    returnArr.Add(item);
-            return returnArr;
         }
         public Dictionary<string, int> GetDictionary(int year)
         {
@@ -45,7 +38,7 @@ namespace BL
 
                 //אם רוצים את שם החודש בהתאם לשפת מערכת ההפעלה
                 string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
-                dictionary.Add(monthName, this.Filter(year, i).Count); //Amount of trades per month 
+                dictionary.Add(monthName, this.Filter(year: year, month: i).Count); ; //Amount of trades per month 
             }
             return dictionary;
         }

@@ -11,7 +11,15 @@ namespace BL
 {
     class TradeCoinArr : ArrayList
     {
-
+        public long CoinAmountPerClient(Client cl)
+        {
+            long sum = 0;
+            foreach (TradeCoin tradeCoin in this)
+            {
+                if (tradeCoin.Trade.Client.Id == cl.Id) sum += tradeCoin.Count;
+            }
+            return sum;
+        }
         public void Fill()
         {
             //Table full of TradeCoin from dal
@@ -63,8 +71,10 @@ namespace BL
                 if (c.Id == (this[i] as TradeCoin).Coin.Id) tArrNew.Add(this[i]);
             }
             return tArrNew;
+        
         }
-        public CoinArr GetTop3CoinsForClient(Client cl)
+
+        public TradeCoinArr GetTop3TradeCoinForClient(Client cl)
         {
             TradeCoinArr tArr = this.Filter(cl);
             TradeCoin maxTradeCoin = new TradeCoin();
@@ -94,10 +104,10 @@ namespace BL
                 TradeCoin tCoin = tArr[i] as TradeCoin;
                 if (tCoin.Count > thirdMaxTradeCoin.Count) { thirdMaxTradeCoin = tCoin; iMax = i; }
             }
-            CoinArr cArrNew = new CoinArr();
-            cArrNew.Add(maxTradeCoin.Coin);
-            cArrNew.Add(secondMaxTradeCoin.Coin);
-            cArrNew.Add(thirdMaxTradeCoin.Coin);
+            TradeCoinArr cArrNew = new TradeCoinArr();
+            cArrNew.Add(maxTradeCoin);
+            cArrNew.Add(secondMaxTradeCoin);
+            cArrNew.Add(thirdMaxTradeCoin);
             return cArrNew;
         }
 

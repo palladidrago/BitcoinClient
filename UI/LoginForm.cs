@@ -96,8 +96,9 @@ namespace ClientApp.UI
                 Client client = cArr.GetClientWithLogin(login);
                 if (client != null)
                 {
-                    UserForm userForm = new UserForm();
                     Globals.client = client;
+
+                    UserForm userForm = new UserForm();
                     this.Hide();
                     userForm.ShowDialog();
                     this.Close();
