@@ -9,25 +9,25 @@ using Dal;
 
 namespace BL
 {
-    public class CityArr : ArrayList
+    public class CountryArr : ArrayList
     {
-        public bool IsContains(string cityName)
+        public bool IsContains(string countryName)
         {
-            //Check wether city exitst wit the sam ename
+            //Check wether country exitst wit the sam ename
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as City).Name == cityName)
+                if ((this[i] as Country).Name == countryName)
                     return true;
             return false;
         }
-        public City GetCityWithMaxId()
+        public Country GetCountryWithMaxId()
         {
-            //Return the city with the highest id
-            City maxCity = new City();
+            //Return the country with the highest id
+            Country maxCountry = new Country();
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as City).Id > maxCity.Id)
-                    maxCity = this[i] as City;
+                if ((this[i] as Country).Id > maxCountry.Id)
+                    maxCountry = this[i] as Country;
 
-            return maxCity;
+            return maxCountry;
         }
         
         public void Fill()
@@ -36,18 +36,18 @@ namespace BL
             //Table full of cities from dal
 
 
-            DataTable dataTable = City_Dal.GetDataTable();
+            DataTable dataTable = Country_Dal.GetDataTable();
 
             //Move the clients from datatable to arr
             //Move every line
 
             DataRow dataRow;
-            City curCity;
+            Country curCountry;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataRow = dataTable.Rows[i];
-                curCity = new City(dataRow);
-                this.Add(curCity);
+                curCountry = new Country(dataRow);
+                this.Add(curCountry);
             }
         }
     }

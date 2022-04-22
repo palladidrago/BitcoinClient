@@ -30,6 +30,7 @@ namespace ClientApp.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.label_Username = new System.Windows.Forms.Label();
             this.textBox_Username = new System.Windows.Forms.TextBox();
@@ -41,6 +42,7 @@ namespace ClientApp.UI
             this.label_Signup = new System.Windows.Forms.Label();
             this.pictureBox_Shutoff = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Shutoff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -158,6 +160,11 @@ namespace ClientApp.UI
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -199,5 +206,6 @@ namespace ClientApp.UI
         private System.Windows.Forms.Label label_DontHaveAccount;
         private System.Windows.Forms.Label label_Signup;
         private System.Windows.Forms.PictureBox pictureBox_Shutoff;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

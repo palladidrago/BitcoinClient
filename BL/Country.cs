@@ -8,27 +8,27 @@ using Dal;
 
 namespace BL
 {
-    public class City
+    public class Country
     {
-        public string Name { get; set; } //Name of the city
-        public int Id { get; set; } //Id of the city
-        public City (string Name)
+        public string Name { get; set; } //Name of the Country
+        public int Id { get; set; } //Id of the Country
+        public Country (string Name)
         {
             this.Name = Name;
         }
-        public City() { }
-        public City (DataRow dataRow)
+        public Country() { }
+        public Country (DataRow dataRow)
         {
             this.Name = dataRow["Name"].ToString();
             this.Id = (int)dataRow["Id"];
         }
         public bool Insert()
         {
-            return City_Dal.Insert(Name);
+            return Country_Dal.Insert(Name);
         }
         public bool Delete()
         {
-            return City_Dal.Delete(Id);
+            return Country_Dal.Delete(Id);
         }
     
         public override string ToString()

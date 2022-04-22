@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.pictureBox_PowerOff = new System.Windows.Forms.PictureBox();
             this.label_Title = new System.Windows.Forms.Label();
-            this.button_Chart = new System.Windows.Forms.Button();
-            this.button_Report = new System.Windows.Forms.Button();
-            this.button_Coin = new System.Windows.Forms.Button();
             this.button_Trade = new System.Windows.Forms.Button();
+            this.button_Update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PowerOff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,12 +40,15 @@
             // 
             this.pictureBox_PowerOff.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PowerOff.Image = global::ClientApp.Properties.Resources.power_power_off_power_on_turn_off_turn_on_icon_1892481;
-            this.pictureBox_PowerOff.Location = new System.Drawing.Point(426, 10);
+            this.pictureBox_PowerOff.Location = new System.Drawing.Point(230, 81);
             this.pictureBox_PowerOff.Name = "pictureBox_PowerOff";
             this.pictureBox_PowerOff.Size = new System.Drawing.Size(63, 59);
             this.pictureBox_PowerOff.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_PowerOff.TabIndex = 9;
             this.pictureBox_PowerOff.TabStop = false;
+            this.pictureBox_PowerOff.Click += new System.EventHandler(this.pictureBox_PowerOff_Click);
+            this.pictureBox_PowerOff.MouseEnter += new System.EventHandler(this.pictureBox_PowerOff_MouseEnter);
+            this.pictureBox_PowerOff.MouseLeave += new System.EventHandler(this.pictureBox_PowerOff_MouseLeave);
             // 
             // label_Title
             // 
@@ -61,54 +63,6 @@
             this.label_Title.TabIndex = 8;
             this.label_Title.Text = "Welcome,";
             // 
-            // button_Chart
-            // 
-            this.button_Chart.BackColor = System.Drawing.Color.Crimson;
-            this.button_Chart.FlatAppearance.BorderSize = 0;
-            this.button_Chart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Chart.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Chart.ForeColor = System.Drawing.Color.White;
-            this.button_Chart.Location = new System.Drawing.Point(247, 196);
-            this.button_Chart.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Chart.Name = "button_Chart";
-            this.button_Chart.Size = new System.Drawing.Size(235, 111);
-            this.button_Chart.TabIndex = 4;
-            this.button_Chart.Text = "Chart";
-            this.button_Chart.UseVisualStyleBackColor = false;
-            this.button_Chart.Click += new System.EventHandler(this.button_Chart_Click);
-            // 
-            // button_Report
-            // 
-            this.button_Report.BackColor = System.Drawing.Color.Crimson;
-            this.button_Report.FlatAppearance.BorderSize = 0;
-            this.button_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Report.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Report.ForeColor = System.Drawing.Color.White;
-            this.button_Report.Location = new System.Drawing.Point(247, 80);
-            this.button_Report.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Report.Name = "button_Report";
-            this.button_Report.Size = new System.Drawing.Size(235, 113);
-            this.button_Report.TabIndex = 5;
-            this.button_Report.Text = "Report";
-            this.button_Report.UseVisualStyleBackColor = false;
-            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
-            // 
-            // button_Coin
-            // 
-            this.button_Coin.BackColor = System.Drawing.Color.Crimson;
-            this.button_Coin.FlatAppearance.BorderSize = 0;
-            this.button_Coin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Coin.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Coin.ForeColor = System.Drawing.Color.White;
-            this.button_Coin.Location = new System.Drawing.Point(8, 196);
-            this.button_Coin.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Coin.Name = "button_Coin";
-            this.button_Coin.Size = new System.Drawing.Size(235, 111);
-            this.button_Coin.TabIndex = 6;
-            this.button_Coin.Text = "Coin";
-            this.button_Coin.UseVisualStyleBackColor = false;
-            this.button_Coin.Click += new System.EventHandler(this.button_Coin_Click);
-            // 
             // button_Trade
             // 
             this.button_Trade.BackColor = System.Drawing.Color.Crimson;
@@ -116,27 +70,43 @@
             this.button_Trade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Trade.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Trade.ForeColor = System.Drawing.Color.White;
-            this.button_Trade.Location = new System.Drawing.Point(8, 81);
-            this.button_Trade.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Trade.Location = new System.Drawing.Point(11, 81);
+            this.button_Trade.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_Trade.Name = "button_Trade";
-            this.button_Trade.Size = new System.Drawing.Size(235, 111);
+            this.button_Trade.Size = new System.Drawing.Size(214, 107);
             this.button_Trade.TabIndex = 7;
             this.button_Trade.Text = "Trade";
             this.button_Trade.UseVisualStyleBackColor = false;
             this.button_Trade.Click += new System.EventHandler(this.button_Trade_Click);
+            // 
+            // button_Update
+            // 
+            this.button_Update.BackColor = System.Drawing.Color.Crimson;
+            this.button_Update.FlatAppearance.BorderSize = 0;
+            this.button_Update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Update.Font = new System.Drawing.Font("Rockwell Nova Cond", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Update.ForeColor = System.Drawing.Color.White;
+            this.button_Update.Location = new System.Drawing.Point(11, 200);
+            this.button_Update.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Update.Name = "button_Update";
+            this.button_Update.Size = new System.Drawing.Size(214, 107);
+            this.button_Update.TabIndex = 7;
+            this.button_Update.Text = "Update info";
+            this.button_Update.UseVisualStyleBackColor = false;
+            this.button_Update.Click += new System.EventHandler(this.button_UpdateInfo_Click);
             // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(209)))), ((int)(((byte)(239)))));
-            this.ClientSize = new System.Drawing.Size(499, 318);
+            this.ClientSize = new System.Drawing.Size(436, 318);
             this.Controls.Add(this.pictureBox_PowerOff);
             this.Controls.Add(this.label_Title);
-            this.Controls.Add(this.button_Chart);
-            this.Controls.Add(this.button_Report);
-            this.Controls.Add(this.button_Coin);
+            this.Controls.Add(this.button_Update);
             this.Controls.Add(this.button_Trade);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserForm";
             this.Text = "UserForm";
             this.Resize += new System.EventHandler(this.UserForm_Resize);
@@ -150,9 +120,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox_PowerOff;
         private System.Windows.Forms.Label label_Title;
-        private System.Windows.Forms.Button button_Chart;
-        private System.Windows.Forms.Button button_Report;
-        private System.Windows.Forms.Button button_Coin;
         private System.Windows.Forms.Button button_Trade;
+        private System.Windows.Forms.Button button_Update;
     }
 }

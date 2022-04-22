@@ -87,7 +87,8 @@ namespace ClientApp.UI
                 else //If it's new user
                 {
 
-                    ClientCreateForm cForm = new ClientCreateForm(login); //Login will be inserted by client form
+                    ClientCreateForm cForm = new ClientCreateForm(login: login); //Login will be inserted by client form 
+                    //Since we're not updating we only pass login
                     this.Hide();
                     cForm.ShowDialog();
                     this.Close();

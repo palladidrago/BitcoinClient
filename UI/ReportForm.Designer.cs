@@ -47,7 +47,7 @@
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.label_Print = new System.Windows.Forms.Label();
             this.button_ClientCoinReport = new System.Windows.Forms.Button();
-            this.button_ClientCityReport = new System.Windows.Forms.Button();
+            this.button_ClientCountryReport = new System.Windows.Forms.Button();
             this.button_ValidReport = new System.Windows.Forms.Button();
             this.button_ScamLevels = new System.Windows.Forms.Button();
             this.button_TradeClientCount = new System.Windows.Forms.Button();
@@ -233,19 +233,19 @@
             this.button_ClientCoinReport.UseVisualStyleBackColor = false;
             this.button_ClientCoinReport.Click += new System.EventHandler(this.button_ClientCoinReport_Click);
             // 
-            // button_ClientCityReport
+            // button_ClientCountryReport
             // 
-            this.button_ClientCityReport.BackColor = System.Drawing.Color.White;
-            this.button_ClientCityReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ClientCityReport.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_ClientCityReport.Location = new System.Drawing.Point(438, 3);
-            this.button_ClientCityReport.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ClientCityReport.Name = "button_ClientCityReport";
-            this.button_ClientCityReport.Size = new System.Drawing.Size(61, 63);
-            this.button_ClientCityReport.TabIndex = 8;
-            this.button_ClientCityReport.Text = "Client City Report";
-            this.button_ClientCityReport.UseVisualStyleBackColor = false;
-            this.button_ClientCityReport.Click += new System.EventHandler(this.button_ClientCityReport_Click);
+            this.button_ClientCountryReport.BackColor = System.Drawing.Color.White;
+            this.button_ClientCountryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ClientCountryReport.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ClientCountryReport.Location = new System.Drawing.Point(438, 3);
+            this.button_ClientCountryReport.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ClientCountryReport.Name = "button_ClientCountryReport";
+            this.button_ClientCountryReport.Size = new System.Drawing.Size(61, 63);
+            this.button_ClientCountryReport.TabIndex = 8;
+            this.button_ClientCountryReport.Text = "Client Country Report";
+            this.button_ClientCountryReport.UseVisualStyleBackColor = false;
+            this.button_ClientCountryReport.Click += new System.EventHandler(this.button_ClientCountryReport_Click);
             // 
             // button_ValidReport
             // 
@@ -370,7 +370,7 @@
             this.Controls.Add(this.button_TradeClientCount);
             this.Controls.Add(this.button_CoinQuoteReport);
             this.Controls.Add(this.button_ValidReport);
-            this.Controls.Add(this.button_ClientCityReport);
+            this.Controls.Add(this.button_ClientCountryReport);
             this.Controls.Add(this.button_ClientCoinReport);
             this.Controls.Add(this.label_Print);
             this.Controls.Add(this.pictureBox_Print);
@@ -412,7 +412,7 @@
         private System.Windows.Forms.Label label_Print;
         private UI.RoundLabel label_Title_Report;
         private System.Windows.Forms.Button button_ClientCoinReport;
-        private System.Windows.Forms.Button button_ClientCityReport;
+        private System.Windows.Forms.Button button_ClientCountryReport;
         private System.Windows.Forms.Button button_ValidReport;
         private System.Windows.Forms.Button button_ScamLevels;
         private System.Windows.Forms.Button button_TradeClientCount;

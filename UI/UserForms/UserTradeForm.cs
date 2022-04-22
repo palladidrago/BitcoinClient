@@ -16,6 +16,24 @@ namespace ClientApp.UI
     {
         Coin curCoin;
         #region Helpers
+        private bool CheckForm()
+        {
+            bool flag = true;
+            if (listBox_Clients.SelectedItem == null)
+            {
+                flag = false;
+                MessageBox.Show("Please select a client");
+            }
+            if (textBox_Memo.Text.Length < 2)
+            {
+                flag = false;
+                textBox_Memo.BackColor = Color.Red;
+                MessageBox.Show("Please Add a memo");
+            }
+            else
+                textBox_Memo.BackColor = Color.White;
+            return flag;
+        }
         #region Clear Helpers
         private void ClearDetails()
         {
@@ -29,11 +47,7 @@ namespace ClientApp.UI
             text_Id.Text = "0";
             textBox_Memo.Text = String.Empty;
             dateTimePicker_Date.Value = DateTime.Now;
-        }
-        private void ClearClient()
-        {
-            ClientToForm(null);
-
+        
         }
         private void ClearItems()
         {
@@ -49,7 +63,7 @@ namespace ClientApp.UI
 
 
         }
-        private void ClearAll() { ClearClient(); ClearDetails(); ClearItems(); }
+        private void ClearAll() { ClearDetails(); ClearItems(); }
         #endregion
         private void SetCoinsByFilter()
         {
@@ -65,6 +79,8 @@ namespace ClientApp.UI
         }
         private void MoveSelectedItemBetweenListBox(ListBox listBox_From, ListBox listBox_To, bool isToTrade)
         {
+            if (listBox_From.SelectedItem == null) return;
+
             // Moves coins between potential and wanted listbox
             CoinArr coinArr = null;
             Coin selectedItem = listBox_From.SelectedItem as Coin;
@@ -116,18 +132,25 @@ namespace ClientApp.UI
             TradeArrToForm();
         }
         #region XToForm
-
-
-        private void ClientToForm(Client c = null)
+        private void QuoteToForm(Quote q)
         {
-            if (c == null)
+            if (q != null && q.Price != 0)
             {
-                text_Client.Text = "No client chosen";
+                text_Price.Text = string.Format("{0:n0}", q.Price) + "$";
+                text_Volume.Text = string.Format("{0:n0}", q.Volume) + "$";
+
+                text_MarketCap.Text = string.Format("{0:n0}", q.MarketCap) + "$";
+                text_PercentChanged.Text = string.Format("{0:n0}", q.PercentChange) + "%";
+                if (q.PercentChange > 0) text_PercentChanged.ForeColor = Color.Green;
+                else text_PercentChanged.ForeColor = Color.Red;
+
             }
             else
             {
-                text_Client.Text = c.ToString();
-
+                text_Price.Text = "";
+                text_Volume.Text = "";
+                text_MarketCap.Text = "";
+                text_PercentChanged.Text = "";
             }
         }
 
@@ -157,10 +180,10 @@ namespace ClientApp.UI
                 tArr = new TradeArr();
                 tArr.Fill();
             }
-            tArr.Filter(Globals.client); //Only get trades for current client
+            tArr = tArr.Filter(client: Globals.client); //Only get trades for current client
             listBox_Trades.DataSource = tArr;
             //listBox_Trades.ValueMember = "Id";
-            listBox_Trades.DisplayMember = "";
+            listBox_Trades.DisplayMember = "Name";
         }
 
         private void ValidArrToForm(Valid curValid = null)
@@ -294,62 +317,63 @@ namespace ClientApp.UI
             //Add trade to db 
 
             TradeCoinArr tradeCoinArr_New;
-            if (trade.Id == 0)
+            if (CheckForm())
             {
-                if (trade.Insert()) //Insert the trade into the db
+                if (trade.Id == 0)
                 {
-
-                    //Find the newest trade using the highest id
-
-                    TradeArr tradeArr = new TradeArr();
-                    tradeArr.Fill();
-                    trade = tradeArr.GetTradeWithMaxId(); //Pull the newest trade out
-                    tradeCoinArr_New = FormToTradeCoinArr(trade);
-
-                    //Add new coins to the trade
-
-                    if (tradeCoinArr_New.Insert())
+                    if (trade.Insert()) //Insert the trade into the db
                     {
-                        MessageBox.Show("Successfully saved");
-                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
+
+                        //Find the newest trade using the highest id
+
+                        TradeArr tradeArr = new TradeArr();
+                        tradeArr.Fill();
+                        trade = tradeArr.GetTradeWithMaxId(); //Pull the newest trade out
+                        tradeCoinArr_New = FormToTradeCoinArr(trade);
+
+                        //Add new coins to the trade
+
+                        if (tradeCoinArr_New.Insert())
+                        {
+                            MessageBox.Show("Successfully saved");
+                            (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
+
+                        }
+
+                        else
+                            MessageBox.Show("Error in insert");
+
+                        ClearAll();
+                        TradeArrToForm(); // Do this add the new trade to the list
 
                     }
-
-                    else
-                        MessageBox.Show("Error in insert");
-
-                    ClearAll();
-                    TradeArr tradeArr_New = new TradeArr();
-                    tradeArr_New.Fill();
-                    TradeArrToForm(tradeArr); // Do this add the new trade to the list
-
-                }
-                else if (trade.Update()) //Update the trade in db
-                {
-                    //If successful, need to update trade in TradeCoin db as well!
-                    TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
-                    tradeCoinArr_Old.Fill();
-                    tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
-                    //Delete all TradeCoin (all items of trade itself) for this trade
-                    tradeCoinArr_Old.Delete();
-                    tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
-                    if (tradeCoinArr_New.Insert())
+                    else if (trade.Update()) //Update the trade in db
                     {
-                        MessageBox.Show("Updated successfully");
-                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
+                        //If successful, need to update trade in TradeCoin db as well!
+                        TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
+                        tradeCoinArr_Old.Fill();
+                        tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
+                        //Delete all TradeCoin (all items of trade itself) for this trade
+                        tradeCoinArr_Old.Delete();
+                        tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
+                        if (tradeCoinArr_New.Insert())
+                        {
+                            MessageBox.Show("Updated successfully");
+                            (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
 
-                        (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
+                            (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
+                        }
+                        else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
+
+                        ClearAll();
                     }
-                    else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
-
-                    ClearAll();
+                    else MessageBox.Show("Error in insert/update");
                 }
-                else MessageBox.Show("Error in insert/update");
             }
         }
         #endregion
         #region Event Functions
-        private void listBox_Trades_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listBox_Trades_MouseClick(object sender, MouseEventArgs e)
         {
             //When Trade selected:
             ListBox lb = sender as ListBox;
@@ -359,7 +383,6 @@ namespace ClientApp.UI
             {
                 //Trade to form (First Page)
                 TradeToForm(curTrade);
-                ClientToForm(curTrade.Client); //Client to form with current trade
 
 
 
@@ -391,10 +414,13 @@ namespace ClientApp.UI
 
         private void listBox_Potential_Coins_DoubleClick(object sender, EventArgs e)
         {
+            //Move selected coin from potential list of coins to list of chosen coins
 
+            ListBox potentialListBox = sender as ListBox;
+            MoveSelectedItemBetweenListBox(potentialListBox, listBox_Chosen_Coins, true);
         }
 
-        #endregion
+        
 
         private void textBox_Coin_Filter_Name_KeyUp(object sender, KeyEventArgs e)
         {
@@ -429,8 +455,25 @@ namespace ClientApp.UI
             }
             catch (Exception ex) { ex.ToString(); }
         }
+        private void listBox_Potential_Coins_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+            curCoin = ((sender as ListBox).SelectedItem as Coin);
 
+            CoinQuoteArr qArr = new CoinQuoteArr();
+            qArr.Fill();
+            qArr.Filter(curCoin);
+            Quote q = qArr.LatestQuote(curCoin);
+            if (curCoin != null && curCoin.LogoUrl != null)
+            {
+                pictureBox_Logo.ImageLocation = curCoin.LogoUrl;
+
+            }
+            QuoteToForm(q);
+        }
+
+        #endregion
+        #region Coin buttons
         private void button_Plus_Coin_Click(object sender, EventArgs e)
         {
             if (listBox_Chosen_Coins_Supply.SelectedIndex >= 0)
@@ -473,7 +516,6 @@ namespace ClientApp.UI
                     CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
                     Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
                     MoveSelectedItemBetweenListBox(listBox_Chosen_Coins, listBox_Potential_Coins, false);
-                    listBox_Chosen_Coins_Supply.Items.Remove(listBox_Chosen_Coins_Supply.SelectedItem);
 
                     coinArr.Remove(coin);
                     CoinArrToForm(listBox_Chosen_Coins, coinArr);
@@ -486,41 +528,28 @@ namespace ClientApp.UI
             //Create an trade from the form
 
             Trade trade = FormToTrade();
-
+            TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
+            tradeCoinArr_Old.Fill();
 
             if (trade.Id != 0)
             {
                 if (trade.Delete()) //Update the trade in db
                 {
                     //If successful, need to update trade in TradeCoin db as well!
-                    TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
-                    tradeCoinArr_Old.Fill();
+
                     tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
                     //Delete all TradeCoin (all items of trade itself) for this trade
                     if (tradeCoinArr_Old.Delete())
-                        MessageBox.Show("Delete Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        MessageBox.Show("Deleted successfully", "Success", MessageBoxButtons.OK);
+                        TradeArrToForm();
+                    }
                 }//Finally, insert the TradeCoinArr to db
                 ClearAll();
             }
-            else MessageBox.Show("Error in Delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void listBox_Potential_Coins_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            curCoin = ((sender as ListBox).SelectedItem as Coin);
-
-            CoinQuoteArr qArr = new CoinQuoteArr();
-            qArr.Fill();
-            qArr.Filter(curCoin);
-            Quote q = qArr.LatestQuote(curCoin);
-            if (curCoin != null && curCoin.LogoUrl != null)
-            {
-                pictureBox_Logo.ImageLocation = curCoin.LogoUrl;
-
-            }
-            QuoteToForm(q);
-        }
+        
 
         private void button_FetchCoinPrice_Click(object sender, EventArgs e)
         {
@@ -530,26 +559,6 @@ namespace ClientApp.UI
             cqArr.Insert();
             QuoteToForm(cqArr.LatestQuote(curCoin));
         }
-        private void QuoteToForm(Quote q)
-        {
-            if (q != null && q.Price != 0)
-            {
-                text_Price.Text = string.Format("{0:n0}", q.Price) + "$";
-                text_Volume.Text = string.Format("{0:n0}", q.Volume) + "$";
-
-                text_MarketCap.Text = string.Format("{0:n0}", q.MarketCap) + "$";
-                text_PercentChanged.Text = string.Format("{0:n0}", q.PercentChange) + "%";
-                if (q.PercentChange > 0) text_PercentChanged.ForeColor = Color.Green;
-                else text_PercentChanged.ForeColor = Color.Red;
-
-            }
-            else
-            {
-                text_Price.Text = "";
-                text_Volume.Text = "";
-                text_MarketCap.Text = "";
-                text_PercentChanged.Text = "";
-            }
-        }
+        #endregion
     }
 }

@@ -18,9 +18,9 @@ namespace ClientApp.UI
         public ChartForm()
         {
             InitializeComponent();
-            curLabel = roundLabel_ClientCity;
+            curLabel = roundLabel_ClientCountry;
             curLabel.Enabled = false;
-            label_Title.Text = "City Client";
+            label_Title.Text = "Country Client";
             DataToChart1();
         }
         Color oldColor;
@@ -291,7 +291,7 @@ namespace ClientApp.UI
             DataToChart2();
         }
 
-        private void roundLabel_ClientCity_Click(object sender, EventArgs e)
+        private void roundLabel_ClientCountry_Click(object sender, EventArgs e)
         {
             foreach (var series in chart_Report.Series)
             {
@@ -300,7 +300,7 @@ namespace ClientApp.UI
             curLabel.Enabled = true;
             curLabel = sender as RoundLabel;
             curLabel.Enabled = false;
-            label_Title.Text = "City Chart";
+            label_Title.Text = "Country Chart";
             DataToChart1();
         }
 

@@ -1,0 +1,11 @@
+Trade - only for current client
+Filter on trade - Bigger
+Remove reports for client
+Add more data
+Change client info (signup etc.)
+Graph filter
+Coin only for admin
+Delete shoe size
+City replace with country
+Instead of phone number email
+Check birth year older than 18, younger than 120

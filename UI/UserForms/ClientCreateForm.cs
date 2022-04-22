@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL;
@@ -14,13 +15,26 @@ namespace ClientApp.UI
     public partial class ClientCreateForm : Form
     {
         Login login;
-        public ClientCreateForm(Login login)
+        Client clientToUpdate;
+        public ClientCreateForm(Login login = null, Client clientToUpdate = null)
         {
             InitializeComponent();
-            CityArrToForm();
+            CountryArrToForm();
             this.login = login;
+            this.clientToUpdate = clientToUpdate;
+            ClientToForm(clientToUpdate);
         }
-
+        private void ClientToForm(Client c)
+        {
+            Client client = new Client();
+            textBox_FirstName.Text = c.FirstName;
+            textBox_LastName.Text = c.LastName;
+            textBox_Mail.Text = c.Mail;
+            textBox_BirthYear.Text = c.BirthYear.ToString();
+            textBox_BtcAmount.Text = c.BtcAmount.ToString();
+            textBox_BtcAddress.Text = c.BtcAddress;
+            comboBox_Country.SelectedValue = c.Country.Id;
+        }
         private void textBox_Number_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -53,12 +67,11 @@ namespace ClientApp.UI
             Client client = new Client();
             client.FirstName = textBox_FirstName.Text;
             client.LastName = textBox_LastName.Text;
-            client.PhoneNumber = textBox_PhoneNumber.Text;
+            client.Mail = textBox_Mail.Text;
             client.BirthYear = int.Parse(textBox_BirthYear.Text);
             client.BtcAmount = double.Parse(textBox_BtcAmount.Text);
             client.BtcAddress = textBox_BtcAddress.Text;
-            client.ShoeSize = int.Parse(textBox_ShoeSize.Text);
-            client.City = comboBox_City.SelectedItem as City;
+            client.Country = comboBox_Country.SelectedItem as Country;
             client.Login = this.login;
 
 
@@ -90,19 +103,18 @@ namespace ClientApp.UI
             #endregion 
 
             #region BirthYear
-            if (textBox_BirthYear.Text.Length >= 4)
+            int age = 0;
+            try
             {
-
-                try
-                {
-                    int.Parse(textBox_BirthYear.Text);
-                    textBox_ShoeSize.BackColor = Color.White;
-                }
-                catch
-                {
-                    textBox_BirthYear.BackColor = Color.Red;
-                    flag = false;
-                }
+                age = DateTime.Now.Year - Convert.ToInt32(textBox_BirthYear.Text);
+            }
+            catch 
+            {
+                flag = false; MessageBox.Show("Year is not a number"); 
+            }
+            if (age >=18 && age <=120)
+            {
+                textBox_BirthYear.BackColor = Color.White;
             }
             else
             {
@@ -111,14 +123,18 @@ namespace ClientApp.UI
             }
             #endregion 
 
-            #region PhoneNumber
-            if (textBox_PhoneNumber.Text.Length < 9)
+            #region Mail
+            string pattern =
+                @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9]" +
+                @"(?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"; //RFC2822 mail validation
+            Regex rg = new Regex(pattern);
+            if (rg.IsMatch(textBox_Mail.Text))
             {
                 flag = false;
-                textBox_PhoneNumber.BackColor = Color.Red;
+                textBox_Mail.BackColor = Color.Red;
             }
             else
-                textBox_PhoneNumber.BackColor = Color.White;
+                textBox_Mail.BackColor = Color.White;
             #endregion
 
             #region BtcAmount
@@ -142,36 +158,15 @@ namespace ClientApp.UI
                 textBox_BtcAddress.BackColor = Color.White;
             #endregion
 
-            #region ShoeSize
-            if (textBox_ShoeSize.Text != "")
-            {
+            
 
-                try
-                {
-                    int.Parse(textBox_ShoeSize.Text);
-                    textBox_ShoeSize.BackColor = Color.White;
-                }
-                catch
-                {
-                    textBox_ShoeSize.BackColor = Color.Red;
-                    flag = false;
-                }
-            }
-            else
-            {
-                textBox_ShoeSize.BackColor = Color.Red;
-                flag = false;
-            }
-
-            #endregion
-
-            #region City
-            if ((int)comboBox_City.SelectedValue <= 0)
+            #region Country
+            if ((int)comboBox_Country.SelectedValue <= 0)
             {
                 flag = false;
-                comboBox_City.ForeColor = Color.Red;
+                comboBox_Country.ForeColor = Color.Red;
             }
-            else comboBox_City.ForeColor = Color.Black;
+            else comboBox_Country.ForeColor = Color.Black;
             #endregion
             return flag;
         }
@@ -184,45 +179,59 @@ namespace ClientApp.UI
             else
             {
                 Client client = FormToClient();
-                if (client.Insert() && login.Insert())
+                if (clientToUpdate == null)
                 {
-                    MessageBox.Show("Added successfully");
-                    Globals.client = client;
-                    UserForm userForm = new UserForm();
-                    this.Hide();
-                    userForm.ShowDialog();
-                    this.Close();
+                    if (client.Insert() && login.Insert())
+                    {
+                        MessageBox.Show("Added successfully");
+                        Globals.client = client;
+                        UserForm userForm = new UserForm();
+                        this.Hide();
+                        userForm.ShowDialog();
+                        this.Close();
+                    }
+                    else MessageBox.Show("There was an error inserting", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else MessageBox.Show("There was an error inserting", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error) ;
+                else 
+                {
+                    if (client.Update())
+                    {
+                        MessageBox.Show("Updated successfully");
+                        Globals.client = client;
+                        this.Close(); //UserForm sent us so we will go back to it when done
+                    }
+                    else MessageBox.Show("There was an error updating", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
         }
 
-        public void CityArrToForm(City curCity = null)
+        public void CountryArrToForm(Country curCountry = null)
         {
-            //From city array to form 
-            CityArr cityArr = new CityArr();
-            City cityDefault = new City();
-            cityDefault.Id = -1;
-            cityDefault.Name = "Choose a city";
+            //From country array to form 
+            CountryArr countryArr = new CountryArr();
+            Country countryDefault = new Country();
+            countryDefault.Id = -1;
+            countryDefault.Name = "Choose a country";
 
 
-            cityArr.Add(cityDefault);
-            cityArr.Fill();
+            countryArr.Add(countryDefault);
+            countryArr.Fill();
 
-            comboBox_City.DataSource = cityArr;
-            comboBox_City.ValueMember = "Id";
-            comboBox_City.DisplayMember = "Name";
-            if (curCity != null)
-                comboBox_City.SelectedValue = curCity.Id;
+            comboBox_Country.DataSource = countryArr;
+            comboBox_Country.ValueMember = "Id";
+            comboBox_Country.DisplayMember = "Name";
+            if (curCountry != null)
+                comboBox_Country.SelectedValue = curCountry.Id;
 
         }
-        private void button_AddCity_Click(object sender, EventArgs e)
+        private void button_AddCountry_Click(object sender, EventArgs e)
         {
-            CityForm cityForm = new CityForm(comboBox_City.SelectedItem as City);
+            CountryForm countryForm = new CountryForm(comboBox_Country.SelectedItem as Country);
 
-            cityForm.ShowDialog();
+            countryForm.ShowDialog();
 
-            CityArrToForm(cityForm.SelectedCity);
+            CountryArrToForm(countryForm.SelectedCountry);
 
         }
     }

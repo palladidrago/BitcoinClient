@@ -55,7 +55,7 @@ namespace Dal
         public static bool Delete(int id)
         {
 
-            //Delete the city from database
+            //Delete the country from database
 
             string str = "DELETE FROM Table_Trade WHERE ID = " + id;
 

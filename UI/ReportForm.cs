@@ -195,13 +195,13 @@ namespace ClientApp.UI
             FillListView2();
         }
 
-        private void button_ClientCityReport_Click(object sender, EventArgs e)
+        private void button_ClientCountryReport_Click(object sender, EventArgs e)
         {
             listView_Report.Items.Clear();
             curButton.Enabled = true;
             curButton = sender as Button;
             curButton.Enabled = false;
-            label_Title_Report.Text = "Client City Report";
+            label_Title_Report.Text = "Client Country Report";
             FillListView3();
         }
 
@@ -325,7 +325,7 @@ namespace ClientApp.UI
         private void FillListView3()
         {
             listView_Report.Columns.Clear();
-            listView_Report.Columns.Add("City name", listView_Report.Width / 2);
+            listView_Report.Columns.Add("Country name", listView_Report.Width / 2);
             listView_Report.Columns.Add("Client count", listView_Report.Width / 2);
 
             //Add date to listview
@@ -333,21 +333,21 @@ namespace ClientApp.UI
             ClientArr clArr = new ClientArr();
             clArr.Fill();
 
-            CityArr cityArr = new CityArr();
-            cityArr.Fill();
+            CountryArr countryArr = new CountryArr();
+            countryArr.Fill();
 
             ListViewItem listViewItem;
             ClientArr newClArr;
-            City curCity;
+            Country curCountry;
             //Go over all the items in the source and add them to listview
 
-            for (int i = 0; i < cityArr.Count; i++)
+            for (int i = 0; i < countryArr.Count; i++)
             {
-                curCity = cityArr[i] as City;
-                newClArr = clArr.Filter(city: curCity);
+                curCountry = countryArr[i] as Country;
+                newClArr = clArr.Filter(country: curCountry);
 
                 //יצירת פריט-תיבת-תצוגה
-                listViewItem = new ListViewItem(new[] { curCity.Name,
+                listViewItem = new ListViewItem(new[] { curCountry.Name,
 
                     newClArr.Count.ToString()});
                 //הוספת פריט-תיבת-תצוגה לתיבת תצוגה

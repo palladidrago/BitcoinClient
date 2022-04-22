@@ -75,7 +75,8 @@ namespace BL
         }
         public Trade GetTradeWithMaxId()
         {
-            //Return the city with the highest id
+            //Return the
+            //with the highest id
             Trade maxTrade = new Trade();
             for (int i = 0; i < this.Count; i++)
                 if ((this[i] as Trade).Id > maxTrade.Id)

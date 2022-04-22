@@ -8,25 +8,23 @@
 * Coin
 - Add Filter by count in coinform
 
-* Trade
-- Add form checking for trade
-- Why can't change trade?
 
 * Add portfolio 
 - Direct buy
 - Show prices + portfolio value
 - Fulfill past order
 
+- Filter on trade - Bigger
+- Add more data
+- Graph + report filter
 
 
-Less important Todo: 
-* Make messageboxes prettier
-* Change coin "Count" to "Supply"
-* Add general form checker function in helper function class
-* Check for bitcoin address correctness
-* Why does the update button add to the beginning of the listbox when inserting?(Admin Panel)
+
 
 Done:
+* Trade - only for current client
+* Coin only for admin
+* Remove reports for client
 * Do the graph part
 * Find 7 graphs 
 * Add pictures
@@ -41,3 +39,10 @@ Done:
 * Make background a little bit less ugly
 * Add filter to coin
 * Add working filters to trade ( Details )
+* Change client info (signup etc.)
+* City replace with country
+* Delete shoe size
+* Instead of phone number email
+* Check birth year older than 18, younger than 120
+
+

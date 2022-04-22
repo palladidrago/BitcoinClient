@@ -153,11 +153,14 @@ namespace ClientApp.UI
             else
             {
                 if (MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2,
-                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading) ==
-                System.Windows.Forms.DialogResult.Yes)
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) ==
+                System.Windows.Forms.DialogResult.Yes) //If he's sure he wants to delete
                 {
-                    if (coin.Delete()) MessageBox.Show("Deleted Successfully", "Success");
+                    CoinQuoteArr coinQuoteArr = new CoinQuoteArr();
+                    coinQuoteArr.Fill();
+                    coinQuoteArr.Filter(coin); //We can't only delete the coin, we also have to delete all its' quotes
+                    
+                    if (coinQuoteArr.Delete() && coin.Delete()) MessageBox.Show("Deleted Successfully", "Success");
                     else MessageBox.Show("Somtin gon wrong in deletion bro sorry", "Fail");
                     CoinToForm(null);
                     CoinArrToForm();
@@ -167,6 +170,7 @@ namespace ClientApp.UI
 
         private void button_AddValid_Click(object sender, EventArgs e)
         {
+            //Add validation method
             ValidForm validForm = new ValidForm(comboBox_Valid.SelectedItem as Valid);
 
             validForm.ShowDialog();
@@ -175,6 +179,7 @@ namespace ClientApp.UI
         }
         private void button_AddScam_Click(object sender, EventArgs e)
         {
+            //Add scam level
             ScamForm scamForm = new ScamForm(comboBox_Scam.SelectedItem as Scam);
 
             scamForm.ShowDialog();
@@ -182,7 +187,8 @@ namespace ClientApp.UI
             ScamArrToForm(scamForm.selectedScam);
         }
         public void ValidArrToForm(Valid curValid = null)
-        {
+        {//Fill validation method combobox
+
             Valid validDefault = new Valid();
             validDefault.Id = -1;
             validDefault.Name = "Choose a validation method";
@@ -208,7 +214,7 @@ namespace ClientApp.UI
 
         }
         public void ScamArrToForm(Scam curScam = null)
-        {
+        {//Fill scam level combobox
             Scam scamDefault = new Scam();
             scamDefault.Id = -1;
             scamDefault.Name = "Choose a scam level";
@@ -236,7 +242,6 @@ namespace ClientApp.UI
 
         private void listBox_Coins_DoubleClick(object sender, EventArgs e)
         {
-
             CoinToForm(listBox_Coins.SelectedItem as Coin);
         }
 

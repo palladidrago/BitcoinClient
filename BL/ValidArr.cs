@@ -21,7 +21,7 @@ namespace BL
         }
         public Valid GetValidWithMaxId()
         {
-            //Return the city with the highest id
+            //Return the country with the highest id
             Valid maxValid = new Valid();
             for (int i = 0; i < this.Count; i++)
                 if ((this[i] as Valid).Id > maxValid.Id)

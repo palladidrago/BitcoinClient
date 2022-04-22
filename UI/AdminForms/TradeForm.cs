@@ -17,6 +17,24 @@ namespace ClientApp.UI
         Coin curCoin;
         #region Helpers
         #region Clear Helpers
+        private bool CheckForm()
+        {
+            bool flag = true;
+            if (listBox_Clients.SelectedItem == null)
+            {
+                flag = false;
+                MessageBox.Show("Please select a client");
+            }
+            if (textBox_Memo.Text.Length < 2)
+            {
+                flag = false;
+                textBox_Memo.BackColor = Color.Red;
+                MessageBox.Show("Please Add a memo");
+            }
+            else
+                textBox_Memo.BackColor = Color.White;
+            return flag;
+        }
         private void ClearDetails()
         {
             //Clear Filter
@@ -68,6 +86,7 @@ namespace ClientApp.UI
         }
         private void MoveSelectedItemBetweenListBox(ListBox listBox_From, ListBox listBox_To,bool isToTrade)
         {
+            if (listBox_From.SelectedItem == null) return;
             // Moves coins between potential and wanted listbox
             CoinArr coinArr = null;
             Coin selectedItem = listBox_From.SelectedItem as Coin;
@@ -118,6 +137,8 @@ namespace ClientApp.UI
             ValidArrToForm();
             ScamArrToForm();
             TradeArrToForm();
+            if (listBox_Clients.Items.Count > 0 && listBox_Clients.SelectedItem != null)
+                ClientToForm(listBox_Clients.SelectedItem as Client);
         }
         #region XToForm
 
@@ -311,56 +332,60 @@ namespace ClientApp.UI
             //Add trade to db 
 
             TradeCoinArr tradeCoinArr_New;
-            if (trade.Id == 0)
+            if (CheckForm())
             {
-                if (trade.Insert()) //Insert the trade into the db
+                if (trade.Id == 0)
                 {
-
-                    //Find the newest trade using the highest id
-
-                    TradeArr tradeArr = new TradeArr();
-                    tradeArr.Fill();
-                    trade = tradeArr.GetTradeWithMaxId(); //Pull the newest trade out
-                    tradeCoinArr_New = FormToTradeCoinArr(trade);
-
-                    //Add new coins to the trade
-
-                    if (tradeCoinArr_New.Insert())
+                    if (trade.Insert()) //Insert the trade into the db
                     {
-                        MessageBox.Show("Successfully saved");
-                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
+
+                        //Find the newest trade using the highest id
+
+                        TradeArr tradeArr = new TradeArr();
+                        tradeArr.Fill();
+                        trade = tradeArr.GetTradeWithMaxId(); //Pull the newest trade out
+                        tradeCoinArr_New = FormToTradeCoinArr(trade);
+
+                        //Add new coins to the trade
+
+                        if (tradeCoinArr_New.Insert())
+                        {
+                            MessageBox.Show("Successfully saved");
+                            (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
+
+                        }
+
+                        else
+                            MessageBox.Show("Error in insert");
+
+                        ClearAll();
+                        TradeArr tradeArr_New = new TradeArr();
+                        tradeArr_New.Fill();
+                        TradeArrToForm(tradeArr); // Do this add the new trade to the list
 
                     }
+                    else if (trade.Update()) //Update the trade in db
+                    {
+                        //If successful, need to update trade in TradeCoin db as well!
+                        TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
+                        tradeCoinArr_Old.Fill();
+                        tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
+                        //Delete all TradeCoin (all items of trade itself) for this trade
+                        tradeCoinArr_Old.Delete();
+                        tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
+                        if (tradeCoinArr_New.Insert())
+                        {
+                            MessageBox.Show("Updated successfully");
+                            (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
 
-                    else
-                        MessageBox.Show("Error in insert");
+                            (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
+                        }
+                        else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
 
-                    ClearAll();
-                    TradeArr tradeArr_New = new TradeArr();
-                    tradeArr_New.Fill();
-                    TradeArrToForm(tradeArr); // Do this add the new trade to the list
-
-                }
-                else if (trade.Update()) //Update the trade in db
-                {
-                    //If successful, need to update trade in TradeCoin db as well!
-                    TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
-                    tradeCoinArr_Old.Fill();
-                    tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
-                    //Delete all TradeCoin (all items of trade itself) for this trade
-                    tradeCoinArr_Old.Delete();
-                    tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
-                    if (tradeCoinArr_New.Insert()) {
-                        MessageBox.Show("Updated successfully");
-                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
-
-                        (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
+                        ClearAll();
                     }
-                    else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
-          
-                    ClearAll();
+                    else MessageBox.Show("Error in insert/update");
                 }
-                else MessageBox.Show("Error in insert/update");
             }
         }
         #endregion
@@ -527,7 +552,6 @@ namespace ClientApp.UI
                     CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
                     Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
                     MoveSelectedItemBetweenListBox(listBox_Chosen_Coins, listBox_Potential_Coins, false);
-                    listBox_Chosen_Coins_Supply.Items.Remove(listBox_Chosen_Coins_Supply.SelectedItem);
 
                     coinArr.Remove(coin);
                     CoinArrToForm(listBox_Chosen_Coins, coinArr); 
@@ -540,19 +564,22 @@ namespace ClientApp.UI
             //Create an trade from the form
 
             Trade trade = FormToTrade();
-
+            TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
+            tradeCoinArr_Old.Fill();
 
             if (trade.Id != 0)
             {
                 if (trade.Delete()) //Update the trade in db
                 {
                     //If successful, need to update trade in TradeCoin db as well!
-                    TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
-                    tradeCoinArr_Old.Fill();
+                    
                     tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
                     //Delete all TradeCoin (all items of trade itself) for this trade
                     if (tradeCoinArr_Old.Delete())
-                        MessageBox.Show("Delete Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        MessageBox.Show("Deleted successfully", "Success", MessageBoxButtons.OK);
+                        TradeArrToForm();
+                    }
                 }//Finally, insert the TradeCoinArr to db
                 ClearAll();
             }

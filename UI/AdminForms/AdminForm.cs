@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using ClientApp.UI;
 using System.Net;
 using BL;
-using ClientApp.UI.Reports; 
 
 namespace ClientApp.UI
 {
@@ -28,9 +27,9 @@ namespace ClientApp.UI
             this.Show();
         }
 
-        private void button_City_Click(object sender, EventArgs e)
+        private void button_Country_Click(object sender, EventArgs e)
         {
-            CityForm cityForm = new CityForm();
+            CountryForm cityForm = new CountryForm();
             this.Hide();
             cityForm.ShowDialog();
             this.Show();

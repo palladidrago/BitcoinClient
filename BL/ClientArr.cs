@@ -11,7 +11,7 @@ namespace BL
 {
     public class ClientArr : ArrayList
     {
-        public ClientArr Filter(string lastName="",string btcAddress = "",string username = "",City city = null)
+        public ClientArr Filter(string lastName="",string btcAddress = "",string username = "",Country country = null)
         {
             ClientArr clientArr = new ClientArr();
             Client client;
@@ -24,32 +24,32 @@ namespace BL
                 (client.LastName.ToLower().StartsWith(lastName.ToLower()) &&
                 client.BtcAddress.Contains(btcAddress) &&
                 client.Login.Username.ToLower().StartsWith(username.ToLower()) &&
-                (city == null || city.Id == client.City.Id)) //If null or there is city with same id
+                (country == null || country.Id == client.Country.Id)) //If null or there is country with same id
 
                     clientArr.Add(client);
             }
             return clientArr;
         }
-        public CityArr GetCityArr()
+        public CountryArr GetCountryArr()
         {
             //Returns array of all non repeating cities in this arr
-            CityArr cityArr = new CityArr();
-            City curCity;
+            CountryArr countryArr = new CountryArr();
+            Country curCountry;
             foreach (Client client in this)
             {
-                curCity = client.City;
-                if (!cityArr.IsContains(curCity.Name))
-                    cityArr.Add(curCity);
+                curCountry = client.Country;
+                if (!countryArr.IsContains(curCountry.Name))
+                    countryArr.Add(curCountry);
             }
-            return cityArr;
+            return countryArr;
         }
-        public bool DoesExist(City curCity)
+        public bool DoesExist(Country curCountry)
         {
 
-            //Returns whether there is at least one client with city
+            //Returns whether there is at least one client with country
 
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Client).City.Id == curCity.Id)
+                if ((this[i] as Client).Country.Id == curCountry.Id)
                     return true;
 
             return false;
@@ -86,11 +86,11 @@ namespace BL
         public SortedDictionary<string, int> GetSortedDictionary()
         {
 
-            // Returns sorted dictionary with name and city name and clients per city
+            // Returns sorted dictionary with name and country name and clients per country
             SortedDictionary<string, int> dictionary = new SortedDictionary<string, int>();
-            CityArr clientsCityArr = this.GetCityArr();
-            foreach (City curCity in clientsCityArr)
-                dictionary.Add(curCity.Name, this.Filter(city: curCity).Count); //City name + clients in the city
+            CountryArr clientsCountryArr = this.GetCountryArr();
+            foreach (Country curCountry in clientsCountryArr)
+                dictionary.Add(curCountry.Name, this.Filter(country: curCountry).Count); //Country name + clients in the country
             return dictionary;
         }
     }

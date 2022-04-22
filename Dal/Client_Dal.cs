@@ -9,22 +9,22 @@ namespace Dal
 {
     class Client_Dal
     {
-        public static bool Insert(string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize,int city,int login)
+        public static bool Insert(string firstName, string lastName, int birthYear, string mail, double btcAmount, string btcAddress,int country,int login)
         {
             //Add client to database
 
             string str = "INSERT INTO Table_Client"
             + "("
-            + "[FirstName],[LastName],[BirthYear],[PhoneNumber],[BtcAmount],[BtcAddress],[ShoeSize],[City],[Login]"
+            + "[FirstName],[LastName],[BirthYear],[Mail],[BtcAmount],[BtcAddress],[Country],[Login]"
             + ")"
             + " VALUES "
             + "("
-            + $"N'{firstName}',N'{lastName}',{birthYear},N'{phoneNumber}',{btcAmount},N'{btcAddress}',{shoeSize}, {city},{login}"
+            + $"N'{firstName}',N'{lastName}',{birthYear},N'{mail}',{btcAmount},N'{btcAddress}', {country},{login}"
             + ")";
             //Return success
             return Dal.ExecuteSql(str);
         }
-        public static bool Update(int id, string firstName, string lastName, int birthYear, string phoneNumber, double btcAmount, string btcAddress, int shoeSize, int city,int login)
+        public static bool Update(int id, string firstName, string lastName, int birthYear, string mail, double btcAmount, string btcAddress, int country,int login)
         {
 
             //Update client in database
@@ -34,11 +34,10 @@ namespace Dal
             + $" [FirstName] = N'{firstName}'"
             + $",[LastName] = N'{lastName}'"
             + $",[BirthYear] = {birthYear}"
-            + $",[PhoneNumber] = N'{phoneNumber}'"
+            + $",[Mail] = N'{mail}'"
             + $",[BtcAmount] = {btcAmount}"
             + $",[BtcAddress] = N'{btcAddress}'"
-            + $",[ShoeSize] = {shoeSize}"
-            + $",[City] = {city}"
+            + $",[Country] = {country}"
             + $",[Login] = {login}"
             + $" WHERE [Id] = {id}";
             //Return success
@@ -67,12 +66,12 @@ namespace Dal
             Dal.FillDataSet(dataSet, "Table_Client", "[LastName],[FirstName]");
             //Creating a connection
             DataRelation dataRelation = null;
-            City_Dal.FillDataSet(dataSet);
+            Country_Dal.FillDataSet(dataSet);
             //Add data relation
             dataRelation = new DataRelation(
-                "ClientCity",
-                dataSet.Tables["Table_City"].Columns["Id"],
-                dataSet.Tables["Table_Client"].Columns["City"]);
+                "ClientCountry",
+                dataSet.Tables["Table_Country"].Columns["Id"],
+                dataSet.Tables["Table_Client"].Columns["Country"]);
             dataSet.Relations.Add(dataRelation);
 
             //Fill login dataset

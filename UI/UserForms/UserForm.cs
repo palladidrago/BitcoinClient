@@ -42,30 +42,27 @@ namespace ClientApp.UI
             userTradeForm.ShowDialog();
             this.Show();
         }
-
-        private void button_Coin_Click(object sender, EventArgs e)
+        private void button_UpdateInfo_Click(object sender, EventArgs e)
         {
-            UserCoinForm userCoinForm = new UserCoinForm();
+            ClientCreateForm ccForm = new ClientCreateForm(login: Globals.client.Login,clientToUpdate: Globals.client);
             this.Hide();
-            userCoinForm.ShowDialog();
-            this.Show();
-
-        }
-
-        private void button_Report_Click(object sender, EventArgs e)
-        {
-            ReportForm reportForm = new ReportForm();
-            this.Hide();
-            reportForm.ShowDialog();
+            ccForm.ShowDialog();
             this.Show();
         }
 
-        private void button_Chart_Click(object sender, EventArgs e)
+        private void pictureBox_PowerOff_Click(object sender, EventArgs e)
         {
-            ChartForm chartForm = new ChartForm();
-            this.Hide();
-            chartForm.ShowDialog();
-            this.Show();
+            this.Dispose();
+        }
+
+        private void pictureBox_PowerOff_MouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = Color.White;
+        }
+
+        private void pictureBox_PowerOff_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor= Color.Transparent;
         }
     }
 }

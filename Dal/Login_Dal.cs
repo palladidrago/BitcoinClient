@@ -34,7 +34,7 @@ namespace Dal
         public static bool Delete(int id)
         {
 
-            //Delete the city from database
+            //Delete the login from database
 
             string str = "DELETE FROM Table_Login WHERE ID = " + id;
 

@@ -41,7 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.roundLabel_Valid = new ClientApp.UI.RoundLabel();
             this.roundLabel_CoinQuote = new ClientApp.UI.RoundLabel();
-            this.roundLabel_ClientCity = new ClientApp.UI.RoundLabel();
+            this.roundLabel_ClientCountry = new ClientApp.UI.RoundLabel();
             this.roundLabel_TradeClient = new ClientApp.UI.RoundLabel();
             this.roundLabel_ClientCoin = new ClientApp.UI.RoundLabel();
             this.roundLabel_Scam = new ClientApp.UI.RoundLabel();
@@ -158,23 +158,23 @@
             this.roundLabel_CoinQuote.MouseEnter += new System.EventHandler(this.roundLabel_MouseEnter);
             this.roundLabel_CoinQuote.MouseLeave += new System.EventHandler(this.roundLabel_MouseLeave);
             // 
-            // roundLabel_ClientCity
+            // roundLabel_ClientCountry
             // 
-            this.roundLabel_ClientCity._BackColor = System.Drawing.Color.Crimson;
-            this.roundLabel_ClientCity.AutoSize = true;
-            this.roundLabel_ClientCity.BackColor = System.Drawing.Color.Transparent;
-            this.roundLabel_ClientCity.cornerRadius = 10;
-            this.roundLabel_ClientCity.Font = new System.Drawing.Font("Rockwell Nova", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundLabel_ClientCity.ForeColor = System.Drawing.Color.Black;
-            this.roundLabel_ClientCity.Location = new System.Drawing.Point(327, 67);
-            this.roundLabel_ClientCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.roundLabel_ClientCity.Name = "roundLabel_ClientCity";
-            this.roundLabel_ClientCity.Size = new System.Drawing.Size(160, 36);
-            this.roundLabel_ClientCity.TabIndex = 1;
-            this.roundLabel_ClientCity.Text = "Client City";
-            this.roundLabel_ClientCity.Click += new System.EventHandler(this.roundLabel_ClientCity_Click);
-            this.roundLabel_ClientCity.MouseEnter += new System.EventHandler(this.roundLabel_MouseEnter);
-            this.roundLabel_ClientCity.MouseLeave += new System.EventHandler(this.roundLabel_MouseLeave);
+            this.roundLabel_ClientCountry._BackColor = System.Drawing.Color.Crimson;
+            this.roundLabel_ClientCountry.AutoSize = true;
+            this.roundLabel_ClientCountry.BackColor = System.Drawing.Color.Transparent;
+            this.roundLabel_ClientCountry.cornerRadius = 10;
+            this.roundLabel_ClientCountry.Font = new System.Drawing.Font("Rockwell Nova", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roundLabel_ClientCountry.ForeColor = System.Drawing.Color.Black;
+            this.roundLabel_ClientCountry.Location = new System.Drawing.Point(327, 67);
+            this.roundLabel_ClientCountry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.roundLabel_ClientCountry.Name = "roundLabel_ClientCountry";
+            this.roundLabel_ClientCountry.Size = new System.Drawing.Size(160, 36);
+            this.roundLabel_ClientCountry.TabIndex = 1;
+            this.roundLabel_ClientCountry.Text = "Client Country";
+            this.roundLabel_ClientCountry.Click += new System.EventHandler(this.roundLabel_ClientCountry_Click);
+            this.roundLabel_ClientCountry.MouseEnter += new System.EventHandler(this.roundLabel_MouseEnter);
+            this.roundLabel_ClientCountry.MouseLeave += new System.EventHandler(this.roundLabel_MouseLeave);
             // 
             // roundLabel_TradeClient
             // 
@@ -241,7 +241,7 @@
             this.Controls.Add(this.groupBox_Chart);
             this.Controls.Add(this.roundLabel_Valid);
             this.Controls.Add(this.roundLabel_CoinQuote);
-            this.Controls.Add(this.roundLabel_ClientCity);
+            this.Controls.Add(this.roundLabel_ClientCountry);
             this.Controls.Add(this.roundLabel_TradeClient);
             this.Controls.Add(this.roundLabel_ClientCoin);
             this.Controls.Add(this.roundLabel_Scam);
@@ -263,7 +263,7 @@
         private RoundLabel roundLabel_Scam;
         private RoundLabel roundLabel_ClientCoin;
         private RoundLabel roundLabel_TradeClient;
-        private RoundLabel roundLabel_ClientCity;
+        private RoundLabel roundLabel_ClientCountry;
         private RoundLabel roundLabel_CoinQuote;
         private RoundLabel roundLabel_Valid;
         private System.Windows.Forms.Label label_Title;
