@@ -33,25 +33,27 @@ namespace BL
         public CoinQuoteArr Filter(Quote q)
         {
             //Filter CoinQuoteArr by trade and return a CoinQuoteArr
-            CoinQuoteArr cArrNew = new CoinQuoteArr();
-            if (q == null) return cArrNew; //If q is null return empty CoinQuoteArr
+            CoinQuoteArr cqArrNew = new CoinQuoteArr();
+            if (q == null) return cqArrNew; //If q is null return empty CoinQuoteArr
             for (int i = 0; i < this.Count; i++)
             {
-                if (q.Id == (this[i] as CoinQuote).Quote.Id) cArrNew.Add(this[i]);
+                if (q.Id == (this[i] as CoinQuote).Quote.Id) cqArrNew.Add(this[i]);
             }
-            return cArrNew;
+            return cqArrNew;
         }
         public CoinQuoteArr Filter(Coin c) //Polymorphism :)
         {
-            CoinQuoteArr cArrNew = new CoinQuoteArr();
-            if (c == null) return cArrNew;
+            CoinQuoteArr cqArrNew = new CoinQuoteArr();
+            if (c == null) return cqArrNew;
 
             for (int i = 0; i < this.Count; i++)
             {
-                if (c.Id == (this[i] as CoinQuote).Coin.Id) cArrNew.Add(this[i]);
+                if (c.Id == (this[i] as CoinQuote).Coin.Id) cqArrNew.Add(this[i]);
             }
-            return cArrNew;
+            return cqArrNew;
         }
+        
+       
         public Quote LatestQuote(Coin c)
         {
             //Returns latest quote for given coin
@@ -66,6 +68,14 @@ namespace BL
                 if (curQ.LastUpdated.Date > latestQ.LastUpdated.Date) latestQ = curQ;
             }
             return latestQ;
+        }
+        public bool IsCoinIn(Coin c)
+        {
+            foreach (CoinQuote cq in this)
+            {
+                if (cq.Coin.Id == c.Id) return true;
+            }
+            return false;
         }
         public CoinArr GetCoinArr()
         {

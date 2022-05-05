@@ -85,7 +85,7 @@ namespace ClientApp.UI
             this.label_Id.AutoSize = true;
             this.label_Id.BackColor = System.Drawing.Color.Transparent;
             this.label_Id.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Id.Location = new System.Drawing.Point(117, 22);
+            this.label_Id.Location = new System.Drawing.Point(107, 22);
             this.label_Id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Id.Name = "label_Id";
             this.label_Id.Size = new System.Drawing.Size(34, 25);
@@ -97,7 +97,7 @@ namespace ClientApp.UI
             this.text_Id.AutoSize = true;
             this.text_Id.BackColor = System.Drawing.Color.Transparent;
             this.text_Id.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_Id.Location = new System.Drawing.Point(152, 22);
+            this.text_Id.Location = new System.Drawing.Point(141, 22);
             this.text_Id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.text_Id.Name = "text_Id";
             this.text_Id.Size = new System.Drawing.Size(24, 25);
@@ -311,7 +311,7 @@ namespace ClientApp.UI
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(82, 62);
             this.doneButton.TabIndex = 7;
-            this.doneButton.Text = "Update";
+            this.doneButton.Text = "Create";
             this.doneButton.UseVisualStyleBackColor = false;
             this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
@@ -427,14 +427,14 @@ namespace ClientApp.UI
             this.button_UpdateLogin.Name = "button_UpdateLogin";
             this.button_UpdateLogin.Size = new System.Drawing.Size(118, 66);
             this.button_UpdateLogin.TabIndex = 0;
-            this.button_UpdateLogin.Text = "Update login";
+            this.button_UpdateLogin.Text = "Create login";
             this.button_UpdateLogin.UseVisualStyleBackColor = false;
             this.button_UpdateLogin.Click += new System.EventHandler(this.button_UpdateLogin_Click);
             // 
             // pictureBox_Client
             // 
             this.pictureBox_Client.Image = global::ClientApp.Properties.Resources.Client;
-            this.pictureBox_Client.Location = new System.Drawing.Point(349, 10);
+            this.pictureBox_Client.Location = new System.Drawing.Point(309, 13);
             this.pictureBox_Client.Name = "pictureBox_Client";
             this.pictureBox_Client.Size = new System.Drawing.Size(60, 95);
             this.pictureBox_Client.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

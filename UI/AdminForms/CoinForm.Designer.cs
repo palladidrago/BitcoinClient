@@ -29,6 +29,7 @@ namespace ClientApp.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoinForm));
             this.listBox_Coins = new System.Windows.Forms.ListBox();
             this.groupBox_Filter = new System.Windows.Forms.GroupBox();
             this.textBox_Filter_Name = new System.Windows.Forms.TextBox();
@@ -537,6 +538,8 @@ namespace ClientApp.UI
             this.Controls.Add(this.groupBox_Filter);
             this.Controls.Add(this.listBox_Coins);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "CoinForm";
             this.Text = "Coin";

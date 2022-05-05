@@ -33,6 +33,7 @@
             this.label_Title = new System.Windows.Forms.Label();
             this.button_Trade = new System.Windows.Forms.Button();
             this.button_Update = new System.Windows.Forms.Button();
+            this.button_Portfolio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PowerOff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             // 
             this.pictureBox_PowerOff.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PowerOff.Image = global::ClientApp.Properties.Resources.power_power_off_power_on_turn_off_turn_on_icon_1892481;
-            this.pictureBox_PowerOff.Location = new System.Drawing.Point(230, 81);
+            this.pictureBox_PowerOff.Location = new System.Drawing.Point(380, 248);
             this.pictureBox_PowerOff.Name = "pictureBox_PowerOff";
             this.pictureBox_PowerOff.Size = new System.Drawing.Size(63, 59);
             this.pictureBox_PowerOff.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -71,7 +72,7 @@
             this.button_Trade.Font = new System.Drawing.Font("Rockwell Nova Cond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Trade.ForeColor = System.Drawing.Color.White;
             this.button_Trade.Location = new System.Drawing.Point(11, 81);
-            this.button_Trade.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Trade.Margin = new System.Windows.Forms.Padding(2);
             this.button_Trade.Name = "button_Trade";
             this.button_Trade.Size = new System.Drawing.Size(214, 107);
             this.button_Trade.TabIndex = 7;
@@ -87,7 +88,7 @@
             this.button_Update.Font = new System.Drawing.Font("Rockwell Nova Cond", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Update.ForeColor = System.Drawing.Color.White;
             this.button_Update.Location = new System.Drawing.Point(11, 200);
-            this.button_Update.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Update.Margin = new System.Windows.Forms.Padding(2);
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(214, 107);
             this.button_Update.TabIndex = 7;
@@ -95,12 +96,29 @@
             this.button_Update.UseVisualStyleBackColor = false;
             this.button_Update.Click += new System.EventHandler(this.button_UpdateInfo_Click);
             // 
+            // button_Portfolio
+            // 
+            this.button_Portfolio.BackColor = System.Drawing.Color.Crimson;
+            this.button_Portfolio.FlatAppearance.BorderSize = 0;
+            this.button_Portfolio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Portfolio.Font = new System.Drawing.Font("Rockwell Nova Cond", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Portfolio.ForeColor = System.Drawing.Color.White;
+            this.button_Portfolio.Location = new System.Drawing.Point(229, 81);
+            this.button_Portfolio.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Portfolio.Name = "button_Portfolio";
+            this.button_Portfolio.Size = new System.Drawing.Size(214, 107);
+            this.button_Portfolio.TabIndex = 10;
+            this.button_Portfolio.Text = "Portfolio";
+            this.button_Portfolio.UseVisualStyleBackColor = false;
+            this.button_Portfolio.Click += new System.EventHandler(this.button_Portfolio_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(209)))), ((int)(((byte)(239)))));
-            this.ClientSize = new System.Drawing.Size(436, 318);
+            this.ClientSize = new System.Drawing.Size(447, 318);
+            this.Controls.Add(this.button_Portfolio);
             this.Controls.Add(this.pictureBox_PowerOff);
             this.Controls.Add(this.label_Title);
             this.Controls.Add(this.button_Update);
@@ -122,5 +140,6 @@
         private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Button button_Trade;
         private System.Windows.Forms.Button button_Update;
+        private System.Windows.Forms.Button button_Portfolio;
     }
 }

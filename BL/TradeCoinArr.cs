@@ -11,6 +11,34 @@ namespace BL
 {
     class TradeCoinArr : ArrayList
     {
+        public TradeCoinArr FilterNoDuplicates()
+        {
+            //Returns a TradeCoinArr where all coins are under one trade //DO NOT INSERT THE TRADE DOES NOT EXIST
+            TradeCoinArr tradeCoinArr_New = new TradeCoinArr();
+            foreach (TradeCoin tradeCoin in this)
+            {
+                TradeCoinArr existingCoinTradeCoinArr = tradeCoinArr_New.Filter(tradeCoin.Coin);
+
+                if (existingCoinTradeCoinArr.Count > 0) // If the coin is a duplicate
+                {
+                    foreach (TradeCoin curTradeCoin in existingCoinTradeCoinArr)
+                        //Add the count of the new coin to the old tradecoin
+                        (tradeCoinArr_New[tradeCoinArr_New.LastIndexOf(curTradeCoin)] as TradeCoin).Count += tradeCoin.Count; 
+                }
+                else tradeCoinArr_New.Add(tradeCoin);
+            }
+            return tradeCoinArr_New;
+        }
+        public long SumOfAllCounts()
+        {
+            //Returns the amount of all coins in this tradecoinArr
+            long sum = 0;
+            foreach (TradeCoin tradeCoin in this)
+            {
+                sum += tradeCoin.Count;
+            }
+            return sum;
+        }
         public long CoinAmountPerClient(Client cl)
         {
             long sum = 0;
@@ -77,38 +105,42 @@ namespace BL
         public TradeCoinArr GetTop3TradeCoinForClient(Client cl)
         {
             TradeCoinArr tArr = this.Filter(cl);
-            TradeCoin maxTradeCoin = new TradeCoin();
-            maxTradeCoin.Count = 0;
-            int iMax = 0;
+
+            TradeCoin maxTradeCoin = new TradeCoin();  maxTradeCoin.Count = 0;
+            TradeCoinArr tcArrNew = new TradeCoinArr();
+            if (tArr.Count == 0) { return tcArrNew; }
             for (int i = 0; i < tArr.Count; i++)
             {
                 TradeCoin tCoin = tArr[i] as TradeCoin;
-                if (tCoin.Count > maxTradeCoin.Count) { maxTradeCoin = tCoin; iMax = i; }
+                if (tCoin.Count > maxTradeCoin.Count) { maxTradeCoin = tCoin; }
                 
             }
-            tArr.RemoveAt(iMax);
+            tArr.Remove(maxTradeCoin);
+
+            tcArrNew.Add(maxTradeCoin)   ;
+            if (tArr.Count == 0) { return tcArrNew; }
 
             TradeCoin secondMaxTradeCoin = new TradeCoin();
             secondMaxTradeCoin.Count = 0;
             for (int i = 0; i < tArr.Count; i++)
             {
                 TradeCoin tCoin = tArr[i] as TradeCoin;
-                if (tCoin.Count > secondMaxTradeCoin.Count) { secondMaxTradeCoin = tCoin; iMax = i; }
+                if (tCoin.Count > secondMaxTradeCoin.Count) { secondMaxTradeCoin = tCoin; }
 
             }
-            tArr.RemoveAt(iMax);
-            TradeCoin thirdMaxTradeCoin = new TradeCoin();
-            thirdMaxTradeCoin.Count = 0;
+            tArr.Remove(secondMaxTradeCoin);
+            tcArrNew.Add(secondMaxTradeCoin);
+
+            if (tArr.Count == 0) { return tcArrNew; }
+
+            TradeCoin thirdMaxTradeCoin = new TradeCoin(); thirdMaxTradeCoin.Count = 0;
             for (int i = 0; i < tArr.Count; i++)
             {
                 TradeCoin tCoin = tArr[i] as TradeCoin;
-                if (tCoin.Count > thirdMaxTradeCoin.Count) { thirdMaxTradeCoin = tCoin; iMax = i; }
+                if (tCoin.Count > thirdMaxTradeCoin.Count) { thirdMaxTradeCoin = tCoin; }
             }
-            TradeCoinArr cArrNew = new TradeCoinArr();
-            cArrNew.Add(maxTradeCoin);
-            cArrNew.Add(secondMaxTradeCoin);
-            cArrNew.Add(thirdMaxTradeCoin);
-            return cArrNew;
+            tcArrNew.Add(thirdMaxTradeCoin);
+            return tcArrNew;
         }
 
         public CoinArr GetCoinArr()

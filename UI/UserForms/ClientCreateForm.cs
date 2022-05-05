@@ -22,7 +22,10 @@ namespace ClientApp.UI
             CountryArrToForm();
             this.login = login;
             this.clientToUpdate = clientToUpdate;
-            ClientToForm(clientToUpdate);
+            if (clientToUpdate != null)
+            {
+                ClientToForm(clientToUpdate);
+            }
         }
         private void ClientToForm(Client c)
         {
@@ -51,13 +54,20 @@ namespace ClientApp.UI
         {
             if (InputLanguage.CurrentInputLanguage.Culture.Name.ToLower() != "en_us")
             {
-                MessageBox.Show("U changed your language bro, look out, no hebrew pls");
+                MessageBox.Show("You changed your input language, no hebrew please");
             }
         }
         private void textBox_Text_KeyPress(object sender, KeyPressEventArgs e)
         {
             //When key pressed, check that it is text and english
-            if (!IsEngLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            if (!IsEngLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ' )
+                e.KeyChar = char.MinValue;
+        }
+
+        private void textBox_MailText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //When key pressed, check that it is text and english
+            if (!IsEngLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '@' && e.KeyChar != '.')
                 e.KeyChar = char.MinValue;
         }
 
@@ -72,7 +82,6 @@ namespace ClientApp.UI
             client.BtcAmount = double.Parse(textBox_BtcAmount.Text);
             client.BtcAddress = textBox_BtcAddress.Text;
             client.Country = comboBox_Country.SelectedItem as Country;
-            client.Login = this.login;
 
 
             return client;
@@ -128,7 +137,7 @@ namespace ClientApp.UI
                 @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9]" +
                 @"(?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"; //RFC2822 mail validation
             Regex rg = new Regex(pattern);
-            if (rg.IsMatch(textBox_Mail.Text))
+            if (!rg.IsMatch(textBox_Mail.Text))
             {
                 flag = false;
                 textBox_Mail.BackColor = Color.Red;
@@ -174,34 +183,41 @@ namespace ClientApp.UI
         {
             if (!CheckForm())
             {
-                MessageBox.Show("Please fix your errors comrade", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fix your errors", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 Client client = FormToClient();
-                if (clientToUpdate == null)
+                if (login.Insert()) //First insert the login
                 {
-                    if (client.Insert() && login.Insert())
+                    LoginArr loginArr = new LoginArr();
+                    loginArr.Fill();
+                    login = loginArr.GetLoginWithMaxId();
+                    client.Login = login; //Insert the login with the id
+                    if (clientToUpdate == null)
                     {
-                        MessageBox.Show("Added successfully");
-                        Globals.client = client;
-                        UserForm userForm = new UserForm();
-                        this.Hide();
-                        userForm.ShowDialog();
-                        this.Close();
+                        if (client.Insert())
+                        {
+                            MessageBox.Show("Added successfully");
+                            Globals.client = client;
+                            UserForm userForm = new UserForm();
+                            this.Hide();
+                            userForm.ShowDialog();
+                            this.Close();
+                        }
+                        else MessageBox.Show("There was an error inserting", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else MessageBox.Show("There was an error inserting", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else 
-                {
-                    if (client.Update())
+                    else
                     {
-                        MessageBox.Show("Updated successfully");
-                        Globals.client = client;
-                        this.Close(); //UserForm sent us so we will go back to it when done
-                    }
-                    else MessageBox.Show("There was an error updating", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (client.Update())
+                        {
+                            MessageBox.Show("Updated successfully");
+                            Globals.client = client;
+                            this.Close(); //UserForm sent us so we will go back to it when done
+                        }
+                        else MessageBox.Show("There was an error updating", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                    }
                 }
             }
         }

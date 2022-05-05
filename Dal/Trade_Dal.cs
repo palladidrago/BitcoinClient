@@ -43,10 +43,10 @@ namespace Dal
 
             //Updates the client in the database
 
-            string str = "UPDATE Table_Order SET"
+            string str = "UPDATE Table_Trade SET"
 
-            + $" [Client] = N'{client}'"
-            + $",[Date] = N'{date:yyyy-MM-dd}'"
+            + $" [Client] = '{client}'"
+            + $",[Date] = '{date:yyyy-MM-dd}'"
             + $" WHERE [Id] = {id}";
 
             //Return success

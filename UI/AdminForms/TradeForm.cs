@@ -25,14 +25,6 @@ namespace ClientApp.UI
                 flag = false;
                 MessageBox.Show("Please select a client");
             }
-            if (textBox_Memo.Text.Length < 2)
-            {
-                flag = false;
-                textBox_Memo.BackColor = Color.Red;
-                MessageBox.Show("Please Add a memo");
-            }
-            else
-                textBox_Memo.BackColor = Color.White;
             return flag;
         }
         private void ClearDetails()
@@ -40,10 +32,6 @@ namespace ClientApp.UI
             //Clear Filter
             foreach (TextBox tb in groupBox_Filter_Details.Controls.OfType<TextBox>())
                 tb.Text = String.Empty;
-            dateTimePicker_Filter_From.Checked = false;
-            dateTimePicker_Filter_To.Checked = false;
-            dateTimePicker_Filter_To.Value = DateTime.Now;
-            dateTimePicker_Filter_From.Value = DateTime.Now;
             text_Id.Text = "0";
             textBox_Memo.Text = String.Empty;
             dateTimePicker_Date.Value = DateTime.Now;
@@ -134,11 +122,13 @@ namespace ClientApp.UI
             InitializeComponent();
             CoinArrToForm(listBox_Potential_Coins);
             ClientArrToForm(listBox_Clients);
+            ClientArrToForm(comboBox_Filter_Clients);
             ValidArrToForm();
             ScamArrToForm();
             TradeArrToForm();
             if (listBox_Clients.Items.Count > 0 && listBox_Clients.SelectedItem != null)
                 ClientToForm(listBox_Clients.SelectedItem as Client);
+            
         }
         #region XToForm
 
@@ -147,6 +137,21 @@ namespace ClientApp.UI
             ClientArr clientArr = new ClientArr();
             clientArr.Fill();
             lb.DataSource = clientArr;
+            listBox_Clients.ValueMember = "ID"; //Value is client ID
+            listBox_Clients.DisplayMember = ""; //Use the ToString
+        }
+        private void ClientArrToForm(ComboBox cb)
+        {
+            ClientArr clientArr = new ClientArr();
+            Client clientDefault = new Client();
+            clientDefault.Id = -1;
+            clientDefault.LastName = "Choose a ";
+            clientDefault.FirstName = "client";
+
+            clientArr.Add(clientDefault);
+            clientArr.Fill();
+            cb.DataSource = clientArr;
+
             listBox_Clients.ValueMember = "ID"; //Value is client ID
             listBox_Clients.DisplayMember = ""; //Use the ToString
         }
@@ -197,6 +202,7 @@ namespace ClientApp.UI
                 tArr = new TradeArr();
                 tArr.Fill();
             }
+
             listBox_Trades.DataSource = tArr;
             //listBox_Trades.ValueMember = "Id";
             listBox_Trades.DisplayMember = "";
@@ -258,7 +264,7 @@ namespace ClientApp.UI
                 coinArr.Fill(); //Add all coins
             }
             listBox.DataSource = coinArr;
-            listBox.ValueMember = "Id";
+            //listBox.ValueMember = "Id";
             listBox.DisplayMember = "";
         }
         private void CoinArrSupplyToForm(TradeCoinArr curTradeCoinArr)
@@ -298,7 +304,7 @@ namespace ClientApp.UI
                 tradeCoin.Coin = listBox_Chosen_Coins.Items[i] as Coin;
 
                 //Supply of Coins for current TradeCoin
-                tradeCoin.Count = (int) listBox_Chosen_Coins_Supply.Items[i];
+                tradeCoin.Count = Convert.ToInt64( listBox_Chosen_Coins_Supply.Items[i]);
 
                 //Add current tradecoin pair to array
 
@@ -323,8 +329,9 @@ namespace ClientApp.UI
             ClearAll();
         }
 
-        private void button_Save_Click(object sender, EventArgs e) { 
-        
+        private void button_Save_Click(object sender, EventArgs e)
+        {
+
             //Create an trade from the form
 
             Trade trade = FormToTrade();
@@ -364,30 +371,31 @@ namespace ClientApp.UI
                         TradeArrToForm(tradeArr); // Do this add the new trade to the list
 
                     }
-                    else if (trade.Update()) //Update the trade in db
-                    {
-                        //If successful, need to update trade in TradeCoin db as well!
-                        TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
-                        tradeCoinArr_Old.Fill();
-                        tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
-                        //Delete all TradeCoin (all items of trade itself) for this trade
-                        tradeCoinArr_Old.Delete();
-                        tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
-                        if (tradeCoinArr_New.Insert())
-                        {
-                            MessageBox.Show("Updated successfully");
-                            (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
-
-                            (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
-                        }
-                        else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
-
-                        ClearAll();
-                    }
-                    else MessageBox.Show("Error in insert/update");
                 }
+                else if (trade.Update()) //Update the trade in db
+                {
+                    //If successful, need to update trade in TradeCoin db as well!
+                    TradeCoinArr tradeCoinArr_Old = new TradeCoinArr();
+                    tradeCoinArr_Old.Fill();
+                    tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
+                    //Delete all TradeCoin (all items of trade itself) for this trade
+                    tradeCoinArr_Old.Delete();
+                    tradeCoinArr_New = FormToTradeCoinArr(trade); //Update TradeCoinArr with new trade items
+                    if (tradeCoinArr_New.Insert())
+                    {
+                        MessageBox.Show("Updated successfully");
+                        (listBox_Chosen_Coins.DataSource as CoinArr).UpdateSupply();
+
+                        (listBox_Potential_Coins.DataSource as CoinArr).UpdateSupply();
+                    }
+                    else { MessageBox.Show("Update Failed"); }//Finally, insert the TradeCoinArr to db
+
+                    ClearAll();
+                }
+                else MessageBox.Show("Error in insert/update");
             }
         }
+        
         #endregion
         #region Event Functions
         private void listBox_Trades_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -518,7 +526,7 @@ namespace ClientApp.UI
                 { //If yes, add to TradeCoin and remove from stock
                     int k = listBox_Chosen_Coins_Supply.SelectedIndex;
                     //Update the product inside the chosen coins listbox
-                    listBox_Chosen_Coins_Supply.Items[k] = (int)listBox_Chosen_Coins_Supply.Items[k] + 1;
+                    listBox_Chosen_Coins_Supply.Items[k] = Convert.ToInt64(listBox_Chosen_Coins_Supply.Items[k]) + 1;
                     //Remove from stock, update coin amount in list of coins in trade
                     CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
                     Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
@@ -537,7 +545,7 @@ namespace ClientApp.UI
                 { //If yes, add to TradeCoin and remove from stock
                     int k = listBox_Chosen_Coins_Supply.SelectedIndex;
                     //Update the product inside the chosen coins listbox
-                    listBox_Chosen_Coins_Supply.Items[k] = (int)listBox_Chosen_Coins_Supply.Items[k] - 1;
+                    listBox_Chosen_Coins_Supply.Items[k] = Convert.ToInt64(listBox_Chosen_Coins_Supply.Items[k]) - 1;
                     //Remove from stock, update coin amount in list of coins in trade
                     CoinArr coinArr = listBox_Chosen_Coins.DataSource as CoinArr;
                     Coin coin = listBox_Chosen_Coins.SelectedItem as Coin;
@@ -572,7 +580,7 @@ namespace ClientApp.UI
                 if (trade.Delete()) //Update the trade in db
                 {
                     //If successful, need to update trade in TradeCoin db as well!
-                    
+
                     tradeCoinArr_Old = tradeCoinArr_Old.Filter(trade);
                     //Delete all TradeCoin (all items of trade itself) for this trade
                     if (tradeCoinArr_Old.Delete())
@@ -583,9 +591,11 @@ namespace ClientApp.UI
                 }//Finally, insert the TradeCoinArr to db
                 ClearAll();
             }
-            else MessageBox.Show("Error in Delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("Please select a trade before deleting", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
         private void listBox_Potential_Coins_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -631,6 +641,37 @@ namespace ClientApp.UI
                 text_MarketCap.Text = "";
                 text_PercentChanged.Text = "";
             }
+        }
+
+        private void comboBox_Filter_Clients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TradeArr tArr = new TradeArr();
+            tArr.Fill();
+            Client client = comboBox_Filter_Clients.SelectedItem as Client;
+            if (client.Id != -1)
+            {
+                tArr = tArr.Filter(client);
+                TradeArrToForm(tArr);
+            }
+            else TradeArrToForm();
+        }
+
+        private void textBox_Filter_Id_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32((sender as TextBox).Text);
+                TradeArr tradeArr = new TradeArr();
+                tradeArr.Fill();
+                tradeArr = tradeArr.Filter(id: id);
+                TradeArrToForm(tradeArr);
+            }
+            catch { TradeArrToForm(); } //If it's not a number, just put all the trades
+        }
+        private void textBox_Filter_Id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if (!((e.KeyChar >= '0' && e.KeyChar <= '9') || char.IsControl(e.KeyChar))) //If is not number
+             e.KeyChar = Char.MinValue; //Don't let him write
         }
     }
 }

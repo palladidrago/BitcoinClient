@@ -72,13 +72,13 @@ namespace ClientApp.UI
             }
             else
             {
-                login.Insert();
-                lArr = new LoginArr();
-                lArr.Fill();
-                login = lArr.GetLoginWithMaxId(); //Get the login we just made 
-                if (curLogin != null) login.Update(); //If changing an existing login, update
+                if (curLogin != null)
+                {
+                    login.Update(); //If changing an existing login, update
+                    this.Close();
+                }
                 else if (isAdmin)
-                { //If admin go back to login 
+                { //If admin go back to admin page 
                     login.Insert();
                     AdminForm aForm = new AdminForm();
                     aForm.Show();

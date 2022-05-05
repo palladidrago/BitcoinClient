@@ -23,7 +23,6 @@ namespace ClientApp.UI
             ClientArrToForm(); //For the list box fill in
             CountryArrToForm(); // For the combo box fill in
             ClientToForm(); //For the actual form fill in
-            button_UpdateLogin.Enabled = false;
             
         }
         private void textBox_Number_KeyPress(object sender, KeyPressEventArgs e)
@@ -49,7 +48,7 @@ namespace ClientApp.UI
             //If input language changed, issue warning
             if (InputLanguage.CurrentInputLanguage.Culture.Name.ToLower() != "en_us")
             {
-                MessageBox.Show("U changed your language bro, look out, no hebrew pls");
+                MessageBox.Show("you changed your language, no hebrew please");
             }
         }
 
@@ -90,7 +89,6 @@ namespace ClientApp.UI
                 textBox_BtcAddress.Text = client.BtcAddress.ToString();
                 textBox_BtcAmount.Text = client.BtcAmount.ToString();
                 login = client.Login;
-                button_UpdateLogin.Enabled = true;
 
 
                 //Country
@@ -107,7 +105,6 @@ namespace ClientApp.UI
                 textBox_BtcAddress.Text = "";
                 textBox_BtcAmount.Text = "0";
                 login = null;
-                button_UpdateLogin.Enabled = false;
 
             }
         }
@@ -132,6 +129,8 @@ namespace ClientApp.UI
         {
             ClientToForm(listBox_Client.SelectedItem as Client);
             client = listBox_Client.SelectedItem as Client;
+            doneButton.Text = "Update";
+            button_UpdateLogin.Text = "Update Login";
         }
         private bool CheckForm()
         {
@@ -196,13 +195,13 @@ namespace ClientApp.UI
             #endregion
 
             #region BtcAmount
-            if (textBox_BtcAmount.Text.Length < 1)
-            {
+            try {
+                Convert.ToInt32(textBox_BtcAmount.Text); textBox_BtcAmount.BackColor = Color.White;
+            }
+            catch {
                 flag = false;
                 textBox_BtcAmount.BackColor = Color.Red;
             }
-            else
-                textBox_BtcAmount.BackColor = Color.White;
             #endregion
 
             #region BtcAddress
@@ -232,7 +231,7 @@ namespace ClientApp.UI
             if (login == null)
             {
                 flag = false;
-                MessageBox.Show("Update the login please");
+                MessageBox.Show("Add a login please");
             }
 
             #endregion
@@ -269,6 +268,8 @@ namespace ClientApp.UI
         private void clearButton_Click(object sender, EventArgs e)
         {
             ClientToForm(null);
+            doneButton.Text = "Create";
+            button_UpdateLogin.Text = "Create login";
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -279,14 +280,19 @@ namespace ClientApp.UI
             else
             {
                 if (MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2,
-                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading) ==
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) ==
                 System.Windows.Forms.DialogResult.Yes)
                 {
-                    if (client.Delete()) MessageBox.Show("Deleted Successfully", "Success");
-                    else MessageBox.Show("Somtin gon wrong in deletion bro sorry", "Fail");
-                    ClientToForm(null);
-                    ClientArrToForm();
+                    TradeArr tradeArr = new TradeArr();
+                    tradeArr.Fill();
+                    if (tradeArr.Filter(client).Count > 0) { MessageBox.Show("You can't delete a client with trades"); }
+                    else
+                    {
+                        if (client.Delete()) MessageBox.Show("Deleted Successfully", "Success");
+                        else MessageBox.Show("Something went wrong deleting", "Fail");
+                        ClientToForm(null);
+                        ClientArrToForm();
+                    }
                 }
             }
         }
@@ -319,12 +325,28 @@ namespace ClientApp.UI
         }
         private void button_UpdateLogin_Click(object sender, EventArgs e)
         {
-            
-            SignUpForm signUpForm = new SignUpForm(login.IsAdmin,curLogin: login);
+            if (login != null)
+            {
+                SignUpForm signUpForm = new SignUpForm(login.IsAdmin, curLogin: login);
 
-            signUpForm.ShowDialog();
+                signUpForm.ShowDialog();
 
-            login = signUpForm.curLogin;
+                login = signUpForm.curLogin;
+            }
+            else
+            {
+                Login loginNew = new Login();
+                loginNew.IsAdmin = false;
+                loginNew.Insert();
+                LoginArr loginArr = new LoginArr();
+                loginArr.Fill();
+                loginNew = loginArr.GetLoginWithMaxId();
+                SignUpForm signUpForm = new SignUpForm(loginNew.IsAdmin, curLogin: loginNew);
+
+                signUpForm.ShowDialog();
+
+                login = signUpForm.curLogin;
+            }
 
 
 

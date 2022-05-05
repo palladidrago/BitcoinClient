@@ -30,6 +30,7 @@ namespace BL
             }
             return clientArr;
         }
+
         public CountryArr GetCountryArr()
         {
             //Returns array of all non repeating cities in this arr

@@ -67,13 +67,7 @@
             this.label_Id = new System.Windows.Forms.Label();
             this.listBox_Trades = new System.Windows.Forms.ListBox();
             this.groupBox_Filter_Details = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker_Filter_To = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_Filter_From = new System.Windows.Forms.DateTimePicker();
-            this.textBox_Filter_Client = new System.Windows.Forms.TextBox();
             this.textBox_Filter_Id = new System.Windows.Forms.TextBox();
-            this.label_Filter_To = new System.Windows.Forms.Label();
-            this.label_Filter_Client = new System.Windows.Forms.Label();
-            this.label_Filter_From = new System.Windows.Forms.Label();
             this.label_Filter_Id = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabPage_TradeCoins.SuspendLayout();
@@ -99,20 +93,21 @@
             this.tabPage_TradeCoins.Controls.Add(this.groupBox_Coin_Filter);
             this.tabPage_TradeCoins.Controls.Add(this.listBox_Chosen_Coins);
             this.tabPage_TradeCoins.Controls.Add(this.listBox_Potential_Coins);
-            this.tabPage_TradeCoins.Location = new System.Drawing.Point(4, 25);
-            this.tabPage_TradeCoins.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage_TradeCoins.Location = new System.Drawing.Point(4, 28);
+            this.tabPage_TradeCoins.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage_TradeCoins.Name = "tabPage_TradeCoins";
-            this.tabPage_TradeCoins.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage_TradeCoins.Size = new System.Drawing.Size(840, 336);
+            this.tabPage_TradeCoins.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage_TradeCoins.Size = new System.Drawing.Size(1123, 417);
             this.tabPage_TradeCoins.TabIndex = 2;
             this.tabPage_TradeCoins.Text = "Trade Coins";
             // 
             // button_FetchCoinPrice
             // 
             this.button_FetchCoinPrice.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_FetchCoinPrice.Location = new System.Drawing.Point(0, 257);
+            this.button_FetchCoinPrice.Location = new System.Drawing.Point(0, 316);
+            this.button_FetchCoinPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_FetchCoinPrice.Name = "button_FetchCoinPrice";
-            this.button_FetchCoinPrice.Size = new System.Drawing.Size(92, 46);
+            this.button_FetchCoinPrice.Size = new System.Drawing.Size(123, 57);
             this.button_FetchCoinPrice.TabIndex = 16;
             this.button_FetchCoinPrice.Text = "Fetch coin price";
             this.button_FetchCoinPrice.UseVisualStyleBackColor = true;
@@ -130,9 +125,11 @@
             this.groupBox_PriceInfo.Controls.Add(this.text_Volume);
             this.groupBox_PriceInfo.Controls.Add(this.text_MarketCap);
             this.groupBox_PriceInfo.ForeColor = System.Drawing.Color.White;
-            this.groupBox_PriceInfo.Location = new System.Drawing.Point(98, 148);
+            this.groupBox_PriceInfo.Location = new System.Drawing.Point(131, 182);
+            this.groupBox_PriceInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox_PriceInfo.Name = "groupBox_PriceInfo";
-            this.groupBox_PriceInfo.Size = new System.Drawing.Size(259, 154);
+            this.groupBox_PriceInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_PriceInfo.Size = new System.Drawing.Size(345, 190);
             this.groupBox_PriceInfo.TabIndex = 15;
             this.groupBox_PriceInfo.TabStop = false;
             this.groupBox_PriceInfo.Text = "Price info";
@@ -142,10 +139,10 @@
             this.label_PercentChanged.AutoSize = true;
             this.label_PercentChanged.BackColor = System.Drawing.Color.Transparent;
             this.label_PercentChanged.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_PercentChanged.Location = new System.Drawing.Point(8, 116);
-            this.label_PercentChanged.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_PercentChanged.Location = new System.Drawing.Point(11, 143);
+            this.label_PercentChanged.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label_PercentChanged.Name = "label_PercentChanged";
-            this.label_PercentChanged.Size = new System.Drawing.Size(133, 19);
+            this.label_PercentChanged.Size = new System.Drawing.Size(160, 21);
             this.label_PercentChanged.TabIndex = 0;
             this.label_PercentChanged.Text = "Percent Changed";
             // 
@@ -154,10 +151,9 @@
             this.text_Price.AutoSize = true;
             this.text_Price.BackColor = System.Drawing.Color.Transparent;
             this.text_Price.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_Price.Location = new System.Drawing.Point(58, 17);
-            this.text_Price.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.text_Price.Location = new System.Drawing.Point(77, 21);
             this.text_Price.Name = "text_Price";
-            this.text_Price.Size = new System.Drawing.Size(0, 21);
+            this.text_Price.Size = new System.Drawing.Size(0, 23);
             this.text_Price.TabIndex = 7;
             // 
             // label3
@@ -165,10 +161,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 78);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(11, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 20);
+            this.label3.Size = new System.Drawing.Size(117, 21);
             this.label3.TabIndex = 0;
             this.label3.Text = "Volume 24H";
             // 
@@ -177,10 +173,9 @@
             this.label_Price.AutoSize = true;
             this.label_Price.BackColor = System.Drawing.Color.Transparent;
             this.label_Price.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Price.Location = new System.Drawing.Point(11, 17);
-            this.label_Price.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_Price.Location = new System.Drawing.Point(11, 21);
             this.label_Price.Name = "label_Price";
-            this.label_Price.Size = new System.Drawing.Size(47, 21);
+            this.label_Price.Size = new System.Drawing.Size(57, 23);
             this.label_Price.TabIndex = 6;
             this.label_Price.Text = "Price";
             // 
@@ -189,10 +184,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 46);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(9, 57);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 19);
+            this.label4.Size = new System.Drawing.Size(114, 21);
             this.label4.TabIndex = 0;
             this.label4.Text = "Market Cap";
             // 
@@ -201,10 +196,10 @@
             this.text_PercentChanged.AutoSize = true;
             this.text_PercentChanged.BackColor = System.Drawing.Color.Transparent;
             this.text_PercentChanged.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_PercentChanged.Location = new System.Drawing.Point(141, 116);
-            this.text_PercentChanged.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.text_PercentChanged.Location = new System.Drawing.Point(188, 142);
+            this.text_PercentChanged.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.text_PercentChanged.Name = "text_PercentChanged";
-            this.text_PercentChanged.Size = new System.Drawing.Size(0, 20);
+            this.text_PercentChanged.Size = new System.Drawing.Size(0, 21);
             this.text_PercentChanged.TabIndex = 0;
             // 
             // text_Volume
@@ -212,10 +207,10 @@
             this.text_Volume.AutoSize = true;
             this.text_Volume.BackColor = System.Drawing.Color.Transparent;
             this.text_Volume.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_Volume.Location = new System.Drawing.Point(104, 77);
-            this.text_Volume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.text_Volume.Location = new System.Drawing.Point(139, 95);
+            this.text_Volume.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.text_Volume.Name = "text_Volume";
-            this.text_Volume.Size = new System.Drawing.Size(0, 21);
+            this.text_Volume.Size = new System.Drawing.Size(0, 23);
             this.text_Volume.TabIndex = 0;
             // 
             // text_MarketCap
@@ -223,18 +218,18 @@
             this.text_MarketCap.AutoSize = true;
             this.text_MarketCap.BackColor = System.Drawing.Color.Transparent;
             this.text_MarketCap.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_MarketCap.Location = new System.Drawing.Point(99, 44);
-            this.text_MarketCap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.text_MarketCap.Location = new System.Drawing.Point(132, 55);
+            this.text_MarketCap.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.text_MarketCap.Name = "text_MarketCap";
-            this.text_MarketCap.Size = new System.Drawing.Size(0, 21);
+            this.text_MarketCap.Size = new System.Drawing.Size(0, 23);
             this.text_MarketCap.TabIndex = 0;
             // 
             // pictureBox_Logo
             // 
-            this.pictureBox_Logo.Location = new System.Drawing.Point(2, 148);
-            this.pictureBox_Logo.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox_Logo.Location = new System.Drawing.Point(3, 182);
+            this.pictureBox_Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox_Logo.Name = "pictureBox_Logo";
-            this.pictureBox_Logo.Size = new System.Drawing.Size(90, 92);
+            this.pictureBox_Logo.Size = new System.Drawing.Size(120, 113);
             this.pictureBox_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Logo.TabIndex = 5;
             this.pictureBox_Logo.TabStop = false;
@@ -243,11 +238,11 @@
             // 
             this.listBox_Chosen_Coins_Supply.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_Chosen_Coins_Supply.FormattingEnabled = true;
-            this.listBox_Chosen_Coins_Supply.ItemHeight = 19;
-            this.listBox_Chosen_Coins_Supply.Location = new System.Drawing.Point(689, 12);
-            this.listBox_Chosen_Coins_Supply.Margin = new System.Windows.Forms.Padding(2);
+            this.listBox_Chosen_Coins_Supply.ItemHeight = 21;
+            this.listBox_Chosen_Coins_Supply.Location = new System.Drawing.Point(919, 15);
+            this.listBox_Chosen_Coins_Supply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox_Chosen_Coins_Supply.Name = "listBox_Chosen_Coins_Supply";
-            this.listBox_Chosen_Coins_Supply.Size = new System.Drawing.Size(86, 289);
+            this.listBox_Chosen_Coins_Supply.Size = new System.Drawing.Size(113, 340);
             this.listBox_Chosen_Coins_Supply.TabIndex = 4;
             this.listBox_Chosen_Coins_Supply.SelectedIndexChanged += new System.EventHandler(this.listBox_Chosen_Coins_Supply_SelectedIndexChanged);
             // 
@@ -255,10 +250,10 @@
             // 
             this.button_Minus_Coin.BackColor = System.Drawing.Color.Red;
             this.button_Minus_Coin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Minus_Coin.Location = new System.Drawing.Point(779, 161);
-            this.button_Minus_Coin.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Minus_Coin.Location = new System.Drawing.Point(1039, 198);
+            this.button_Minus_Coin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Minus_Coin.Name = "button_Minus_Coin";
-            this.button_Minus_Coin.Size = new System.Drawing.Size(54, 141);
+            this.button_Minus_Coin.Size = new System.Drawing.Size(72, 174);
             this.button_Minus_Coin.TabIndex = 3;
             this.button_Minus_Coin.Text = "-";
             this.button_Minus_Coin.UseVisualStyleBackColor = false;
@@ -268,10 +263,10 @@
             // 
             this.button_Plus_Coin.BackColor = System.Drawing.Color.LawnGreen;
             this.button_Plus_Coin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Plus_Coin.Location = new System.Drawing.Point(779, 12);
-            this.button_Plus_Coin.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Plus_Coin.Location = new System.Drawing.Point(1039, 15);
+            this.button_Plus_Coin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Plus_Coin.Name = "button_Plus_Coin";
-            this.button_Plus_Coin.Size = new System.Drawing.Size(54, 130);
+            this.button_Plus_Coin.Size = new System.Drawing.Size(72, 160);
             this.button_Plus_Coin.TabIndex = 3;
             this.button_Plus_Coin.Text = "+";
             this.button_Plus_Coin.UseVisualStyleBackColor = false;
@@ -287,37 +282,41 @@
             this.groupBox_Coin_Filter.Controls.Add(this.label_Coin_Filter_Scam);
             this.groupBox_Coin_Filter.Controls.Add(this.label_Coin_Filter_Name);
             this.groupBox_Coin_Filter.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_Coin_Filter.Location = new System.Drawing.Point(5, 11);
+            this.groupBox_Coin_Filter.Location = new System.Drawing.Point(7, 14);
+            this.groupBox_Coin_Filter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox_Coin_Filter.Name = "groupBox_Coin_Filter";
-            this.groupBox_Coin_Filter.Size = new System.Drawing.Size(352, 130);
+            this.groupBox_Coin_Filter.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_Coin_Filter.Size = new System.Drawing.Size(469, 160);
             this.groupBox_Coin_Filter.TabIndex = 2;
             this.groupBox_Coin_Filter.TabStop = false;
             this.groupBox_Coin_Filter.Text = "Coin Filter";
             // 
             // textBox_Coin_Filter_Name
             // 
-            this.textBox_Coin_Filter_Name.Location = new System.Drawing.Point(141, 31);
-            this.textBox_Coin_Filter_Name.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_Coin_Filter_Name.Location = new System.Drawing.Point(188, 38);
+            this.textBox_Coin_Filter_Name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_Coin_Filter_Name.Name = "textBox_Coin_Filter_Name";
-            this.textBox_Coin_Filter_Name.Size = new System.Drawing.Size(76, 24);
+            this.textBox_Coin_Filter_Name.Size = new System.Drawing.Size(100, 28);
             this.textBox_Coin_Filter_Name.TabIndex = 2;
             this.textBox_Coin_Filter_Name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Coin_Filter_Name_KeyUp);
             // 
             // comboBox_Coin_Filter_Valid
             // 
             this.comboBox_Coin_Filter_Valid.FormattingEnabled = true;
-            this.comboBox_Coin_Filter_Valid.Location = new System.Drawing.Point(141, 58);
+            this.comboBox_Coin_Filter_Valid.Location = new System.Drawing.Point(188, 71);
+            this.comboBox_Coin_Filter_Valid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_Coin_Filter_Valid.Name = "comboBox_Coin_Filter_Valid";
-            this.comboBox_Coin_Filter_Valid.Size = new System.Drawing.Size(121, 27);
+            this.comboBox_Coin_Filter_Valid.Size = new System.Drawing.Size(160, 29);
             this.comboBox_Coin_Filter_Valid.TabIndex = 0;
             this.comboBox_Coin_Filter_Valid.SelectedIndexChanged += new System.EventHandler(this.comboBox_Coin_Filter_Valid_SelectedIndexChanged);
             // 
             // comboBox_Coin_Filter_Scam
             // 
             this.comboBox_Coin_Filter_Scam.FormattingEnabled = true;
-            this.comboBox_Coin_Filter_Scam.Location = new System.Drawing.Point(141, 91);
+            this.comboBox_Coin_Filter_Scam.Location = new System.Drawing.Point(188, 112);
+            this.comboBox_Coin_Filter_Scam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_Coin_Filter_Scam.Name = "comboBox_Coin_Filter_Scam";
-            this.comboBox_Coin_Filter_Scam.Size = new System.Drawing.Size(121, 27);
+            this.comboBox_Coin_Filter_Scam.Size = new System.Drawing.Size(160, 29);
             this.comboBox_Coin_Filter_Scam.TabIndex = 0;
             this.comboBox_Coin_Filter_Scam.SelectedIndexChanged += new System.EventHandler(this.comboBox_Coin_Filter_Scam_SelectedIndexChanged);
             // 
@@ -326,9 +325,10 @@
             this.label_Coin_Filter_Valid.AutoSize = true;
             this.label_Coin_Filter_Valid.BackColor = System.Drawing.Color.Transparent;
             this.label_Coin_Filter_Valid.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Coin_Filter_Valid.Location = new System.Drawing.Point(6, 59);
+            this.label_Coin_Filter_Valid.Location = new System.Drawing.Point(8, 73);
+            this.label_Coin_Filter_Valid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Coin_Filter_Valid.Name = "label_Coin_Filter_Valid";
-            this.label_Coin_Filter_Valid.Size = new System.Drawing.Size(135, 20);
+            this.label_Coin_Filter_Valid.Size = new System.Drawing.Size(170, 22);
             this.label_Coin_Filter_Valid.TabIndex = 0;
             this.label_Coin_Filter_Valid.Text = "Validation system";
             // 
@@ -337,9 +337,10 @@
             this.label_Coin_Filter_Scam.AutoSize = true;
             this.label_Coin_Filter_Scam.BackColor = System.Drawing.Color.Transparent;
             this.label_Coin_Filter_Scam.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Coin_Filter_Scam.Location = new System.Drawing.Point(6, 93);
+            this.label_Coin_Filter_Scam.Location = new System.Drawing.Point(8, 114);
+            this.label_Coin_Filter_Scam.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Coin_Filter_Scam.Name = "label_Coin_Filter_Scam";
-            this.label_Coin_Filter_Scam.Size = new System.Drawing.Size(93, 20);
+            this.label_Coin_Filter_Scam.Size = new System.Drawing.Size(115, 22);
             this.label_Coin_Filter_Scam.TabIndex = 0;
             this.label_Coin_Filter_Scam.Text = "Scam Level";
             // 
@@ -348,9 +349,10 @@
             this.label_Coin_Filter_Name.AutoSize = true;
             this.label_Coin_Filter_Name.BackColor = System.Drawing.Color.Transparent;
             this.label_Coin_Filter_Name.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Coin_Filter_Name.Location = new System.Drawing.Point(6, 31);
+            this.label_Coin_Filter_Name.Location = new System.Drawing.Point(8, 38);
+            this.label_Coin_Filter_Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Coin_Filter_Name.Name = "label_Coin_Filter_Name";
-            this.label_Coin_Filter_Name.Size = new System.Drawing.Size(53, 20);
+            this.label_Coin_Filter_Name.Size = new System.Drawing.Size(66, 22);
             this.label_Coin_Filter_Name.TabIndex = 0;
             this.label_Coin_Filter_Name.Text = "Name";
             // 
@@ -358,11 +360,11 @@
             // 
             this.listBox_Chosen_Coins.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_Chosen_Coins.FormattingEnabled = true;
-            this.listBox_Chosen_Coins.ItemHeight = 19;
-            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(537, 11);
-            this.listBox_Chosen_Coins.Margin = new System.Windows.Forms.Padding(2);
+            this.listBox_Chosen_Coins.ItemHeight = 21;
+            this.listBox_Chosen_Coins.Location = new System.Drawing.Point(716, 14);
+            this.listBox_Chosen_Coins.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox_Chosen_Coins.Name = "listBox_Chosen_Coins";
-            this.listBox_Chosen_Coins.Size = new System.Drawing.Size(147, 289);
+            this.listBox_Chosen_Coins.Size = new System.Drawing.Size(195, 340);
             this.listBox_Chosen_Coins.TabIndex = 0;
             this.listBox_Chosen_Coins.SelectedIndexChanged += new System.EventHandler(this.listBox_Chosen_Coins_SelectedIndexChanged);
             // 
@@ -370,11 +372,11 @@
             // 
             this.listBox_Potential_Coins.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_Potential_Coins.FormattingEnabled = true;
-            this.listBox_Potential_Coins.ItemHeight = 19;
-            this.listBox_Potential_Coins.Location = new System.Drawing.Point(375, 11);
-            this.listBox_Potential_Coins.Margin = new System.Windows.Forms.Padding(2);
+            this.listBox_Potential_Coins.ItemHeight = 21;
+            this.listBox_Potential_Coins.Location = new System.Drawing.Point(500, 14);
+            this.listBox_Potential_Coins.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox_Potential_Coins.Name = "listBox_Potential_Coins";
-            this.listBox_Potential_Coins.Size = new System.Drawing.Size(159, 289);
+            this.listBox_Potential_Coins.Size = new System.Drawing.Size(211, 340);
             this.listBox_Potential_Coins.TabIndex = 0;
             this.listBox_Potential_Coins.SelectedIndexChanged += new System.EventHandler(this.listBox_Potential_Coins_SelectedIndexChanged);
             this.listBox_Potential_Coins.DoubleClick += new System.EventHandler(this.listBox_Potential_Coins_DoubleClick);
@@ -385,10 +387,10 @@
             this.button_Save.FlatAppearance.BorderSize = 0;
             this.button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Save.Location = new System.Drawing.Point(82, 18);
-            this.button_Save.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Save.Location = new System.Drawing.Point(109, 22);
+            this.button_Save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Save.Name = "button_Save";
-            this.button_Save.Size = new System.Drawing.Size(70, 32);
+            this.button_Save.Size = new System.Drawing.Size(93, 39);
             this.button_Save.TabIndex = 1;
             this.button_Save.Text = "Save";
             this.button_Save.UseVisualStyleBackColor = false;
@@ -398,10 +400,10 @@
             // 
             this.button_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Clear.Location = new System.Drawing.Point(10, 18);
-            this.button_Clear.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Clear.Location = new System.Drawing.Point(13, 22);
+            this.button_Clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(68, 32);
+            this.button_Clear.Size = new System.Drawing.Size(91, 39);
             this.button_Clear.TabIndex = 1;
             this.button_Clear.Text = "Clear";
             this.button_Clear.UseVisualStyleBackColor = true;
@@ -413,10 +415,10 @@
             this.button_Delete.FlatAppearance.BorderSize = 0;
             this.button_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Delete.Location = new System.Drawing.Point(156, 18);
-            this.button_Delete.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Delete.Location = new System.Drawing.Point(208, 22);
+            this.button_Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Size = new System.Drawing.Size(70, 32);
+            this.button_Delete.Size = new System.Drawing.Size(93, 39);
             this.button_Delete.TabIndex = 1;
             this.button_Delete.Text = "Delete";
             this.button_Delete.UseVisualStyleBackColor = false;
@@ -427,11 +429,11 @@
             this.tabControl_TradeForm.Controls.Add(this.tradeDetails);
             this.tabControl_TradeForm.Controls.Add(this.tabPage_TradeCoins);
             this.tabControl_TradeForm.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl_TradeForm.Location = new System.Drawing.Point(2, 11);
-            this.tabControl_TradeForm.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl_TradeForm.Location = new System.Drawing.Point(3, 14);
+            this.tabControl_TradeForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl_TradeForm.Name = "tabControl_TradeForm";
             this.tabControl_TradeForm.SelectedIndex = 0;
-            this.tabControl_TradeForm.Size = new System.Drawing.Size(848, 365);
+            this.tabControl_TradeForm.Size = new System.Drawing.Size(1131, 449);
             this.tabControl_TradeForm.TabIndex = 3;
             // 
             // tradeDetails
@@ -446,21 +448,21 @@
             this.tradeDetails.Controls.Add(this.label_Id);
             this.tradeDetails.Controls.Add(this.listBox_Trades);
             this.tradeDetails.Controls.Add(this.groupBox_Filter_Details);
-            this.tradeDetails.Location = new System.Drawing.Point(4, 25);
-            this.tradeDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.tradeDetails.Location = new System.Drawing.Point(4, 28);
+            this.tradeDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tradeDetails.Name = "tradeDetails";
-            this.tradeDetails.Padding = new System.Windows.Forms.Padding(2);
-            this.tradeDetails.Size = new System.Drawing.Size(840, 336);
+            this.tradeDetails.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tradeDetails.Size = new System.Drawing.Size(1123, 417);
             this.tradeDetails.TabIndex = 0;
             this.tradeDetails.Text = "Trade Details";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ClientApp.Properties.Resources.phonePortfolio;
-            this.pictureBox2.Location = new System.Drawing.Point(512, 56);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(683, 69);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(324, 239);
+            this.pictureBox2.Size = new System.Drawing.Size(432, 294);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
@@ -469,40 +471,38 @@
             // 
             this.dateTimePicker_Date.Checked = false;
             this.dateTimePicker_Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Date.Location = new System.Drawing.Point(294, 67);
-            this.dateTimePicker_Date.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker_Date.Location = new System.Drawing.Point(392, 84);
+            this.dateTimePicker_Date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker_Date.Name = "dateTimePicker_Date";
-            this.dateTimePicker_Date.Size = new System.Drawing.Size(90, 21);
+            this.dateTimePicker_Date.Size = new System.Drawing.Size(119, 24);
             this.dateTimePicker_Date.TabIndex = 8;
             // 
             // text_Id
             // 
             this.text_Id.AutoSize = true;
             this.text_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_Id.Location = new System.Drawing.Point(292, 37);
-            this.text_Id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.text_Id.Location = new System.Drawing.Point(389, 46);
             this.text_Id.Name = "text_Id";
-            this.text_Id.Size = new System.Drawing.Size(18, 20);
+            this.text_Id.Size = new System.Drawing.Size(23, 25);
             this.text_Id.TabIndex = 7;
             this.text_Id.Text = "0";
             // 
             // textBox_Memo
             // 
-            this.textBox_Memo.Location = new System.Drawing.Point(294, 125);
-            this.textBox_Memo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_Memo.Location = new System.Drawing.Point(389, 142);
+            this.textBox_Memo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_Memo.Multiline = true;
             this.textBox_Memo.Name = "textBox_Memo";
-            this.textBox_Memo.Size = new System.Drawing.Size(216, 86);
+            this.textBox_Memo.Size = new System.Drawing.Size(287, 105);
             this.textBox_Memo.TabIndex = 5;
             // 
             // label_Memo
             // 
             this.label_Memo.AutoSize = true;
             this.label_Memo.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Memo.Location = new System.Drawing.Point(238, 124);
-            this.label_Memo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_Memo.Location = new System.Drawing.Point(315, 140);
             this.label_Memo.Name = "label_Memo";
-            this.label_Memo.Size = new System.Drawing.Size(59, 22);
+            this.label_Memo.Size = new System.Drawing.Size(72, 27);
             this.label_Memo.TabIndex = 4;
             this.label_Memo.Text = "Memo";
             // 
@@ -510,10 +510,9 @@
             // 
             this.label_Date.AutoSize = true;
             this.label_Date.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Date.Location = new System.Drawing.Point(238, 64);
-            this.label_Date.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_Date.Location = new System.Drawing.Point(317, 80);
             this.label_Date.Name = "label_Date";
-            this.label_Date.Size = new System.Drawing.Size(46, 22);
+            this.label_Date.Size = new System.Drawing.Size(57, 27);
             this.label_Date.TabIndex = 4;
             this.label_Date.Text = "Date";
             // 
@@ -521,123 +520,53 @@
             // 
             this.label_Id.AutoSize = true;
             this.label_Id.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Id.Location = new System.Drawing.Point(238, 36);
-            this.label_Id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_Id.Location = new System.Drawing.Point(317, 44);
             this.label_Id.Name = "label_Id";
-            this.label_Id.Size = new System.Drawing.Size(25, 22);
+            this.label_Id.Size = new System.Drawing.Size(31, 27);
             this.label_Id.TabIndex = 4;
             this.label_Id.Text = "Id";
             // 
             // listBox_Trades
             // 
             this.listBox_Trades.FormattingEnabled = true;
-            this.listBox_Trades.ItemHeight = 16;
-            this.listBox_Trades.Location = new System.Drawing.Point(14, 179);
-            this.listBox_Trades.Margin = new System.Windows.Forms.Padding(2);
+            this.listBox_Trades.ItemHeight = 19;
+            this.listBox_Trades.Location = new System.Drawing.Point(19, 122);
+            this.listBox_Trades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox_Trades.Name = "listBox_Trades";
-            this.listBox_Trades.Size = new System.Drawing.Size(202, 116);
+            this.listBox_Trades.Size = new System.Drawing.Size(268, 232);
             this.listBox_Trades.TabIndex = 3;
             this.listBox_Trades.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox_Trades_MouseClick);
             // 
             // groupBox_Filter_Details
             // 
-            this.groupBox_Filter_Details.Controls.Add(this.dateTimePicker_Filter_To);
-            this.groupBox_Filter_Details.Controls.Add(this.dateTimePicker_Filter_From);
-            this.groupBox_Filter_Details.Controls.Add(this.textBox_Filter_Client);
             this.groupBox_Filter_Details.Controls.Add(this.textBox_Filter_Id);
-            this.groupBox_Filter_Details.Controls.Add(this.label_Filter_To);
-            this.groupBox_Filter_Details.Controls.Add(this.label_Filter_Client);
-            this.groupBox_Filter_Details.Controls.Add(this.label_Filter_From);
             this.groupBox_Filter_Details.Controls.Add(this.label_Filter_Id);
-            this.groupBox_Filter_Details.Location = new System.Drawing.Point(14, 15);
-            this.groupBox_Filter_Details.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox_Filter_Details.Location = new System.Drawing.Point(19, 18);
+            this.groupBox_Filter_Details.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox_Filter_Details.Name = "groupBox_Filter_Details";
-            this.groupBox_Filter_Details.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox_Filter_Details.Size = new System.Drawing.Size(201, 154);
+            this.groupBox_Filter_Details.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox_Filter_Details.Size = new System.Drawing.Size(268, 89);
             this.groupBox_Filter_Details.TabIndex = 2;
             this.groupBox_Filter_Details.TabStop = false;
             this.groupBox_Filter_Details.Text = "Filter";
             // 
-            // dateTimePicker_Filter_To
-            // 
-            this.dateTimePicker_Filter_To.Checked = false;
-            this.dateTimePicker_Filter_To.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Filter_To.Location = new System.Drawing.Point(88, 80);
-            this.dateTimePicker_Filter_To.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker_Filter_To.Name = "dateTimePicker_Filter_To";
-            this.dateTimePicker_Filter_To.ShowCheckBox = true;
-            this.dateTimePicker_Filter_To.Size = new System.Drawing.Size(101, 21);
-            this.dateTimePicker_Filter_To.TabIndex = 3;
-            // 
-            // dateTimePicker_Filter_From
-            // 
-            this.dateTimePicker_Filter_From.Checked = false;
-            this.dateTimePicker_Filter_From.CustomFormat = " d/M/yyyy";
-            this.dateTimePicker_Filter_From.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Filter_From.Location = new System.Drawing.Point(88, 52);
-            this.dateTimePicker_Filter_From.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker_Filter_From.Name = "dateTimePicker_Filter_From";
-            this.dateTimePicker_Filter_From.ShowCheckBox = true;
-            this.dateTimePicker_Filter_From.Size = new System.Drawing.Size(101, 21);
-            this.dateTimePicker_Filter_From.TabIndex = 2;
-            // 
-            // textBox_Filter_Client
-            // 
-            this.textBox_Filter_Client.Location = new System.Drawing.Point(88, 110);
-            this.textBox_Filter_Client.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_Filter_Client.Name = "textBox_Filter_Client";
-            this.textBox_Filter_Client.Size = new System.Drawing.Size(76, 21);
-            this.textBox_Filter_Client.TabIndex = 1;
-            // 
             // textBox_Filter_Id
             // 
-            this.textBox_Filter_Id.Location = new System.Drawing.Point(88, 25);
-            this.textBox_Filter_Id.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_Filter_Id.Location = new System.Drawing.Point(117, 31);
+            this.textBox_Filter_Id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_Filter_Id.Name = "textBox_Filter_Id";
-            this.textBox_Filter_Id.Size = new System.Drawing.Size(76, 21);
+            this.textBox_Filter_Id.Size = new System.Drawing.Size(100, 24);
             this.textBox_Filter_Id.TabIndex = 1;
-            // 
-            // label_Filter_To
-            // 
-            this.label_Filter_To.AutoSize = true;
-            this.label_Filter_To.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_To.Location = new System.Drawing.Point(26, 78);
-            this.label_Filter_To.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_Filter_To.Name = "label_Filter_To";
-            this.label_Filter_To.Size = new System.Drawing.Size(30, 22);
-            this.label_Filter_To.TabIndex = 0;
-            this.label_Filter_To.Text = "To";
-            // 
-            // label_Filter_Client
-            // 
-            this.label_Filter_Client.AutoSize = true;
-            this.label_Filter_Client.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_Client.Location = new System.Drawing.Point(26, 106);
-            this.label_Filter_Client.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_Filter_Client.Name = "label_Filter_Client";
-            this.label_Filter_Client.Size = new System.Drawing.Size(57, 22);
-            this.label_Filter_Client.TabIndex = 0;
-            this.label_Filter_Client.Text = "Client";
-            // 
-            // label_Filter_From
-            // 
-            this.label_Filter_From.AutoSize = true;
-            this.label_Filter_From.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_From.Location = new System.Drawing.Point(26, 50);
-            this.label_Filter_From.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_Filter_From.Name = "label_Filter_From";
-            this.label_Filter_From.Size = new System.Drawing.Size(51, 22);
-            this.label_Filter_From.TabIndex = 0;
-            this.label_Filter_From.Text = "From";
+            this.textBox_Filter_Id.TextChanged += new System.EventHandler(this.textBox_Filter_Id_TextChanged);
+            this.textBox_Filter_Id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Filter_Id_KeyPress);
             // 
             // label_Filter_Id
             // 
             this.label_Filter_Id.AutoSize = true;
             this.label_Filter_Id.Font = new System.Drawing.Font("Rockwell Nova", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Filter_Id.Location = new System.Drawing.Point(26, 22);
-            this.label_Filter_Id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_Filter_Id.Location = new System.Drawing.Point(35, 27);
             this.label_Filter_Id.Name = "label_Filter_Id";
-            this.label_Filter_Id.Size = new System.Drawing.Size(25, 22);
+            this.label_Filter_Id.Size = new System.Drawing.Size(31, 27);
             this.label_Filter_Id.TabIndex = 0;
             this.label_Filter_Id.Text = "Id";
             // 
@@ -646,21 +575,23 @@
             this.panel1.Controls.Add(this.button_Save);
             this.panel1.Controls.Add(this.button_Delete);
             this.panel1.Controls.Add(this.button_Clear);
-            this.panel1.Location = new System.Drawing.Point(541, 378);
+            this.panel1.Location = new System.Drawing.Point(721, 465);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(232, 64);
+            this.panel1.Size = new System.Drawing.Size(309, 79);
             this.panel1.TabIndex = 4;
             // 
             // UserTradeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ClientApp.Properties.Resources.bluesea;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(861, 450);
+            this.ClientSize = new System.Drawing.Size(1148, 554);
             this.Controls.Add(this.tabControl_TradeForm);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserTradeForm";
             this.Text = "UserTradeForm";
             this.tabPage_TradeCoins.ResumeLayout(false);
@@ -719,13 +650,7 @@
         private System.Windows.Forms.Label label_Id;
         private System.Windows.Forms.ListBox listBox_Trades;
         private System.Windows.Forms.GroupBox groupBox_Filter_Details;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_Filter_To;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_Filter_From;
-        private System.Windows.Forms.TextBox textBox_Filter_Client;
         private System.Windows.Forms.TextBox textBox_Filter_Id;
-        private System.Windows.Forms.Label label_Filter_To;
-        private System.Windows.Forms.Label label_Filter_Client;
-        private System.Windows.Forms.Label label_Filter_From;
         private System.Windows.Forms.Label label_Filter_Id;
         private System.Windows.Forms.Panel panel1;
     }

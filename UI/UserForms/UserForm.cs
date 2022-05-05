@@ -64,5 +64,13 @@ namespace ClientApp.UI
         {
             (sender as PictureBox).BackColor= Color.Transparent;
         }
+
+        private void button_Portfolio_Click(object sender, EventArgs e)
+        {
+            PortfolioForm portfolioForm = new PortfolioForm();
+            this.Hide();
+            portfolioForm.ShowDialog();
+            this.Show();
+        }
     }
 }

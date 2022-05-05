@@ -223,6 +223,16 @@ namespace ClientApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Portfolio_ {
+            get {
+                object obj = ResourceManager.GetObject("Portfolio_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap power_power_off_power_on_turn_off_turn_on_icon_189248 {
             get {
                 object obj = ResourceManager.GetObject("power-power-off-power-on-turn-off-turn-on-icon-189248", resourceCulture);

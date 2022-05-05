@@ -59,7 +59,7 @@ namespace ClientApp.UI
                 {
                     MessageBox.Show("Added successfully", "Success");
                 }
-                else MessageBox.Show("Something gone wrong wid da adding bruh ;(", "Fail");
+                else MessageBox.Show("Something went wroing with the inserting :(", "Fail");
             }
             else
             {
@@ -68,7 +68,7 @@ namespace ClientApp.UI
                     MessageBox.Show("Updated successfully", "Success");
                     ScamArrToForm();
                 }
-                else MessageBox.Show("Ayo something don gon wron wid da updating kind sir ;)", "Fail");
+                else MessageBox.Show("Something went wroing with the Updating", "Fail");
             }
             ScamArrToForm();
         }
@@ -84,10 +84,21 @@ namespace ClientApp.UI
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) ==
                 System.Windows.Forms.DialogResult.Yes)
                 {
-                    if (selectedScam.Delete()) MessageBox.Show("Deleted Successfully", "Success");
-                    else MessageBox.Show("Somtin gon wrong in deletion bro sorry", "Fail");
-                    ScamToForm(null);
-                    ScamArrToForm();
+                    CoinArr coinArr = new CoinArr();
+                    coinArr.Fill();
+                    if (coinArr.Filter(scam: selectedScam).Count > 0)
+                    {
+                        if (selectedScam.Delete()) MessageBox.Show("Deleted Successfully", "Success");
+                        else MessageBox.Show("Something went wrong in the deletion", "Fail");
+                        ScamToForm(null);
+                        ScamArrToForm();
+                    }
+                    else
+                    {                       
+                        MessageBox.Show("You can't delete a validation method that is in use", "Fail");
+                        ScamToForm(null);
+
+                    }
                 }
             }
         }

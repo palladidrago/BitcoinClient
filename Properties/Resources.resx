@@ -121,8 +121,8 @@
   <data name="patternmoney" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\patternmoney.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="phonePortfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\phonePortfolio.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="linegoup2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\linegoup2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lemonspattern" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lemonspattern.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,11 +139,14 @@
   <data name="linegoup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\linegoup.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ezgif-3-53a814fc9c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ezgif-3-53a814fc9c.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Client" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Client.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bitcoin-Logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bitcoin-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="power-power-off-power-on-turn-off-turn-on-icon-1892481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\power-power-off-power-on-turn-off-turn-on-icon-189248.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bitcoin-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bitcoin-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,11 +154,8 @@
   <data name="bluesea" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bluesea.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="linegoup2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\linegoup2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nb8j7zje" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nb8j7zje.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="phonePortfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\phonePortfolio.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="trade" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trade.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +166,8 @@
   <data name="Cryptowave+Vaporwave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cryptowave+Vaporwave.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="power-power-off-power-on-turn-off-turn-on-icon-1892481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\power-power-off-power-on-turn-off-turn-on-icon-189248.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ezgif-3-53a814fc9c" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ezgif-3-53a814fc9c.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Rome" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,10 +175,13 @@
   <data name="15022c18a022e53b517ad921c9f9e87d" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\15022c18a022e53b517ad921c9f9e87d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nb8j7zje" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nb8j7zje.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="windows-media-player-back-button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\windows-media-player-back-button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Client" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Client.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Portfolio_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Portfolio_.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

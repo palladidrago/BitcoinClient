@@ -21,8 +21,11 @@ namespace BL
             {
                 trade = (this[i] as Trade);
                 if
-                ((client == null || client.Id == trade.Client.Id) &&
-                ((trade.Date.Year == year || year == 0) && (trade.Date.Month == month || month == 0)))
+                (
+                (client == null || client.Id == trade.Client.Id) &&
+                (trade.Date.Year == year || year == 0) && (trade.Date.Month == month || month == 0) &&
+                (id == 0 || (trade.Id == id))
+                )
                 tradeArr.Add(trade);    
             }
             return tradeArr;
@@ -53,6 +56,7 @@ namespace BL
 
             return false;
         }
+        
         public void Fill()
         {
 

@@ -63,11 +63,11 @@ namespace ClientApp.UI
         private void QuoteToForm(Quote q = null)
         {
             if (q != null) {
-                text_Price.Text = string.Format("{0:n0}", q.Price) + "$";
+                text_Price.Text = string.Format("{0:0.00}", q.Price) + "$";
                 text_Volume.Text = string.Format("{0:n0}", q.Volume) + "$";
 
                 text_MarketCap.Text = string.Format("{0:n0}", q.MarketCap) + "$";
-                text_PercentChanged.Text = string.Format("{0:n0}", q.PercentChange) + "%";
+                text_PercentChanged.Text = string.Format("{0:0.0}", q.PercentChange) + "%";
                 if (q.PercentChange > 0) text_PercentChanged.ForeColor = Color.Green;
                 else text_PercentChanged.ForeColor = Color.Red;
             }
@@ -156,12 +156,21 @@ namespace ClientApp.UI
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) ==
                 System.Windows.Forms.DialogResult.Yes) //If he's sure he wants to delete
                 {
-                    CoinQuoteArr coinQuoteArr = new CoinQuoteArr();
-                    coinQuoteArr.Fill();
-                    coinQuoteArr.Filter(coin); //We can't only delete the coin, we also have to delete all its' quotes
-                    
-                    if (coinQuoteArr.Delete() && coin.Delete()) MessageBox.Show("Deleted Successfully", "Success");
-                    else MessageBox.Show("Somtin gon wrong in deletion bro sorry", "Fail");
+                    TradeCoinArr tradeCoinArr = new TradeCoinArr();
+                    tradeCoinArr.Fill();
+                    tradeCoinArr.Filter(coin);
+                    if (tradeCoinArr.Count == 0) //Don't delete coins that are part of trades
+                    {
+                        CoinQuoteArr coinQuoteArr = new CoinQuoteArr();
+                        coinQuoteArr.Fill();
+                        coinQuoteArr.Filter(coin); //We can't only delete the coin, we also have to delete all its' quotes
+
+                        coinQuoteArr = coinQuoteArr.Filter(coin); //We can't only delete the coin, we also have to delete all its' quotes
+
+                        if (coinQuoteArr.Delete() && coin.Delete()) MessageBox.Show("Deleted Successfully", "Success");
+                        else MessageBox.Show("Something went wrong in the deletion :(", "Fail");
+                    }
+                    else MessageBox.Show("You can't delete a coin that is also in a trade", "Fail");
                     CoinToForm(null);
                     CoinArrToForm();
                 }

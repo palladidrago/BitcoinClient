@@ -59,7 +59,7 @@ namespace ClientApp.UI
                 {
                     MessageBox.Show("Added successfully", "Success");
                 }
-                else MessageBox.Show("Something gone wrong wid da adding bruh ;(", "Fail");
+                else MessageBox.Show("Something went wrong with the inserting", "Fail");
             }
             else
             {
@@ -68,7 +68,7 @@ namespace ClientApp.UI
                     MessageBox.Show("Updated successfully", "Success");
                     ValidArrToForm();
                 }
-                else MessageBox.Show("Ayo something don gon wron wid da updating kind sir ;)", "Fail");
+                else MessageBox.Show("Something went wrong with the deletion", "Fail");
             }
             ValidArrToForm();
             this.Close();
@@ -78,16 +78,26 @@ namespace ClientApp.UI
         {
             selectedValid = FormToValid();
             if (selectedValid.Id == 0)
-                MessageBox.Show("You need to choose a valid");
+                MessageBox.Show("You need to choose a validation method");
             else
             {
-                if (MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo,
+                CoinArr coinArr = new CoinArr();
+                coinArr.Fill();
+                if (coinArr.Filter(valid: selectedValid).Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) ==
                 System.Windows.Forms.DialogResult.Yes)
+                    {
+                        if (selectedValid.Delete()) MessageBox.Show("Deleted Successfully", "Success");
+                        else MessageBox.Show("Something went wrong in the deletion :(", "Fail");
+                        ValidToForm(null);
+                        ValidArrToForm();
+                    }
+                }
+                else
                 {
-                    if (selectedValid.Delete()) MessageBox.Show("Deleted Successfully", "Success");
-                    else MessageBox.Show("Somtin gon wrong in deletion bro sorry", "Fail");
-                    ValidToForm(null);
+                    MessageBox.Show("You can't delete a validation method that is in use", "Fail");
                     ValidArrToForm();
                 }
             }

@@ -187,10 +187,10 @@
     <Compile Include="UI\AdminForms\TradeForm.Designer.cs">
       <DependentUpon>TradeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ChartForm.cs">
+    <Compile Include="UI\AdminForms\ChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ChartForm.Designer.cs">
+    <Compile Include="UI\AdminForms\ChartForm.Designer.cs">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserForms\PortfolioForm.cs">
@@ -260,10 +260,10 @@
     <Compile Include="UI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ReportForm.cs">
+    <Compile Include="UI\AdminForms\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ReportForm.Designer.cs">
+    <Compile Include="UI\AdminForms\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RoundLabel.cs">
@@ -283,12 +283,6 @@
     </Compile>
     <Compile Include="UI\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserForms\UserCoinForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\UserForms\UserCoinForm.Designer.cs">
-      <DependentUpon>UserCoinForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserForms\UserForm.cs">
       <SubType>Form</SubType>
@@ -336,7 +330,7 @@
     <EmbeddedResource Include="UI\AdminForms\CoinForm.resx">
       <DependentUpon>CoinForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ChartForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\ChartForm.resx">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginForm.resx">
@@ -345,7 +339,7 @@
     <EmbeddedResource Include="UI\UserForms\PortfolioForm.resx">
       <DependentUpon>PortfolioForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ReportForm.resx">
+    <EmbeddedResource Include="UI\AdminForms\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AdminForms\ScamForm.resx">
@@ -353,9 +347,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserForms\UserCoinForm.resx">
-      <DependentUpon>UserCoinForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
@@ -402,6 +393,7 @@
     <Content Include="Resources\patternmoney.jpg" />
     <Content Include="Resources\phonePortfolio.gif" />
     <Content Include="Resources\Client.png" />
+    <Content Include="Resources\Portfolio_.gif" />
     <Content Include="Resources\Rome.png" />
     <Content Include="Resources\ezgif-3-53a814fc9c.gif" />
     <Content Include="Resources\JellyfishFields.png" />
